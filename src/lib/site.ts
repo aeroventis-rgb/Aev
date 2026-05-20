@@ -1,6 +1,4 @@
-import { routing } from "@/i18n/routing";
-
-/** Production URL — set NEXT_PUBLIC_SITE_URL on Vercel (no trailing slash). */
+/** Canonical site URL (no trailing slash). Override with NEXT_PUBLIC_SITE_URL on Vercel. */
 export function getSiteUrl(): string {
   const raw =
     process.env.NEXT_PUBLIC_SITE_URL ??
@@ -10,17 +8,10 @@ export function getSiteUrl(): string {
   return raw.replace(/\/+$/, "");
 }
 
-/**
- * Path for a locale-aware route (matches next-intl `localePrefix: "as-needed"`).
- */
+/** Path for a locale-aware route (`localePrefix: "always"` → /fr, /en, /ar). */
 export function localePath(locale: string, pathname: string): string {
   const normalized = pathname.startsWith("/") ? pathname : `/${pathname}`;
   const suffix = normalized === "/" ? "" : normalized;
-
-  if (locale === routing.defaultLocale) {
-    return suffix ? suffix : "/";
-  }
-
   return `/${locale}${suffix}`;
 }
 
