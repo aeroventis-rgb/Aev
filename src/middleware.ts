@@ -4,5 +4,6 @@ import { routing } from "./i18n/routing";
 export default createMiddleware(routing);
 
 export const config = {
-  matcher: ["/", "/(fr|ar|en)/:path*"],
+  // Match all pages (required for localePrefix: "as-needed" paths like /qui-sommes-nous)
+  matcher: ["/((?!api|trpc|_next|_vercel|.*\\..*).*)"],
 };

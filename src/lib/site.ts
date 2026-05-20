@@ -1,9 +1,12 @@
 import { routing } from "@/i18n/routing";
 
-/** Production URL — set NEXT_PUBLIC_SITE_URL (no trailing slash). */
+/** Production URL — set NEXT_PUBLIC_SITE_URL on Vercel (no trailing slash). */
 export function getSiteUrl(): string {
   const raw =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.aeroventis.ma";
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://www.aeroventis.ma");
   return raw.replace(/\/+$/, "");
 }
 
