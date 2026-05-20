@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "title": "AEROVENTIS — Climatisation, ventilation & plomberie premium | Casablanca",
+    "description": "AEROVENTIS : installation climatisation gainable et split, ventilation et plomberie haut de gamme au Maroc. Villas, immeubles et projets neufs à Casablanca, Rabat et Marrakech. Devis gratuit sous 24h, travaux garantis 1 an.",
+    "keywords": "climatisation Casablanca, installation clim Casa, ventilation Maroc, plomberie premium, clim villa Rabat, clim Marrakech, Daikin Mitsubishi LG Samsung, dépannage clim, clim gainable"
+  },
+  "schema": {
+    "description": "Entreprise marocaine spécialisée en climatisation, ventilation et plomberie premium pour villas, immeubles et constructions neuves à Casablanca, Rabat et Marrakech.",
+    "openingHoursText": "Lu-Di sur rendez-vous"
+  },
+  "nav": {
+    "skipToContent": "Aller au contenu principal",
+    "backHome": "Retour à l’accueil",
+    "toolbar": "Menu principal",
+    "siteSections": "Sections du site — glissez sur mobile",
+    "scrollDown": "Plus bas",
+    "scrollDownAria": "Accéder à la partie services",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "services": "Services",
+    "projects": "Réalisations",
+    "benefits": "Engagements",
+    "contact": "Contact"
+  },
+  "footer": {
+    "about": "Qui sommes-nous",
+    "ourServices": "Nos services",
+    "coverage": "Zone d'intervention",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "sitemap": "Plan du site",
+    "navLabel": "Pages du site"
+  },
+  "images": {
+    "hero": "Villa contemporaine avec piscine au crépuscule — illustration ambiance résidentielle premium",
+    "acInstall": "Groupes extérieurs de climatisation — équipements HVAC de plein air",
+    "plumbing": "Installation sanitaire et robinetterie chromée — plomberie premium",
+    "ducted": "Réseau de gaines galvanisées et cheminements — ventilation mécanique",
+    "galleryInstall": "Local technique avec tuyauteries en plafond — environnement de pose CVC",
+    "galleryPlumbing": "Ventilation industrielle et collecteurs — réseaux fluides",
+    "galleryFinish": "Thermostat connecté mural — régulation précise du confort intérieur"
+  },
+  "brand": {
+    "name": "AEROVENTIS",
+    "tagline": "CLIMATISATION & VENTILATION",
+    "motto": "MAÎTRISEZ VOTRE CLIMAT"
+  },
+  "services": {
+    "climatisation": "CLIMATISATION",
+    "ventilation": "VENTILATION",
+    "froid": "FROID",
+    "maintenance": "MAINTENANCE"
+  },
+  "hero": {
+    "headline1": "MARRE DE LA CHALEUR",
+    "headline2": "À CASA ?",
+    "solution": "LA SOLUTION C'EST NOUS !",
+    "expertise": "EXPERTISE",
+    "quality": "QUALITÉ",
+    "trust": "CONFIANCE",
+    "experience": "+10 ANS",
+    "experienceSub": "D'EXPÉRIENCE"
+  },
+  "highlight": {
+    "title1": "INSTALLATION CLIMATISATION",
+    "title2": "& PLOMBERIE PREMIUM",
+    "subtitle": "SPÉCIAL VILLAS, IMMEUBLES & PROJETS NEUFS"
+  },
+  "process": {
+    "study": {
+      "title": "ÉTUDE TECHNIQUE COMPLÈTE",
+      "desc": "Solutions adaptées à votre projet"
+    },
+    "install": {
+      "title": "INSTALLATION PROFESSIONNELLE",
+      "desc": "Travail propre, normes respectées"
+    },
+    "result": {
+      "title": "RÉSULTAT DURABLE & ÉCONOMIQUE",
+      "desc": "Performance, confort et économies d'énergie"
+    },
+    "afterSales": {
+      "title": "SERVICE APRÈS-VENTE RÉACTIF",
+      "desc": "Maintenance et suivi garantis"
+    }
+  },
+  "gallery": {
+    "ducted": "CLIMATISATION GAINABLE",
+    "install": "INSTALLATION PROFESSIONNELLE",
+    "plumbing": "PLOMBERIE HAUT DE GAMME",
+    "finish": "RÉGULATION CLIMAT"
+  },
+  "benefits": {
+    "guarantee": {
+      "title": "TRAVAUX GARANTIS",
+      "desc": "1 an pièces et main d'œuvre"
+    },
+    "economy": {
+      "title": "SOLUTIONS ÉCONOMIQUES",
+      "desc": "Réduction de votre consommation"
+    },
+    "deadlines": {
+      "title": "RESPECT DES DÉLAIS",
+      "desc": "Planning clair et suivi rigoureux"
+    },
+    "material": {
+      "title": "MATÉRIEL PREMIUM",
+      "desc": "Marques leaders mondiales"
+    }
+  },
+  "cta": {
+    "callNow": "APPELEZ MAINTENANT",
+    "phone": "06 60 98 96 98",
+    "quote": "Devis GRATUIT en 24H",
+    "whatsapp": "DISPONIBLE SUR WHATSAPP",
+    "scanQr": "SCANNEZ POUR NOUS CONTACTER DIRECTEMENT"
+  },
+  "locations": {
+    "cities": "CASABLANCA – RABAT – MARRAKECH",
+    "projects": "+100 PROJETS RÉALISÉS À CASABLANCA"
+  },
+  "partners": {
+    "title": "PARTENAIRES & MARQUES DE CONFIANCE"
+  },
+  "lang": {
+    "fr": "Français",
+    "ar": "العربية",
+    "en": "English"
+  },
+  "LegalMentions": {
+    "metaTitle": "Mentions légales",
+    "metaDescription": "Informations légales concernant le site AEROVENTIS — climatisation, ventilation et plomberie au Maroc.",
+    "heading": "Mentions légales",
+    "intro": "Les présentes mentions légales régissent l'utilisation du site internet édité par la société AEROVENTIS.",
+    "editorTitle": "Éditeur du site",
+    "editorBody": "AEROVENTIS — entreprise spécialisée en climatisation, ventilation et plomberie. Contact : téléphone 06 60 98 96 98 (appel depuis le Maroc). Interventions à Casablanca, Rabat et Marrakech.",
+    "intellectualTitle": "Propriété intellectuelle",
+    "intellectualBody": "Les éléments du site (textes, visuels, logo, mise en page) sont protégés. Toute reproduction non autorisée est interdite.",
+    "hostingTitle": "Hébergement",
+    "hostingBody": "Les informations relatives à l'hébergement du site sont communiquées sur demande ou figurant dans le contrat de prestation applicable.",
+    "lawTitle": "Droit applicable",
+    "lawBody": "Les présentes mentions sont régies par le droit applicable au Royaume du Maroc."
+  },
+  "LegalPrivacy": {
+    "metaTitle": "Politique de confidentialité",
+    "metaDescription": "Politique de confidentialité du site AEROVENTIS — données personnelles, cookies et vos droits.",
+    "heading": "Politique de confidentialité",
+    "intro": "AEROVENTIS attache une grande importance à la protection de vos données personnelles lorsque vous utilisez ce site ou nous contactez.",
+    "collectTitle": "Données collectées",
+    "collectBody": "Selon votre usage (formulaire de contact, appel téléphonique, messagerie WhatsApp), peuvent être traitées : votre nom, vos coordonnées, le contenu de votre message et les informations nécessaires à la préparation d'un devis.",
+    "purposeTitle": "Finalités du traitement",
+    "purposeBody": "Les données sont utilisées pour répondre à vos demandes, établir des devis, assurer le suivi commercial et contractuel, et améliorer nos services.",
+    "rightsTitle": "Vos droits",
+    "rightsBody": "Conformément à la réglementation applicable, vous pouvez demander l'accès, la rectification ou la suppression des données vous concernant en nous contactant aux coordonnées indiquées sur le site.",
+    "cookiesTitle": "Cookies",
+    "cookiesBody": "Ce site peut utiliser des cookies techniques nécessaires à son fonctionnement et à la mesure d'audience. Vous pouvez configurer votre navigateur pour les refuser ou les limiter.",
+    "contactTitle": "Contact",
+    "contactBody": "Pour toute question relative à cette politique : 06 60 98 96 98."
+  },
+  "About": {
+    "metaTitle": "Qui sommes-nous — AEROVENTIS climatisation Maroc",
+    "metaDescription": "Découvrez AEROVENTIS : plus de 10 ans d'expertise en climatisation, ventilation et plomberie premium à Casablanca, Rabat et Marrakech.",
+    "heading": "Qui sommes-nous",
+    "intro": "AEROVENTIS accompagne particuliers, promoteurs et professionnels pour des installations climatisation, ventilation et plomberie fiables, esthétiques et durables au Maroc.",
+    "missionTitle": "Notre mission",
+    "missionBody": "Apporter un confort thermique optimal et des réseaux techniques irréprochables, du premier contact au service après-vente, avec des délais tenus et un chantier laissé propre.",
+    "expertiseTitle": "Notre expertise",
+    "expertiseBody": "Climatisation split et gainable, ventilation mécanique, froid commercial et maintenance préventive. Nous dimensionnons chaque installation selon les besoins réels du bâtiment et les normes en vigueur.",
+    "valuesTitle": "Nos valeurs",
+    "valuesBody": "Expertise terrain, qualité des équipements (Daikin, Mitsubishi Electric, LG, Samsung, Carrier et autres marques partenaires), transparence sur les devis et relation de confiance avec nos clients.",
+    "commitmentTitle": "Notre engagement",
+    "commitmentBody": "Devis gratuit sous 24 h, travaux garantis 1 an pièces et main d'œuvre, et équipes mobilisées sur Casablanca, Rabat et Marrakech pour villas, immeubles et projets neufs."
+  },
+  "OurServices": {
+    "metaTitle": "Nos services climatisation & plomberie — AEROVENTIS",
+    "metaDescription": "Installation climatisation gainable et split, ventilation, plomberie premium et maintenance au Maroc. Devis gratuit AEROVENTIS.",
+    "heading": "Nos services",
+    "intro": "AEROVENTIS propose une offre complète pour maîtriser votre climat intérieur et vos réseaux sanitaires, en neuf comme en rénovation.",
+    "climTitle": "Climatisation",
+    "climBody": "Étude thermique, pose de splits muraux, systèmes gainables et multi-split pour villas et appartements. Réglage, mise en service et conseils d'utilisation économe.",
+    "ventTitle": "Ventilation",
+    "ventBody": "Conception et installation de réseaux de ventilation (VMC, extraction, apport d'air) pour garantir un air sain et limiter l'humidité.",
+    "plombTitle": "Plomberie premium",
+    "plombBody": "Alimentation, évacuation, salles de bain et finitions haut de gamme pour projets résidentiels et tertiaires exigeants.",
+    "maintTitle": "Maintenance & dépannage",
+    "maintBody": "Contrats d'entretien, recharge fluide, nettoyage des unités et intervention rapide pour prolonger la durée de vie de vos équipements."
+  },
+  "Coverage": {
+    "metaTitle": "Zone d'intervention — Casablanca, Rabat, Marrakech",
+    "metaDescription": "AEROVENTIS intervient à Casablanca, Rabat et Marrakech pour climatisation, ventilation et plomberie. Devis et chantiers sur rendez-vous.",
+    "heading": "Zone d'intervention",
+    "intro": "Nos équipes se déplacent sur les principales métropoles du Maroc pour l'étude, l'installation et le suivi de vos projets.",
+    "casaTitle": "Casablanca",
+    "casaBody": "Notre zone historique : villas, immeubles et locaux professionnels. Plus de 100 projets réalisés à Casablanca et environs.",
+    "rabatTitle": "Rabat",
+    "rabatBody": "Installations résidentielles et tertiaires, climatisation et réseaux sanitaires pour la région de Rabat-Salé.",
+    "marrakechTitle": "Marrakech",
+    "marrakechBody": "Projets neufs et rénovations haut de gamme, avec matériel premium et respect des contraintes architecturales locales.",
+    "projectsTitle": "Autres demandes",
+    "projectsBody": "Pour un projet hors de ces villes, contactez-nous au 06 60 98 96 98 : nous étudions la faisabilité et les délais de déplacement."
+  },
+  "SiteMapPage": {
+    "metaTitle": "Plan du site — AEROVENTIS",
+    "metaDescription": "Plan du site AEROVENTIS : accès à toutes les pages — accueil, services, zone d'intervention, mentions légales et contact.",
+    "heading": "Plan du site",
+    "intro": "Retrouvez l'ensemble des pages du site AEROVENTIS.",
+    "linkHome": "Accueil",
+    "linkAbout": "Qui sommes-nous",
+    "linkServices": "Nos services",
+    "linkCoverage": "Zone d'intervention",
+    "linkLegal": "Mentions légales",
+    "linkPrivacy": "Politique de confidentialité",
+    "linkContact": "Contact"
+  }
+}

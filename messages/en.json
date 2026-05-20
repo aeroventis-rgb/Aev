@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "title": "AEROVENTIS — Premium HVAC, ventilation & plumbing | Casablanca",
+    "description": "AEROVENTIS installs ducted and split air conditioning, ventilation and high-end plumbing in Morocco. Villas, apartment buildings and new builds in Casablanca, Rabat and Marrakech. Free quote within 24 hours. Work guaranteed for one year.",
+    "keywords": "air conditioning Casablanca, HVAC Morocco, ventilation Rabat, premium plumbing Marrakech, villa AC install, Daikin Mitsubishi LG Samsung"
+  },
+  "schema": {
+    "description": "Moroccan company specializing in premium air conditioning, ventilation and plumbing for villas, residential buildings and new-build projects in Casablanca, Rabat and Marrakech.",
+    "openingHoursText": "Mon–Sun by appointment"
+  },
+  "nav": {
+    "skipToContent": "Skip to main content",
+    "backHome": "Back to home",
+    "toolbar": "Main actions",
+    "siteSections": "Page sections — swipe sideways on phones",
+    "scrollDown": "Down",
+    "scrollDownAria": "Go to services section",
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "services": "Services",
+    "projects": "Projects",
+    "benefits": "Commitments",
+    "contact": "Contact"
+  },
+  "footer": {
+    "about": "Qui sommes-nous",
+    "ourServices": "Nos services",
+    "coverage": "Zone d'intervention",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "sitemap": "Plan du site",
+    "navLabel": "Pages du site"
+  },
+  "images": {
+    "hero": "Contemporary villa with pool at dusk — premium residential ambiance placeholder",
+    "acInstall": "Outdoor air-conditioning condenser units — professional HVAC equipment",
+    "plumbing": "Sanitary installation and chrome fittings — premium plumbing workmanship",
+    "ducted": "Galvanised ventilation ducting and trunking — mechanical ventilation systems",
+    "galleryInstall": "Technical plant room with overhead piping — HVAC installation environment",
+    "galleryPlumbing": "Industrial ventilation pipework — drainage and fluid networks",
+    "galleryFinish": "Wall-mounted smart thermostat — precise indoor climate regulation"
+  },
+  "brand": {
+    "name": "AEROVENTIS",
+    "tagline": "AIR CONDITIONING & VENTILATION",
+    "motto": "MASTER YOUR CLIMATE"
+  },
+  "services": {
+    "climatisation": "AIR CONDITIONING",
+    "ventilation": "VENTILATION",
+    "froid": "COOLING",
+    "maintenance": "MAINTENANCE"
+  },
+  "hero": {
+    "headline1": "TIRED OF THE HEAT",
+    "headline2": "IN CASA?",
+    "solution": "WE ARE THE SOLUTION!",
+    "expertise": "EXPERTISE",
+    "quality": "QUALITY",
+    "trust": "TRUST",
+    "experience": "+10 YEARS",
+    "experienceSub": "OF EXPERIENCE"
+  },
+  "highlight": {
+    "title1": "PREMIUM AIR CONDITIONING",
+    "title2": "& PLUMBING INSTALLATION",
+    "subtitle": "SPECIALIZED IN VILLAS, BUILDINGS & NEW PROJECTS"
+  },
+  "process": {
+    "study": {
+      "title": "COMPLETE TECHNICAL STUDY",
+      "desc": "Solutions tailored to your project"
+    },
+    "install": {
+      "title": "PROFESSIONAL INSTALLATION",
+      "desc": "Clean work, standards respected"
+    },
+    "result": {
+      "title": "DURABLE & ECONOMICAL RESULT",
+      "desc": "Performance, comfort and energy savings"
+    },
+    "afterSales": {
+      "title": "RESPONSIVE AFTER-SALES SERVICE",
+      "desc": "Guaranteed maintenance and follow-up"
+    }
+  },
+  "gallery": {
+    "ducted": "DUCTED AIR CONDITIONING",
+    "install": "PROFESSIONAL INSTALLATION",
+    "plumbing": "HIGH-END PLUMBING",
+    "finish": "CLIMATE CONTROL"
+  },
+  "benefits": {
+    "guarantee": {
+      "title": "GUARANTEED WORK",
+      "desc": "1 year parts and labor"
+    },
+    "economy": {
+      "title": "ECONOMICAL SOLUTIONS",
+      "desc": "Reduce your consumption"
+    },
+    "deadlines": {
+      "title": "DEADLINES RESPECTED",
+      "desc": "Clear planning and rigorous follow-up"
+    },
+    "material": {
+      "title": "PREMIUM EQUIPMENT",
+      "desc": "Leading global brands"
+    }
+  },
+  "cta": {
+    "callNow": "CALL NOW",
+    "phone": "06 60 98 96 98",
+    "quote": "FREE quote within 24H",
+    "whatsapp": "AVAILABLE ON WHATSAPP",
+    "scanQr": "SCAN TO CONTACT US DIRECTLY"
+  },
+  "locations": {
+    "cities": "CASABLANCA – RABAT – MARRAKECH",
+    "projects": "+100 PROJECTS COMPLETED IN CASABLANCA"
+  },
+  "partners": {
+    "title": "TRUSTED PARTNERS & BRANDS"
+  },
+  "lang": {
+    "fr": "Français",
+    "ar": "العربية",
+    "en": "English"
+  },
+  "LegalMentions": {
+    "metaTitle": "Legal notice",
+    "metaDescription": "Legal information about the AEROVENTIS website — air conditioning, ventilation and plumbing in Morocco.",
+    "heading": "Legal notice",
+    "intro": "These legal notices govern use of the website published by AEROVENTIS.",
+    "editorTitle": "Publisher",
+    "editorBody": "AEROVENTIS — company specializing in air conditioning, ventilation and plumbing. Contact: phone 06 60 98 96 98 (calling from Morocco). Services in Casablanca, Rabat and Marrakech.",
+    "intellectualTitle": "Intellectual property",
+    "intellectualBody": "Site elements (texts, visuals, logo, layout) are protected. Unauthorized reproduction is prohibited.",
+    "hostingTitle": "Hosting",
+    "hostingBody": "Hosting details are available on request or as specified in your services agreement.",
+    "lawTitle": "Applicable law",
+    "lawBody": "These notices are governed by the laws applicable in the Kingdom of Morocco."
+  },
+  "LegalPrivacy": {
+    "metaTitle": "Privacy policy",
+    "metaDescription": "AEROVENTIS privacy policy — personal data, cookies and your rights.",
+    "heading": "Privacy policy",
+    "intro": "AEROVENTIS cares about protecting your personal data when you use this website or contact us.",
+    "collectTitle": "Data collected",
+    "collectBody": "Depending on how you interact with us (contact form, phone call, WhatsApp), we may process your name, contact details, message content and information needed to prepare a quote.",
+    "purposeTitle": "Purposes",
+    "purposeBody": "Data is used to respond to requests, prepare quotes, manage commercial and contractual follow-up, and improve our services.",
+    "rightsTitle": "Your rights",
+    "rightsBody": "Under applicable regulations you may request access, correction or deletion of data concerning you by contacting us using the details on this site.",
+    "cookiesTitle": "Cookies",
+    "cookiesBody": "This site may use technical cookies required for operation and audience measurement. You can configure your browser to refuse or limit them.",
+    "contactTitle": "Contact",
+    "contactBody": "Questions about this policy: 06 60 98 96 98."
+  }
+}

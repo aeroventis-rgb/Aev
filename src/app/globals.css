@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-white: #ffffff;
+    --brand-off: #f7f9fc;
+    --brand-silver: #e3e3e3;
+    --brand-ink: #000e31;
+    --brand-navy: #022f70;
+    --brand-blue: #0a5baa;
+    --brand-blue-light: #0c67b8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-off text-brand-ink antialiased;
+  }
+}
+
+@layer utilities {
+  .text-shadow-brand {
+    text-shadow: 0 2px 12px rgba(0, 14, 49, 0.25);
+  }
+
+  .text-shadow-blue-glow {
+    text-shadow: 0 0 32px rgba(10, 91, 170, 0.35);
+  }
+
+  .brand-gradient {
+    background: linear-gradient(135deg, #0c67b8 0%, #0a5baa 42%, #022f70 100%);
+  }
+
+  .brand-gradient-ring {
+    background: linear-gradient(135deg, #e3e3e3 0%, #0c67b8 35%, #0a5baa 65%, #022f70 100%);
+  }
+
+  .section-surface {
+    @apply bg-brand-white border border-brand-silver/80;
+  }
+
+  .section-navy {
+    background: linear-gradient(180deg, #022f70 0%, #000e31 100%);
+  }
+
+  .panel-glass {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(247, 249, 252, 0.95) 100%
+    );
+    box-shadow:
+      0 1px 0 rgba(227, 227, 227, 0.9),
+      0 24px 48px -20px rgba(0, 14, 49, 0.15);
+  }
+
+  .hero-frame {
+    box-shadow:
+      0 0 0 1px rgba(227, 227, 227, 0.9),
+      0 36px 80px -28px rgba(0, 14, 49, 0.2);
+  }
+
+  /* HVAC motion — logo blues only */
+  @keyframes hvac-airflow-shift {
+    0% {
+      transform: translate3d(-5%, 3%, 0) rotate(-11deg) scale(1.02);
+    }
+    50% {
+      transform: translate3d(4%, -4%, 0) rotate(-11deg) scale(1.05);
+    }
+    100% {
+      transform: translate3d(-5%, 3%, 0) rotate(-11deg) scale(1.02);
+    }
+  }
+
+  @keyframes hvac-airflow-shift-reverse {
+    0% {
+      transform: translate3d(4%, -2%, 0) rotate(11deg) scale(1.03);
+    }
+    50% {
+      transform: translate3d(-5%, 3%, 0) rotate(11deg) scale(1.06);
+    }
+    100% {
+      transform: translate3d(4%, -2%, 0) rotate(11deg) scale(1.03);
+    }
+  }
+
+  @keyframes hvac-particle-rise {
+    0% {
+      transform: translate3d(0, 0, 0) scale(0.45);
+      opacity: 0;
+    }
+    12% {
+      opacity: 0.35;
+    }
+    78% {
+      opacity: 0.15;
+    }
+    100% {
+      transform: translate3d(12px, -92vh, 0) scale(1.25);
+      opacity: 0;
+    }
+  }
+
+  @keyframes hvac-dash-flow {
+    to {
+      stroke-dashoffset: -280;
+    }
+  }
+
+  .hvac-airflow-layer {
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      102deg,
+      transparent 0,
+      transparent 36px,
+      rgba(10, 91, 170, 0.07) 36px,
+      rgba(10, 91, 170, 0.07) 39px,
+      transparent 39px,
+      transparent 74px,
+      rgba(227, 227, 227, 0.12) 74px,
+      rgba(227, 227, 227, 0.12) 76px,
+      transparent 76px,
+      transparent 110px
+    );
+    animation: hvac-airflow-shift 22s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .hvac-airflow-layer--hero {
+    animation-duration: 26s;
+    opacity: 0.75;
+  }
+
+  .hvac-airflow-layer--section {
+    animation: hvac-airflow-shift-reverse 19s ease-in-out infinite;
+  }
+
+  .hvac-particle {
+    animation-name: hvac-particle-rise;
+    animation-timing-function: cubic-bezier(0.33, 0.02, 0.18, 1);
+    animation-iteration-count: infinite;
+    will-change: transform, opacity;
+  }
+
+  .hvac-dash-flow {
+    stroke-dasharray: 14 26;
+    stroke-dashoffset: 0;
+    animation: hvac-dash-flow 14s linear infinite;
+    will-change: stroke-dashoffset;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hvac-airflow-layer,
+    .hvac-particle,
+    .hvac-dash-flow {
+      animation: none !important;
+    }
+  }
+
+}
