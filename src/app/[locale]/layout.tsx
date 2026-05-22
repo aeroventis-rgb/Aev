@@ -135,7 +135,7 @@ export default async function LocaleLayout({
         >
           {tNav("skipToContent")}
         </a>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
       </body>

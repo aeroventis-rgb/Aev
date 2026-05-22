@@ -1,10 +1,20 @@
 /** Canonical site URL (no trailing slash). Override with NEXT_PUBLIC_SITE_URL on Vercel. */
 export function getSiteUrl(): string {
-  const raw =
+  let raw =
     process.env.NEXT_PUBLIC_SITE_URL ??
     (process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
       : "https://www.aeroventis.ma");
+
+  if (
+    process.env.NODE_ENV === "production" &&
+    /localhost|127\.0\.0\.1/i.test(raw)
+  ) {
+    raw = process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://www.aeroventis.ma";
+  }
+
   return raw.replace(/\/+$/, "");
 }
 
