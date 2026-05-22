@@ -106,8 +106,8 @@ function SectionTitle({
 }) {
   const isDark = tone === "dark";
   return (
-    <div className="mb-10 md:mb-12">
-      <div className="mb-4 flex items-center gap-4">
+    <div className="mb-12 md:mb-14">
+      <div className="mb-5 flex items-center gap-4 md:mb-6">
         <span
           className={`h-1 w-14 shrink-0 rounded-full bg-gradient-to-r ${
             isDark
@@ -306,9 +306,10 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             </div>
           </header>
 
+          <div className="mt-10 flex flex-col gap-12 md:mt-14 md:gap-16 lg:gap-20">
           <div
             id="services"
-            className="section-surface relative z-10 -mt-10 scroll-mt-24 overflow-hidden rounded-md border border-brand-silver px-5 pb-16 pt-20 shadow-brand-md sm:px-8 md:-mt-14 md:px-10 md:pb-20 md:pt-24"
+            className="section-surface relative scroll-mt-28 overflow-hidden rounded-md border border-brand-silver px-5 py-14 shadow-brand-md sm:px-8 md:py-20 md:px-10"
           >
             <SectionBackdrop
               src={IMAGES.bgSectionServices}
@@ -328,7 +329,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 }
               />
 
-              <div className="-mt-4 mb-12 md:-mt-6">
+              <div className="mt-3 mb-12">
                 <div className="inline-flex rounded-md border border-brand-silver bg-brand-off px-8 py-3.5 md:px-10 md:py-4">
                   <p className="text-[11px] font-black uppercase tracking-[0.18em] text-brand-navy md:text-[13px]">
                     {thl("subtitle")}
@@ -359,7 +360,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
           <div
             id="realisations"
-            className="section-navy relative scroll-mt-24 overflow-hidden rounded-md px-5 py-16 sm:px-8 md:py-20 md:px-10"
+            className="section-navy relative scroll-mt-28 overflow-hidden rounded-md px-5 py-14 sm:px-8 md:py-20 md:px-10"
           >
             <SectionBackdrop
               src={IMAGES.bgSectionProjects}
@@ -430,7 +431,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
           <div
             id="engagements"
-            className="section-surface relative scroll-mt-24 overflow-hidden rounded-md border border-brand-silver px-5 py-16 sm:px-8 md:py-20 md:px-10"
+            className="section-surface relative scroll-mt-28 overflow-hidden rounded-md border border-brand-silver px-5 py-14 sm:px-8 md:py-20 md:px-10"
           >
             <SectionBackdrop
               src={IMAGES.bgSectionBenefits}
@@ -462,7 +463,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
           <footer
             id="contact"
-            className="section-navy relative scroll-mt-24 overflow-hidden rounded-md px-5 py-16 sm:px-8 md:px-10 md:py-20"
+            className="section-navy relative scroll-mt-28 overflow-hidden rounded-md px-5 py-14 sm:px-8 md:py-20 md:px-10"
           >
             <SectionBackdrop
               src={IMAGES.bgSectionContact}
@@ -472,7 +473,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
 
             <div className="relative z-10 mx-auto max-w-6xl">
-              <div className="mb-14 flex justify-center border-b border-brand-silver/20 pb-12">
+              <div className="mb-16 flex justify-center border-b border-brand-silver/20 pb-14 md:mb-20 md:pb-16">
                 <Link
                   href="/"
                   className="rounded-md transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-light"
@@ -543,7 +544,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 </div>
               </div>
 
-              <div className="mt-14 flex flex-col items-center justify-between gap-8 border-t border-brand-silver/20 pt-12 md:flex-row">
+              <div className="mt-16 flex flex-col items-center justify-between gap-8 border-t border-brand-silver/20 pt-14 md:mt-20 md:flex-row md:pt-16">
                 <div className="flex items-center gap-3">
                   <MapPin className="h-7 w-7 shrink-0 text-brand-blue-light" aria-hidden />
                   <span className="text-sm font-black uppercase tracking-[0.25em] text-brand-white">
@@ -560,7 +561,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               <PartnerLogos title={tpart("title")} />
 
               <nav
-                className="mt-12 border-t border-brand-silver/20 pt-10"
+                className="mt-16 border-t border-brand-silver/20 pt-14 md:mt-20 md:pt-16"
                 aria-label={tf("navLabel")}
               >
                 <ul className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8 sm:gap-y-3">
@@ -578,6 +579,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               </nav>
             </div>
           </footer>
+          </div>
         </div>
       </main>
     </div>

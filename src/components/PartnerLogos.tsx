@@ -7,10 +7,10 @@ type Props = {
 
 export function PartnerLogos({ title }: Props) {
   return (
-    <section className="mt-14 border-t border-brand-silver pt-12" aria-labelledby="partners-heading">
+    <section className="mt-16 border-t border-brand-silver/20 pt-14 md:mt-20 md:pt-16" aria-labelledby="partners-heading">
       <p
         id="partners-heading"
-        className="mb-10 text-center text-xs font-black uppercase tracking-[0.4em] text-brand-silver-mid"
+        className="mb-12 text-center text-xs font-black uppercase tracking-[0.4em] text-brand-silver-mid"
       >
         {title}
       </p>
