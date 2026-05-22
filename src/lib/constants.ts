@@ -3,8 +3,11 @@ export const PHONE_E164 = "+212660989698";
 export const WHATSAPP_URL = "https://wa.me/212660989698";
 export const QR_CONTACT_URL = WHATSAPP_URL;
 
-/** Served from `public/logo.jpg` — source: `logo.JPG` at repo root */
+/** Nav, footer, favicon — square mark */
 export const BRAND_LOGO_SRC = "/logo.jpg";
+
+/** Full vertical brand poster for hero panel (logo + tagline + services) */
+export const BRAND_HERO_POSTER_SRC = "/aeroventis-brand-full.png";
 
 /** Partner marks in `public/` — JPG uploads + SVG fallbacks where no photo yet */
 export const PARTNERS = [

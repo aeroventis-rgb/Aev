@@ -5,10 +5,6 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {
-  Snowflake,
-  Fan,
-  Thermometer,
-  Wrench,
   Shield,
   Award,
   Handshake,
@@ -32,14 +28,8 @@ import {
   PHONE_E164,
   WHATSAPP_URL,
   IMAGES,
+  BRAND_HERO_POSTER_SRC,
 } from "@/lib/constants";
-
-const serviceIcons = [
-  { key: "climatisation" as const, Icon: Snowflake },
-  { key: "ventilation" as const, Icon: Fan },
-  { key: "froid" as const, Icon: Thermometer },
-  { key: "maintenance" as const, Icon: Wrench },
-];
 
 const trustIcons = [
   { key: "expertise" as const, Icon: Shield },
@@ -166,7 +156,6 @@ function MobileDock() {
 
 export function LandingPage({ contactQrDataUrl }: Props) {
   const tb = useTranslations("brand");
-  const ts = useTranslations("services");
   const th = useTranslations("hero");
   const thl = useTranslations("highlight");
   const tp = useTranslations("process");
@@ -220,47 +209,19 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               <ClimateHeroBreath />
 
               <div className="relative z-10 mx-auto flex min-h-[min(100svh,920px)] max-w-6xl flex-col gap-10 px-5 py-10 sm:px-8 md:gap-12 md:py-14 lg:grid lg:min-h-[min(92svh,880px)] lg:grid-cols-[minmax(280px,340px)_1fr] lg:items-center lg:gap-14 lg:px-10">
-                <div className="panel-glass relative rounded-md border border-brand-silver px-7 py-10 sm:px-8 sm:py-11">
+                <div className="panel-glass relative rounded-md border border-brand-silver px-4 py-5 sm:px-5 sm:py-6 md:px-6 md:py-7">
                   <div className="absolute -start-px -top-px h-14 w-14 border-l-2 border-t-2 border-brand-blue/60" />
                   <div className="absolute -bottom-px -end-px h-14 w-14 border-b-2 border-r-2 border-brand-blue/60" />
 
-                  <div className="mx-auto flex justify-center md:mx-0 md:justify-start">
-                    <div className="overflow-hidden rounded-full ring-2 ring-brand-silver brand-gradient-ring p-[3px]">
-                      <div className="overflow-hidden rounded-full bg-brand-white">
-                        <BrandLogo
-                          alt={`${tb("name")} — ${tb("tagline")}`}
-                          variant="hero"
-                          fallbackClass="h-20 w-20"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <p className="mt-6 text-center text-4xl font-black uppercase leading-none tracking-tight text-brand-ink md:text-start md:text-[2.75rem]">
-                    {tb("name")}
-                  </p>
-                  <p className="mt-3 text-center text-[11px] font-bold uppercase tracking-[0.35em] text-brand-blue md:text-start md:text-xs">
-                    {tb("tagline")}
-                  </p>
-                  <div className="my-7 flex items-center gap-4">
-                    <span className="hidden h-px flex-1 bg-gradient-to-r from-brand-silver to-transparent md:block" />
-                    <p className="flex-1 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-navy/70 md:text-start md:text-[11px]">
-                      {tb("motto")}
-                    </p>
-                    <span className="hidden h-px flex-1 bg-gradient-to-l from-brand-silver to-transparent md:block" />
-                  </div>
-
-                  <div className="grid grid-cols-4 gap-3 border-t border-brand-silver pt-8">
-                    {serviceIcons.map(({ key, Icon }) => (
-                      <div key={key} className="flex flex-col items-center gap-2.5">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-brand-silver bg-brand-off shadow-inner transition-transform hover:scale-105 hover:border-brand-blue/50 md:h-[3.65rem] md:w-[3.65rem]">
-                          <Icon className="h-6 w-6 text-brand-blue" strokeWidth={2} aria-hidden />
-                        </div>
-                        <span className="text-center text-[8px] font-black uppercase leading-tight tracking-wide text-brand-ink md:text-[9px]">
-                          {ts(key)}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                  <Image
+                    src={BRAND_HERO_POSTER_SRC}
+                    alt={`${tb("name")} — ${tb("tagline")}. ${tb("motto")}`}
+                    width={640}
+                    height={960}
+                    priority
+                    className="mx-auto h-auto w-full max-w-[min(100%,19rem)] object-contain sm:max-w-[21rem] md:mx-0 md:max-w-[22rem] lg:max-w-[24rem]"
+                    sizes="(max-width: 768px) 304px, 384px"
+                  />
                 </div>
 
                 <div className="relative flex flex-col justify-center lg:py-6">
