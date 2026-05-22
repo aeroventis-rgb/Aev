@@ -7,23 +7,25 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
 
-const SECTION_HASHES = ["#services", "#realisations", "#engagements", "#contact"] as const;
+const HOME_SECTIONS = [
+  { hash: "services" as const, labelKey: "services" as const },
+  { hash: "realisations" as const, labelKey: "projects" as const },
+  { hash: "engagements" as const, labelKey: "benefits" as const },
+];
 
 export function SiteNav() {
   const tn = useTranslations("nav");
   const tb = useTranslations("brand");
   const tc = useTranslations("cta");
 
-  function label(hash: string) {
-    switch (hash) {
-      case "#services":
+  function sectionLabel(labelKey: (typeof HOME_SECTIONS)[number]["labelKey"]) {
+    switch (labelKey) {
+      case "services":
         return tn("services");
-      case "#realisations":
+      case "projects":
         return tn("projects");
-      case "#engagements":
-        return tn("benefits");
       default:
-        return tn("contact");
+        return tn("benefits");
     }
   }
 
@@ -81,16 +83,24 @@ export function SiteNav() {
             aria-label={tn("siteSections")}
             className="-mx-1 flex items-stretch gap-2 overflow-x-auto overscroll-x-contain py-0.5 [scrollbar-width:none] sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden"
           >
-            {SECTION_HASHES.map((hash) => (
+            {HOME_SECTIONS.map(({ hash, labelKey }) => (
               <li key={hash} className="flex shrink-0">
-                <a
-                  href={hash}
+                <I18nLink
+                  href={{ pathname: "/", hash }}
                   className="inline-flex min-h-[40px] items-center whitespace-nowrap rounded-md border border-transparent px-3 py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-navy transition hover:border-brand-silver hover:bg-brand-white hover:text-brand-blue sm:text-xs"
                 >
-                  {label(hash)}
-                </a>
+                  {sectionLabel(labelKey)}
+                </I18nLink>
               </li>
             ))}
+            <li className="flex shrink-0">
+              <I18nLink
+                href="/contact"
+                className="inline-flex min-h-[40px] items-center whitespace-nowrap rounded-md border border-brand-blue/20 bg-brand-white px-3 py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-blue shadow-brand-sm transition hover:border-brand-blue/40 hover:bg-brand-off sm:text-xs"
+              >
+                {tn("contact")}
+              </I18nLink>
+            </li>
           </ul>
         </nav>
       </div>

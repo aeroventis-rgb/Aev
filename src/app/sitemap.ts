@@ -9,6 +9,7 @@ const ROUTES = [
   "/zone-intervention",
   "/mentions-legales",
   "/politique-confidentialite",
+  "/contact",
   "/plan-du-site",
 ] as const;
 
@@ -37,8 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       entries.push({
         url: `${base}${localePath(locale, route)}`,
         lastModified,
-        changeFrequency: route === "/" ? "weekly" : "yearly",
-        priority: route === "/" ? 1 : route.startsWith("/qui") ? 0.75 : 0.6,
+        priority: route === "/" ? 1 : route === "/contact" ? 0.9 : route.startsWith("/qui") ? 0.75 : 0.6,
+        changeFrequency: route === "/" ? "weekly" : route === "/contact" ? "monthly" : "yearly",
       });
     }
   }

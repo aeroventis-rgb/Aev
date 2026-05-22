@@ -185,6 +185,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { href: "/zone-intervention" as const, label: tf("coverage") },
     { href: "/mentions-legales" as const, label: tf("legal") },
     { href: "/politique-confidentialite" as const, label: tf("privacy") },
+    { href: "/contact" as const, label: tf("contact") },
     { href: "/plan-du-site" as const, label: tf("sitemap") },
   ];
 

@@ -10,6 +10,7 @@ const SITE_LINKS = [
   { href: "/zone-intervention" as const, labelKey: "linkCoverage" },
   { href: "/mentions-legales" as const, labelKey: "linkLegal" },
   { href: "/politique-confidentialite" as const, labelKey: "linkPrivacy" },
+  { href: "/contact" as const, labelKey: "linkContact" },
 ] as const;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -52,14 +53,6 @@ export default async function PlanDuSitePage() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                href="/#contact"
-                className="inline-flex min-h-[44px] items-center text-sm font-bold uppercase tracking-wide text-brand-blue transition hover:text-brand-navy"
-              >
-                {t("linkContact")}
-              </Link>
-            </li>
           </ul>
         </article>
       </div>

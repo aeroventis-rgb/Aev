@@ -26,6 +26,7 @@
     "about": "Qui sommes-nous",
     "ourServices": "Nos services",
     "coverage": "Zone d'intervention",
+    "contact": "Contact",
     "legal": "Mentions légales",
     "privacy": "Politique de confidentialité",
     "sitemap": "Plan du site",
@@ -201,7 +202,7 @@
   },
   "SiteMapPage": {
     "metaTitle": "Plan du site — AEROVENTIS",
-    "metaDescription": "Plan du site AEROVENTIS : accès à toutes les pages — accueil, services, zone d'intervention, mentions légales et contact.",
+    "metaDescription": "Plan du site AEROVENTIS : accueil, services, contact, zone d'intervention, mentions légales et politique de confidentialité.",
     "heading": "Plan du site",
     "intro": "Retrouvez l'ensemble des pages du site AEROVENTIS.",
     "linkHome": "Accueil",
@@ -211,5 +212,29 @@
     "linkLegal": "Mentions légales",
     "linkPrivacy": "Politique de confidentialité",
     "linkContact": "Contact"
+  },
+  "ContactPage": {
+    "metaTitle": "Contact — Devis climatisation gratuit | AEROVENTIS Maroc",
+    "metaDescription": "Contactez AEROVENTIS pour un devis gratuit sous 24 h : climatisation, ventilation et plomberie à Casablanca, Rabat et Marrakech. 06 60 98 96 98 et WhatsApp.",
+    "heading": "Contactez-nous",
+    "subheading": "Votre projet climatisation & plomberie premium",
+    "intro": "Une équipe dédiée vous répond sous 24 h pour étudier votre villa, immeuble ou projet neuf au Maroc.",
+    "phoneLabel": "Téléphone",
+    "whatsappLabel": "WhatsApp",
+    "quoteBadge": "Devis gratuit sous 24 h",
+    "guaranteeBadge": "Garantie 1 an",
+    "coverageBadge": "3 villes couvertes",
+    "citiesTitle": "Zones d'intervention",
+    "casa": "Casablanca",
+    "casaDesc": "Villas, immeubles et locaux pro — plus de 100 projets réalisés",
+    "rabat": "Rabat",
+    "rabatDesc": "Résidentiel et tertiaire — climatisation et plomberie",
+    "marrakech": "Marrakech",
+    "marrakechDesc": "Neuf et rénovation haut de gamme",
+    "hoursTitle": "Disponibilité",
+    "hoursBody": "Lundi au dimanche, 8 h – 19 h sur rendez-vous",
+    "scanTitle": "Scannez pour WhatsApp",
+    "responseTitle": "Réponse rapide",
+    "responseBody": "Étude technique, planification chantier et suivi SAV réactif."
   }
 }
