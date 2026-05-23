@@ -7,7 +7,7 @@ export const QR_CONTACT_URL = WHATSAPP_URL;
 export const BRAND_LOGO_SRC = "/logo.jpg";
 
 /** Full vertical brand poster for hero panel (logo + tagline + services) */
-export const BRAND_HERO_POSTER_SRC = "/aeroventis-brand-full.png";
+export const BRAND_HERO_POSTER_SRC = "/aeroventis-brand-full.jpg";
 
 /** Partner marks in `public/` — JPG uploads + SVG fallbacks where no photo yet */
 export const PARTNERS = [
