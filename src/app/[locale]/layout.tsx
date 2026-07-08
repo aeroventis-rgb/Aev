@@ -7,6 +7,7 @@ import { Montserrat, Noto_Sans_Arabic } from "next/font/google";
 import { routing, type Locale } from "@/i18n/routing";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
 import { BRAND_LOGO_SRC, IMAGES } from "@/lib/constants";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import "../globals.css";
 
 const montserrat = Montserrat({
@@ -129,6 +130,7 @@ export default async function LocaleLayout({
           locale === "ar" ? "font-arabic" : "font-sans"
         }`}
       >
+        <GoogleAnalytics />
         <a
           href="#main-content"
           className="fixed start-4 top-4 z-[100] -translate-y-[120%] rounded-md bg-brand-blue px-4 py-2 text-sm font-bold text-brand-white shadow-brand transition-transform focus:translate-y-0"
