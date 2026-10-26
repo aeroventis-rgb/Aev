@@ -1,26 +1,17 @@
 import type { Metadata } from "next";
-import { absoluteUrl } from "@/lib/site";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-/** SEO metadata for French-only inner pages (canonical `/fr` path). */
+/** SEO metadata for French-only inner pages: canonical `/fr`, hreflang `fr` + `x-default`. */
 export function frenchPageMetadata(
   path: `/${string}`,
   title: string,
   description: string
 ): Metadata {
-  const canonical = absoluteUrl("fr", path);
-
-  return {
+  return buildPageMetadata({
+    locale: "fr",
+    pathname: path,
     title,
     description,
-    robots: { index: true, follow: true },
-    alternates: { canonical },
-    openGraph: {
-      title: `${title} | AEROVENTIS`,
-      description,
-      url: canonical,
-      type: "article",
-      locale: "fr_MA",
-      siteName: "AEROVENTIS",
-    },
-  };
+    locales: ["fr"],
+  });
 }

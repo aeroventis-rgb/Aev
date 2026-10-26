@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "AEROVENTIS — Premium HVAC, ventilation & plumbing | Casablanca",
-    "description": "AEROVENTIS installs ducted and split air conditioning, ventilation and high-end plumbing in Morocco. Villas, apartment buildings and new builds in Casablanca, Rabat and Marrakech. Free quote within 24 hours. Work guaranteed for one year.",
+    "description": "AEROVENTIS installs ducted and split air conditioning, ventilation and high-end plumbing in Morocco. Villas, apartment buildings and new builds in Casablanca, Rabat and Marrakech.",
     "keywords": "air conditioning Casablanca, HVAC Morocco, ventilation Rabat, premium plumbing Marrakech, villa AC install, Daikin Mitsubishi LG Samsung"
   },
   "schema": {
@@ -9,6 +9,7 @@
     "openingHoursText": "Mon–Sun by appointment"
   },
   "nav": {
+    "home": "Home",
     "skipToContent": "Skip to main content",
     "backHome": "Back to home",
     "toolbar": "Main actions",
@@ -30,6 +31,8 @@
     "legal": "Mentions légales",
     "privacy": "Politique de confidentialité",
     "sitemap": "Plan du site",
+    "blog": "Journal",
+    "climatisation": "Air conditioning",
     "navLabel": "Pages du site"
   },
   "images": {
@@ -82,7 +85,7 @@
     },
     "afterSales": {
       "title": "RESPONSIVE AFTER-SALES SERVICE",
-      "desc": "Guaranteed maintenance and follow-up"
+      "desc": "Maintenance and follow-up after commissioning"
     }
   },
   "gallery": {
@@ -93,8 +96,8 @@
   },
   "benefits": {
     "guarantee": {
-      "title": "GUARANTEED WORK",
-      "desc": "1 year parts and labor"
+      "title": "FOLLOW-UP AFTER INSTALL",
+      "desc": "Checks and maintenance after commissioning"
     },
     "economy": {
       "title": "ECONOMICAL SOLUTIONS",
@@ -112,7 +115,7 @@
   "cta": {
     "callNow": "CALL NOW",
     "phone": "06 60 98 96 98",
-    "quote": "FREE quote within 24H",
+    "quote": "SURVEY BY APPOINTMENT",
     "whatsapp": "AVAILABLE ON WHATSAPP",
     "scanQr": "SCAN TO CONTACT US DIRECTLY"
   },
@@ -159,15 +162,15 @@
     "contactBody": "Questions about this policy: 06 60 98 96 98."
   },
   "ContactPage": {
-    "metaTitle": "Contact — Free HVAC quote | AEROVENTIS Morocco",
-    "metaDescription": "Contact AEROVENTIS for a free quote within 24 hours: air conditioning, ventilation and plumbing in Casablanca, Rabat and Marrakech. Call 06 60 98 96 98 or WhatsApp.",
+    "metaTitle": "Contact HVAC, ventilation and plumbing",
+    "metaDescription": "Contact AEROVENTIS about air conditioning, ventilation and plumbing in Casablanca, Rabat and Marrakech. Call 06 60 98 96 98 or WhatsApp.",
     "heading": "Contact us",
-    "subheading": "Your premium HVAC & plumbing project",
-    "intro": "Our dedicated team responds within 24 hours to review your villa, building or new-build project in Morocco.",
+    "subheading": "Your HVAC and plumbing project",
+    "intro": "Contact AEROVENTIS about air conditioning, ventilation or plumbing in Casablanca, Rabat and Marrakech.",
     "phoneLabel": "Phone",
     "whatsappLabel": "WhatsApp",
-    "quoteBadge": "Free quote within 24 h",
-    "guaranteeBadge": "1-year warranty",
+    "quoteBadge": "Visit by appointment",
+    "guaranteeBadge": "Commissioning and follow-up",
     "coverageBadge": "3 cities covered",
     "citiesTitle": "Service areas",
     "casa": "Casablanca",
@@ -180,6 +183,19 @@
     "hoursBody": "Monday to Sunday, 8 AM – 7 PM by appointment",
     "scanTitle": "Scan for WhatsApp",
     "responseTitle": "Fast response",
-    "responseBody": "Technical survey, project scheduling and responsive after-sales support."
+    "responseBody": "Technical survey, project scheduling and follow-up after commissioning."
+  },
+  "Blog": {
+    "metaTitle": "HVAC and ventilation journal",
+    "metaDescription": "AEROVENTIS guides on air conditioning, ducted systems, maintenance and ventilation in Casablanca, Rabat and Marrakech.",
+    "heading": "Technical journal",
+    "intro": "Guides on air conditioning, ventilation and maintenance in Morocco. They do not replace a site visit.",
+    "empty": "Articles are being prepared. Meanwhile, the French service pages describe installation and maintenance in Casablanca, Rabat and Marrakech.",
+    "read": "Read the article",
+    "previous": "Previous page",
+    "next": "Next page",
+    "pagination": "Journal pagination",
+    "pageStatus": "Page {page} of {total}",
+    "breadcrumbLabel": "Breadcrumb"
   }
 }

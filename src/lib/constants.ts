@@ -24,7 +24,7 @@ export const PARTNERS = [
 
 /** Local poster backdrop (Gemini-generated asset in `public/`) */
 export const IMAGES = {
-  heroVilla: "/hero-background.png",
+  heroVilla: "/hero-background.webp",
   /** Outdoor / packaged AC units */
   acInstall:
     "https://images.unsplash.com/photo-1737256359080-9354dbcc21ef?auto=format&fit=crop&w=1100&q=90",

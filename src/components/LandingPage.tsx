@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {
   Shield,
@@ -30,6 +30,8 @@ import {
   IMAGES,
   BRAND_HERO_POSTER_SRC,
 } from "@/lib/constants";
+import type { Locale } from "@/i18n/routing";
+import { localesForPath } from "@/lib/routes";
 
 const trustIcons = [
   { key: "expertise" as const, Icon: Shield },
@@ -167,16 +169,22 @@ export function LandingPage({ contactQrDataUrl }: Props) {
   const ti = useTranslations("images");
   const tn = useTranslations("nav");
   const tf = useTranslations("footer");
+  const locale = useLocale() as Locale;
 
   const footerLinks = [
     { href: "/qui-sommes-nous" as const, label: tf("about") },
     { href: "/nos-services" as const, label: tf("ourServices") },
+    { href: "/climatisation" as const, label: tf("climatisation") },
     { href: "/zone-intervention" as const, label: tf("coverage") },
+    { href: "/blog" as const, label: tf("blog") },
     { href: "/mentions-legales" as const, label: tf("legal") },
     { href: "/politique-confidentialite" as const, label: tf("privacy") },
     { href: "/contact" as const, label: tf("contact") },
     { href: "/plan-du-site" as const, label: tf("sitemap") },
-  ];
+  ].filter((item) => {
+    const allowed = localesForPath(item.href);
+    return !allowed || allowed.includes(locale);
+  });
 
   return (
     <div className="min-h-screen bg-brand-off pb-[3.85rem] lg:pb-0">
@@ -196,6 +204,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 alt={ti("hero")}
                 fill
                 priority
+                quality={75}
                 className="object-cover object-[center_55%] brightness-[0.92] contrast-[1.05] saturate-[1.08] sm:object-bottom md:object-[center_50%]"
                 sizes="(max-width: 1360px) 100vw, 1360px"
               />

@@ -7,6 +7,7 @@ import type { Locale } from "@/i18n/routing";
 import { PHONE_E164 } from "@/lib/constants";
 import { localePageMetadata } from "@/lib/locale-page-metadata";
 import { generateContactQrDataUrl } from "@/lib/qr";
+import { breadcrumbJsonLd } from "@/lib/seo/schema";
 import { absoluteUrl } from "@/lib/site";
 
 type Props = {
@@ -23,9 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ContactPage({ params }: Props) {
   const { locale } = await params;
   const loc = locale as Locale;
-  const [contactQrDataUrl, t] = await Promise.all([
+  const [contactQrDataUrl, t, nav] = await Promise.all([
     generateContactQrDataUrl(),
     getTranslations({ locale: loc, namespace: "ContactPage" }),
+    getTranslations({ locale: loc, namespace: "nav" }),
   ]);
 
   const url = absoluteUrl(loc, "/contact");
@@ -59,7 +61,15 @@ export default async function ContactPage({ params }: Props) {
   return (
     <>
       <GoogleAdsConversion />
-      <JsonLd data={schema} />
+      <JsonLd
+        data={[
+          schema,
+          breadcrumbJsonLd([
+            { name: nav("home"), url: absoluteUrl(loc, "/") },
+            { name: t("heading"), url },
+          ]),
+        ]}
+      />
       <ContactPageView contactQrDataUrl={contactQrDataUrl} />
     </>
   );
