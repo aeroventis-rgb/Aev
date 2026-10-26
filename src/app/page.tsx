@@ -1,7 +1,6 @@
-import { redirect } from "next/navigation";
-import { routing } from "@/i18n/routing";
+import { permanentRedirect } from "next/navigation";
 
-/** Fallback when `/` is hit without middleware rewrite — send users to default locale. */
+/** Fallback if the permanent redirect in next.config did not run. */
 export default function RootPage() {
-  redirect(`/${routing.defaultLocale}`);
+  permanentRedirect("/fr");
 }

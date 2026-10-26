@@ -1,29 +1,39 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { getPublishedPosts } from "@/lib/blog";
 import { frenchPageMetadata } from "@/lib/french-page-metadata";
+import { getIndexableRoutes } from "@/lib/routes";
+import { breadcrumbJsonLd } from "@/lib/seo/schema";
+import { absoluteUrl } from "@/lib/site";
 
-const SITE_LINKS = [
-  { href: "/" as const, labelKey: "linkHome" },
-  { href: "/qui-sommes-nous" as const, labelKey: "linkAbout" },
-  { href: "/nos-services" as const, labelKey: "linkServices" },
-  { href: "/zone-intervention" as const, labelKey: "linkCoverage" },
-  { href: "/mentions-legales" as const, labelKey: "linkLegal" },
-  { href: "/politique-confidentialite" as const, labelKey: "linkPrivacy" },
-  { href: "/contact" as const, labelKey: "linkContact" },
-] as const;
+type Props = { params: Promise<{ locale: string }> };
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  if (locale !== "fr") notFound();
   const t = await getTranslations({ locale: "fr", namespace: "SiteMapPage" });
   return frenchPageMetadata("/plan-du-site", t("metaTitle"), t("metaDescription"));
 }
 
-export default async function PlanDuSitePage() {
+export default async function PlanDuSitePage({ params }: Props) {
+  const { locale } = await params;
+  if (locale !== "fr") notFound();
   const t = await getTranslations({ locale: "fr", namespace: "SiteMapPage" });
   const nav = await getTranslations({ locale: "fr", namespace: "nav" });
+  const routes = getIndexableRoutes().filter((route) => route.locales.includes("fr"));
+  const posts = getPublishedPosts("fr");
 
   return (
     <div className="min-h-screen bg-brand-off text-brand-ink">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: nav("home"), url: absoluteUrl("fr", "/") },
+          { name: t("heading"), url: absoluteUrl("fr", "/plan-du-site") },
+        ])}
+      />
       <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
         <nav aria-label={nav("backHome")}>
           <Link
@@ -43,13 +53,23 @@ export default async function PlanDuSitePage() {
           </header>
 
           <ul className="mt-10 flex flex-col gap-3">
-            {SITE_LINKS.map(({ href, labelKey }) => (
-              <li key={href}>
+            {routes.map((route) => (
+              <li key={route.pathname}>
                 <Link
-                  href={href}
+                  href={route.pathname}
                   className="inline-flex min-h-[44px] items-center text-sm font-bold uppercase tracking-wide text-brand-blue transition hover:text-brand-navy"
                 >
-                  {t(labelKey)}
+                  {route.label}
+                </Link>
+              </li>
+            ))}
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="inline-flex min-h-[44px] items-center text-sm font-bold text-brand-blue transition hover:text-brand-navy"
+                >
+                  {post.title}
                 </Link>
               </li>
             ))}

@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "AEROVENTIS — Climatisation, ventilation & plomberie premium | Casablanca",
-    "description": "AEROVENTIS : installation climatisation gainable et split, ventilation et plomberie haut de gamme au Maroc. Villas, immeubles et projets neufs à Casablanca, Rabat et Marrakech. Devis gratuit sous 24h, travaux garantis 1 an.",
+    "description": "AEROVENTIS : installation climatisation gainable et split, ventilation et plomberie haut de gamme au Maroc. Villas, immeubles et projets neufs à Casablanca, Rabat et Marrakech.",
     "keywords": "climatisation Casablanca, installation clim Casa, ventilation Maroc, plomberie premium, clim villa Rabat, clim Marrakech, Daikin Mitsubishi LG Samsung, dépannage clim, clim gainable"
   },
   "schema": {
@@ -9,6 +9,7 @@
     "openingHoursText": "Lu-Di sur rendez-vous"
   },
   "nav": {
+    "home": "Accueil",
     "skipToContent": "Aller au contenu principal",
     "backHome": "Retour à l’accueil",
     "toolbar": "Menu principal",
@@ -30,6 +31,8 @@
     "legal": "Mentions légales",
     "privacy": "Politique de confidentialité",
     "sitemap": "Plan du site",
+    "blog": "Blog",
+    "climatisation": "Climatisation",
     "navLabel": "Pages du site"
   },
   "images": {
@@ -82,7 +85,7 @@
     },
     "afterSales": {
       "title": "SERVICE APRÈS-VENTE RÉACTIF",
-      "desc": "Maintenance et suivi garantis"
+      "desc": "Maintenance et suivi après la mise en service"
     }
   },
   "gallery": {
@@ -93,8 +96,8 @@
   },
   "benefits": {
     "guarantee": {
-      "title": "TRAVAUX GARANTIS",
-      "desc": "1 an pièces et main d'œuvre"
+      "title": "SUIVI APRÈS POSE",
+      "desc": "Contrôle et entretien après la mise en service"
     },
     "economy": {
       "title": "SOLUTIONS ÉCONOMIQUES",
@@ -112,7 +115,7 @@
   "cta": {
     "callNow": "APPELEZ MAINTENANT",
     "phone": "06 60 98 96 98",
-    "quote": "Devis GRATUIT en 24H",
+    "quote": "ÉTUDE SUR RENDEZ-VOUS",
     "whatsapp": "DISPONIBLE SUR WHATSAPP",
     "scanQr": "SCANNEZ POUR NOUS CONTACTER DIRECTEMENT"
   },
@@ -159,7 +162,7 @@
     "contactBody": "Pour toute question relative à cette politique : 06 60 98 96 98."
   },
   "About": {
-    "metaTitle": "Qui sommes-nous — AEROVENTIS climatisation Maroc",
+    "metaTitle": "Qui sommes-nous — climatisation au Maroc",
     "metaDescription": "Découvrez AEROVENTIS : plus de 10 ans d'expertise en climatisation, ventilation et plomberie premium à Casablanca, Rabat et Marrakech.",
     "heading": "Qui sommes-nous",
     "intro": "AEROVENTIS accompagne particuliers, promoteurs et professionnels pour des installations climatisation, ventilation et plomberie fiables, esthétiques et durables au Maroc.",
@@ -170,11 +173,11 @@
     "valuesTitle": "Nos valeurs",
     "valuesBody": "Expertise terrain, qualité des équipements (Daikin, Mitsubishi Electric, LG, Samsung, Carrier et autres marques partenaires), transparence sur les devis et relation de confiance avec nos clients.",
     "commitmentTitle": "Notre engagement",
-    "commitmentBody": "Devis gratuit sous 24 h, travaux garantis 1 an pièces et main d'œuvre, et équipes mobilisées sur Casablanca, Rabat et Marrakech pour villas, immeubles et projets neufs."
+    "commitmentBody": "Équipes mobilisées à Casablanca, Rabat et Marrakech pour villas, immeubles et projets neufs, de l'étude jusqu'à la mise en service."
   },
   "OurServices": {
-    "metaTitle": "Nos services climatisation & plomberie — AEROVENTIS",
-    "metaDescription": "Installation climatisation gainable et split, ventilation, plomberie premium et maintenance au Maroc. Devis gratuit AEROVENTIS.",
+    "metaTitle": "Nos services climatisation et plomberie",
+    "metaDescription": "Installation climatisation gainable et split, ventilation, plomberie et maintenance à Casablanca, Rabat et Marrakech.",
     "heading": "Nos services",
     "intro": "AEROVENTIS propose une offre complète pour maîtriser votre climat intérieur et vos réseaux sanitaires, en neuf comme en rénovation.",
     "climTitle": "Climatisation",
@@ -201,7 +204,7 @@
     "projectsBody": "Pour un projet hors de ces villes, contactez-nous au 06 60 98 96 98 : nous étudions la faisabilité et les délais de déplacement."
   },
   "SiteMapPage": {
-    "metaTitle": "Plan du site — AEROVENTIS",
+    "metaTitle": "Plan du site",
     "metaDescription": "Plan du site AEROVENTIS : accueil, services, contact, zone d'intervention, mentions légales et politique de confidentialité.",
     "heading": "Plan du site",
     "intro": "Retrouvez l'ensemble des pages du site AEROVENTIS.",
@@ -214,15 +217,15 @@
     "linkContact": "Contact"
   },
   "ContactPage": {
-    "metaTitle": "Contact — Devis climatisation gratuit | AEROVENTIS Maroc",
-    "metaDescription": "Contactez AEROVENTIS pour un devis gratuit sous 24 h : climatisation, ventilation et plomberie à Casablanca, Rabat et Marrakech. 06 60 98 96 98 et WhatsApp.",
+    "metaTitle": "Contact climatisation, ventilation, plomberie",
+    "metaDescription": "Contactez AEROVENTIS pour la climatisation, la ventilation et la plomberie à Casablanca, Rabat et Marrakech. Téléphone 06 60 98 96 98 ou WhatsApp.",
     "heading": "Contactez-nous",
-    "subheading": "Votre projet climatisation & plomberie premium",
-    "intro": "Une équipe dédiée vous répond sous 24 h pour étudier votre villa, immeuble ou projet neuf au Maroc.",
+    "subheading": "Votre projet climatisation et plomberie",
+    "intro": "Contactez AEROVENTIS pour une étude de climatisation, de ventilation ou de plomberie à Casablanca, Rabat et Marrakech.",
     "phoneLabel": "Téléphone",
     "whatsappLabel": "WhatsApp",
-    "quoteBadge": "Devis gratuit sous 24 h",
-    "guaranteeBadge": "Garantie 1 an",
+    "quoteBadge": "Visite sur rendez-vous",
+    "guaranteeBadge": "Mise en service suivie",
     "coverageBadge": "3 villes couvertes",
     "citiesTitle": "Zones d'intervention",
     "casa": "Casablanca",
@@ -235,6 +238,19 @@
     "hoursBody": "Lundi au dimanche, 8 h – 19 h sur rendez-vous",
     "scanTitle": "Scannez pour WhatsApp",
     "responseTitle": "Réponse rapide",
-    "responseBody": "Étude technique, planification chantier et suivi SAV réactif."
+    "responseBody": "Étude technique, planification chantier et suivi après mise en service."
+  },
+  "Blog": {
+    "metaTitle": "Blog climatisation et ventilation",
+    "metaDescription": "Guides AEROVENTIS sur la climatisation, le gainable, l'entretien et la ventilation à Casablanca, Rabat et Marrakech.",
+    "heading": "Journal technique",
+    "intro": "Des guides pour comprendre la climatisation, la ventilation et l'entretien au Maroc. Ils n'évitent pas une visite sur place.",
+    "empty": "Les articles sont en préparation. En attendant, les pages service décrivent l'installation et l'entretien à Casablanca, Rabat et Marrakech.",
+    "read": "Lire l'article",
+    "previous": "Page précédente",
+    "next": "Page suivante",
+    "pagination": "Pagination du journal",
+    "pageStatus": "Page {page} sur {total}",
+    "breadcrumbLabel": "Fil d'Ariane"
   }
 }

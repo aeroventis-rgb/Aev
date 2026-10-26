@@ -1,19 +1,28 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo/schema";
+import { absoluteUrl } from "@/lib/site";
 
 type Block = { titleKey: string; bodyKey: string };
 
 type Props = {
   namespace: string;
   blocks: Block[];
+  pathname: `/${string}`;
 };
 
-export async function LegalPageShell({ namespace, blocks }: Props) {
+export async function LegalPageShell({ namespace, blocks, pathname }: Props) {
   const t = await getTranslations({ locale: "fr", namespace });
   const nav = await getTranslations({ locale: "fr", namespace: "nav" });
+  const crumbs = [
+    { name: nav("home"), url: absoluteUrl("fr", "/") },
+    { name: t("heading"), url: absoluteUrl("fr", pathname) },
+  ];
 
   return (
     <div className="min-h-screen bg-brand-off text-brand-ink">
+      <JsonLd data={breadcrumbJsonLd(crumbs)} />
       <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
         <nav aria-label={nav("backHome")}>
           <Link

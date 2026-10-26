@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
+import { alternatePath } from "@/lib/routes";
 
 const localeLabels: Record<Locale, string> = {
   fr: "FR",
@@ -26,7 +27,7 @@ export function LanguageSwitcher({ compact }: { compact?: boolean }) {
       {routing.locales.map((loc) => (
         <Link
           key={loc}
-          href={pathname || "/"}
+          href={alternatePath(pathname || "/", loc)}
           locale={loc}
           prefetch={false}
           className={`inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md font-bold transition sm:min-h-[36px] sm:min-w-[36px] ${pad} ${textSz} ${
