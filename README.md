@@ -13,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Production build check: `npm run build` (Node **20** — see `.nvmrc`).
+Production build check: `npm run build` (Node **24** — see `.nvmrc`).
 
 ## Vercel deploy
 
