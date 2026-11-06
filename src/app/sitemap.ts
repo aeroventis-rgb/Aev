@@ -1,47 +1,37 @@
 import type { MetadataRoute } from "next";
-import { routing } from "@/i18n/routing";
-import { getSiteUrl, localePath } from "@/lib/site";
-
-const ROUTES = [
-  "/",
-  "/qui-sommes-nous",
-  "/nos-services",
-  "/zone-intervention",
-  "/mentions-legales",
-  "/politique-confidentialite",
-  "/contact",
-  "/plan-du-site",
-] as const;
-
-/** French-only SEO pages — listed once under default locale */
-const FRENCH_ONLY_ROUTES = [
-  "/qui-sommes-nous",
-  "/nos-services",
-  "/zone-intervention",
-  "/plan-du-site",
-] as const;
+import { getPublishedPosts } from "@/lib/blog";
+import { getIndexableRoutes } from "@/lib/routes";
+import { hreflangLanguages } from "@/lib/seo/metadata";
+import { absoluteUrl } from "@/lib/site";
+import type { Locale } from "@/i18n/routing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = getSiteUrl();
   const lastModified = new Date();
-
   const entries: MetadataRoute.Sitemap = [];
 
-  for (const locale of routing.locales) {
-    for (const route of ROUTES) {
-      if (
-        FRENCH_ONLY_ROUTES.includes(route as (typeof FRENCH_ONLY_ROUTES)[number]) &&
-        locale !== routing.defaultLocale
-      ) {
-        continue;
-      }
+  for (const route of getIndexableRoutes()) {
+    const languages = hreflangLanguages(route.pathname, route.locales);
+    for (const locale of route.locales) {
       entries.push({
-        url: `${base}${localePath(locale, route)}`,
+        url: absoluteUrl(locale, route.pathname),
         lastModified,
-        priority: route === "/" ? 1 : route === "/contact" ? 0.9 : route.startsWith("/qui") ? 0.75 : 0.6,
-        changeFrequency: route === "/" ? "weekly" : route === "/contact" ? "monthly" : "yearly",
+        priority: route.priority,
+        changeFrequency: route.changeFrequency,
+        alternates: { languages },
       });
     }
+  }
+
+  for (const post of getPublishedPosts()) {
+    const pathname = `/blog/${post.slug}`;
+    const locales = [post.locale] as Locale[];
+    entries.push({
+      url: absoluteUrl(post.locale, pathname),
+      lastModified: new Date(`${post.date}T00:00:00.000Z`),
+      priority: 0.6,
+      changeFrequency: "monthly",
+      alternates: { languages: hreflangLanguages(pathname, locales) },
+    });
   }
 
   return entries;

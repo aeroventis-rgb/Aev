@@ -5,8 +5,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Montserrat, Noto_Sans_Arabic } from "next/font/google";
 import { routing, type Locale } from "@/i18n/routing";
-import { absoluteUrl, getSiteUrl } from "@/lib/site";
-import { BRAND_LOGO_SRC, IMAGES } from "@/lib/constants";
+import { getSiteUrl } from "@/lib/site";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import "../globals.css";
 
@@ -40,69 +39,30 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const loc = locale as Locale;
-  const t = await getTranslations({ locale: loc, namespace: "meta" });
-  const title = t("title");
+  if (!routing.locales.includes(locale as Locale)) {
+    return {};
+  }
 
-  const languages = Object.fromEntries(
-    routing.locales.map((l) => [l, absoluteUrl(l, "/")])
-  ) as Record<string, string>;
-
-  languages["x-default"] = absoluteUrl(routing.defaultLocale, "/");
-
-  const keywords = t("keywords")
-    .split(",")
-    .map((s) => s.trim())
-    .filter(Boolean);
+  const gsc = process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
 
   return {
     metadataBase: new URL(getSiteUrl()),
     title: {
-      default: title,
+      default: "AEROVENTIS",
       template: "%s | AEROVENTIS",
     },
-    description: t("description"),
-    keywords,
     authors: [{ name: "AEROVENTIS" }],
     creator: "AEROVENTIS",
     robots: { index: true, follow: true },
-    alternates: {
-      canonical: absoluteUrl(loc, "/"),
-      languages,
-    },
+    category: "business",
     openGraph: {
-      title,
-      description: t("description"),
-      locale:
-        locale === "ar" ? "ar_MA" : locale === "en" ? "en_US" : "fr_MA",
-      alternateLocale: routing.locales
-        .filter((l) => l !== locale)
-        .map((l) =>
-          l === "ar" ? "ar_MA" : l === "en" ? "en_US" : "fr_MA"
-        ),
-      type: "website",
-      url: absoluteUrl(loc, "/"),
       siteName: "AEROVENTIS",
-      images: [
-        {
-          url: IMAGES.heroVilla,
-          width: 1600,
-          height: 1066,
-          alt: title,
-        },
-      ],
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description: t("description"),
-      images: [IMAGES.heroVilla],
     },
-    category: "business",
-    icons: {
-      icon: BRAND_LOGO_SRC,
-      apple: BRAND_LOGO_SRC,
-    },
+    ...(gsc ? { verification: { google: gsc } } : {}),
   };
 }
 

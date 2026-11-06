@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { absoluteUrl } from "@/lib/site";
+import { JsonLd } from "@/components/seo/JsonLd";
 import type { Locale } from "@/i18n/routing";
-import { routing } from "@/i18n/routing";
+import { localePageMetadata } from "@/lib/locale-page-metadata";
+import { breadcrumbJsonLd } from "@/lib/seo/schema";
+import { absoluteUrl } from "@/lib/site";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -14,38 +16,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const loc = locale as Locale;
   const t = await getTranslations({ locale: loc, namespace: "LegalPrivacy" });
 
-  const languages = Object.fromEntries(
-    routing.locales.map((l) => [
-      l,
-      absoluteUrl(l as Locale, "/politique-confidentialite"),
-    ])
-  ) as Record<string, string>;
-  languages["x-default"] = absoluteUrl(
-    routing.defaultLocale as Locale,
-    "/politique-confidentialite"
+  return localePageMetadata(
+    loc,
+    "/politique-confidentialite",
+    t("metaTitle"),
+    t("metaDescription")
   );
-
-  return {
-    title: t("metaTitle"),
-    description: t("metaDescription"),
-    robots: { index: true, follow: true },
-    alternates: {
-      canonical: absoluteUrl(loc, "/politique-confidentialite"),
-      languages,
-    },
-    openGraph: {
-      title: `${t("metaTitle")} | AEROVENTIS`,
-      description: t("metaDescription"),
-      url: absoluteUrl(loc, "/politique-confidentialite"),
-      type: "article",
-      locale:
-        locale === "ar" ? "ar_MA" : locale === "en" ? "en_US" : "fr_MA",
-    },
-  };
 }
 
 export default async function PolitiqueConfidentialitePage({ params }: Props) {
   const { locale } = await params;
+  const loc = locale as Locale;
   const t = await getTranslations({ locale, namespace: "LegalPrivacy" });
   const nav = await getTranslations({ locale, namespace: "nav" });
 
@@ -59,6 +40,12 @@ export default async function PolitiqueConfidentialitePage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-brand-off text-brand-ink">
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: nav("home"), url: absoluteUrl(loc, "/") },
+          { name: t("heading"), url: absoluteUrl(loc, "/politique-confidentialite") },
+        ])}
+      />
       <article className="mx-auto max-w-3xl px-4 py-12 md:py-16">
         <nav aria-label={nav("backHome")}>
           <Link

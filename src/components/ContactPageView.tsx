@@ -16,7 +16,7 @@ type Props = {
   contactQrDataUrl: string;
 };
 
-const CITY_KEYS = ["casa", "rabat", "marrakech"] as const;
+const CITY_KEYS = ["casa", "mohammedia", "bouskoura", "tamaris", "zenata", "rabat", "marrakech"] as const;
 
 export async function ContactPageView({ contactQrDataUrl }: Props) {
   const t = await getTranslations("ContactPage");
@@ -111,7 +111,7 @@ export async function ContactPageView({ contactQrDataUrl }: Props) {
               {t("citiesTitle")}
             </h2>
           </div>
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {CITY_KEYS.map((key) => (
               <article
                 key={key}

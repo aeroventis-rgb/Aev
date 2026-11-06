@@ -3,9 +3,9 @@
 import { useTranslations } from "next-intl";
 import { Link as I18nLink } from "@/i18n/navigation";
 import { MessageCircle, Phone } from "lucide-react";
-import { BrandLogo } from "@/components/BrandLogo";
+import Image from "next/image";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
+import { BRAND_LOGO_SRC, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
 
 const HOME_SECTIONS = [
   { hash: "services" as const, labelKey: "services" as const },
@@ -36,21 +36,17 @@ export function SiteNav() {
         <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
           <I18nLink
             href="/"
-            className="group flex min-w-0 items-center gap-3 rounded-md transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40"
+            className="group flex min-w-0 items-center rounded-md bg-white transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40"
+            aria-label={`${tb("name")} — ${tb("tagline")}. ${tb("motto")}`}
           >
-            <div className="flex h-12 w-12 shrink-0 overflow-hidden rounded-full ring-2 ring-brand-silver brand-gradient-ring p-[2px] sm:h-[3.25rem] sm:w-[3.25rem]">
-              <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-brand-white">
-                <BrandLogo alt={`${tb("name")} — ${tb("tagline")}`} variant="nav" />
-              </div>
-            </div>
-            <div className="hidden min-w-0 sm:block">
-              <p className="truncate text-[10px] font-bold uppercase tracking-[0.32em] text-brand-blue">
-                {tb("tagline")}
-              </p>
-              <p className="truncate text-lg font-black uppercase tracking-wide text-brand-ink lg:text-xl">
-                {tb("name")}
-              </p>
-            </div>
+            <Image
+              src={BRAND_LOGO_SRC}
+              alt=""
+              width={1536}
+              height={1536}
+              priority
+              className="h-24 w-auto bg-white sm:h-32"
+            />
           </I18nLink>
 
           <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
