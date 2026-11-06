@@ -10,14 +10,14 @@ export const contentType = "image/png";
 const copy: Record<string, { title: string; subtitle: string; cities: string; font: string }> = {
   fr: {
     title: "Climatisation, ventilation et plomberie",
-    subtitle: "Casablanca, Rabat et Marrakech",
-    cities: "HVAC · Froid · Maintenance",
+    subtitle: "Littoral atlantique et Marrakech",
+    cities: "Extraction · Désenfumage · Plomberie",
     font: "Montserrat",
   },
   en: {
     title: "HVAC, ventilation and plumbing",
-    subtitle: "Casablanca, Rabat and Marrakech",
-    cities: "Cooling · Air · Maintenance",
+    subtitle: "Atlantic coast and Marrakech",
+    cities: "Extraction · Smoke control · Plumbing",
     font: "Montserrat",
   },
   ar: {
@@ -36,7 +36,7 @@ export default async function OpenGraphImage({
   const { locale } = await params;
   const text = copy[locale] ?? copy.fr;
   const fontsDir = path.join(process.cwd(), "src/assets/fonts");
-  const mark = readFileSync(path.join(process.cwd(), "src/assets/og-mark.png"));
+  const mark = readFileSync(path.join(process.cwd(), "public/icons/icon-512.png"));
   const montserrat = readFileSync(path.join(fontsDir, "Montserrat-latin-800.woff"));
   const arabic = readFileSync(path.join(fontsDir, "NotoSansArabic-arabic-700.ttf"));
 
@@ -59,9 +59,9 @@ export default async function OpenGraphImage({
           <img
             src={`data:image/png;base64,${mark.toString("base64")}`}
             alt=""
-            width={120}
-            height={120}
-            style={{ borderRadius: 60, border: "4px solid #E3E3E3" }}
+            width={148}
+            height={148}
+            style={{ background: "#ffffff", borderRadius: 12 }}
           />
           <div style={{ display: "flex", fontSize: 42, letterSpacing: 6, fontFamily: "Montserrat" }}>
             AEROVENTIS

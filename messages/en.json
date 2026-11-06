@@ -1,11 +1,11 @@
 {
   "meta": {
     "title": "AEROVENTIS — Premium HVAC, ventilation & plumbing | Casablanca",
-    "description": "AEROVENTIS installs ducted and split air conditioning, ventilation and high-end plumbing in Morocco. Villas, apartment buildings and new builds in Casablanca, Rabat and Marrakech.",
+    "description": "AEROVENTIS installs air conditioning, ventilation, air extraction, smoke control and plumbing in Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat and Marrakech.",
     "keywords": "air conditioning Casablanca, HVAC Morocco, ventilation Rabat, premium plumbing Marrakech, villa AC install, Daikin Mitsubishi LG Samsung"
   },
   "schema": {
-    "description": "Moroccan company specializing in premium air conditioning, ventilation and plumbing for villas, residential buildings and new-build projects in Casablanca, Rabat and Marrakech.",
+    "description": "Moroccan company specializing in air conditioning, ventilation, air extraction, smoke control and plumbing in Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat and Marrakech.",
     "openingHoursText": "Mon–Sun by appointment"
   },
   "nav": {
@@ -33,6 +33,10 @@
     "sitemap": "Plan du site",
     "blog": "Journal",
     "climatisation": "Air conditioning",
+    "ventilation": "Ventilation",
+    "extraction": "Air extraction",
+    "smoke": "Smoke control",
+    "plumbing": "Plumbing",
     "navLabel": "Pages du site"
   },
   "images": {
@@ -48,6 +52,24 @@
     "name": "AEROVENTIS",
     "tagline": "AIR CONDITIONING & VENTILATION",
     "motto": "MASTER YOUR CLIMATE"
+  },
+  "slides": {
+    "note": "AEROVENTIS brand visual. A presentation slide, not a photo of an identified job site.",
+    "solutions": "Residential and commercial solutions",
+    "ducts": "Air networks and installation",
+    "gainable": "Ducted systems and air diffusion",
+    "outdoor": "Outdoor units and placement",
+    "ventilation": "Ventilation and indoor air quality",
+    "install": "Installation and workmanship",
+    "regulation": "Controls and energy performance",
+    "commissioning": "Commissioning and checks",
+    "projects": "Projects and applications",
+    "why": "Why choose AEROVENTIS",
+    "quality": "Quality, safety and compliance",
+    "commitments": "Our commitments",
+    "maintenance": "Maintenance and after-sales",
+    "preventive": "Preventive maintenance",
+    "service": "After-sales and repairs"
   },
   "services": {
     "climatisation": "AIR CONDITIONING",
@@ -120,7 +142,7 @@
     "scanQr": "SCAN TO CONTACT US DIRECTLY"
   },
   "locations": {
-    "cities": "CASABLANCA – RABAT – MARRAKECH",
+    "cities": "CASABLANCA · MOHAMMEDIA · BOUSKOURA · TAMARIS · ZENATA · RABAT · MARRAKECH",
     "projects": "+100 PROJECTS COMPLETED IN CASABLANCA"
   },
   "partners": {
@@ -171,14 +193,22 @@
     "whatsappLabel": "WhatsApp",
     "quoteBadge": "Visit by appointment",
     "guaranteeBadge": "Commissioning and follow-up",
-    "coverageBadge": "3 cities covered",
+    "coverageBadge": "Coast, Rabat and Marrakech",
     "citiesTitle": "Service areas",
     "casa": "Casablanca",
     "casaDesc": "Villas, buildings and commercial sites — 100+ projects completed",
     "rabat": "Rabat",
     "rabatDesc": "Residential and commercial — HVAC and plumbing",
     "marrakech": "Marrakech",
-    "marrakechDesc": "New builds and premium renovations",
+    "marrakechDesc": "Dry heat, villas and buildings",
+    "mohammedia": "Mohammedia",
+    "mohammediaDesc": "Coast between Casablanca and Rabat",
+    "bouskoura": "Bouskoura",
+    "bouskouraDesc": "Villas and newer housing southwest of Casablanca",
+    "tamaris": "Tamaris",
+    "tamarisDesc": "Coastal villas toward Dar Bouazza",
+    "zenata": "Zenata",
+    "zenataDesc": "New district between Casablanca and Mohammedia",
     "hoursTitle": "Availability",
     "hoursBody": "Monday to Sunday, 8 AM – 7 PM by appointment",
     "scanTitle": "Scan for WhatsApp",

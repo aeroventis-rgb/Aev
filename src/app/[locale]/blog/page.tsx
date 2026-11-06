@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { notFound, permanentRedirect } from "next/navigation";
 import { SiteNav } from "@/components/SiteNav";
@@ -126,6 +127,15 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
             <ul className="mt-10 flex flex-col gap-6">
               {slice.map((post) => (
                 <li key={post.slug} className="rounded-md border border-brand-silver bg-brand-white p-6 shadow-brand-sm">
+                  {post.image && post.imageAlt ? (
+                    <Image
+                      src={post.image}
+                      alt={post.imageAlt}
+                      width={1600}
+                      height={900}
+                      className="mb-4 h-auto w-full rounded-md border border-brand-silver"
+                    />
+                  ) : null}
                   <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-blue">
                     <time dateTime={post.date}>{post.date}</time>
                   </p>

@@ -10,11 +10,31 @@ export const SERVICE_IDS = [
   "climatisation-gainable",
   "entretien-climatisation",
   "ventilation",
+  "extraction",
+  "desenfumage",
   "froid-commercial",
   "plomberie",
 ] as const;
 
-export const CITY_IDS = ["casablanca", "rabat", "marrakech"] as const;
+export const CITY_IDS = [
+  "casablanca",
+  "rabat",
+  "marrakech",
+  "mohammedia",
+  "bouskoura",
+  "tamaris",
+  "zenata",
+] as const;
+
+const AREA_LABEL: Record<CityId, string> = {
+  casablanca: "Casablanca",
+  rabat: "Rabat",
+  marrakech: "Marrakech",
+  mohammedia: "Mohammedia",
+  bouskoura: "Bouskoura",
+  tamaris: "Tamaris",
+  zenata: "Zenata",
+};
 
 export type ServiceId = (typeof SERVICE_IDS)[number];
 export type CityId = (typeof CITY_IDS)[number];
@@ -68,4 +88,30 @@ export const LANDING_ROUTES: readonly LandingRoute[] = [
     label: "Entretien climatisation Casablanca",
     priority: 0.8,
   },
+  { slug: "ventilation", locales: ["fr"], label: "Ventilation", priority: 0.85 },
+  { slug: "plomberie", locales: ["fr"], label: "Plomberie", priority: 0.85 },
+  { slug: "extraction", locales: ["fr"], label: "Extraction d'air", priority: 0.82 },
+  { slug: "desenfumage", locales: ["fr"], label: "Désenfumage", priority: 0.82 },
+  ...(["mohammedia", "bouskoura", "tamaris", "zenata"] as const).map(
+    (city): LandingRoute => ({
+      slug: `climatisation-${city}`,
+      locales: ["fr"],
+      label: `Climatisation ${AREA_LABEL[city]}`,
+      priority: 0.78,
+    })
+  ),
+  ...CITY_IDS.flatMap((city): LandingRoute[] => [
+    {
+      slug: `ventilation-${city}`,
+      locales: ["fr"],
+      label: `Ventilation ${AREA_LABEL[city]}`,
+      priority: 0.74,
+    },
+    {
+      slug: `plomberie-${city}`,
+      locales: ["fr"],
+      label: `Plomberie ${AREA_LABEL[city]}`,
+      priority: 0.74,
+    },
+  ]),
 ];

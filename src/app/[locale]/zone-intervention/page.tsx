@@ -21,9 +21,13 @@ export default async function ZoneInterventionPage({ params }: Props) {
       pathname="/zone-intervention"
       namespace="Coverage"
       blocks={[
-        { titleKey: "casaTitle", bodyKey: "casaBody" },
-        { titleKey: "rabatTitle", bodyKey: "rabatBody" },
-        { titleKey: "marrakechTitle", bodyKey: "marrakechBody" },
+        { titleKey: "casaTitle", bodyKey: "casaBody", href: "/climatisation-casablanca" },
+        { titleKey: "mohammediaTitle", bodyKey: "mohammediaBody", href: "/climatisation-mohammedia" },
+        { titleKey: "bouskouraTitle", bodyKey: "bouskouraBody", href: "/climatisation-bouskoura" },
+        { titleKey: "tamarisTitle", bodyKey: "tamarisBody", href: "/climatisation-tamaris" },
+        { titleKey: "zenataTitle", bodyKey: "zenataBody", href: "/climatisation-zenata" },
+        { titleKey: "rabatTitle", bodyKey: "rabatBody", href: "/climatisation-rabat" },
+        { titleKey: "marrakechTitle", bodyKey: "marrakechBody", href: "/climatisation-marrakech" },
         { titleKey: "projectsTitle", bodyKey: "projectsBody" },
       ]}
     />

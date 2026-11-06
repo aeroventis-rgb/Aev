@@ -16,19 +16,20 @@ import {
   CalendarClock,
   Phone,
   MapPin,
-  Check,
   Star,
   MessageCircle,
 } from "lucide-react";
+import { BrandSlide } from "@/components/BrandSlide";
 import { SiteNav } from "@/components/SiteNav";
-import { BrandLogo } from "@/components/BrandLogo";
 import { PartnerLogos } from "@/components/PartnerLogos";
 import { ClimateHeroBreath, ClimateSectionMotion } from "@/components/ClimateMotionFX";
+import { BRAND_SLIDES } from "@/lib/brand-slides";
 import {
   PHONE_E164,
   WHATSAPP_URL,
   IMAGES,
   BRAND_HERO_POSTER_SRC,
+  BRAND_LOGO_SRC,
 } from "@/lib/constants";
 import type { Locale } from "@/i18n/routing";
 import { localesForPath } from "@/lib/routes";
@@ -46,13 +47,6 @@ const processItems = [
   { key: "afterSales" as const, Icon: Headphones },
 ];
 
-const galleryItems = [
-  { key: "ducted" as const, src: IMAGES.galleryDucted, label: "ducted" as const },
-  { key: "galleryInstall" as const, src: IMAGES.galleryInstall, label: "install" as const },
-  { key: "galleryPlumbing" as const, src: IMAGES.galleryPlumbing, label: "plumbing" as const },
-  { key: "galleryFinish" as const, src: IMAGES.galleryFinish, label: "finish" as const },
-];
-
 const benefitItems = [
   { key: "guarantee" as const, Icon: Shield },
   { key: "economy" as const, Icon: Scale },
@@ -63,27 +57,6 @@ const benefitItems = [
 type Props = {
   contactQrDataUrl: string;
 };
-
-/** Decorative background — hero excluded; keeps contrast via overlays */
-function SectionBackdrop({
-  src,
-  imageClassName,
-}: {
-  src: string;
-  imageClassName?: string;
-}) {
-  return (
-    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-      <Image
-        src={src}
-        alt=""
-        fill
-        sizes="100vw"
-        className={`object-cover saturate-[0.82] ${imageClassName ?? "opacity-[0.28] scale-105 object-[center_45%]"}`}
-      />
-    </div>
-  );
-}
 
 function SectionTitle({
   title,
@@ -161,7 +134,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
   const th = useTranslations("hero");
   const thl = useTranslations("highlight");
   const tp = useTranslations("process");
-  const tg = useTranslations("gallery");
+  const tslides = useTranslations("slides");
   const tben = useTranslations("benefits");
   const tc = useTranslations("cta");
   const tl = useTranslations("locations");
@@ -175,6 +148,10 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { href: "/qui-sommes-nous" as const, label: tf("about") },
     { href: "/nos-services" as const, label: tf("ourServices") },
     { href: "/climatisation" as const, label: tf("climatisation") },
+    { href: "/ventilation" as const, label: tf("ventilation") },
+    { href: "/extraction" as const, label: tf("extraction") },
+    { href: "/desenfumage" as const, label: tf("smoke") },
+    { href: "/plomberie" as const, label: tf("plumbing") },
     { href: "/zone-intervention" as const, label: tf("coverage") },
     { href: "/blog" as const, label: tf("blog") },
     { href: "/mentions-legales" as const, label: tf("legal") },
@@ -281,10 +258,6 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             id="services"
             className="section-surface relative scroll-mt-28 overflow-hidden rounded-md border border-brand-silver px-5 py-14 shadow-brand-md sm:px-8 md:py-20 md:px-10"
           >
-            <SectionBackdrop
-              src={IMAGES.bgSectionServices}
-              imageClassName="opacity-[0.08] scale-105 object-[center_35%]"
-            />
             <ClimateSectionMotion />
             <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
 
@@ -325,6 +298,18 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                   </article>
                 ))}
               </div>
+              <div className="mt-10 grid gap-4 md:grid-cols-2">
+                <BrandSlide
+                  src={BRAND_SLIDES.solutions}
+                  alt={`${tslides("note")} ${tslides("solutions")}`}
+                  caption={tslides("solutions")}
+                />
+                <BrandSlide
+                  src={BRAND_SLIDES.reseaux}
+                  alt={`${tslides("note")} ${tslides("ducts")}`}
+                  caption={tslides("ducts")}
+                />
+              </div>
             </div>
           </div>
 
@@ -332,69 +317,30 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             id="realisations"
             className="section-navy relative scroll-mt-28 overflow-hidden rounded-md px-5 py-14 sm:px-8 md:py-20 md:px-10"
           >
-            <SectionBackdrop
-              src={IMAGES.bgSectionProjects}
-              imageClassName="opacity-[0.14] scale-110 object-[center_55%]"
-            />
             <ClimateSectionMotion intensity="light" />
             <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
 
             <div className="relative z-10 mx-auto max-w-6xl">
               <SectionTitle tone="dark" title={tn("projects")} />
-
-              <div className="grid gap-5 lg:grid-cols-12 lg:grid-rows-2 lg:gap-6">
-                <figure className="group relative aspect-[3/4] overflow-hidden rounded-md ring-1 ring-brand-blue/40 transition-all hover:ring-brand-blue-light lg:col-span-3 lg:row-span-2">
-                  <Image
-                    src={IMAGES.acInstall}
-                    alt={ti("acInstall")}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    sizes="(max-width:1024px) 100vw, 280px"
+              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {(
+                  [
+                    ["gainable", BRAND_SLIDES.gainable],
+                    ["outdoor", BRAND_SLIDES.exterieur],
+                    ["ventilation", BRAND_SLIDES.ventilation],
+                    ["install", BRAND_SLIDES.installation],
+                    ["regulation", BRAND_SLIDES.regulation],
+                    ["commissioning", BRAND_SLIDES.miseEnService],
+                    ["projects", BRAND_SLIDES.projets],
+                  ] as const
+                ).map(([key, src]) => (
+                  <BrandSlide
+                    key={key}
+                    src={src}
+                    alt={`${tslides("note")} ${tslides(key)}`}
+                    caption={tslides(key)}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-80" />
-                  <figcaption className="absolute inset-x-0 bottom-0 border-t-2 border-brand-blue bg-gradient-to-t from-brand-ink/95 to-brand-ink/40 px-5 py-4">
-                    <span className="text-xs font-black tracking-[0.38em] text-brand-blue-light">AEROVENTIS</span>
-                  </figcaption>
-                </figure>
-
-                <div className="grid grid-cols-2 gap-4 lg:col-span-6 lg:gap-5">
-                  {galleryItems.map(({ key, src, label }, i) => (
-                    <figure
-                      key={key}
-                      className={`group relative aspect-[4/3] overflow-hidden rounded-md ring-1 ring-brand-silver/30 transition-all hover:ring-brand-blue-light ${i % 2 === 1 ? "lg:translate-y-6" : ""}`}
-                    >
-                      <Image
-                        src={src}
-                        alt={ti(key)}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                        sizes="(max-width:1024px) 50vw, 320px"
-                      />
-                      <figcaption className="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-brand-ink/95 to-brand-ink/40 px-3 py-3 md:px-4">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center brand-gradient shadow-brand-sm">
-                          <Check className="h-5 w-5 text-brand-white" strokeWidth={3} aria-hidden />
-                        </span>
-                        <span className="text-[10px] font-black uppercase leading-tight tracking-wide text-brand-white md:text-[11px]">
-                          {tg(label)}
-                        </span>
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-
-                <figure className="group relative aspect-[3/4] overflow-hidden rounded-md ring-1 ring-brand-blue/40 transition-all hover:ring-brand-blue-light lg:col-span-3 lg:row-span-2">
-                  <Image
-                    src={IMAGES.plumbing}
-                    alt={ti("plumbing")}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    sizes="280px"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent opacity-80" />
-                  <figcaption className="absolute inset-x-0 bottom-0 border-t-2 border-brand-blue bg-gradient-to-t from-brand-ink/95 to-brand-ink/40 px-5 py-4">
-                    <span className="text-xs font-black tracking-[0.38em] text-brand-blue-light">AEROVENTIS</span>
-                  </figcaption>
-                </figure>
+                ))}
               </div>
             </div>
           </div>
@@ -403,10 +349,6 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             id="engagements"
             className="section-surface relative scroll-mt-28 overflow-hidden rounded-md border border-brand-silver px-5 py-14 sm:px-8 md:py-20 md:px-10"
           >
-            <SectionBackdrop
-              src={IMAGES.bgSectionBenefits}
-              imageClassName="opacity-[0.06] scale-105 object-[center_40%]"
-            />
             <ClimateSectionMotion />
             <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
             <div className="relative z-10 mx-auto max-w-6xl">
@@ -428,6 +370,25 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                   </article>
                 ))}
               </div>
+              <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {(
+                  [
+                    ["why", BRAND_SLIDES.pourquoi],
+                    ["quality", BRAND_SLIDES.qualite],
+                    ["commitments", BRAND_SLIDES.engagements],
+                    ["maintenance", BRAND_SLIDES.maintenance],
+                    ["preventive", BRAND_SLIDES.preventive],
+                    ["service", BRAND_SLIDES.sav],
+                  ] as const
+                ).map(([key, src]) => (
+                  <BrandSlide
+                    key={key}
+                    src={src}
+                    alt={`${tslides("note")} ${tslides(key)}`}
+                    caption={tslides(key)}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -435,10 +396,6 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             id="contact"
             className="section-navy relative scroll-mt-28 overflow-hidden rounded-md px-5 py-14 sm:px-8 md:py-20 md:px-10"
           >
-            <SectionBackdrop
-              src={IMAGES.bgSectionContact}
-              imageClassName="opacity-[0.12] scale-105 object-[center_25%]"
-            />
             <ClimateSectionMotion intensity="light" />
             <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
 
@@ -449,16 +406,15 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                   className="rounded-md transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-light"
                   aria-label={`${tb("name")}, ${tb("tagline")}`}
                 >
-                  <div className="flex flex-col items-center gap-3">
-                    <div className="overflow-hidden rounded-full ring-2 ring-brand-silver brand-gradient-ring p-[3px]">
-                      <div className="overflow-hidden rounded-full bg-brand-white">
-                        <BrandLogo alt={tb("name")} variant="footer" />
-                      </div>
-                    </div>
-                    <span className="text-[11px] font-black uppercase tracking-[0.42em] text-brand-silver">
-                      {tb("tagline")}
-                    </span>
-                  </div>
+                  <span className="block rounded-md bg-white p-3 shadow-brand">
+                    <Image
+                      src={BRAND_LOGO_SRC}
+                      alt=""
+                      width={1536}
+                      height={1536}
+                      className="h-auto w-40 sm:w-52"
+                    />
+                  </span>
                 </Link>
               </div>
 

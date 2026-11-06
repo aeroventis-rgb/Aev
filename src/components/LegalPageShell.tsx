@@ -4,7 +4,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/seo/schema";
 import { absoluteUrl } from "@/lib/site";
 
-type Block = { titleKey: string; bodyKey: string };
+type Block = { titleKey: string; bodyKey: string; href?: `/${string}` };
 
 type Props = {
   namespace: string;
@@ -42,12 +42,19 @@ export async function LegalPageShell({ namespace, blocks, pathname }: Props) {
           </header>
 
           <div className="mt-10 flex flex-col gap-10">
-            {blocks.map(({ titleKey, bodyKey }) => (
+            {blocks.map(({ titleKey, bodyKey, href }) => (
               <section key={titleKey}>
                 <h2 className="text-base font-black uppercase tracking-wide text-brand-blue md:text-lg">
                   {t(titleKey)}
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-brand-navy/75 md:text-base">{t(bodyKey)}</p>
+                {href ? (
+                  <p className="mt-3">
+                    <Link href={href} className="font-bold text-brand-blue underline-offset-4 hover:underline">
+                      Voir la page
+                    </Link>
+                  </p>
+                ) : null}
               </section>
             ))}
           </div>

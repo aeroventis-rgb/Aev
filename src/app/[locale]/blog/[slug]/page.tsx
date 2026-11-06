@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { SiteNav } from "@/components/SiteNav";
@@ -10,7 +11,7 @@ import { getPublishedPost, getPublishedPosts, markdownToPlain } from "@/lib/blog
 import { isLocale } from "@/lib/routes";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/schema";
-import { absoluteUrl } from "@/lib/site";
+import { absoluteAsset, absoluteUrl } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -56,6 +57,7 @@ export default async function BlogArticlePage({ params }: Props) {
       url,
       datePublished: post.date,
       inLanguage: post.locale,
+      image: post.image ? absoluteAsset(post.image) : undefined,
     }),
     breadcrumbJsonLd(crumbs),
   ];
@@ -92,6 +94,19 @@ export default async function BlogArticlePage({ params }: Props) {
               {post.title}
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">{post.description}</p>
+            {post.image && post.imageAlt ? (
+              <figure className="mt-6 overflow-hidden rounded-md border border-brand-silver bg-white">
+                <Image
+                  src={post.image}
+                  alt={post.imageAlt}
+                  width={1600}
+                  height={900}
+                  priority
+                  className="h-auto w-full"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                />
+              </figure>
+            ) : null}
           </header>
           <MarkdownBody markdown={post.body} />
           {post.faqs.length ? (

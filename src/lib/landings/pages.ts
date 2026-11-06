@@ -1,32 +1,11 @@
-import { composeTitle } from "@/lib/seo/metadata";
+import { SERVICE_AREA_NAMES } from "@/lib/areas";
+import { extraLandingPages } from "@/lib/landings/extra-pages";
 import { COMPARISON_ROWS, PROCESS_TITLES } from "@/lib/landings/shared";
-import { LANDING_ROUTES, type CityId, type ServiceId } from "@/lib/landings/slugs";
-import type { Locale } from "@/i18n/routing";
+import { LANDING_ROUTES } from "@/lib/landings/slugs";
+import type { Crumb, LandingPage } from "@/lib/landings/types";
+import { composeTitle } from "@/lib/seo/metadata";
 
-export type LandingLink = { href: `/${string}`; label: string };
-export type Crumb = { name: string; pathname?: `/${string}` | "/" };
-
-export type LandingPage = {
-  slug: string;
-  locales: readonly Locale[];
-  serviceId: ServiceId;
-  serviceType: string;
-  cityId?: CityId;
-  areaServed: readonly string[];
-  title: string;
-  description: string;
-  h1: string;
-  lead: readonly string[];
-  servicesIntro: string;
-  services: readonly { title: string; body: string }[];
-  comparisonIntro: string;
-  localFit: { split: string; gainable: string; vrv: string };
-  processIntro: string;
-  process: readonly string[];
-  faqs: readonly { question: string; answer: string }[];
-  links: readonly LandingLink[];
-  breadcrumbs: readonly Crumb[];
-};
+export type { Crumb, LandingLink, LandingPage } from "@/lib/landings/types";
 
 const BANNED = [
   /24\s*h/i,
@@ -62,6 +41,13 @@ function assertLanding(page: LandingPage) {
   if (page.process.length !== PROCESS_TITLES.length) {
     throw new Error(`Landing ${page.slug} process steps do not match the shared titles`);
   }
+  if (page.showHvacComparison === false) {
+    if (!page.points || page.points.length < 3) {
+      throw new Error(`Landing ${page.slug} needs at least 3 decision points`);
+    }
+  } else if (!page.localFit) {
+    throw new Error(`Landing ${page.slug} is missing the HVAC comparison`);
+  }
   const blobs = [
     page.title,
     page.description,
@@ -69,9 +55,9 @@ function assertLanding(page: LandingPage) {
     page.servicesIntro,
     page.comparisonIntro,
     page.processIntro,
-    page.localFit.split,
-    page.localFit.gainable,
-    page.localFit.vrv,
+    ...(page.localFit ? [page.localFit.split, page.localFit.gainable, page.localFit.vrv] : []),
+    ...(page.points ? page.points.flatMap((item) => [item.title, item.body]) : []),
+    ...(page.image ? [page.image.alt, page.image.caption] : []),
     ...page.lead,
     ...page.services.flatMap((item) => [item.title, item.body]),
     ...page.process,
@@ -83,20 +69,20 @@ function assertLanding(page: LandingPage) {
 
 const home: Crumb = { name: "Accueil", pathname: "/" };
 
-const pages: LandingPage[] = [
+const handwritten: LandingPage[] = [
   {
     slug: "climatisation",
     locales: ["fr"],
     serviceId: "climatisation",
     serviceType: "Climatisation",
-    areaServed: ["Casablanca", "Rabat", "Marrakech"],
+    areaServed: SERVICE_AREA_NAMES,
     title: "Climatisation au Maroc – installation",
     description:
-      "Climatisation au Maroc : installation split, gainable et VRV à Casablanca, Rabat et Marrakech. Étude technique, pose et entretien par AEROVENTIS.",
+      "Climatisation split, gainable et VRV à Casablanca, Rabat, Marrakech, Mohammedia, Bouskoura, Tamaris et Zenata. Étude sur place avant la pose.",
     h1: "Climatisation au Maroc",
     lead: [
-      "Le choix d'une climatisation au Maroc ne se résume pas à une puissance au mètre carré. Casablanca et Rabat imposent l'humidité du littoral, Marrakech une chaleur sèche et des toitures très exposées. AEROVENTIS étudie le logement avant de proposer un split, un gainable ou un VRV.",
-      "Cette page relie les trois villes. Le détail des quartiers, des contraintes de façade et des visites se trouve sur chaque page locale, pas dans un texte recopié.",
+      "Le choix d'une climatisation au Maroc ne se résume pas à une puissance au mètre carré. Casablanca, Mohammedia, Tamaris et Rabat imposent l'humidité du littoral, Marrakech une chaleur sèche et des toitures très exposées. Bouskoura et Zenata ajoutent la poussière des lotissements et des chantiers. AEROVENTIS étudie le logement avant de proposer un split, un gainable ou un VRV.",
+      "Chaque secteur a sa page. Le détail des quartiers, des contraintes de façade et des visites s'y trouve, pas dans un texte recopié.",
     ],
     servicesIntro:
       "Trois familles d'appareils couvrent les villas, les appartements et les petits ensembles tertiaires. La page ville précise lequel a du sens sur place.",
@@ -119,7 +105,7 @@ const pages: LandingPage[] = [
     localFit: {
       split: "Utile à Casablanca et Rabat dans les appartements, et à Marrakech pour une pièce exposée en attendant un réseau complet.",
       gainable: "Pertinent pour les villas, en neuf à Bouskoura ou à Hay Riad comme en rénovation quand le couloir peut perdre quelques centimètres.",
-      vrv: "Réservé aux immeubles et aux locaux professionnels des trois villes, là où le syndic limite les groupes en façade.",
+      vrv: "Réservé aux immeubles et aux locaux professionnels, là où le syndic limite les groupes en façade.",
     },
     processIntro:
       "Le déroulé est le même d'une ville à l'autre. Le contenu de la visite, lui, change : air salin, poussière ou hauteur de plafond.",
@@ -133,7 +119,7 @@ const pages: LandingPage[] = [
       {
         question: "Quelle page lire selon la ville ?",
         answer:
-          "Casablanca, Rabat et Marrakech ont chacune une page climatisation. Le gainable casablancais et l'entretien à Casablanca ont aussi les leurs. Cette page sert de sommaire.",
+          "Casablanca, Rabat, Marrakech, Mohammedia, Bouskoura, Tamaris et Zenata ont chacune une page. Le gainable casablancais et l'entretien à Casablanca ont aussi les leurs.",
       },
       {
         question: "Le même appareil convient-il aux trois villes ?",
@@ -148,12 +134,12 @@ const pages: LandingPage[] = [
       {
         question: "Intervenez-vous en dehors de ces villes ?",
         answer:
-          "Les pages publiées couvrent Casablanca, Rabat et Marrakech. Pour un autre secteur, la page contact permet de décrire le projet et de voir si un déplacement est réaliste.",
+          "Les pages publiées couvrent Casablanca, Rabat, Marrakech, Mohammedia, Bouskoura, Tamaris et Zenata. Pour un autre secteur, la page contact permet de décrire le projet.",
       },
       {
         question: "La ventilation est-elle incluse dans la climatisation ?",
         answer:
-          "Non. La climatisation traite la température. Le renouvellement d'air est un réseau à part, décrit sur la page nos services.",
+          "Non. La climatisation traite la température. L'air neuf est sur la page ventilation. L'extraction et le désenfumage ont les leurs : ce ne sont pas les mêmes réseaux.",
       },
       {
         question: "Faut-il prévoir l'entretien dès la pose ?",
@@ -165,10 +151,15 @@ const pages: LandingPage[] = [
       { href: "/climatisation-casablanca", label: "Climatisation à Casablanca" },
       { href: "/climatisation-rabat", label: "Climatisation à Rabat" },
       { href: "/climatisation-marrakech", label: "Climatisation à Marrakech" },
+      { href: "/climatisation-mohammedia", label: "Climatisation à Mohammedia" },
+      { href: "/climatisation-bouskoura", label: "Climatisation à Bouskoura" },
+      { href: "/climatisation-tamaris", label: "Climatisation à Tamaris" },
+      { href: "/climatisation-zenata", label: "Climatisation à Zenata" },
+      { href: "/ventilation", label: "Ventilation" },
+      { href: "/plomberie", label: "Plomberie" },
+      { href: "/extraction", label: "Extraction d'air" },
+      { href: "/desenfumage", label: "Désenfumage" },
       { href: "/climatisation-gainable", label: "Climatisation gainable" },
-      { href: "/climatisation-gainable-casablanca", label: "Gainable à Casablanca" },
-      { href: "/entretien-climatisation-casablanca", label: "Entretien à Casablanca" },
-      { href: "/nos-services", label: "Nos services" },
       { href: "/contact", label: "Contact" },
     ],
     breadcrumbs: [home, { name: "Climatisation au Maroc" }],
@@ -429,7 +420,7 @@ const pages: LandingPage[] = [
       {
         question: "Qui contacter pour une visite ?",
         answer:
-          "La page contact permet de décrire l'adresse à Rabat et le type de logement. La page zone d'intervention rappelle les trois villes couvertes.",
+          "La page contact permet de décrire l'adresse à Rabat et le type de logement. La zone d'intervention couvre aussi Mohammedia, Bouskoura, Tamaris et Zenata.",
       },
     ],
     links: [
@@ -725,6 +716,8 @@ const pages: LandingPage[] = [
     ],
   },
 ];
+
+const pages: LandingPage[] = [...handwritten, ...extraLandingPages];
 
 for (const page of pages) {
   assertLanding(page);

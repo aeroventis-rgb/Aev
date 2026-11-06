@@ -1,11 +1,12 @@
 import { Phone, MessageCircle } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { BrandSlide } from "@/components/BrandSlide";
 import { SiteNav } from "@/components/SiteNav";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Link } from "@/i18n/navigation";
 import { PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
 import { COMPARISON_ROWS, PROCESS_TITLES } from "@/lib/landings/shared";
-import type { LandingPage } from "@/lib/landings/pages";
+import type { LandingPage } from "@/lib/landings/types";
 
 export async function ServiceLandingView({ page }: { page: LandingPage }) {
   const tc = await getTranslations("cta");
@@ -27,6 +28,12 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
             </div>
           </header>
 
+          {page.image ? (
+            <div className="mt-8">
+              <BrandSlide src={page.image.src} alt={page.image.alt} caption={page.image.caption} />
+            </div>
+          ) : null}
+
           <section className="mt-10" aria-labelledby="services-heading">
             <h2 id="services-heading" className="text-xl font-black uppercase tracking-wide text-brand-blue">
               Services
@@ -44,9 +51,19 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
 
           <section className="mt-12" aria-labelledby="comparison-heading">
             <h2 id="comparison-heading" className="text-xl font-black uppercase tracking-wide text-brand-blue">
-              Split, gainable et VRV
+              {page.showHvacComparison === false ? "Ce qui se décide sur place" : "Split, gainable et VRV"}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{page.comparisonIntro}</p>
+            {page.showHvacComparison === false ? (
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
+                {page.points?.map((point) => (
+                  <section key={point.title} className="rounded-md border border-brand-silver bg-brand-white p-5 shadow-brand-sm">
+                    <h3 className="text-sm font-black uppercase tracking-wide text-brand-ink">{point.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-brand-navy/75">{point.body}</p>
+                  </section>
+                ))}
+              </div>
+            ) : (
             <div className="mt-6 overflow-x-auto rounded-md border border-brand-silver bg-brand-white shadow-brand-sm">
               <table className="w-full min-w-[640px] border-collapse text-left text-sm">
                 <thead className="bg-brand-navy text-brand-white">
@@ -80,13 +97,14 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
                     <th scope="row" className="px-4 py-3 font-bold text-brand-ink">
                       Sur ce secteur
                     </th>
-                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit.split}</td>
-                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit.gainable}</td>
-                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit.vrv}</td>
+                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit?.split}</td>
+                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit?.gainable}</td>
+                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit?.vrv}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+            )}
           </section>
 
           <section className="mt-12" aria-labelledby="process-heading">

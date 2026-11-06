@@ -1,3 +1,4 @@
+import { areaSchemaType, SERVICE_AREA_NAMES } from "@/lib/areas";
 import { PHONE_E164 } from "@/lib/constants";
 import { absoluteAsset, absoluteUrl, getSiteUrl } from "@/lib/site";
 import {
@@ -13,11 +14,18 @@ import {
 
 export const BUSINESS_ID = `${getSiteUrl()}/#hvac`;
 
-const AREA_CITIES = ["Casablanca", "Rabat", "Marrakech"] as const;
+const OFFERED_SERVICES = [
+  { name: "Climatisation", serviceType: "Climatisation", path: "/climatisation" },
+  { name: "Ventilation", serviceType: "Ventilation", path: "/ventilation" },
+  { name: "Extraction d'air", serviceType: "Extraction d'air", path: "/extraction" },
+  { name: "Désenfumage", serviceType: "Désenfumage", path: "/desenfumage" },
+  { name: "Plomberie", serviceType: "Plomberie", path: "/plomberie" },
+  { name: "Maintenance et SAV", serviceType: "Maintenance", path: "/nos-services" },
+] as const;
 
-function cityArea(name: string) {
+function placeArea(name: string) {
   return {
-    "@type": "City",
+    "@type": areaSchemaType(name),
     name,
     containedInPlace: { "@type": "Country", name: "Morocco" },
   };
@@ -36,10 +44,23 @@ export function hvacBusinessJsonLd(description: string): Record<string, unknown>
     name: "AEROVENTIS",
     url: absoluteUrl("fr", "/"),
     telephone: PHONE_E164,
-    image: [absoluteAsset("/logo.jpg"), absoluteAsset("/hero-background.webp")],
-    logo: absoluteAsset("/logo.jpg"),
+    image: [absoluteAsset("/aeroventis-logo.png"), absoluteAsset("/hero-background.webp")],
+    logo: absoluteAsset("/aeroventis-logo.png"),
     description,
-    areaServed: AREA_CITIES.map((name) => cityArea(name)),
+    areaServed: SERVICE_AREA_NAMES.map((name) => placeArea(name)),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Services AEROVENTIS",
+      itemListElement: OFFERED_SERVICES.map((offer) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: offer.name,
+          serviceType: offer.serviceType,
+          url: absoluteUrl("fr", offer.path),
+        },
+      })),
+    },
     currenciesAccepted: "MAD",
   };
 
@@ -79,7 +100,7 @@ export function serviceJsonLd(input: {
     serviceType: input.serviceType,
     url: input.url,
     provider: { "@id": BUSINESS_ID },
-    areaServed: input.areaServed.map((name) => cityArea(name)),
+    areaServed: input.areaServed.map((name) => placeArea(name)),
   };
 }
 
@@ -114,6 +135,7 @@ export function articleJsonLd(input: {
   url: string;
   datePublished: string;
   inLanguage: string;
+  image?: string;
 }): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
@@ -124,7 +146,7 @@ export function articleJsonLd(input: {
     dateModified: input.datePublished,
     inLanguage: input.inLanguage,
     mainEntityOfPage: input.url,
-    image: [absoluteAsset("/logo.jpg")],
+    image: [input.image ?? absoluteAsset("/aeroventis-logo.png")],
     author: {
       "@type": "Organization",
       name: "AEROVENTIS",
@@ -135,7 +157,7 @@ export function articleJsonLd(input: {
       name: "AEROVENTIS",
       logo: {
         "@type": "ImageObject",
-        url: absoluteAsset("/logo.jpg"),
+        url: absoluteAsset("/aeroventis-logo.png"),
       },
     },
   };

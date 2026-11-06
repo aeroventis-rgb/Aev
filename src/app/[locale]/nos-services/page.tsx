@@ -21,9 +21,11 @@ export default async function NosServicesPage({ params }: Props) {
       pathname="/nos-services"
       namespace="OurServices"
       blocks={[
-        { titleKey: "climTitle", bodyKey: "climBody" },
-        { titleKey: "ventTitle", bodyKey: "ventBody" },
-        { titleKey: "plombTitle", bodyKey: "plombBody" },
+        { titleKey: "climTitle", bodyKey: "climBody", href: "/climatisation" },
+        { titleKey: "ventTitle", bodyKey: "ventBody", href: "/ventilation" },
+        { titleKey: "extractTitle", bodyKey: "extractBody", href: "/extraction" },
+        { titleKey: "smokeTitle", bodyKey: "smokeBody", href: "/desenfumage" },
+        { titleKey: "plombTitle", bodyKey: "plombBody", href: "/plomberie" },
         { titleKey: "maintTitle", bodyKey: "maintBody" },
       ]}
     />

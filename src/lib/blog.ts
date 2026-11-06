@@ -17,6 +17,8 @@ export type BlogPost = {
   keywords: string[];
   date: string;
   draft: boolean;
+  image?: string;
+  imageAlt?: string;
   body: string;
   faqs: BlogFaq[];
 };
@@ -115,6 +117,24 @@ function readLocaleDir(locale: Locale): BlogPost[] {
         );
       }
 
+      const imageRaw = String(data.image ?? "").trim();
+      let image: string | undefined;
+      let imageAlt: string | undefined;
+      if (imageRaw) {
+        if (!imageRaw.startsWith("/")) {
+          throw new Error(`Blog ${fullPath} image must be a public path starting with /`);
+        }
+        imageAlt = String(data.imageAlt ?? data.image_alt ?? "").trim();
+        if (!imageAlt) {
+          throw new Error(`Blog ${fullPath} sets image but is missing imageAlt`);
+        }
+        const disk = path.join(process.cwd(), "public", imageRaw.replace(/^\//, ""));
+        if (!fs.existsSync(disk)) {
+          throw new Error(`Blog ${fullPath} image not found at ${imageRaw}`);
+        }
+        image = imageRaw;
+      }
+
       const { body, faqs } = splitArticle(parsed.content);
       return {
         slug,
@@ -124,6 +144,8 @@ function readLocaleDir(locale: Locale): BlogPost[] {
         keywords: asKeywords(data.keywords),
         date: asDate(data.date),
         draft,
+        image,
+        imageAlt,
         body,
         faqs,
       };

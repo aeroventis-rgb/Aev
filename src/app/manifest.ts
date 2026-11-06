@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "AEROVENTIS — Climatisation, ventilation et plomberie",
     short_name: "AEROVENTIS",
     description:
-      "Climatisation, ventilation, froid, maintenance et plomberie à Casablanca, Rabat et Marrakech.",
+      "Climatisation, ventilation, extraction, désenfumage et plomberie à Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat et Marrakech.",
     start_url: "/fr",
     scope: "/",
     display: "standalone",
