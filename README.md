@@ -17,7 +17,7 @@ Production build check: `npm run build` (Node **24** — see `.nvmrc`).
 
 ## French blog
 
-Add a Markdown file in `content/blog/fr/`. Required frontmatter: `title`, `meta_description`, `slug` (same as the filename), `lang: fr`, `date` (`YYYY-MM-DD`), and `draft`. Optional: `keywords`, `image` (a path in `public/`, such as a brand slide) and `imageAlt`. Keep `draft: true` until the text is final — published posts appear at `/fr/blog` and in the sitemap. Do not publish prices, reviews, certifications, or a street address that has not been confirmed. Canonicals use `NEXT_PUBLIC_SITE_URL` when set, otherwise `https://www.aeroventis.ma`. Set `NEXT_PUBLIC_SITE_URL=https://www.aeroventis.ma` on the Vercel production environment so a preview host is never baked into the build.
+Add a Markdown file in `content/blog/fr/`, and the same slug under `content/blog/en/` and `content/blog/ar/` when a translation is published. Required frontmatter: `title`, `meta_description`, `slug` (same as the filename), `lang` (matching the directory), `date` (`YYYY-MM-DD`), and `draft`. Optional: `keywords`, `image` (a path in `public/`, such as a brand slide) and `imageAlt`. Keep `draft: true` until the text is final — published posts appear at `/fr/blog`, `/en/blog` and `/ar/blog`, and in the sitemap. Posts that share a slug are linked with hreflang. Do not publish prices, reviews, certifications, or a street address that has not been confirmed. Canonicals use `NEXT_PUBLIC_SITE_URL` when set, otherwise `https://www.aeroventis.ma`. Set `NEXT_PUBLIC_SITE_URL=https://www.aeroventis.ma` on the Vercel production environment so a preview host is never baked into the build.
 
 ## Vercel deploy
 

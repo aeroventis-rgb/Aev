@@ -131,8 +131,8 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
                     <Image
                       src={post.image}
                       alt={post.imageAlt}
-                      width={1600}
-                      height={900}
+                      width={1024}
+                      height={1024}
                       className="mb-4 h-auto w-full rounded-md border border-brand-silver"
                     />
                   ) : null}
