@@ -94,7 +94,7 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
         <div className="mx-auto max-w-3xl pb-20">
           <Breadcrumbs items={crumbs} label={t("breadcrumbLabel")} />
           <header className="border-b border-brand-silver pb-8">
-            <h1 className="text-3xl font-semibold tracking-tight text-brand-ink md:text-4xl">
+            <h1 className="text-2xl font-semibold tracking-tight text-brand-ink sm:text-3xl md:text-4xl">
               {t("heading")}
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">{t("intro")}</p>

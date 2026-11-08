@@ -35,7 +35,7 @@ export function SiteNav() {
 
   return (
     <header className="sticky top-0 z-[70] border-b border-[#e6eef6] bg-white">
-      <div className="mx-auto flex max-w-6xl items-center gap-3 px-5 py-2.5 lg:gap-6 lg:px-8">
+      <div className="mx-auto flex max-w-6xl flex-nowrap items-center gap-2 px-4 py-2 sm:gap-3 sm:px-5 sm:py-2.5 lg:gap-6 lg:px-8">
         <Link
           href="/"
           className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40"
@@ -48,7 +48,7 @@ export function SiteNav() {
             width={1536}
             height={1536}
             priority
-            className="h-14 w-auto bg-white sm:h-16"
+            className="h-12 w-auto bg-white sm:h-16"
           />
         </Link>
 
@@ -64,7 +64,7 @@ export function SiteNav() {
           ))}
         </nav>
 
-        <div className="ms-auto flex items-center gap-2 xl:ms-0">
+        <div className="ms-auto flex shrink-0 items-center gap-2 xl:ms-0">
           <LanguageSwitcher compact />
           <Link
             href="/contact"

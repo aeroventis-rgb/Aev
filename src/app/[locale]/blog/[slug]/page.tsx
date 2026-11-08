@@ -90,7 +90,7 @@ export default async function BlogArticlePage({ params }: Props) {
             <p className="text-sm text-brand-navy/60">
               <time dateTime={post.date}>{post.date}</time>
             </p>
-            <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-brand-ink md:text-4xl">
+            <h1 className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-brand-ink sm:text-3xl md:text-4xl">
               {post.title}
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">{post.description}</p>

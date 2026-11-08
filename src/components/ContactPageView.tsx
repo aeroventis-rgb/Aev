@@ -19,9 +19,9 @@ export async function ContactPageView({ contactQrDataUrl }: Props) {
       <SiteNav />
       <div className="mx-auto max-w-[1100px] px-5 sm:px-8 lg:px-10">
 
-        <header className="max-w-3xl py-14 md:py-20">
+        <header className="max-w-3xl py-8 md:py-20">
           <p className="text-sm font-medium text-brand-blue">AEROVENTIS</p>
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-brand-ink md:text-4xl">{t("heading")}</h1>
+          <h1 className="mt-4 text-2xl font-semibold tracking-tight text-brand-ink sm:text-3xl md:text-4xl">{t("heading")}</h1>
           <p className="mt-3 text-lg text-brand-navy/80">{t("subheading")}</p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-brand-navy/75">{t("intro")}</p>
           <p className="mt-4 text-sm leading-relaxed text-brand-navy/70">
