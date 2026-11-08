@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next";
-import { getPublishedPosts } from "@/lib/blog";
+import { getPublishedPosts, publishedLocalesForSlug } from "@/lib/blog";
 import { getIndexableRoutes } from "@/lib/routes";
 import { hreflangLanguages } from "@/lib/seo/metadata";
 import { absoluteUrl } from "@/lib/site";
-import type { Locale } from "@/i18n/routing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -24,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const post of getPublishedPosts()) {
     const pathname = `/blog/${post.slug}`;
-    const locales = [post.locale] as Locale[];
+    const locales = publishedLocalesForSlug(post.slug);
     entries.push({
       url: absoluteUrl(post.locale, pathname),
       lastModified: new Date(`${post.date}T00:00:00.000Z`),

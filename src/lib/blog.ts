@@ -177,4 +177,14 @@ export function getPublishedPost(locale: string, slug: string): BlogPost | undef
   return getPublishedPosts().find((post) => post.locale === locale && post.slug === slug);
 }
 
+/** Locales that publish this slug, in site order, for hreflang. */
+export function publishedLocalesForSlug(slug: string): Locale[] {
+  const found = new Set(
+    getPublishedPosts()
+      .filter((post) => post.slug === slug)
+      .map((post) => post.locale)
+  );
+  return routing.locales.filter((locale) => found.has(locale));
+}
+
 export const BLOG_PAGE_SIZE = 6;

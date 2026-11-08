@@ -7,7 +7,7 @@ import { MarkdownBody } from "@/components/blog/MarkdownBody";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Link } from "@/i18n/navigation";
-import { getPublishedPost, getPublishedPosts, markdownToPlain } from "@/lib/blog";
+import { getPublishedPost, getPublishedPosts, markdownToPlain, publishedLocalesForSlug } from "@/lib/blog";
 import { isLocale } from "@/lib/routes";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { articleJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo/schema";
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     pathname: `/blog/${post.slug}`,
     title: post.title,
     description: post.description,
-    locales: [post.locale],
+    locales: publishedLocalesForSlug(post.slug),
     type: "article",
     keywords: post.keywords,
   });
@@ -99,8 +99,8 @@ export default async function BlogArticlePage({ params }: Props) {
                 <Image
                   src={post.image}
                   alt={post.imageAlt}
-                  width={1600}
-                  height={900}
+                  width={1024}
+                  height={1024}
                   priority
                   className="h-auto w-full"
                   sizes="(max-width: 768px) 100vw, 768px"
