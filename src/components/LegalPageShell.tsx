@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SiteNav } from "@/components/SiteNav";
 import { breadcrumbJsonLd } from "@/lib/seo/schema";
 import { absoluteUrl } from "@/lib/site";
 
@@ -21,30 +22,32 @@ export async function LegalPageShell({ namespace, blocks, pathname }: Props) {
   ];
 
   return (
-    <div className="min-h-screen bg-brand-off text-brand-ink">
+    <div className="min-h-screen bg-white text-brand-ink">
       <JsonLd data={breadcrumbJsonLd(crumbs)} />
-      <div className="mx-auto max-w-3xl px-4 py-12 md:py-16">
-        <nav aria-label={nav("backHome")}>
+      <SiteNav />
+      <div className="mx-auto max-w-[1100px] px-5 pt-6 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-3xl pb-16">
+        <nav aria-label={nav("backHome")} className="pt-6">
           <Link
             href="/"
-            className="inline-flex text-sm font-bold text-brand-blue underline-offset-4 transition hover:text-brand-navy hover:underline"
+            className="inline-flex text-sm text-brand-blue underline-offset-4 transition hover:text-brand-navy hover:underline"
           >
             ← {nav("backHome")}
           </Link>
         </nav>
 
-        <article className="section-surface mt-10 rounded-md px-6 py-10 shadow-brand-lg md:px-10 md:py-12">
+        <article className="mt-8">
           <header className="border-b border-brand-silver pb-8">
-            <h1 className="text-2xl font-black uppercase tracking-tight text-brand-ink md:text-3xl">
+            <h1 className="text-3xl font-semibold tracking-tight text-brand-ink">
               {t("heading")}
             </h1>
-            <p className="mt-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">{t("intro")}</p>
+            <p className="mt-4 text-base leading-relaxed text-brand-navy/80">{t("intro")}</p>
           </header>
 
           <div className="mt-10 flex flex-col gap-10">
             {blocks.map(({ titleKey, bodyKey, href }) => (
               <section key={titleKey}>
-                <h2 className="text-base font-black uppercase tracking-wide text-brand-blue md:text-lg">
+                <h2 className="text-lg font-semibold text-brand-ink">
                   {t(titleKey)}
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-brand-navy/75 md:text-base">{t(bodyKey)}</p>
@@ -59,6 +62,7 @@ export async function LegalPageShell({ namespace, blocks, pathname }: Props) {
             ))}
           </div>
         </article>
+        </div>
       </div>
     </div>
   );

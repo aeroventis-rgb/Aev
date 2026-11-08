@@ -82,19 +82,19 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
   ];
 
   return (
-    <div className="min-h-screen bg-brand-off text-brand-ink">
+    <div className="min-h-screen bg-white text-brand-ink">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: nav("home"), url: absoluteUrl(locale, "/") },
           { name: t("heading"), url: absoluteUrl(locale, "/blog") },
         ])}
       />
-      <div className="mx-auto max-w-[1360px] px-4 pt-6 sm:px-6 lg:px-10">
-        <SiteNav />
+      <SiteNav />
+      <div className="mx-auto max-w-[1100px] px-5 pt-6 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-3xl pb-20">
           <Breadcrumbs items={crumbs} label={t("breadcrumbLabel")} />
           <header className="border-b border-brand-silver pb-8">
-            <h1 className="text-3xl font-black uppercase tracking-tight text-brand-ink md:text-4xl">
+            <h1 className="text-3xl font-semibold tracking-tight text-brand-ink md:text-4xl">
               {t("heading")}
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">{t("intro")}</p>
@@ -126,7 +126,7 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
           ) : (
             <ul className="mt-10 flex flex-col gap-6">
               {slice.map((post) => (
-                <li key={post.slug} className="rounded-md border border-brand-silver bg-brand-white p-6 shadow-brand-sm">
+                <li key={post.slug} className="border-b border-brand-silver py-8">
                   {post.image && post.imageAlt ? (
                     <Image
                       src={post.image}
@@ -136,10 +136,10 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
                       className="mb-4 h-auto w-full rounded-md border border-brand-silver"
                     />
                   ) : null}
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-blue">
+                  <p className="text-sm text-brand-navy/60">
                     <time dateTime={post.date}>{post.date}</time>
                   </p>
-                  <h2 className="mt-2 text-xl font-black text-brand-ink">
+                  <h2 className="mt-2 text-xl font-semibold text-brand-ink">
                     <Link href={`/blog/${post.slug}`} className="hover:text-brand-blue">
                       {post.title}
                     </Link>

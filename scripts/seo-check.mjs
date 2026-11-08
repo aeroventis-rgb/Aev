@@ -245,20 +245,22 @@ async function main() {
     if (home) {
       const image = [...home.body.matchAll(/\/_next\/image\?[^"'\s]+/g)]
         .map((match) => match[0].replaceAll("&amp;", "&"))
-        .find((src) => decodeURIComponent(src).includes("hero-background"));
-      if (!image) fail("homepage does not render the hero through next/image");
+        .find((src) => decodeURIComponent(src).includes("aeroventis-logo.png"));
+      if (!image) fail("homepage does not render the official logo through next/image");
       else {
         const optimized = await request(`${origin}${image}`, {
           headers: { accept: "image/avif,image/webp,image/apng,*/*;q=0.8" },
         });
         const type = optimized.headers.get("content-type") || "";
         if (optimized.status !== 200 || !/image\/(avif|webp)/i.test(type)) {
-          fail(`hero optimizer returned ${optimized.status} ${type}`);
+          fail(`logo optimizer returned ${optimized.status} ${type}`);
         }
       }
-      if (!/<link[^>]*rel="preload"[^>]*hero-background\.webp/i.test(home.body)) {
-        fail("homepage hero is not preloaded by next/image priority");
-      }
+      const logoPreload = [...home.body.matchAll(/<link\b[^>]*>/gi)].some((match) => {
+        const tag = match[0];
+        return /rel="preload"/i.test(tag) && /aeroventis-logo\.png/i.test(tag);
+      });
+      if (!logoPreload) fail("homepage logo is not preloaded by next/image priority");
     }
 
     for (const locale of ["fr", "en", "ar"]) {

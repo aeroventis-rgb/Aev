@@ -18,7 +18,7 @@
   }
 
   body {
-    @apply bg-brand-off text-brand-ink antialiased;
+    @apply bg-white text-brand-ink antialiased;
   }
 }
 
@@ -32,7 +32,7 @@
   }
 
   .brand-gradient {
-    background: linear-gradient(135deg, #0c67b8 0%, #0a5baa 42%, #022f70 100%);
+    background-color: #0a5baa;
   }
 
   .brand-gradient-ring {
@@ -44,7 +44,8 @@
   }
 
   .section-navy {
-    background: linear-gradient(180deg, #022f70 0%, #000e31 100%);
+    background-color: #f7f9fc;
+    color: #000e31;
   }
 
   .panel-glass {

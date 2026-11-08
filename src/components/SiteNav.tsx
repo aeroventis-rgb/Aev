@@ -1,105 +1,114 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { Link as I18nLink } from "@/i18n/navigation";
-import { MessageCircle, Phone } from "lucide-react";
+import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { BRAND_LOGO_SRC, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
+import { BRAND_LOGO_SRC } from "@/lib/constants";
+import type { Locale } from "@/i18n/routing";
+import { localesForPath } from "@/lib/routes";
 
-const HOME_SECTIONS = [
-  { hash: "services" as const, labelKey: "services" as const },
-  { hash: "realisations" as const, labelKey: "projects" as const },
-  { hash: "engagements" as const, labelKey: "benefits" as const },
-];
+type NavHref = "/" | "/contact" | "/nos-services" | "/qui-sommes-nous" | "/zone-intervention" | { pathname: "/"; hash: string };
+
+function destination(locale: Locale, path: "/nos-services" | "/qui-sommes-nous" | "/zone-intervention", hash: string): NavHref {
+  const allowed = localesForPath(path);
+  if (allowed?.includes(locale)) return path;
+  return { pathname: "/", hash };
+}
 
 export function SiteNav() {
   const tn = useTranslations("nav");
   const tb = useTranslations("brand");
-  const tc = useTranslations("cta");
+  const locale = useLocale() as Locale;
+  const [open, setOpen] = useState(false);
 
-  function sectionLabel(labelKey: (typeof HOME_SECTIONS)[number]["labelKey"]) {
-    switch (labelKey) {
-      case "services":
-        return tn("services");
-      case "projects":
-        return tn("projects");
-      default:
-        return tn("benefits");
-    }
-  }
+  const items: { key: string; label: string; href: NavHref }[] = [
+    { key: "home", label: tn("home"), href: "/" },
+    { key: "services", label: tn("services"), href: destination(locale, "/nos-services", "solutions") },
+    { key: "projects", label: tn("projects"), href: { pathname: "/", hash: "realisations" } },
+    { key: "about", label: tn("about"), href: destination(locale, "/qui-sommes-nous", "a-propos") },
+    { key: "coverage", label: tn("coverage"), href: destination(locale, "/zone-intervention", "zone") },
+    { key: "contact", label: tn("contact"), href: "/contact" },
+  ];
 
   return (
-    <header className="sticky top-0 z-[70] mb-6 bg-brand-white shadow-nav">
-      <div className="mx-auto flex max-w-[1360px] flex-col gap-0">
-        {/* Top row: logo + actions */}
-        <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
-          <I18nLink
-            href="/"
-            className="group flex min-w-0 items-center rounded-md bg-white transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40"
-            aria-label={`${tb("name")} — ${tb("tagline")}. ${tb("motto")}`}
-          >
-            <Image
-              src={BRAND_LOGO_SRC}
-              alt=""
-              width={1536}
-              height={1536}
-              priority
-              className="h-24 w-auto bg-white sm:h-32"
-            />
-          </I18nLink>
-
-          <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
-            <LanguageSwitcher compact />
-            <a
-              href={`tel:${PHONE_E164}`}
-              className="brand-gradient inline-flex size-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full text-brand-white shadow-brand transition hover:brightness-110 active:scale-95"
-              aria-label={tc("callNow")}
-            >
-              <Phone className="h-5 w-5" strokeWidth={2.25} aria-hidden />
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex size-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-brand-navy text-brand-white shadow-brand transition hover:bg-brand-ink active:scale-95"
-              aria-label={tc("whatsapp")}
-            >
-              <MessageCircle className="h-5 w-5" strokeWidth={2} aria-hidden />
-            </a>
-          </div>
-        </div>
-
-        {/* Bottom row: section links */}
-        <nav
-          className="border-t border-brand-silver/90 bg-brand-off px-4 py-2.5 sm:px-6 lg:px-8"
-          aria-label={tn("toolbar")}
+    <header className="sticky top-0 z-[70] border-b border-[#e6eef6] bg-white">
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-5 py-2.5 lg:gap-6 lg:px-8">
+        <Link
+          href="/"
+          className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40"
+          aria-label={`${tb("name")} — ${tb("tagline")}. ${tb("motto")}`}
+          onClick={() => setOpen(false)}
         >
-          <ul
-            aria-label={tn("siteSections")}
-            className="-mx-1 flex items-stretch gap-2 overflow-x-auto overscroll-x-contain py-0.5 [scrollbar-width:none] sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden"
+          <Image
+            src={BRAND_LOGO_SRC}
+            alt=""
+            width={1536}
+            height={1536}
+            priority
+            className="h-14 w-auto bg-white sm:h-16"
+          />
+        </Link>
+
+        <nav className="ms-auto hidden items-center gap-5 xl:flex" aria-label={tn("toolbar")}>
+          {items.map((item) => (
+            <Link
+              key={item.key}
+              href={item.href}
+              className="whitespace-nowrap text-sm font-medium text-brand-navy/80 transition hover:text-brand-blue"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="ms-auto flex items-center gap-2 xl:ms-0">
+          <LanguageSwitcher compact />
+          <Link
+            href="/contact"
+            className="hidden min-h-11 items-center rounded-lg bg-brand-blue px-4 text-sm font-semibold text-white transition hover:bg-brand-navy sm:inline-flex"
           >
-            {HOME_SECTIONS.map(({ hash, labelKey }) => (
-              <li key={hash} className="flex shrink-0">
-                <I18nLink
-                  href={{ pathname: "/", hash }}
-                  className="inline-flex min-h-[40px] items-center whitespace-nowrap rounded-md border border-transparent px-3 py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-navy transition hover:border-brand-silver hover:bg-brand-white hover:text-brand-blue sm:text-xs"
+            {tn("study")}
+          </Link>
+          <button
+            type="button"
+            className="inline-flex size-11 items-center justify-center rounded-lg border border-[#e6eef6] text-brand-navy xl:hidden"
+            aria-expanded={open}
+            aria-controls="site-menu"
+            onClick={() => setOpen((value) => !value)}
+          >
+            {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
+            <span className="sr-only">{open ? tn("closeMenu") : tn("openMenu")}</span>
+          </button>
+        </div>
+      </div>
+
+      {open ? (
+        <nav id="site-menu" className="border-t border-[#e6eef6] bg-white px-5 py-3 xl:hidden" aria-label={tn("toolbar")}>
+          <ul className="flex flex-col">
+            {items.map((item) => (
+              <li key={item.key}>
+                <Link
+                  href={item.href}
+                  className="flex min-h-11 items-center text-base text-brand-navy"
+                  onClick={() => setOpen(false)}
                 >
-                  {sectionLabel(labelKey)}
-                </I18nLink>
+                  {item.label}
+                </Link>
               </li>
             ))}
-            <li className="flex shrink-0">
-              <I18nLink
-                href="/contact"
-                className="inline-flex min-h-[40px] items-center whitespace-nowrap rounded-md border border-brand-blue/20 bg-brand-white px-3 py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-brand-blue shadow-brand-sm transition hover:border-brand-blue/40 hover:bg-brand-off sm:text-xs"
-              >
-                {tn("contact")}
-              </I18nLink>
-            </li>
           </ul>
+          <Link
+            href="/contact"
+            className="mt-2 inline-flex min-h-11 items-center rounded-lg bg-brand-blue px-4 text-sm font-semibold text-white sm:hidden"
+            onClick={() => setOpen(false)}
+          >
+            {tn("study")}
+          </Link>
         </nav>
-      </div>
+      ) : null}
     </header>
   );
 }

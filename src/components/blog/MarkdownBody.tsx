@@ -4,13 +4,13 @@ import remarkGfm from "remark-gfm";
 
 const components: Components = {
   h1: ({ children }) => (
-    <h2 className="mt-10 text-xl font-black uppercase tracking-wide text-brand-blue">{children}</h2>
+    <h2 className="mt-10 text-xl font-semibold tracking-tight text-brand-ink">{children}</h2>
   ),
   h2: ({ children }) => (
-    <h2 className="mt-10 text-xl font-black uppercase tracking-wide text-brand-blue">{children}</h2>
+    <h2 className="mt-10 text-xl font-semibold tracking-tight text-brand-ink">{children}</h2>
   ),
   h3: ({ children }) => (
-    <h3 className="mt-6 text-base font-black uppercase tracking-wide text-brand-ink">{children}</h3>
+    <h3 className="mt-6 text-base font-semibold text-brand-ink">{children}</h3>
   ),
   p: ({ children }) => <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{children}</p>,
   ul: ({ children }) => <ul className="mt-3 list-disc space-y-2 ps-5 text-sm leading-relaxed text-brand-navy/80 md:text-base">{children}</ul>,

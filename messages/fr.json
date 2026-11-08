@@ -18,8 +18,13 @@
     "scrollDownAria": "Accéder à la partie services",
     "legal": "Mentions légales",
     "privacy": "Politique de confidentialité",
-    "services": "Services",
+    "services": "Nos services",
     "projects": "Réalisations",
+    "about": "À propos",
+    "coverage": "Zone d'intervention",
+    "study": "Demander une étude",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
     "benefits": "Engagements",
     "contact": "Contact"
   },
@@ -40,7 +45,7 @@
     "navLabel": "Pages du site"
   },
   "images": {
-    "hero": "Villa contemporaine avec piscine au crépuscule — illustration ambiance résidentielle premium",
+    "hero": "Illustration d'ambiance résidentielle AEROVENTIS. Visuel de marque, et non la photo d'un chantier identifié.",
     "acInstall": "Groupes extérieurs de climatisation — équipements HVAC de plein air",
     "plumbing": "Installation sanitaire et robinetterie chromée — plomberie premium",
     "ducted": "Réseau de gaines galvanisées et cheminements — ventilation mécanique",
@@ -50,8 +55,8 @@
   },
   "brand": {
     "name": "AEROVENTIS",
-    "tagline": "CLIMATISATION & VENTILATION",
-    "motto": "MAÎTRISEZ VOTRE CLIMAT"
+    "tagline": "Climatisation et ventilation",
+    "motto": "Maîtrisez votre climat."
   },
   "slides": {
     "note": "Visuel de présentation AEROVENTIS. Illustration de marque, et non la photo d'un chantier identifié.",
@@ -78,35 +83,31 @@
     "maintenance": "MAINTENANCE"
   },
   "hero": {
-    "headline1": "MARRE DE LA CHALEUR",
-    "headline2": "À CASA ?",
-    "solution": "LA SOLUTION C'EST NOUS !",
-    "expertise": "EXPERTISE",
-    "quality": "QUALITÉ",
-    "trust": "CONFIANCE",
-    "experience": "+10 ANS",
-    "experienceSub": "D'EXPÉRIENCE"
+    "motto": "Maîtrisez votre climat.",
+    "lead": "Climatisation et ventilation pour villas, immeubles et projets neufs à Casablanca, Marrakech, Mohammedia, Rabat, Bouskoura, Tamaris et Zenata.",
+    "experience": "+10 ans",
+    "experienceSub": "d'expérience"
   },
   "highlight": {
-    "title1": "INSTALLATION CLIMATISATION",
-    "title2": "& PLOMBERIE PREMIUM",
-    "subtitle": "SPÉCIAL VILLAS, IMMEUBLES & PROJETS NEUFS"
+    "title1": "Climatisation",
+    "title2": "et plomberie",
+    "subtitle": "Villas, immeubles et projets neufs"
   },
   "process": {
     "study": {
-      "title": "ÉTUDE TECHNIQUE COMPLÈTE",
+      "title": "Étude technique complète",
       "desc": "Solutions adaptées à votre projet"
     },
     "install": {
-      "title": "INSTALLATION PROFESSIONNELLE",
+      "title": "Installation professionnelle",
       "desc": "Travail propre, normes respectées"
     },
     "result": {
-      "title": "RÉSULTAT DURABLE & ÉCONOMIQUE",
+      "title": "Résultat durable et économique",
       "desc": "Performance, confort et économies d'énergie"
     },
     "afterSales": {
-      "title": "SERVICE APRÈS-VENTE RÉACTIF",
+      "title": "Service après-vente réactif",
       "desc": "Maintenance et suivi après la mise en service"
     }
   },
@@ -118,35 +119,35 @@
   },
   "benefits": {
     "guarantee": {
-      "title": "SUIVI APRÈS POSE",
+      "title": "Suivi après pose",
       "desc": "Contrôle et entretien après la mise en service"
     },
     "economy": {
-      "title": "SOLUTIONS ÉCONOMIQUES",
+      "title": "Solutions économiques",
       "desc": "Réduction de votre consommation"
     },
     "deadlines": {
-      "title": "RESPECT DES DÉLAIS",
+      "title": "Respect des délais",
       "desc": "Planning clair et suivi rigoureux"
     },
     "material": {
-      "title": "MATÉRIEL PREMIUM",
+      "title": "Matériel premium",
       "desc": "Marques leaders mondiales"
     }
   },
   "cta": {
-    "callNow": "APPELEZ MAINTENANT",
+    "callNow": "Nous appeler",
     "phone": "06 60 98 96 98",
-    "quote": "ÉTUDE SUR RENDEZ-VOUS",
-    "whatsapp": "DISPONIBLE SUR WHATSAPP",
-    "scanQr": "SCANNEZ POUR NOUS CONTACTER DIRECTEMENT"
+    "quote": "Étude sur rendez-vous",
+    "whatsapp": "Écrire sur WhatsApp",
+    "scanQr": "Scannez pour nous écrire"
   },
   "locations": {
-    "cities": "CASABLANCA · MOHAMMEDIA · BOUSKOURA · TAMARIS · ZENATA · RABAT · MARRAKECH",
-    "projects": "+100 PROJETS RÉALISÉS À CASABLANCA"
+    "cities": "Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat et Marrakech",
+    "projects": "Plus de 100 projets réalisés à Casablanca"
   },
   "partners": {
-    "title": "PARTENAIRES & MARQUES DE CONFIANCE"
+    "title": "Partenaires & marques de confiance"
   },
   "lang": {
     "fr": "Français",
@@ -294,5 +295,79 @@
     "pagination": "Pagination du journal",
     "pageStatus": "Page {page} sur {total}",
     "breadcrumbLabel": "Fil d'Ariane"
+  },
+  "home": {
+    "heroTitleLead": "Climatisation gainable & solutions de confort",
+    "heroTitleAccent": "sur mesure à Casablanca",
+    "heroSubtitle": "Étude, dimensionnement, fourniture et installation pour villas, appartements et locaux professionnels.",
+    "sendPlan": "Envoyer mon plan",
+    "whatsapp": "WhatsApp",
+    "call": "Appeler",
+    "planMessage": "Bonjour AEROVENTIS, je souhaite vous envoyer le plan de mon logement pour une étude.",
+    "heroCities": "Casablanca · Rabat · Marrakech",
+    "heroCaption": "Illustration d'ambiance. Ce n'est pas la photo d'un chantier AEROVENTIS.",
+    "trustExperience": "+10 ans d'expérience",
+    "trustProjects": "+100 projets réalisés",
+    "trustTeams": "Équipes qualifiées",
+    "trustEquipment": "Matériel premium",
+    "trustService": "SAV réactif",
+    "solutionsTitle": "Nos solutions",
+    "planTitle": "Vous avez le plan de votre villa ou appartement ?",
+    "planAccent": "Envoyez-le-nous.",
+    "planWhatsapp": "Envoyez votre plan sur WhatsApp",
+    "planReply": "Réponse rapide et confidentielle",
+    "planSketch": "Croquis décoratif. Ce n'est pas le plan d'un client.",
+    "planSurfaces": "Analyse des surfaces",
+    "planPower": "Dimensionnement des puissances",
+    "planLayout": "Implantation des unités",
+    "planAir": "Soufflage / reprise d'air",
+    "methodTitle": "Notre méthode",
+    "projectsTitle": "Nos réalisations",
+    "viewService": "Voir le service",
+    "illustration": "Illustration de marque, pas une photo de chantier identifié.",
+    "partnersTitle": "Nos partenaires équipements",
+    "bandTitle": "Vous construisez ? Vous rénovez ?",
+    "bandAccent": "Parlez-nous de votre projet.",
+    "footerNav": "Navigation",
+    "footerServices": "Nos services",
+    "footerContact": "Contact",
+    "footerCity": "Casablanca, Maroc",
+    "footerAlso": "Mohammedia, Bouskoura, Tamaris, Zenata, Rabat et Marrakech",
+    "footerHours": "Lundi au dimanche, 8 h – 19 h, sur rendez-vous",
+    "footerBlurb": "Climatisation, ventilation et plomberie pour villas, immeubles et locaux, de l'étude à la mise en service.",
+    "sitemap": "Plan du site",
+    "gainableTitle": "Gainable & centralisé",
+    "gainableBody": "Un réseau caché diffuse l'air dans plusieurs pièces, lorsque le plafond le permet.",
+    "splitTitle": "Split mural",
+    "splitBody": "Une ou plusieurs unités murales, choisies après le relevé du logement.",
+    "cassetteTitle": "Cassette",
+    "cassetteBody": "Diffusion depuis le plafond pour un local, seulement si la visite le confirme.",
+    "ventilationTitle": "Ventilation & VMC",
+    "ventilationBody": "Air neuf, gaines et bouches. Ce réseau ne remplace ni l'extraction ni le désenfumage.",
+    "plumbingTitle": "Plomberie",
+    "plumbingBody": "Alimentation, évacuations et pièces d'eau, en neuf comme en rénovation.",
+    "maintenanceTitle": "Maintenance & SAV",
+    "maintenanceBody": "Contrôle des filtres, des condensats et des unités après la mise en service.",
+    "extractionTitle": "Extraction d'air",
+    "extractionBody": "Évacuation de l'air vicié des cuisines, sanitaires et locaux techniques.",
+    "smokeTitle": "Désenfumage",
+    "smokeBody": "Réseau de sécurité, étudié à part de la ventilation de confort.",
+    "coolingTitle": "Froid",
+    "coolingBody": "Froid commercial, étudié selon le local. Le détail se fixe sur place.",
+    "step1Title": "Analyse du projet",
+    "step1Body": "Compréhension du besoin et des contraintes.",
+    "step2Title": "Étude technique",
+    "step2Body": "Calculs, choix des équipements et solutions adaptées.",
+    "step3Title": "Proposition",
+    "step3Body": "Devis, plans et planning d'intervention.",
+    "step4Title": "Installation",
+    "step4Body": "Mise en œuvre professionnelle, normes respectées.",
+    "step5Title": "Essais et mise en service",
+    "step5Body": "Tests, réglages et vérification avant la réception.",
+    "step6Title": "SAV",
+    "step6Body": "Suivi, entretien et assistance après la mise en service.",
+    "workGainable": "Systèmes gainables",
+    "workVentilation": "Ventilation",
+    "workInstall": "Installation"
   }
 }

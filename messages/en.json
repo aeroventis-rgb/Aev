@@ -18,8 +18,13 @@
     "scrollDownAria": "Go to services section",
     "legal": "Legal notice",
     "privacy": "Privacy policy",
-    "services": "Services",
+    "services": "Our services",
     "projects": "Projects",
+    "about": "About",
+    "coverage": "Service area",
+    "study": "Request a study",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "benefits": "Commitments",
     "contact": "Contact"
   },
@@ -40,7 +45,7 @@
     "navLabel": "Pages du site"
   },
   "images": {
-    "hero": "Contemporary villa with pool at dusk — premium residential ambiance placeholder",
+    "hero": "AEROVENTIS residential mood illustration. A brand visual, not a photo of an identified job site.",
     "acInstall": "Outdoor air-conditioning condenser units — professional HVAC equipment",
     "plumbing": "Sanitary installation and chrome fittings — premium plumbing workmanship",
     "ducted": "Galvanised ventilation ducting and trunking — mechanical ventilation systems",
@@ -50,8 +55,8 @@
   },
   "brand": {
     "name": "AEROVENTIS",
-    "tagline": "AIR CONDITIONING & VENTILATION",
-    "motto": "MASTER YOUR CLIMATE"
+    "tagline": "Air conditioning and ventilation",
+    "motto": "Master your climate."
   },
   "slides": {
     "note": "AEROVENTIS brand visual. A presentation slide, not a photo of an identified job site.",
@@ -78,35 +83,31 @@
     "maintenance": "MAINTENANCE"
   },
   "hero": {
-    "headline1": "TIRED OF THE HEAT",
-    "headline2": "IN CASA?",
-    "solution": "WE ARE THE SOLUTION!",
-    "expertise": "EXPERTISE",
-    "quality": "QUALITY",
-    "trust": "TRUST",
-    "experience": "+10 YEARS",
-    "experienceSub": "OF EXPERIENCE"
+    "motto": "Master your climate.",
+    "lead": "Air conditioning and ventilation for villas, buildings and new builds in Casablanca, Marrakech, Mohammedia, Rabat, Bouskoura, Tamaris and Zenata.",
+    "experience": "+10 years",
+    "experienceSub": "of experience"
   },
   "highlight": {
-    "title1": "PREMIUM AIR CONDITIONING",
-    "title2": "& PLUMBING INSTALLATION",
-    "subtitle": "SPECIALIZED IN VILLAS, BUILDINGS & NEW PROJECTS"
+    "title1": "Air conditioning",
+    "title2": "and plumbing",
+    "subtitle": "Villas, buildings and new builds"
   },
   "process": {
     "study": {
-      "title": "COMPLETE TECHNICAL STUDY",
+      "title": "Complete technical study",
       "desc": "Solutions tailored to your project"
     },
     "install": {
-      "title": "PROFESSIONAL INSTALLATION",
+      "title": "Professional installation",
       "desc": "Clean work, standards respected"
     },
     "result": {
-      "title": "DURABLE & ECONOMICAL RESULT",
+      "title": "Durable and economical result",
       "desc": "Performance, comfort and energy savings"
     },
     "afterSales": {
-      "title": "RESPONSIVE AFTER-SALES SERVICE",
+      "title": "Responsive after-sales service",
       "desc": "Maintenance and follow-up after commissioning"
     }
   },
@@ -118,35 +119,35 @@
   },
   "benefits": {
     "guarantee": {
-      "title": "FOLLOW-UP AFTER INSTALL",
+      "title": "Follow-up after install",
       "desc": "Checks and maintenance after commissioning"
     },
     "economy": {
-      "title": "ECONOMICAL SOLUTIONS",
+      "title": "Economical solutions",
       "desc": "Reduce your consumption"
     },
     "deadlines": {
-      "title": "DEADLINES RESPECTED",
+      "title": "Deadlines respected",
       "desc": "Clear planning and rigorous follow-up"
     },
     "material": {
-      "title": "PREMIUM EQUIPMENT",
+      "title": "Premium equipment",
       "desc": "Leading global brands"
     }
   },
   "cta": {
-    "callNow": "CALL NOW",
+    "callNow": "Call us",
     "phone": "06 60 98 96 98",
-    "quote": "SURVEY BY APPOINTMENT",
-    "whatsapp": "AVAILABLE ON WHATSAPP",
-    "scanQr": "SCAN TO CONTACT US DIRECTLY"
+    "quote": "Study by appointment",
+    "whatsapp": "Message on WhatsApp",
+    "scanQr": "Scan to message us"
   },
   "locations": {
-    "cities": "CASABLANCA · MOHAMMEDIA · BOUSKOURA · TAMARIS · ZENATA · RABAT · MARRAKECH",
-    "projects": "+100 PROJECTS COMPLETED IN CASABLANCA"
+    "cities": "Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat and Marrakech",
+    "projects": "More than 100 projects completed in Casablanca"
   },
   "partners": {
-    "title": "TRUSTED PARTNERS & BRANDS"
+    "title": "Partners & trusted brands"
   },
   "lang": {
     "fr": "Français",
@@ -227,5 +228,79 @@
     "pagination": "Journal pagination",
     "pageStatus": "Page {page} of {total}",
     "breadcrumbLabel": "Breadcrumb"
+  },
+  "home": {
+    "heroTitleLead": "Ducted air conditioning and comfort solutions",
+    "heroTitleAccent": "tailored in Casablanca",
+    "heroSubtitle": "Survey, sizing, supply and installation for villas, apartments and professional premises.",
+    "sendPlan": "Send my plan",
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "planMessage": "Hello AEROVENTIS, I would like to send the plan of my home for a study.",
+    "heroCities": "Casablanca · Rabat · Marrakech",
+    "heroCaption": "Mood illustration. This is not a photo of an AEROVENTIS job site.",
+    "trustExperience": "+10 years of experience",
+    "trustProjects": "+100 projects completed",
+    "trustTeams": "Qualified teams",
+    "trustEquipment": "Premium equipment",
+    "trustService": "Responsive after-sales",
+    "solutionsTitle": "Our solutions",
+    "planTitle": "Do you have the plan of your villa or apartment?",
+    "planAccent": "Send it to us.",
+    "planWhatsapp": "Send your plan on WhatsApp",
+    "planReply": "A prompt, confidential reply",
+    "planSketch": "Decorative sketch. Not a client's plan.",
+    "planSurfaces": "Review of the floor areas",
+    "planPower": "Cooling capacity sizing",
+    "planLayout": "Unit placement",
+    "planAir": "Supply and return air",
+    "methodTitle": "Our method",
+    "projectsTitle": "Our work",
+    "viewService": "View the service",
+    "illustration": "Brand illustration, not a photo of an identified job site.",
+    "partnersTitle": "Equipment partners",
+    "bandTitle": "Building? Renovating?",
+    "bandAccent": "Tell us about your project.",
+    "footerNav": "Navigation",
+    "footerServices": "Our services",
+    "footerContact": "Contact",
+    "footerCity": "Casablanca, Morocco",
+    "footerAlso": "Mohammedia, Bouskoura, Tamaris, Zenata, Rabat and Marrakech",
+    "footerHours": "Monday to Sunday, 8:00–19:00, by appointment",
+    "footerBlurb": "Air conditioning, ventilation and plumbing for villas, buildings and premises, from the survey to commissioning.",
+    "sitemap": "Sitemap",
+    "gainableTitle": "Ducted and centralized",
+    "gainableBody": "A concealed network supplies several rooms when the ceiling allows it.",
+    "splitTitle": "Wall-mounted split",
+    "splitBody": "One or more wall units, chosen after a survey of the home.",
+    "cassetteTitle": "Cassette",
+    "cassetteBody": "Ceiling diffusion for a premises, only when a visit confirms it.",
+    "ventilationTitle": "Ventilation",
+    "ventilationBody": "Fresh air, ducts and grilles. This is not extraction or smoke control.",
+    "plumbingTitle": "Plumbing",
+    "plumbingBody": "Supply, drainage and wet rooms, in new builds and renovations.",
+    "maintenanceTitle": "Maintenance and after-sales",
+    "maintenanceBody": "Checks of filters, condensate and units after commissioning.",
+    "extractionTitle": "Air extraction",
+    "extractionBody": "Removal of stale air from kitchens, bathrooms and plant rooms.",
+    "smokeTitle": "Smoke control",
+    "smokeBody": "A safety network, studied separately from comfort ventilation.",
+    "coolingTitle": "Cooling",
+    "coolingBody": "Commercial cooling, studied for the room. The detail is set on site.",
+    "step1Title": "Project review",
+    "step1Body": "Understanding the need and the constraints.",
+    "step2Title": "Technical study",
+    "step2Body": "Calculations, equipment choices and suitable options.",
+    "step3Title": "Proposal",
+    "step3Body": "Quotation, drawings and a work schedule.",
+    "step4Title": "Installation",
+    "step4Body": "Professional installation, with standards respected.",
+    "step5Title": "Testing and commissioning",
+    "step5Body": "Tests, settings and checks before handover.",
+    "step6Title": "After-sales",
+    "step6Body": "Follow-up, maintenance and support after commissioning.",
+    "workGainable": "Ducted systems",
+    "workVentilation": "Ventilation",
+    "workInstall": "Installation"
   }
 }

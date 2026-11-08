@@ -11,7 +11,7 @@ type Props = {
 /** Full brand slide, contained so the artwork and its text stay readable. */
 export function BrandSlide({ src, alt, caption, priority = false, sizes = "(max-width: 1024px) 100vw, 720px" }: Props) {
   return (
-    <figure className="overflow-hidden rounded-md border border-brand-silver bg-white shadow-brand-sm">
+    <figure className="overflow-hidden rounded-md border border-brand-silver bg-white">
       <Image
         src={src}
         alt={alt}
@@ -22,9 +22,7 @@ export function BrandSlide({ src, alt, caption, priority = false, sizes = "(max-
         sizes={sizes}
       />
       {caption ? (
-        <figcaption className="px-3 py-2 text-[11px] font-bold leading-snug text-brand-navy/80">
-          {caption}
-        </figcaption>
+        <figcaption className="px-4 py-3 text-sm leading-snug text-brand-navy/75">{caption}</figcaption>
       ) : null}
     </figure>
   );

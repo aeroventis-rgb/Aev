@@ -73,10 +73,10 @@ export default async function BlogArticlePage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-brand-off text-brand-ink">
+    <div className="min-h-screen bg-white text-brand-ink">
       <JsonLd data={schemas} />
-      <div className="mx-auto max-w-[1360px] px-4 pt-6 sm:px-6 lg:px-10">
-        <SiteNav />
+      <SiteNav />
+      <div className="mx-auto max-w-[1100px] px-5 pt-6 sm:px-8 lg:px-10">
         <article className="mx-auto max-w-3xl pb-20">
           <Breadcrumbs
             label={t("breadcrumbLabel")}
@@ -87,10 +87,10 @@ export default async function BlogArticlePage({ params }: Props) {
             ]}
           />
           <header className="border-b border-brand-silver pb-8">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-brand-blue">
+            <p className="text-sm text-brand-navy/60">
               <time dateTime={post.date}>{post.date}</time>
             </p>
-            <h1 className="mt-3 text-3xl font-black leading-tight tracking-tight text-brand-ink md:text-4xl">
+            <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-brand-ink md:text-4xl">
               {post.title}
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">{post.description}</p>
@@ -111,13 +111,13 @@ export default async function BlogArticlePage({ params }: Props) {
           <MarkdownBody markdown={post.body} />
           {post.faqs.length ? (
             <section className="mt-12" aria-labelledby="faq-heading">
-              <h2 id="faq-heading" className="text-xl font-black uppercase tracking-wide text-brand-blue">
+              <h2 id="faq-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
                 FAQ
               </h2>
               <div className="mt-6 flex flex-col gap-6">
                 {post.faqs.map((faq) => (
                   <section key={faq.question}>
-                    <h3 className="text-base font-black text-brand-ink">{faq.question}</h3>
+                    <h3 className="text-base font-semibold text-brand-ink">{faq.question}</h3>
                     <MarkdownBody markdown={faq.answer} />
                   </section>
                 ))}
