@@ -58,6 +58,11 @@ function assertLanding(page: LandingPage) {
     ...(page.localFit ? [page.localFit.split, page.localFit.gainable, page.localFit.vrv] : []),
     ...(page.points ? page.points.flatMap((item) => [item.title, item.body]) : []),
     ...(page.image ? [page.image.alt, page.image.caption] : []),
+    ...(page.headings
+      ? [page.headings.services, page.headings.comparison, page.headings.process, page.headings.faq].filter(
+          (item): item is string => Boolean(item)
+        )
+      : []),
     ...page.lead,
     ...page.services.flatMap((item) => [item.title, item.body]),
     ...page.process,
@@ -76,16 +81,22 @@ const handwritten: LandingPage[] = [
     serviceId: "climatisation",
     serviceType: "Climatisation",
     areaServed: SERVICE_AREA_NAMES,
-    title: "Climatisation au Maroc – installation",
+    title: "Installation climatisation Casablanca",
     description:
-      "Climatisation split, gainable et VRV à Casablanca, Rabat, Marrakech, Mohammedia, Bouskoura, Tamaris et Zenata. Étude sur place avant la pose.",
-    h1: "Climatisation au Maroc",
+      "Installation de climatisation à Casablanca : split, gainable et VRV après étude du logement. Fourniture et pose de marques présentées sur l'accueil.",
+    h1: "Installation de climatisation à Casablanca",
+    headings: {
+      services: "Split, gainable et VRV",
+      comparison: "Comparer les systèmes",
+      process: "De la visite à l'entretien",
+      faq: "Questions sur l'installation à Casablanca",
+    },
     lead: [
-      "Le choix d'une climatisation au Maroc ne se résume pas à une puissance au mètre carré. Casablanca, Mohammedia, Tamaris et Rabat imposent l'humidité du littoral, Marrakech une chaleur sèche et des toitures très exposées. Bouskoura et Zenata ajoutent la poussière des lotissements et des chantiers. AEROVENTIS étudie le logement avant de proposer un split, un gainable ou un VRV.",
-      "Chaque secteur a sa page. Le détail des quartiers, des contraintes de façade et des visites s'y trouve, pas dans un texte recopié.",
+      "L'installation de climatisation à Casablanca part du logement, pas d'une puissance au mètre carré. Casablanca, Mohammedia, Tamaris et Rabat imposent l'humidité du littoral. Marrakech impose une chaleur sèche et des toitures très exposées. Bouskoura et Zenata ajoutent la poussière des lotissements et des chantiers. AEROVENTIS est une société de climatisation à Casablanca : elle étudie le site avant de proposer un split, un gainable ou un VRV.",
+      "La fourniture des appareils fait partie du chantier. Pour qui cherche un fournisseur de climatisation à Casablanca, AEROVENTIS installe les marques déjà affichées sur l'accueil. Ce n'est pas une activité de négoce. Le détail des quartiers est sur la page de chaque ville.",
     ],
     servicesIntro:
-      "Trois familles d'appareils couvrent les villas, les appartements et les petits ensembles tertiaires. La page ville précise lequel a du sens sur place.",
+      "Trois familles d'appareils couvrent l'installation, à Casablanca comme dans les autres villes : villas, appartements et petits ensembles tertiaires.",
     services: [
       {
         title: "Split et multi-split",
@@ -101,14 +112,14 @@ const handwritten: LandingPage[] = [
       },
     ],
     comparisonIntro:
-      "Le tableau ci-dessous compare les principes. Il ne remplace pas le relevé : une villa de la Palmeraie et un appartement d'Agdal ne partent pas du même plan.",
+      "Le tableau compare les principes d'une installation à Casablanca ou ailleurs. Il ne remplace pas le relevé : une villa de la Palmeraie et un appartement d'Agdal ne partent pas du même plan.",
     localFit: {
       split: "Utile à Casablanca et Rabat dans les appartements, et à Marrakech pour une pièce exposée en attendant un réseau complet.",
       gainable: "Pertinent pour les villas, en neuf à Bouskoura ou à Hay Riad comme en rénovation quand le couloir peut perdre quelques centimètres.",
       vrv: "Réservé aux immeubles et aux locaux professionnels, là où le syndic limite les groupes en façade.",
     },
     processIntro:
-      "Le déroulé est le même d'une ville à l'autre. Le contenu de la visite, lui, change : air salin, poussière ou hauteur de plafond.",
+      "Le déroulé d'une installation est le même d'une ville à l'autre. Le contenu de la visite change : air salin, poussière ou hauteur de plafond.",
     process: [
       "Relevé du logement, de l'orientation et de l'emplacement possible des groupes extérieurs.",
       "Choix du système à partir du relevé, pièce par pièce, sans ratio unique.",
@@ -127,9 +138,9 @@ const handwritten: LandingPage[] = [
           "Non. L'humidité et l'air salin du littoral ne se traitent pas comme la chaleur sèche et la poussière de Marrakech. Le dimensionnement part du site.",
       },
       {
-        question: "Split, gainable ou VRV : par où commencer ?",
+        question: "Par où commence une installation de climatisation à Casablanca ?",
         answer:
-          "Par le nombre de pièces et la hauteur disponible au plafond. Le split équipe peu de pièces. Le gainable suppose un plénum. Le VRV vise un ensemble de locaux.",
+          "Par le nombre de pièces et la hauteur disponible au plafond. Le split équipe peu de pièces. Le gainable suppose un plénum. Le VRV vise un ensemble de locaux. Les quartiers de Casablanca sont détaillés sur la page de la ville.",
       },
       {
         question: "Intervenez-vous en dehors de ces villes ?",
@@ -160,9 +171,12 @@ const handwritten: LandingPage[] = [
       { href: "/extraction", label: "Extraction d'air" },
       { href: "/desenfumage", label: "Désenfumage" },
       { href: "/climatisation-gainable", label: "Climatisation gainable" },
+      { href: "/entretien-climatisation-casablanca", label: "Entretien à Casablanca" },
+      { href: "/zone-intervention", label: "Zone d'intervention" },
+      { href: "/blog/maitrisez-votre-climat", label: "Maîtrisez votre climat" },
       { href: "/contact", label: "Contact" },
     ],
-    breadcrumbs: [home, { name: "Climatisation au Maroc" }],
+    breadcrumbs: [home, { name: "Climatisation" }],
   },
   {
     slug: "climatisation-gainable",
@@ -170,16 +184,22 @@ const handwritten: LandingPage[] = [
     serviceId: "climatisation-gainable",
     serviceType: "Climatisation gainable",
     areaServed: ["Casablanca", "Rabat", "Marrakech"],
-    title: "Climatisation gainable – villas Maroc",
+    title: "Climatisation gainable Casablanca",
     description:
-      "Climatisation gainable au Maroc : conception pour villas et immeubles à Casablanca, Rabat et Marrakech. Étude des gaines, zoning et mise en service.",
-    h1: "Climatisation gainable",
+      "Climatisation gainable à Casablanca : étude des gaines, des bouches et du faux plafond pour villas et immeubles. Quartiers détaillés sur la page de la ville.",
+    h1: "Climatisation gainable à Casablanca, Rabat et Marrakech",
+    headings: {
+      services: "Gaines, bouches et zoning",
+      comparison: "Gainable, split ou VRV",
+      process: "Du plafond à la mise en service",
+      faq: "Questions sur le gainable à Casablanca",
+    },
     lead: [
-      "Le gainable cache l'unité dans un faux plafond et distribue l'air par des gaines. Il se justifie quand plusieurs pièces doivent être traitées sans multiplier les splits au mur. Il ne se justifie pas si le plénum n'existe pas et ne peut pas être créé.",
-      "À Casablanca, la page locale décrit Anfa, Californie, Ain Diab et Bouskoura. Rabat et Marrakech restent sur leurs pages climatisation tant qu'un texte gainable propre à chaque ville n'est pas publié.",
+      "La climatisation gainable à Casablanca cache l'unité dans un faux plafond et distribue l'air par des gaines. Elle se justifie quand plusieurs pièces doivent être traitées sans multiplier les splits au mur. Elle ne se justifie pas si le plénum n'existe pas et ne peut pas être créé.",
+      "Le détail des quartiers casaouis — Anfa, Californie, Ain Diab et Bouskoura — est sur la page gainable de Casablanca. Rabat et Marrakech restent sur leurs pages climatisation tant qu'un texte gainable propre à chaque ville n'est pas publié.",
     ],
     servicesIntro:
-      "Un gainable n'est pas un split dissimulé. L'étude porte sur les gaines, les bouches, la reprise d'air et l'accès aux filtres.",
+      "Une climatisation gainable à Casablanca n'est pas un split dissimulé. L'étude porte sur les gaines, les bouches, la reprise d'air et l'accès aux filtres.",
     services: [
       {
         title: "Réseau de gaines",
@@ -195,7 +215,7 @@ const handwritten: LandingPage[] = [
       },
     ],
     comparisonIntro:
-      "Le gainable est une option parmi trois. Le comparer au split et au VRV évite de l'imposer à un appartement qui n'a pas la hauteur.",
+      "Même pour une climatisation gainable à Casablanca, le split et le VRV restent des options. Le gainable convient seulement si le plafond et le nombre de pièces le permettent.",
     localFit: {
       split: "Reste le bon choix pour une ou deux pièces, ou quand le plafond ne peut pas descendre.",
       gainable: "Vise la villa et le grand appartement rénové avec un couloir technique. La page Casablanca entre dans le détail des quartiers.",
@@ -226,7 +246,7 @@ const handwritten: LandingPage[] = [
           "C'est l'intérêt habituel pour une villa. La puissance et l'emplacement dépendent du linéaire de gaines et de l'exposition, pas d'un modèle unique.",
       },
       {
-        question: "Où lire le cas casablancais ?",
+        question: "Où lire la climatisation gainable à Casablanca, quartier par quartier ?",
         answer:
           "La page climatisation gainable à Casablanca traite Anfa, Californie, Ain Diab et Bouskoura. Elle renvoie vers la climatisation toutes solutions de la ville.",
       },
@@ -243,11 +263,13 @@ const handwritten: LandingPage[] = [
     ],
     links: [
       { href: "/climatisation-gainable-casablanca", label: "Gainable à Casablanca" },
-      { href: "/climatisation", label: "Climatisation au Maroc" },
+      { href: "/climatisation", label: "Installation de climatisation à Casablanca" },
       { href: "/climatisation-casablanca", label: "Climatisation à Casablanca" },
       { href: "/climatisation-rabat", label: "Climatisation à Rabat" },
       { href: "/climatisation-marrakech", label: "Climatisation à Marrakech" },
       { href: "/entretien-climatisation-casablanca", label: "Entretien à Casablanca" },
+      { href: "/zone-intervention", label: "Zone d'intervention" },
+      { href: "/blog/maitrisez-votre-climat", label: "Maîtrisez votre climat" },
       { href: "/contact", label: "Contact" },
     ],
     breadcrumbs: [home, { name: "Climatisation gainable" }],
@@ -445,16 +467,22 @@ const handwritten: LandingPage[] = [
     serviceType: "Climatisation",
     cityId: "marrakech",
     areaServed: ["Marrakech"],
-    title: "Climatisation Marrakech – pose & entretien",
+    title: "Climatisation à Marrakech – pose",
     description:
-      "Climatisation à Marrakech : dimensionnement pour la chaleur sèche, pose split ou gainable à la Palmeraie, Hivernage et sur la route de l'Ourika.",
+      "Climatisation à Marrakech pour villas et immeubles : chaleur sèche, toitures exposées et poussière. Pose split ou gainable à la Palmeraie, Hivernage et Ourika.",
     h1: "Climatisation à Marrakech",
+    headings: {
+      services: "Palmeraie, Hivernage et Ourika",
+      comparison: "Quel système à Marrakech",
+      process: "Visite, pose et filtres",
+      faq: "Questions sur la climatisation à Marrakech",
+    },
     lead: [
-      "Marrakech chauffe autrement que le littoral. L'air est sec, les toitures-terrasses restent au soleil une grande partie de la journée, et la poussière revient avec le vent, surtout vers la route de l'Ourika. Une puissance copiée sur un appartement casablancais sous-dimensionne une villa de la Palmeraie aux baies larges.",
+      "La climatisation à Marrakech se calcule pour une chaleur sèche, pas pour le littoral. L'air est sec, les toitures-terrasses restent au soleil une grande partie de la journée, et la poussière revient avec le vent, surtout vers la route de l'Ourika. Une puissance copiée sur un appartement casablancais sous-dimensionne une villa de la Palmeraie aux baies larges.",
       "Hivernage mêle résidences et petits immeubles où la façade compte. La Palmeraie étire les liaisons entre le groupe, souvent loin de la maison, et les pièces. Ce ne sont pas les mêmes mètres de cuivre ni le même entretien de filtre.",
     ],
     servicesIntro:
-      "Le service consiste à dimensionner pour la chaleur sèche et à placer le groupe à l'ombre relative, pas à coller un modèle de showroom.",
+      "La climatisation à Marrakech se dimensionne pour la chaleur sèche, avec le groupe à l'ombre relative plutôt qu'un modèle de showroom.",
     services: [
       {
         title: "Palmeraie",
@@ -470,7 +498,7 @@ const handwritten: LandingPage[] = [
       },
     ],
     comparisonIntro:
-      "Ici, le soleil sur la toiture et la longueur des liaisons comptent plus que l'humidité. Le tableau rappelle les trois familles, puis le quartier tranche.",
+      "À Marrakech, le soleil sur la toiture et la longueur des liaisons comptent plus que l'humidité. Le tableau rappelle les trois familles, puis le quartier tranche.",
     localFit: {
       split: "Utile à Hivernage pour une ou deux pièces, et en appoint dans une aile de villa en attendant un réseau.",
       gainable: "Utile à la Palmeraie quand la maison a un plénum et que l'on veut une seule unité extérieure à l'ombre d'un local ou d'un auvent.",
@@ -486,7 +514,7 @@ const handwritten: LandingPage[] = [
     ],
     faqs: [
       {
-        question: "Pourquoi un devis casablancais ne se transpose-t-il pas ?",
+        question: "Pourquoi la climatisation à Marrakech ne reprend-elle pas un calcul de Casablanca ?",
         answer:
           "Parce que la charge thermique n'est pas la même. Grandes baies, toiture exposée et air sec à Marrakech demandent un relevé local. La page de Casablanca décrit un autre climat.",
       },
@@ -517,11 +545,12 @@ const handwritten: LandingPage[] = [
       },
     ],
     links: [
-      { href: "/climatisation", label: "Climatisation au Maroc" },
+      { href: "/climatisation", label: "Installation de climatisation à Casablanca" },
       { href: "/climatisation-casablanca", label: "Climatisation à Casablanca" },
       { href: "/climatisation-rabat", label: "Climatisation à Rabat" },
       { href: "/climatisation-gainable", label: "Climatisation gainable" },
       { href: "/zone-intervention", label: "Zone d'intervention" },
+      { href: "/blog/maitrisez-votre-climat", label: "Maîtrisez votre climat" },
       { href: "/contact", label: "Contact" },
     ],
     breadcrumbs: [

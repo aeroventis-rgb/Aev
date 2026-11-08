@@ -14,6 +14,13 @@ export type LandingPage = {
   title: string;
   description: string;
   h1: string;
+  /** Optional H2s. Omitted headings keep the shared French labels. */
+  headings?: {
+    services?: string;
+    comparison?: string;
+    process?: string;
+    faq?: string;
+  };
   lead: readonly string[];
   servicesIntro: string;
   services: readonly { title: string; body: string }[];
