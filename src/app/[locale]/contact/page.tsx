@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { ContactPageView } from "@/components/ContactPageView";
-import { GoogleAdsConversion } from "@/components/GoogleAdsConversion";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { Locale } from "@/i18n/routing";
 import { PHONE_E164 } from "@/lib/constants";
@@ -60,7 +59,6 @@ export default async function ContactPage({ params }: Props) {
 
   return (
     <>
-      <GoogleAdsConversion />
       <JsonLd
         data={[
           schema,
