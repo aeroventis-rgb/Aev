@@ -51,7 +51,8 @@
     "ducted": "Réseau de gaines galvanisées et cheminements — ventilation mécanique",
     "galleryInstall": "Local technique avec tuyauteries en plafond — environnement de pose CVC",
     "galleryPlumbing": "Ventilation industrielle et collecteurs — réseaux fluides",
-    "galleryFinish": "Thermostat connecté mural — régulation précise du confort intérieur"
+    "galleryFinish": "Thermostat connecté mural — régulation précise du confort intérieur",
+    "plan": "Illustration d'un plan d'architecte avec un crayon. Ce n'est pas le plan d'un client."
   },
   "brand": {
     "name": "AEROVENTIS",
@@ -316,7 +317,7 @@
     "planAccent": "envoyez le plan de la villa ou de l'appartement.",
     "planWhatsapp": "Envoyez votre plan sur WhatsApp",
     "planReply": "Réponse rapide et confidentielle",
-    "planSketch": "Croquis décoratif. Ce n'est pas le plan d'un client.",
+    "planSketch": "Illustration. Ce n'est pas le plan d'un client.",
     "planSurfaces": "Étude des surfaces",
     "planPower": "Dimensionnement des puissances",
     "planLayout": "Implantation des unités",

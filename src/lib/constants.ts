@@ -25,7 +25,9 @@ export const PARTNERS = [
   { id: "rtec", name: "RTEC", logo: "/partners/rtec.svg", width: 700, height: 214 },
 ] as const;
 
-/** Hero backdrop. Brand slides live in `brand-slides.ts`. */
+/** Hero backdrop and the homepage plan illustration. Brand slides live in `brand-slides.ts`. */
 export const IMAGES = {
   heroVilla: "/hero-background.webp",
+  /** Stock floor-plan photo. An illustration, not a client's plan or an AEROVENTIS job site. */
+  planIllustration: "/plan-illustration.webp",
 } as const;

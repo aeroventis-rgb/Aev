@@ -62,19 +62,19 @@ function serviceHref(locale: Locale, path: string | null) {
   return path;
 }
 
-function BlueprintSketch({ label }: { label: string }) {
+function PlanIllustration({ label, alt }: { label: string; alt: string }) {
   return (
-    <figure className="rounded-2xl bg-[#f4f8fc] p-6">
-      <svg viewBox="0 0 360 240" className="h-auto w-full text-brand-blue/80" aria-hidden>
-        <rect x="16" y="16" width="328" height="208" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />
-        <path d="M16 112 H210 V16" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M210 112 H344" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M120 112 V224" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        <rect x="40" y="36" width="48" height="28" fill="none" stroke="currentColor" strokeWidth="1.25" />
-        <rect x="236" y="140" width="72" height="40" fill="none" stroke="currentColor" strokeWidth="1.25" />
-        <path d="M150 48 h36 M168 30 v36" fill="none" stroke="currentColor" strokeWidth="1.25" />
-        <path d="M70 160 h28 M84 146 v28" fill="none" stroke="currentColor" strokeWidth="1.25" />
-      </svg>
+    <figure className="min-w-0">
+      <div className="overflow-hidden rounded-2xl border border-[#e6eef6] bg-[#f4f8fc]">
+        <Image
+          src={IMAGES.planIllustration}
+          alt={alt}
+          width={1026}
+          height={492}
+          className="h-auto w-full object-contain"
+          sizes="(max-width: 1024px) 100vw, 540px"
+        />
+      </div>
       <figcaption className="mt-3 text-xs leading-relaxed text-brand-navy/60">{label}</figcaption>
     </figure>
   );
@@ -250,7 +250,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
         <section className="mx-auto max-w-6xl px-4 pb-8 sm:px-5 lg:px-8 lg:pb-14">
           <div className="grid items-center gap-6 rounded-3xl border border-[#e6eef6] bg-white p-4 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.35)] sm:p-6 lg:grid-cols-2 lg:gap-10 lg:p-8">
-            <BlueprintSketch label={t("planSketch")} />
+            <PlanIllustration label={t("planSketch")} alt={ti("plan")} />
             <div className="min-w-0">
               <h2 className="text-xl font-semibold leading-snug tracking-tight text-brand-navy sm:text-2xl md:text-3xl">
                 {t("planTitle")} <span className="text-brand-blue">{t("planAccent")}</span>

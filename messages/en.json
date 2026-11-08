@@ -51,7 +51,8 @@
     "ducted": "Galvanised ventilation ducting and trunking — mechanical ventilation systems",
     "galleryInstall": "Technical plant room with overhead piping — HVAC installation environment",
     "galleryPlumbing": "Industrial ventilation pipework — drainage and fluid networks",
-    "galleryFinish": "Wall-mounted smart thermostat — precise indoor climate regulation"
+    "galleryFinish": "Wall-mounted smart thermostat — precise indoor climate regulation",
+    "plan": "Illustration of an architectural floor plan with a pencil. This is not a client's plan."
   },
   "brand": {
     "name": "AEROVENTIS",
@@ -249,7 +250,7 @@
     "planAccent": "send the plan of the villa or apartment.",
     "planWhatsapp": "Send your plan on WhatsApp",
     "planReply": "A prompt, confidential reply",
-    "planSketch": "Decorative sketch. Not a client's plan.",
+    "planSketch": "Illustration. This is not a client's plan.",
     "planSurfaces": "Survey of the floor areas",
     "planPower": "Cooling capacity sizing",
     "planLayout": "Unit placement",
