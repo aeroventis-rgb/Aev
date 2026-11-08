@@ -4,9 +4,12 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Montserrat, Noto_Sans_Arabic } from "next/font/google";
+import Script from "next/script";
 import { routing, type Locale } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/site";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { LeadClickTracking } from "@/components/LeadClickTracking";
+import { GOOGLE_CONSENT_BOOTSTRAP } from "@/lib/analytics";
 import "../globals.css";
 
 const montserrat = Montserrat({
@@ -90,7 +93,11 @@ export default async function LocaleLayout({
           locale === "ar" ? "font-arabic" : "font-sans"
         }`}
       >
+        <Script id="google-consent-defaults" strategy="beforeInteractive">
+          {GOOGLE_CONSENT_BOOTSTRAP}
+        </Script>
         <GoogleAnalytics />
+        <LeadClickTracking />
         <a
           href="#main-content"
           className="fixed start-4 top-4 z-[100] -translate-y-[120%] rounded-md bg-brand-blue px-4 py-2 text-sm font-bold text-brand-white shadow-brand transition-transform focus:translate-y-0"
