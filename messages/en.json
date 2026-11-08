@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "AEROVENTIS — Premium HVAC, ventilation & plumbing | Casablanca",
-    "description": "AEROVENTIS installs air conditioning, ventilation, air extraction, smoke control and plumbing in Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat and Marrakech.",
-    "keywords": "air conditioning Casablanca, HVAC Morocco, ventilation Rabat, premium plumbing Marrakech, villa AC install, Daikin Mitsubishi LG Samsung"
+    "title": "Air conditioning in Casablanca | AEROVENTIS",
+    "description": "An air-conditioning company in Casablanca. AEROVENTIS surveys, supplies and installs for villas, buildings and new builds, then follows up after commissioning.",
+    "keywords": "air conditioning Casablanca, air conditioning company Casablanca, HVAC design office Casablanca, AC installation Casablanca, air conditioning Marrakech, ducted air conditioning Casablanca"
   },
   "schema": {
-    "description": "Moroccan company specializing in air conditioning, ventilation, air extraction, smoke control and plumbing in Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat and Marrakech.",
+    "description": "An air-conditioning company in Casablanca. Survey, supply, installation and follow-up, plus ventilation, air extraction, smoke control and plumbing in Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat and Marrakech.",
     "openingHoursText": "Mon–Sun by appointment"
   },
   "nav": {
@@ -230,9 +230,9 @@
     "breadcrumbLabel": "Breadcrumb"
   },
   "home": {
-    "heroTitleLead": "Ducted air conditioning and comfort solutions",
-    "heroTitleAccent": "tailored in Casablanca",
-    "heroSubtitle": "Survey, sizing, supply and installation for villas, apartments and professional premises.",
+    "heroTitleLead": "Air conditioning in Casablanca",
+    "heroTitleAccent": "for villas, buildings and new builds",
+    "heroSubtitle": "An air-conditioning company in Casablanca: survey, supply and installation, then follow-up after commissioning.",
     "sendPlan": "Send my plan",
     "whatsapp": "WhatsApp",
     "call": "Call",
@@ -245,12 +245,12 @@
     "trustEquipment": "Premium equipment",
     "trustService": "Responsive after-sales",
     "solutionsTitle": "Our solutions",
-    "planTitle": "Do you have the plan of your villa or apartment?",
-    "planAccent": "Send it to us.",
+    "planTitle": "Air-conditioning design office in Casablanca:",
+    "planAccent": "send the plan of the villa or apartment.",
     "planWhatsapp": "Send your plan on WhatsApp",
     "planReply": "A prompt, confidential reply",
     "planSketch": "Decorative sketch. Not a client's plan.",
-    "planSurfaces": "Review of the floor areas",
+    "planSurfaces": "Survey of the floor areas",
     "planPower": "Cooling capacity sizing",
     "planLayout": "Unit placement",
     "planAir": "Supply and return air",
@@ -269,8 +269,8 @@
     "footerHours": "Monday to Sunday, 8:00–19:00, by appointment",
     "footerBlurb": "Air conditioning, ventilation and plumbing for villas, buildings and premises, from the survey to commissioning.",
     "sitemap": "Sitemap",
-    "gainableTitle": "Ducted and centralized",
-    "gainableBody": "A concealed network supplies several rooms when the ceiling allows it.",
+    "gainableTitle": "Ducted air conditioning",
+    "gainableBody": "A concealed network supplies several rooms in Casablanca when the ceiling allows it.",
     "splitTitle": "Wall-mounted split",
     "splitBody": "One or more wall units, chosen after a survey of the home.",
     "cassetteTitle": "Cassette",
@@ -289,8 +289,8 @@
     "coolingBody": "Commercial cooling, studied for the room. The detail is set on site.",
     "step1Title": "Project review",
     "step1Body": "Understanding the need and the constraints.",
-    "step2Title": "Technical study",
-    "step2Body": "Calculations, equipment choices and suitable options.",
+    "step2Title": "Study and engineering",
+    "step2Body": "Calculations, equipment choices and unit placement.",
     "step3Title": "Proposal",
     "step3Body": "Quotation, drawings and a work schedule.",
     "step4Title": "Installation",
@@ -300,6 +300,13 @@
     "step6Title": "After-sales",
     "step6Body": "Follow-up, maintenance and support after commissioning.",
     "workGainable": "Ducted systems",
+    "relatedLabel": "Related pages",
+    "linkClimatisation": "Installation in Casablanca",
+    "linkMarrakech": "Air conditioning in Marrakech",
+    "linkGainable": "Ducted air conditioning in Casablanca",
+    "linkZone": "Service area",
+    "linkArticle": "Master your climate",
+    "linkContact": "Contact",
     "workVentilation": "Ventilation",
     "workInstall": "Installation"
   }

@@ -10,6 +10,12 @@ import type { LandingPage } from "@/lib/landings/types";
 
 export async function ServiceLandingView({ page }: { page: LandingPage }) {
   const tc = await getTranslations("cta");
+  const servicesHeading = page.headings?.services ?? "Services";
+  const comparisonHeading =
+    page.headings?.comparison ??
+    (page.showHvacComparison === false ? "Ce qui se décide sur place" : "Split, gainable et VRV");
+  const processHeading = page.headings?.process ?? "Déroulé";
+  const faqHeading = page.headings?.faq ?? "Questions fréquentes";
 
   return (
     <div className="min-h-screen bg-white text-brand-ink">
@@ -36,7 +42,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
 
           <section className="mt-10" aria-labelledby="services-heading">
             <h2 id="services-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
-              Services
+              {servicesHeading}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{page.servicesIntro}</p>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -51,7 +57,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
 
           <section className="mt-12" aria-labelledby="comparison-heading">
             <h2 id="comparison-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
-              {page.showHvacComparison === false ? "Ce qui se décide sur place" : "Split, gainable et VRV"}
+              {comparisonHeading}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{page.comparisonIntro}</p>
             {page.showHvacComparison === false ? (
@@ -109,7 +115,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
 
           <section className="mt-12" aria-labelledby="process-heading">
             <h2 id="process-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
-              Déroulé
+              {processHeading}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{page.processIntro}</p>
             <ol className="mt-6 grid gap-4 md:grid-cols-2">
@@ -126,7 +132,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
 
           <section className="mt-12" aria-labelledby="faq-heading">
             <h2 id="faq-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
-              Questions fréquentes
+              {faqHeading}
             </h2>
             <div className="mt-6 flex flex-col gap-6">
               {page.faqs.map((faq) => (

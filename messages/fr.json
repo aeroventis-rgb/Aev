@@ -1,11 +1,11 @@
 {
   "meta": {
-    "title": "AEROVENTIS — Climatisation, ventilation & plomberie premium | Casablanca",
-    "description": "AEROVENTIS : climatisation, ventilation, extraction, désenfumage et plomberie à Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat et Marrakech.",
-    "keywords": "climatisation Casablanca, ventilation Maroc, extraction d'air, désenfumage, plomberie, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat, Marrakech, clim gainable"
+    "title": "Société de climatisation à Casablanca | AEROVENTIS",
+    "description": "Société de climatisation à Casablanca : étude, fourniture et installation pour villas, immeubles et projets neufs, avec un suivi après mise en service.",
+    "keywords": "climatisation Casablanca, société de climatisation à Casablanca, bureau d'étude climatisation Casablanca, installation climatisation Casablanca, climatisation Marrakech, climatisation gainable Casablanca"
   },
   "schema": {
-    "description": "Entreprise marocaine spécialisée en climatisation, ventilation, extraction, désenfumage et plomberie à Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat et Marrakech.",
+    "description": "Société de climatisation à Casablanca. Étude, fourniture, installation et suivi, plus ventilation, extraction, désenfumage et plomberie à Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat et Marrakech.",
     "openingHoursText": "Lu-Di sur rendez-vous"
   },
   "nav": {
@@ -297,9 +297,9 @@
     "breadcrumbLabel": "Fil d'Ariane"
   },
   "home": {
-    "heroTitleLead": "Climatisation gainable & solutions de confort",
-    "heroTitleAccent": "sur mesure à Casablanca",
-    "heroSubtitle": "Étude, dimensionnement, fourniture et installation pour villas, appartements et locaux professionnels.",
+    "heroTitleLead": "Climatisation à Casablanca",
+    "heroTitleAccent": "pour villas, immeubles et projets neufs",
+    "heroSubtitle": "Société de climatisation à Casablanca : étude, fourniture et installation, puis suivi après la mise en service.",
     "sendPlan": "Envoyer mon plan",
     "whatsapp": "WhatsApp",
     "call": "Appeler",
@@ -312,12 +312,12 @@
     "trustEquipment": "Matériel premium",
     "trustService": "SAV réactif",
     "solutionsTitle": "Nos solutions",
-    "planTitle": "Vous avez le plan de votre villa ou appartement ?",
-    "planAccent": "Envoyez-le-nous.",
+    "planTitle": "Bureau d'étude climatisation à Casablanca :",
+    "planAccent": "envoyez le plan de la villa ou de l'appartement.",
     "planWhatsapp": "Envoyez votre plan sur WhatsApp",
     "planReply": "Réponse rapide et confidentielle",
     "planSketch": "Croquis décoratif. Ce n'est pas le plan d'un client.",
-    "planSurfaces": "Analyse des surfaces",
+    "planSurfaces": "Étude des surfaces",
     "planPower": "Dimensionnement des puissances",
     "planLayout": "Implantation des unités",
     "planAir": "Soufflage / reprise d'air",
@@ -336,8 +336,8 @@
     "footerHours": "Lundi au dimanche, 8 h – 19 h, sur rendez-vous",
     "footerBlurb": "Climatisation, ventilation et plomberie pour villas, immeubles et locaux, de l'étude à la mise en service.",
     "sitemap": "Plan du site",
-    "gainableTitle": "Gainable & centralisé",
-    "gainableBody": "Un réseau caché diffuse l'air dans plusieurs pièces, lorsque le plafond le permet.",
+    "gainableTitle": "Climatisation gainable",
+    "gainableBody": "Un réseau caché diffuse l'air dans plusieurs pièces à Casablanca, lorsque le plafond le permet.",
     "splitTitle": "Split mural",
     "splitBody": "Une ou plusieurs unités murales, choisies après le relevé du logement.",
     "cassetteTitle": "Cassette",
@@ -356,8 +356,8 @@
     "coolingBody": "Froid commercial, étudié selon le local. Le détail se fixe sur place.",
     "step1Title": "Analyse du projet",
     "step1Body": "Compréhension du besoin et des contraintes.",
-    "step2Title": "Étude technique",
-    "step2Body": "Calculs, choix des équipements et solutions adaptées.",
+    "step2Title": "Étude et ingénierie",
+    "step2Body": "Calculs, choix des équipements et implantation des unités.",
     "step3Title": "Proposition",
     "step3Body": "Devis, plans et planning d'intervention.",
     "step4Title": "Installation",
@@ -367,6 +367,13 @@
     "step6Title": "SAV",
     "step6Body": "Suivi, entretien et assistance après la mise en service.",
     "workGainable": "Systèmes gainables",
+    "relatedLabel": "Pages liées",
+    "linkClimatisation": "Installation à Casablanca",
+    "linkMarrakech": "Climatisation à Marrakech",
+    "linkGainable": "Climatisation gainable à Casablanca",
+    "linkZone": "Zone d'intervention",
+    "linkArticle": "Maîtrisez votre climat",
+    "linkContact": "Contact",
     "workVentilation": "Ventilation",
     "workInstall": "Installation"
   }

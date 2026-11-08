@@ -89,6 +89,18 @@ export function LandingPage({ contactQrDataUrl }: Props) {
   const locale = useLocale() as Locale;
   const planUrl = `${WHATSAPP_URL}?text=${encodeURIComponent(t("planMessage"))}`;
 
+  const related = [
+    { href: "/climatisation", label: t("linkClimatisation") },
+    { href: "/climatisation-marrakech", label: t("linkMarrakech") },
+    { href: "/climatisation-gainable", label: t("linkGainable") },
+    { href: "/zone-intervention", label: t("linkZone") },
+    { href: "/blog/maitrisez-votre-climat", label: t("linkArticle") },
+    { href: "/contact", label: t("linkContact") },
+  ].flatMap((item) => {
+    const href = serviceHref(locale, item.href);
+    return href ? [{ href, label: item.label }] : [];
+  });
+
   const trust = [
     { key: "experience", label: t("trustExperience"), Icon: Award },
     { key: "projects", label: t("trustProjects"), Icon: Building2 },
@@ -221,6 +233,19 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               );
             })}
           </div>
+          {related.length > 0 ? (
+            <nav aria-label={t("relatedLabel")} className="mt-5">
+              <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+                {related.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="text-sm font-semibold text-brand-blue hover:underline">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
         </section>
 
         <section className="mx-auto max-w-6xl px-4 pb-8 sm:px-5 lg:px-8 lg:pb-14">
