@@ -122,8 +122,8 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       <SiteNav />
 
       <main id="main-content">
-        <section className="mx-auto grid max-w-6xl items-center gap-6 px-4 py-8 sm:px-5 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:py-16">
-          <div>
+        <section className="mx-auto grid max-w-6xl items-center gap-6 px-4 py-8 sm:px-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8 lg:px-8 lg:py-12">
+          <div className="min-w-0">
             <h1 className="max-w-xl text-[1.7rem] font-semibold leading-[1.2] tracking-tight text-brand-navy sm:text-4xl md:text-5xl">
               {t("heroTitleLead")}
               <span className="mt-1 block text-brand-blue">{t("heroTitleAccent")}</span>
@@ -131,12 +131,12 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             <p className="mt-4 max-w-xl text-base leading-relaxed text-brand-navy/75 md:mt-5 md:text-lg">
               {t("heroSubtitle")}
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
+            <div className="mt-6 flex flex-col gap-3 lg:mt-8 lg:flex-row lg:flex-nowrap lg:items-center">
               <a
                 href={planUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white transition hover:bg-brand-navy"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white transition hover:bg-brand-navy lg:w-auto lg:px-4"
               >
                 <Send className="h-4 w-4" aria-hidden />
                 {t("sendPlan")}
@@ -145,14 +145,14 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[#d7e3f0] bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-blue/40"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-[#d7e3f0] bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-blue/40 lg:w-auto lg:px-4"
               >
                 <MessageCircle className="h-4 w-4 text-[#1fad5a]" aria-hidden />
                 {t("whatsapp")}
               </a>
               <a
                 href={`tel:${PHONE_E164}`}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[#d7e3f0] bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-blue/40"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-[#d7e3f0] bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-blue/40 lg:w-auto lg:px-4"
               >
                 <Phone className="h-4 w-4" aria-hidden />
                 <span>
@@ -173,7 +173,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               width={1600}
               height={1066}
               priority
-              className="aspect-[4/3] w-full rounded-2xl object-cover object-[center_78%] sm:aspect-[5/4] lg:aspect-auto lg:h-auto lg:object-center"
+              className="aspect-[4/3] w-full rounded-2xl object-cover object-[center_72%] lg:aspect-[5/4] lg:max-h-[440px] lg:object-[center_68%]"
               sizes="(max-width: 1024px) 100vw, 560px"
             />
             <figcaption className="mt-3 text-sm leading-relaxed text-brand-navy/60">{t("heroCaption")}</figcaption>
@@ -181,43 +181,50 @@ export function LandingPage({ contactQrDataUrl }: Props) {
         </section>
 
         <section className="border-y border-[#e6eef6] bg-[#f7f9fc]" aria-label={t("trustExperience")}>
-          <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-x-3 gap-y-4 px-4 py-6 sm:gap-6 sm:px-5 sm:py-8 lg:grid-cols-5 lg:px-8">
-            {trust.map(({ key, label, Icon }) => (
-              <li key={key} className="flex min-w-0 items-center gap-2.5 sm:gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-brand-blue shadow-sm lg:h-11 lg:w-11">
-                  <Icon className="h-5 w-5" aria-hidden />
+          <ul className="mx-auto grid max-w-6xl grid-cols-6 items-start gap-x-2 gap-y-4 px-4 py-5 sm:px-5 lg:grid-cols-5 lg:gap-4 lg:py-6 lg:px-8">
+            {trust.map(({ key, label, Icon }, index) => (
+              <li
+                key={key}
+                className={`flex min-w-0 flex-col items-center gap-1.5 text-center lg:flex-row lg:items-center lg:gap-3 lg:text-start ${
+                  index < 3 ? "col-span-2 lg:col-span-1" : "col-span-3 lg:col-span-1"
+                }`}
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-brand-blue shadow-sm lg:h-10 lg:w-10">
+                  <Icon className="h-4 w-4 lg:h-5 lg:w-5" aria-hidden />
                 </span>
-                <span className="text-[13px] font-medium leading-snug text-brand-navy sm:text-sm">{label}</span>
+                <span className="text-[12px] font-medium leading-tight text-brand-navy lg:text-sm">{label}</span>
               </li>
             ))}
           </ul>
         </section>
 
-        <section id="solutions" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-12 sm:px-5 lg:px-8 lg:py-20">
+        <section id="solutions" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-8 sm:px-5 lg:px-8 lg:py-14">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("solutionsTitle")}</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3 lg:gap-3">
             {solutions.map(({ key, href, Icon }) => {
               const page = serviceHref(locale, href);
               return (
-                <article key={key} className="min-w-0 rounded-2xl border border-[#e6eef6] bg-white p-5 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.45)] md:p-6">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#eef5fc] text-brand-blue">
-                    <Icon className="h-6 w-6" aria-hidden />
+                <article key={key} className="flex min-w-0 items-start gap-3 rounded-xl border border-[#e6eef6] bg-white px-3 py-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#eef5fc] text-brand-blue">
+                    <Icon className="h-4 w-4" aria-hidden />
                   </span>
-                  <h3 className="mt-5 text-lg font-semibold text-brand-navy">{t(`${key}Title`)}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-brand-navy/70">{t(`${key}Body`)}</p>
-                  {page ? (
-                    <Link href={page} className="mt-4 inline-flex text-sm font-semibold text-brand-blue hover:underline">
-                      {t("viewService")}
-                    </Link>
-                  ) : null}
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-semibold leading-snug text-brand-navy">{t(`${key}Title`)}</h3>
+                    <p className="mt-1 text-[13px] leading-snug text-brand-navy/70">{t(`${key}Body`)}</p>
+                    {page ? (
+                      <Link href={page} className="mt-1 inline-flex min-h-11 items-center text-[13px] font-semibold text-brand-blue hover:underline">
+                        {t("viewService")}
+                      </Link>
+                    ) : null}
+                  </div>
                 </article>
               );
             })}
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-4 pb-12 sm:px-5 lg:px-8 lg:pb-20">
-          <div className="grid items-center gap-6 rounded-3xl border border-[#e6eef6] bg-white p-4 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.35)] sm:p-6 md:gap-8 md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="mx-auto max-w-6xl px-4 pb-8 sm:px-5 lg:px-8 lg:pb-14">
+          <div className="grid items-center gap-6 rounded-3xl border border-[#e6eef6] bg-white p-4 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.35)] sm:p-6 lg:grid-cols-2 lg:gap-10 lg:p-8">
             <BlueprintSketch label={t("planSketch")} />
             <div className="min-w-0">
               <h2 className="text-xl font-semibold leading-snug tracking-tight text-brand-navy sm:text-2xl md:text-3xl">
@@ -254,16 +261,16 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-4 py-4 pb-12 sm:px-5 lg:px-8 lg:pb-20">
+        <section className="mx-auto max-w-6xl px-4 py-2 pb-10 sm:px-5 lg:px-8 lg:pb-14">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("methodTitle")}</h2>
-          <ol className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 lg:mt-10 lg:grid-cols-6 lg:gap-8">
+          <ol className="mt-6 grid grid-cols-2 gap-x-3 gap-y-6 lg:mt-8 lg:grid-cols-6 lg:gap-4">
             {steps.map((step) => (
-              <li key={step}>
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-sm font-semibold text-white">
+              <li key={step} className="min-w-0">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue text-sm font-semibold text-white">
                   {step}
                 </span>
-                <h3 className="mt-4 text-sm font-semibold text-brand-navy">{t(`step${step}Title`)}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-navy/70">{t(`step${step}Body`)}</p>
+                <h3 className="mt-2 text-[13px] font-semibold leading-snug text-brand-navy">{t(`step${step}Title`)}</h3>
+                <p className="mt-1 text-xs leading-snug text-brand-navy/70">{t(`step${step}Body`)}</p>
               </li>
             ))}
           </ol>
