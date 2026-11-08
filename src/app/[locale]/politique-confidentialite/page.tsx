@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { SiteNav } from "@/components/SiteNav";
 import { JsonLd } from "@/components/seo/JsonLd";
 import type { Locale } from "@/i18n/routing";
 import { localePageMetadata } from "@/lib/locale-page-metadata";
@@ -39,14 +40,16 @@ export default async function PolitiqueConfidentialitePage({ params }: Props) {
   ];
 
   return (
-    <div className="min-h-screen bg-brand-off text-brand-ink">
+    <div className="min-h-screen bg-white text-brand-ink">
       <JsonLd
         data={breadcrumbJsonLd([
           { name: nav("home"), url: absoluteUrl(loc, "/") },
           { name: t("heading"), url: absoluteUrl(loc, "/politique-confidentialite") },
         ])}
       />
-      <article className="mx-auto max-w-3xl px-4 py-12 md:py-16">
+      <SiteNav />
+      <div className="mx-auto max-w-[1100px] px-5 pt-6 sm:px-8 lg:px-10">
+        <article className="mx-auto max-w-3xl pb-16 pt-6">
         <nav aria-label={nav("backHome")}>
           <Link
             href="/"
@@ -56,9 +59,9 @@ export default async function PolitiqueConfidentialitePage({ params }: Props) {
           </Link>
         </nav>
 
-        <div className="section-surface mt-10 rounded-md px-6 py-10 shadow-brand-lg md:px-10 md:py-12">
+        <div className="mt-8">
           <header className="border-b border-brand-silver pb-8">
-            <h1 className="text-2xl font-black uppercase tracking-tight text-brand-ink md:text-3xl">
+            <h1 className="text-3xl font-semibold tracking-tight text-brand-ink">
               {t("heading")}
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">{t("intro")}</p>
@@ -67,7 +70,7 @@ export default async function PolitiqueConfidentialitePage({ params }: Props) {
           <div className="mt-10 flex flex-col gap-10">
             {blocks.map(({ titleKey, bodyKey }) => (
               <section key={titleKey}>
-                <h2 className="text-base font-black uppercase tracking-wide text-brand-blue md:text-lg">
+                <h2 className="text-lg font-semibold text-brand-ink">
                   {t(titleKey)}
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-brand-navy/75 md:text-base">
@@ -78,6 +81,7 @@ export default async function PolitiqueConfidentialitePage({ params }: Props) {
           </div>
         </div>
       </article>
+      </div>
     </div>
   );
 }

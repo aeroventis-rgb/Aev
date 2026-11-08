@@ -49,8 +49,8 @@ export default async function OpenGraphImage({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#000E31",
-          color: "#FFFFFF",
+          background: "#FFFFFF",
+          color: "#000E31",
           padding: "64px 72px",
           fontFamily: text.font,
         }}
@@ -72,7 +72,7 @@ export default async function OpenGraphImage({
           <div style={{ fontSize: locale === "ar" ? 64 : 58, lineHeight: 1.15, maxWidth: 980 }}>
             {text.title}
           </div>
-          <div style={{ fontSize: 32, color: "#E3E3E3" }}>{text.subtitle}</div>
+          <div style={{ fontSize: 32, color: "#022F70" }}>{text.subtitle}</div>
         </div>
         <div
           style={{

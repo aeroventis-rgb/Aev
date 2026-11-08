@@ -32,7 +32,7 @@ export function LanguageSwitcher({ compact }: { compact?: boolean }) {
           prefetch={false}
           className={`inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md font-bold transition sm:min-h-[36px] sm:min-w-[36px] ${pad} ${textSz} ${
             locale === loc
-              ? "brand-gradient text-brand-white shadow-sm pointer-events-none"
+              ? "bg-brand-blue text-white pointer-events-none"
               : "text-brand-navy hover:bg-brand-off"
           }`}
           aria-current={locale === loc ? "page" : undefined}

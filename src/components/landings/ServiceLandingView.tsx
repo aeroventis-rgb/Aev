@@ -12,13 +12,13 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
   const tc = await getTranslations("cta");
 
   return (
-    <div className="min-h-screen bg-brand-off text-brand-ink">
-      <div className="mx-auto max-w-[1360px] px-4 pt-6 sm:px-6 lg:px-10">
-        <SiteNav />
+    <div className="min-h-screen bg-white text-brand-ink">
+      <SiteNav />
+      <div className="mx-auto max-w-[1100px] px-5 pt-6 sm:px-8 lg:px-10">
         <article className="mx-auto max-w-4xl pb-20">
           <Breadcrumbs items={page.breadcrumbs} />
-          <header className="section-surface rounded-md border border-brand-silver px-6 py-10 shadow-brand md:px-10">
-            <h1 className="text-3xl font-black uppercase leading-tight tracking-tight text-brand-ink md:text-4xl">
+          <header className="border-b border-brand-silver pb-10">
+            <h1 className="text-3xl font-semibold leading-tight tracking-tight text-brand-ink md:text-4xl">
               {page.h1}
             </h1>
             <div className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">
@@ -35,14 +35,14 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
           ) : null}
 
           <section className="mt-10" aria-labelledby="services-heading">
-            <h2 id="services-heading" className="text-xl font-black uppercase tracking-wide text-brand-blue">
+            <h2 id="services-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
               Services
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{page.servicesIntro}</p>
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {page.services.map((service) => (
-                <section key={service.title} className="rounded-md border border-brand-silver bg-brand-white p-5 shadow-brand-sm">
-                  <h3 className="text-sm font-black uppercase tracking-wide text-brand-ink">{service.title}</h3>
+                <section key={service.title} className="rounded-md border border-brand-silver bg-white p-6">
+                  <h3 className="text-base font-semibold text-brand-ink">{service.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-brand-navy/75">{service.body}</p>
                 </section>
               ))}
@@ -50,23 +50,23 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
           </section>
 
           <section className="mt-12" aria-labelledby="comparison-heading">
-            <h2 id="comparison-heading" className="text-xl font-black uppercase tracking-wide text-brand-blue">
+            <h2 id="comparison-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
               {page.showHvacComparison === false ? "Ce qui se décide sur place" : "Split, gainable et VRV"}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{page.comparisonIntro}</p>
             {page.showHvacComparison === false ? (
               <div className="mt-6 grid gap-4 md:grid-cols-3">
                 {page.points?.map((point) => (
-                  <section key={point.title} className="rounded-md border border-brand-silver bg-brand-white p-5 shadow-brand-sm">
-                    <h3 className="text-sm font-black uppercase tracking-wide text-brand-ink">{point.title}</h3>
+                  <section key={point.title} className="rounded-md border border-brand-silver bg-white p-6">
+                    <h3 className="text-base font-semibold text-brand-ink">{point.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-brand-navy/75">{point.body}</p>
                   </section>
                 ))}
               </div>
             ) : (
-            <div className="mt-6 overflow-x-auto rounded-md border border-brand-silver bg-brand-white shadow-brand-sm">
+            <div className="mt-6 overflow-x-auto rounded-md border border-brand-silver bg-white">
               <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-                <thead className="bg-brand-navy text-brand-white">
+                <thead className="bg-brand-off text-brand-ink">
                   <tr>
                     <th scope="col" className="px-4 py-3 font-bold">
                       Critère
@@ -108,14 +108,14 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
           </section>
 
           <section className="mt-12" aria-labelledby="process-heading">
-            <h2 id="process-heading" className="text-xl font-black uppercase tracking-wide text-brand-blue">
+            <h2 id="process-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
               Déroulé
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{page.processIntro}</p>
             <ol className="mt-6 grid gap-4 md:grid-cols-2">
               {PROCESS_TITLES.map((title, index) => (
-                <li key={title} className="rounded-md border border-brand-silver bg-brand-white p-5 shadow-brand-sm">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-brand-blue">
+                <li key={title} className="rounded-md border border-brand-silver bg-white p-6">
+                  <p className="text-sm font-semibold text-brand-blue">
                     {index + 1}. {title}
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-brand-navy/80">{page.process[index]}</p>
@@ -125,13 +125,13 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
           </section>
 
           <section className="mt-12" aria-labelledby="faq-heading">
-            <h2 id="faq-heading" className="text-xl font-black uppercase tracking-wide text-brand-blue">
+            <h2 id="faq-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
               Questions fréquentes
             </h2>
             <div className="mt-6 flex flex-col gap-6">
               {page.faqs.map((faq) => (
                 <section key={faq.question}>
-                  <h3 className="text-base font-black text-brand-ink">{faq.question}</h3>
+                  <h3 className="text-base font-semibold text-brand-ink">{faq.question}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-brand-navy/80">{faq.answer}</p>
                 </section>
               ))}
@@ -139,7 +139,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
           </section>
 
           <nav className="mt-12" aria-label="Pages liées">
-            <h2 className="text-xl font-black uppercase tracking-wide text-brand-blue">Pages liées</h2>
+            <h2 className="text-xl font-semibold tracking-tight text-brand-ink">Pages liées</h2>
             <ul className="mt-4 flex flex-col gap-2">
               {page.links.map((link) => (
                 <li key={link.href}>
@@ -154,17 +154,17 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
             </ul>
           </nav>
 
-          <section className="section-navy mt-12 rounded-md px-6 py-8 text-brand-white md:px-10" aria-labelledby="cta-heading">
-            <h2 id="cta-heading" className="text-xl font-black uppercase tracking-wide">
+          <section className="mt-16 border-t border-brand-silver pt-10" aria-labelledby="cta-heading">
+            <h2 id="cta-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
               Parler du projet
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-brand-silver">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-brand-navy/75">
               Indiquez la ville, le quartier et le type de logement. Un technicien convient d&apos;une visite pour voir les lieux.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 href={`tel:${PHONE_E164}`}
-                className="brand-gradient inline-flex min-h-[48px] items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-black uppercase tracking-wide text-brand-white"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-brand-blue px-5 text-sm font-semibold text-white"
               >
                 <Phone className="h-4 w-4" aria-hidden />
                 {tc("callNow")} · {PHONE_DISPLAY}
@@ -173,7 +173,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-md border border-brand-blue-light/40 bg-brand-white/10 px-6 py-3 text-sm font-black uppercase tracking-wide text-brand-white"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-brand-silver bg-white px-5 text-sm font-semibold text-brand-navy"
               >
                 <MessageCircle className="h-4 w-4" aria-hidden />
                 {tc("whatsapp")}

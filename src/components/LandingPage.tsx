@@ -1,512 +1,435 @@
 "use client";
 
-import type { ReactNode } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {
-  Shield,
+  AirVent,
   Award,
-  Handshake,
-  ClipboardList,
-  HardHat,
-  ShieldCheck,
+  Building2,
+  Check,
+  Droplets,
+  Fan,
   Headphones,
-  Scale,
-  CalendarClock,
-  Phone,
   MapPin,
-  Star,
   MessageCircle,
+  Phone,
+  Send,
+  Shield,
+  Snowflake,
+  Thermometer,
+  Users,
+  Wind,
+  Wrench,
+  LayoutGrid,
+  Package,
 } from "lucide-react";
-import { BrandSlide } from "@/components/BrandSlide";
 import { SiteNav } from "@/components/SiteNav";
 import { PartnerLogos } from "@/components/PartnerLogos";
-import { ClimateHeroBreath, ClimateSectionMotion } from "@/components/ClimateMotionFX";
 import { BRAND_SLIDES } from "@/lib/brand-slides";
-import {
-  PHONE_E164,
-  WHATSAPP_URL,
-  IMAGES,
-  BRAND_HERO_POSTER_SRC,
-  BRAND_LOGO_SRC,
-} from "@/lib/constants";
+import { BRAND_LOGO_SRC, IMAGES, PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
 import type { Locale } from "@/i18n/routing";
 import { localesForPath } from "@/lib/routes";
-
-const trustIcons = [
-  { key: "expertise" as const, Icon: Shield },
-  { key: "quality" as const, Icon: Award },
-  { key: "trust" as const, Icon: Handshake },
-];
-
-const processItems = [
-  { key: "study" as const, Icon: ClipboardList },
-  { key: "install" as const, Icon: HardHat },
-  { key: "result" as const, Icon: ShieldCheck },
-  { key: "afterSales" as const, Icon: Headphones },
-];
-
-const benefitItems = [
-  { key: "guarantee" as const, Icon: Shield },
-  { key: "economy" as const, Icon: Scale },
-  { key: "deadlines" as const, Icon: CalendarClock },
-  { key: "material" as const, Icon: Award },
-];
 
 type Props = {
   contactQrDataUrl: string;
 };
 
-function SectionTitle({
-  title,
-  subtitle,
-  accentSpan,
-  tone = "light",
-}: {
-  title: string;
-  subtitle?: string;
-  accentSpan?: ReactNode;
-  tone?: "light" | "dark";
-}) {
-  const isDark = tone === "dark";
-  return (
-    <div className="mb-12 md:mb-14">
-      <div className="mb-5 flex items-center gap-4 md:mb-6">
-        <span
-          className={`h-1 w-14 shrink-0 rounded-full bg-gradient-to-r ${
-            isDark
-              ? "from-brand-blue-light via-brand-silver to-transparent"
-              : "from-brand-blue via-brand-blue-light to-transparent"
-          }`}
-        />
-        <h2
-          className={`text-2xl font-black uppercase tracking-[0.12em] md:text-3xl lg:text-[2.1rem] ${
-            isDark ? "text-brand-white" : "text-brand-ink"
-          }`}
-        >
-          {title}
-          {accentSpan}
-        </h2>
-      </div>
-      {subtitle ? (
-        <p
-          className={`max-w-2xl text-sm font-medium leading-relaxed md:text-base ${
-            isDark ? "text-brand-silver" : "text-brand-navy/75"
-          }`}
-        >
-          {subtitle}
-        </p>
-      ) : null}
-    </div>
-  );
+const solutions = [
+  { key: "gainable", href: "/climatisation-gainable", Icon: AirVent },
+  { key: "split", href: "/climatisation", Icon: Thermometer },
+  { key: "cassette", href: null, Icon: LayoutGrid },
+  { key: "ventilation", href: "/ventilation", Icon: Fan },
+  { key: "plumbing", href: "/plomberie", Icon: Droplets },
+  { key: "maintenance", href: "/entretien-climatisation-casablanca", Icon: Wrench },
+  { key: "extraction", href: "/extraction", Icon: Wind },
+  { key: "smoke", href: "/desenfumage", Icon: Shield },
+  { key: "cooling", href: null, Icon: Snowflake },
+] as const;
+
+const steps = ["1", "2", "3", "4", "5", "6"] as const;
+
+const works = [
+  { key: "workGainable", href: "/climatisation-gainable", src: BRAND_SLIDES.gainable },
+  { key: "workVentilation", href: "/ventilation", src: BRAND_SLIDES.ventilation },
+  { key: "workInstall", href: "/climatisation", src: BRAND_SLIDES.installation },
+] as const;
+
+function serviceHref(locale: Locale, path: string | null) {
+  if (!path) return null;
+  const allowed = localesForPath(path);
+  if (allowed && !allowed.includes(locale)) return null;
+  return path;
 }
 
-function MobileDock() {
-  const tc = useTranslations("cta");
-  const tn = useTranslations("nav");
-
+function BlueprintSketch({ label }: { label: string }) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 flex h-[3.75rem] overflow-hidden border-t border-brand-silver bg-brand-white shadow-nav lg:hidden">
-      <a
-        href={`tel:${PHONE_E164}`}
-        className="brand-gradient flex flex-[1.05] items-center justify-center gap-2 font-black uppercase tracking-wide text-brand-white"
-      >
-        <Phone className="h-6 w-6" aria-hidden />
-        <span className="text-[11px] sm:text-xs">{tc("phone")}</span>
-      </a>
-      <a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex flex-1 items-center justify-center gap-2 bg-brand-navy font-black uppercase tracking-wide text-brand-white transition hover:bg-brand-ink"
-        aria-label={tn("contact")}
-      >
-        <MessageCircle className="h-6 w-6" aria-hidden />
-        <span className="text-[11px] sm:text-xs">WhatsApp</span>
-      </a>
-    </div>
+    <figure className="rounded-2xl bg-[#f4f8fc] p-6">
+      <svg viewBox="0 0 360 240" className="h-auto w-full text-brand-blue/80" aria-hidden>
+        <rect x="16" y="16" width="328" height="208" rx="4" fill="none" stroke="currentColor" strokeWidth="2" />
+        <path d="M16 112 H210 V16" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M210 112 H344" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M120 112 V224" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        <rect x="40" y="36" width="48" height="28" fill="none" stroke="currentColor" strokeWidth="1.25" />
+        <rect x="236" y="140" width="72" height="40" fill="none" stroke="currentColor" strokeWidth="1.25" />
+        <path d="M150 48 h36 M168 30 v36" fill="none" stroke="currentColor" strokeWidth="1.25" />
+        <path d="M70 160 h28 M84 146 v28" fill="none" stroke="currentColor" strokeWidth="1.25" />
+      </svg>
+      <figcaption className="mt-3 text-xs leading-relaxed text-brand-navy/60">{label}</figcaption>
+    </figure>
   );
 }
 
 export function LandingPage({ contactQrDataUrl }: Props) {
-  const tb = useTranslations("brand");
-  const th = useTranslations("hero");
-  const thl = useTranslations("highlight");
-  const tp = useTranslations("process");
-  const tslides = useTranslations("slides");
-  const tben = useTranslations("benefits");
-  const tc = useTranslations("cta");
-  const tl = useTranslations("locations");
-  const tpart = useTranslations("partners");
-  const ti = useTranslations("images");
+  const t = useTranslations("home");
   const tn = useTranslations("nav");
   const tf = useTranslations("footer");
+  const ti = useTranslations("images");
+  const tb = useTranslations("brand");
   const locale = useLocale() as Locale;
+  const planUrl = `${WHATSAPP_URL}?text=${encodeURIComponent(t("planMessage"))}`;
 
-  const footerLinks = [
-    { href: "/qui-sommes-nous" as const, label: tf("about") },
-    { href: "/nos-services" as const, label: tf("ourServices") },
-    { href: "/climatisation" as const, label: tf("climatisation") },
-    { href: "/ventilation" as const, label: tf("ventilation") },
-    { href: "/extraction" as const, label: tf("extraction") },
-    { href: "/desenfumage" as const, label: tf("smoke") },
-    { href: "/plomberie" as const, label: tf("plumbing") },
-    { href: "/zone-intervention" as const, label: tf("coverage") },
-    { href: "/blog" as const, label: tf("blog") },
-    { href: "/mentions-legales" as const, label: tf("legal") },
-    { href: "/politique-confidentialite" as const, label: tf("privacy") },
-    { href: "/contact" as const, label: tf("contact") },
-    { href: "/plan-du-site" as const, label: tf("sitemap") },
-  ].filter((item) => {
-    const allowed = localesForPath(item.href);
-    return !allowed || allowed.includes(locale);
-  });
+  const trust = [
+    { key: "experience", label: t("trustExperience"), Icon: Award },
+    { key: "projects", label: t("trustProjects"), Icon: Building2 },
+    { key: "teams", label: t("trustTeams"), Icon: Users },
+    { key: "equipment", label: t("trustEquipment"), Icon: Package },
+    { key: "service", label: t("trustService"), Icon: Headphones },
+  ];
+
+  const footerNav = [
+    { label: tn("home"), href: "/" as const },
+    { label: tn("services"), href: serviceHref(locale, "/nos-services") ?? ({ pathname: "/", hash: "solutions" } as const) },
+    { label: tn("projects"), href: { pathname: "/", hash: "realisations" } as const },
+    { label: tn("about"), href: serviceHref(locale, "/qui-sommes-nous") ?? ({ pathname: "/", hash: "a-propos" } as const) },
+    { label: tn("coverage"), href: serviceHref(locale, "/zone-intervention") ?? ({ pathname: "/", hash: "zone" } as const) },
+    { label: tn("contact"), href: "/contact" as const },
+    { label: tf("blog"), href: "/blog" as const },
+  ];
+
+  const footerServices = [
+    { label: tf("climatisation"), href: "/climatisation" },
+    { label: tf("ventilation"), href: "/ventilation" },
+    { label: tf("extraction"), href: "/extraction" },
+    { label: tf("smoke"), href: "/desenfumage" },
+    { label: tf("plumbing"), href: "/plomberie" },
+    { label: t("coolingTitle"), href: null },
+    { label: t("maintenanceTitle"), href: "/entretien-climatisation-casablanca" },
+  ];
 
   return (
-    <div className="min-h-screen bg-brand-off pb-[3.85rem] lg:pb-0">
+    <div className="min-h-screen bg-white text-brand-ink">
+      <SiteNav />
 
-      <MobileDock />
-
-      <main id="main-content" className="relative">
-        <div className="mx-auto max-w-[1360px] px-4 pb-10 pt-6 sm:px-6 md:pb-14 md:pt-10 lg:px-10">
-          <SiteNav />
-
-          <header className="hero-frame relative overflow-hidden rounded-md bg-brand-ink">
-            <div className="absolute inset-x-0 top-0 z-30 h-[3px] brand-gradient" aria-hidden />
-
-            <div className="relative min-h-[min(100svh,920px)] lg:min-h-[min(92svh,880px)]">
-              <Image
-                src={IMAGES.heroVilla}
-                alt={ti("hero")}
-                fill
-                priority
-                quality={75}
-                className="object-cover object-[center_55%] brightness-[0.92] contrast-[1.05] saturate-[1.08] sm:object-bottom md:object-[center_50%]"
-                sizes="(max-width: 1360px) 100vw, 1360px"
-              />
-
-              <div className="absolute inset-0 bg-hero-overlay" aria-hidden />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-brand-ink via-transparent to-brand-navy/40"
-                aria-hidden
-              />
-
-              <ClimateHeroBreath />
-
-              <div className="relative z-10 mx-auto flex min-h-[min(100svh,920px)] max-w-6xl flex-col gap-10 px-5 py-10 sm:px-8 md:gap-12 md:py-14 lg:grid lg:min-h-[min(92svh,880px)] lg:grid-cols-[minmax(280px,340px)_1fr] lg:items-center lg:gap-14 lg:px-10">
-                <div className="panel-glass relative rounded-md border border-brand-silver px-4 py-5 sm:px-5 sm:py-6 md:px-6 md:py-7">
-                  <div className="absolute -start-px -top-px h-14 w-14 border-l-2 border-t-2 border-brand-blue/60" />
-                  <div className="absolute -bottom-px -end-px h-14 w-14 border-b-2 border-r-2 border-brand-blue/60" />
-
-                  <Image
-                    src={BRAND_HERO_POSTER_SRC}
-                    alt={`${tb("name")} — ${tb("tagline")}. ${tb("motto")}`}
-                    width={640}
-                    height={960}
-                    priority
-                    className="mx-auto h-auto w-full max-w-[min(100%,19rem)] object-contain sm:max-w-[21rem] md:mx-0 md:max-w-[22rem] lg:max-w-[24rem]"
-                    sizes="(max-width: 768px) 304px, 384px"
-                  />
-                </div>
-
-                <div className="relative flex flex-col justify-center lg:py-6">
-                  <h1 className="text-shadow-brand max-w-[22rem] font-black uppercase leading-[1.02] tracking-[0.03em] text-brand-white sm:max-w-xl lg:max-w-3xl [font-size:clamp(2rem,6vw,3.85rem)]">
-                    {th("headline1")}{" "}
-                    <span className="text-shadow-blue-glow text-brand-blue-light">{th("headline2")}</span>
-                  </h1>
-
-                  <div className="mt-8 inline-flex w-fit rounded-md border border-brand-blue-light/50 bg-brand-navy/50 px-8 py-3.5 backdrop-blur-sm">
-                    <p className="text-sm font-black uppercase tracking-[0.18em] text-brand-white md:text-base">
-                      {th("solution")}
-                    </p>
-                  </div>
-
-                  <div className="mt-9 flex flex-wrap gap-x-10 gap-y-4 rounded-md border border-brand-silver/30 bg-brand-ink/40 px-8 py-4 backdrop-blur-sm md:gap-x-12 md:py-5">
-                    {trustIcons.map(({ key, Icon }) => (
-                      <div key={key} className="flex items-center gap-3">
-                        <Icon className="h-8 w-8 shrink-0 text-brand-blue-light" strokeWidth={1.75} aria-hidden />
-                        <span className="text-[11px] font-black uppercase tracking-[0.28em] text-brand-white md:text-xs">
-                          {th(key)}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-12 flex justify-center md:mt-14 lg:absolute lg:end-0 lg:top-1/2 lg:mt-0 lg:-translate-y-1/2 lg:justify-end xl:end-4">
-                    <div className="brand-gradient relative flex h-[9.5rem] w-[9.5rem] flex-col items-center justify-center rounded-full border-[5px] border-brand-silver shadow-brand-lg ring-4 ring-brand-white/20 md:h-[11rem] md:w-[11rem] lg:-rotate-[6deg]">
-                      <span className="text-center text-2xl font-black leading-none text-brand-white md:text-[1.65rem]">
-                        {th("experience")}
-                      </span>
-                      <span className="mt-2 max-w-[7rem] text-center text-[11px] font-black uppercase leading-tight text-brand-white/95 md:max-w-none">
-                        {th("experienceSub")}
-                      </span>
-                      <div className="mt-3 flex gap-1">
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-brand-white text-brand-white md:h-[1.15rem] md:w-[1.15rem]" aria-hidden />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <main id="main-content">
+        <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:py-16">
+          <div>
+            <h1 className="max-w-xl text-4xl font-semibold leading-[1.15] tracking-tight text-brand-navy md:text-5xl">
+              {t("heroTitleLead")}
+              <span className="mt-1 block text-brand-blue">{t("heroTitleAccent")}</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-navy/75 md:text-lg">
+              {t("heroSubtitle")}
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href={planUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white transition hover:bg-brand-navy"
+              >
+                <Send className="h-4 w-4" aria-hidden />
+                {t("sendPlan")}
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[#d7e3f0] bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-blue/40"
+              >
+                <MessageCircle className="h-4 w-4 text-[#1fad5a]" aria-hidden />
+                {t("whatsapp")}
+              </a>
+              <a
+                href={`tel:${PHONE_E164}`}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-[#d7e3f0] bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-blue/40"
+              >
+                <Phone className="h-4 w-4" aria-hidden />
+                <span>
+                  {t("call")} <span dir="ltr">{PHONE_DISPLAY}</span>
+                </span>
+              </a>
             </div>
-          </header>
-
-          <div className="mt-10 flex flex-col gap-12 md:mt-14 md:gap-16 lg:gap-20">
-          <div
-            id="services"
-            className="section-surface relative scroll-mt-28 overflow-hidden rounded-md border border-brand-silver px-5 py-14 shadow-brand-md sm:px-8 md:py-20 md:px-10"
-          >
-            <ClimateSectionMotion />
-            <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
-
-            <div className="relative z-10 mx-auto max-w-6xl">
-              <SectionTitle
-                title={thl("title1")}
-                accentSpan={
-                  <>
-                    {" "}
-                    <span className="text-brand-blue">{thl("title2")}</span>
-                  </>
-                }
-              />
-
-              <div className="mt-3 mb-12">
-                <div className="inline-flex rounded-md border border-brand-silver bg-brand-off px-8 py-3.5 md:px-10 md:py-4">
-                  <p className="text-[11px] font-black uppercase tracking-[0.18em] text-brand-navy md:text-[13px]">
-                    {thl("subtitle")}
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid divide-y divide-brand-silver rounded-md border border-brand-silver bg-brand-white md:grid-cols-4 md:divide-x md:divide-y-0">
-                {processItems.map(({ key, Icon }) => (
-                  <article
-                    key={key}
-                    className="group flex flex-col items-center px-6 py-11 text-center transition-colors hover:bg-brand-off md:py-14"
-                  >
-                    <div className="mb-6 flex h-[4.25rem] w-[4.25rem] items-center justify-center rounded-full brand-gradient shadow-brand-sm transition-transform group-hover:scale-105">
-                      <Icon className="h-[2rem] w-[2rem] text-brand-white" strokeWidth={2} aria-hidden />
-                    </div>
-                    <h3 className="max-w-[13rem] text-xs font-black uppercase leading-snug tracking-[0.06em] text-brand-blue md:text-[13px]">
-                      {tp(`${key}.title`)}
-                    </h3>
-                    <p className="mt-4 max-w-[220px] text-[13px] font-medium leading-relaxed text-brand-navy/75 md:text-sm">
-                      {tp(`${key}.desc`)}
-                    </p>
-                  </article>
-                ))}
-              </div>
-              <div className="mt-10 grid gap-4 md:grid-cols-2">
-                <BrandSlide
-                  src={BRAND_SLIDES.solutions}
-                  alt={`${tslides("note")} ${tslides("solutions")}`}
-                  caption={tslides("solutions")}
-                />
-                <BrandSlide
-                  src={BRAND_SLIDES.reseaux}
-                  alt={`${tslides("note")} ${tslides("ducts")}`}
-                  caption={tslides("ducts")}
-                />
-              </div>
-            </div>
+            <p className="mt-6 flex items-center gap-2 text-sm text-brand-navy/70">
+              <MapPin className="h-4 w-4 text-brand-blue" aria-hidden />
+              {t("heroCities")}
+            </p>
           </div>
 
-          <div
-            id="realisations"
-            className="section-navy relative scroll-mt-28 overflow-hidden rounded-md px-5 py-14 sm:px-8 md:py-20 md:px-10"
-          >
-            <ClimateSectionMotion intensity="light" />
-            <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
+          <figure>
+            <Image
+              src={IMAGES.heroVilla}
+              alt={ti("hero")}
+              width={1600}
+              height={1066}
+              priority
+              className="h-auto w-full rounded-2xl object-cover"
+              sizes="(max-width: 1024px) 100vw, 560px"
+            />
+            <figcaption className="mt-3 text-sm leading-relaxed text-brand-navy/60">{t("heroCaption")}</figcaption>
+          </figure>
+        </section>
 
-            <div className="relative z-10 mx-auto max-w-6xl">
-              <SectionTitle tone="dark" title={tn("projects")} />
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {(
-                  [
-                    ["gainable", BRAND_SLIDES.gainable],
-                    ["outdoor", BRAND_SLIDES.exterieur],
-                    ["ventilation", BRAND_SLIDES.ventilation],
-                    ["install", BRAND_SLIDES.installation],
-                    ["regulation", BRAND_SLIDES.regulation],
-                    ["commissioning", BRAND_SLIDES.miseEnService],
-                    ["projects", BRAND_SLIDES.projets],
-                  ] as const
-                ).map(([key, src]) => (
-                  <BrandSlide
-                    key={key}
-                    src={src}
-                    alt={`${tslides("note")} ${tslides(key)}`}
-                    caption={tslides(key)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+        <section className="border-y border-[#e6eef6] bg-[#f7f9fc]" aria-label={t("trustExperience")}>
+          <ul className="mx-auto grid max-w-6xl gap-6 px-5 py-8 sm:grid-cols-2 lg:grid-cols-5 lg:px-8">
+            {trust.map(({ key, label, Icon }) => (
+              <li key={key} className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand-blue shadow-sm">
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
+                <span className="text-sm font-medium text-brand-navy">{label}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-          <div
-            id="engagements"
-            className="section-surface relative scroll-mt-28 overflow-hidden rounded-md border border-brand-silver px-5 py-14 sm:px-8 md:py-20 md:px-10"
-          >
-            <ClimateSectionMotion />
-            <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
-            <div className="relative z-10 mx-auto max-w-6xl">
-              <SectionTitle title={tn("benefits")} />
-
-              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-                {benefitItems.map(({ key, Icon }) => (
-                  <article
-                    key={key}
-                    className="rounded-md border border-brand-silver bg-brand-white p-6 shadow-brand-sm transition-colors hover:border-brand-blue/40 hover:shadow-brand-md"
-                  >
-                    <Icon className="h-11 w-11 text-brand-blue" strokeWidth={1.75} aria-hidden />
-                    <h3 className="mt-5 text-[13px] font-black uppercase leading-snug tracking-wide text-brand-ink">
-                      {tben(`${key}.title`)}
-                    </h3>
-                    <p className="mt-3 text-[13px] font-medium leading-relaxed text-brand-navy/75">
-                      {tben(`${key}.desc`)}
-                    </p>
-                  </article>
-                ))}
-              </div>
-              <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {(
-                  [
-                    ["why", BRAND_SLIDES.pourquoi],
-                    ["quality", BRAND_SLIDES.qualite],
-                    ["commitments", BRAND_SLIDES.engagements],
-                    ["maintenance", BRAND_SLIDES.maintenance],
-                    ["preventive", BRAND_SLIDES.preventive],
-                    ["service", BRAND_SLIDES.sav],
-                  ] as const
-                ).map(([key, src]) => (
-                  <BrandSlide
-                    key={key}
-                    src={src}
-                    alt={`${tslides("note")} ${tslides(key)}`}
-                    caption={tslides(key)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <footer
-            id="contact"
-            className="section-navy relative scroll-mt-28 overflow-hidden rounded-md px-5 py-14 sm:px-8 md:py-20 md:px-10"
-          >
-            <ClimateSectionMotion intensity="light" />
-            <div className="absolute inset-x-0 top-0 z-[8] h-[3px] brand-gradient" aria-hidden />
-
-            <div className="relative z-10 mx-auto max-w-6xl">
-              <div className="mb-16 flex justify-center border-b border-brand-silver/20 pb-14 md:mb-20 md:pb-16">
-                <Link
-                  href="/"
-                  className="rounded-md transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-light"
-                  aria-label={`${tb("name")}, ${tb("tagline")}`}
-                >
-                  <span className="block rounded-md bg-white p-3 shadow-brand">
-                    <Image
-                      src={BRAND_LOGO_SRC}
-                      alt=""
-                      width={1536}
-                      height={1536}
-                      className="h-auto w-40 sm:w-52"
-                    />
+        <section id="solutions" className="scroll-mt-28 mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
+          <h2 className="text-center text-3xl font-semibold tracking-tight text-brand-navy">{t("solutionsTitle")}</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {solutions.map(({ key, href, Icon }) => {
+              const page = serviceHref(locale, href);
+              return (
+                <article key={key} className="rounded-2xl border border-[#e6eef6] bg-white p-6 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.45)]">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#eef5fc] text-brand-blue">
+                    <Icon className="h-6 w-6" aria-hidden />
                   </span>
-                </Link>
-              </div>
+                  <h3 className="mt-5 text-lg font-semibold text-brand-navy">{t(`${key}Title`)}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-brand-navy/70">{t(`${key}Body`)}</p>
+                  {page ? (
+                    <Link href={page} className="mt-4 inline-flex text-sm font-semibold text-brand-blue hover:underline">
+                      {t("viewService")}
+                    </Link>
+                  ) : null}
+                </article>
+              );
+            })}
+          </div>
+        </section>
 
-              <div className="flex flex-col items-stretch gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
-                <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-center">
-                  <a
-                    href={`tel:${PHONE_E164}`}
-                    className="brand-gradient flex h-28 w-28 shrink-0 items-center justify-center rounded-full border-[5px] border-brand-silver shadow-brand-lg ring-4 ring-brand-white/15 transition-transform hover:scale-[1.05]"
-                    aria-label={tc("callNow")}
-                  >
-                    <Phone className="h-14 w-14 text-brand-white" aria-hidden />
-                  </a>
-                  <div className="text-center sm:text-start">
-                    <p className="text-sm font-black uppercase tracking-[0.35em] text-brand-blue-light">
-                      {tc("callNow")}
-                    </p>
-                    <a
-                      href={`tel:${PHONE_E164}`}
-                      className="mt-3 block font-black tracking-wide text-brand-white [font-size:clamp(2rem,5vw,3rem)] hover:text-brand-blue-light"
-                    >
-                      {tc("phone")}
-                    </a>
-                    <p className="mt-3 text-sm font-semibold uppercase tracking-wide text-brand-silver">
-                      {tc("quote")}
-                    </p>
-                  </div>
-                </div>
-
+        <section className="mx-auto max-w-6xl px-5 pb-16 lg:px-8 lg:pb-20">
+          <div className="grid items-center gap-8 rounded-3xl border border-[#e6eef6] bg-white p-6 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.35)] md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <BlueprintSketch label={t("planSketch")} />
+            <div>
+              <h2 className="text-2xl font-semibold leading-snug tracking-tight text-brand-navy md:text-3xl">
+                {t("planTitle")} <span className="text-brand-blue">{t("planAccent")}</span>
+              </h2>
+              <ul className="mt-6 space-y-3">
+                {(["planSurfaces", "planPower", "planLayout", "planAir"] as const).map((key) => (
+                  <li key={key} className="flex items-start gap-3 text-sm text-brand-navy/80">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-blue" aria-hidden />
+                    {t(key)}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href={WHATSAPP_URL}
+                  href={planUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-4 rounded-md border border-brand-blue-light/40 bg-brand-blue px-12 py-5 text-base font-black uppercase tracking-[0.14em] text-brand-white shadow-brand-lg transition hover:bg-brand-blue-light"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#1fad5a] px-5 text-sm font-semibold text-white transition hover:bg-[#188a48]"
                 >
-                  <svg viewBox="0 0 24 24" className="h-10 w-10 shrink-0 fill-current" aria-hidden>
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  {tc("whatsapp")}
+                  <MessageCircle className="h-4 w-4" aria-hidden />
+                  {t("planWhatsapp")}
                 </a>
-
-                <div className="flex flex-col items-center gap-3 lg:items-end">
-                  <Image
-                    src={contactQrDataUrl}
-                    alt={tc("scanQr")}
-                    width={152}
-                    height={152}
-                    className="rounded-sm border-2 border-white/25 bg-white p-2.5 shadow-xl"
-                    unoptimized
-                  />
-                  <p className="max-w-[11rem] text-center text-[10px] font-semibold uppercase leading-snug tracking-wide text-white/55 lg:text-end">
-                    {tc("scanQr")}
-                  </p>
-                </div>
+                <a
+                  href={`tel:${PHONE_E164}`}
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white transition hover:bg-brand-navy"
+                >
+                  <Phone className="h-4 w-4" aria-hidden />
+                  <span dir="ltr">{PHONE_DISPLAY}</span>
+                </a>
               </div>
-
-              <div className="mt-16 flex flex-col items-center justify-between gap-8 border-t border-brand-silver/20 pt-14 md:mt-20 md:flex-row md:pt-16">
-                <div className="flex items-center gap-3">
-                  <MapPin className="h-7 w-7 shrink-0 text-brand-blue-light" aria-hidden />
-                  <span className="text-sm font-black uppercase tracking-[0.25em] text-brand-white">
-                    {tl("cities")}
-                  </span>
-                </div>
-                <div className="brand-gradient rounded-md px-10 py-3 shadow-brand-md">
-                  <span className="text-xs font-black uppercase tracking-[0.22em] text-brand-white md:text-sm">
-                    {tl("projects")}
-                  </span>
-                </div>
-              </div>
-
-              <PartnerLogos title={tpart("title")} />
-
-              <nav
-                className="mt-16 border-t border-brand-silver/20 pt-14 md:mt-20 md:pt-16"
-                aria-label={tf("navLabel")}
-              >
-                <ul className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8 sm:gap-y-3">
-                  {footerLinks.map(({ href, label }) => (
-                    <li key={href}>
-                      <Link
-                        href={href}
-                        className="inline-flex min-h-[44px] items-center text-[10px] font-black uppercase tracking-[0.22em] text-brand-silver transition hover:text-brand-blue-light sm:text-[11px]"
-                      >
-                        {label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              <p className="mt-3 text-xs text-brand-navy/60">{t("planReply")}</p>
             </div>
-          </footer>
           </div>
-        </div>
+        </section>
+
+        <section className="mx-auto max-w-6xl px-5 py-4 pb-16 lg:px-8 lg:pb-20">
+          <h2 className="text-center text-3xl font-semibold tracking-tight text-brand-navy">{t("methodTitle")}</h2>
+          <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
+            {steps.map((step) => (
+              <li key={step}>
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-sm font-semibold text-white">
+                  {step}
+                </span>
+                <h3 className="mt-4 text-sm font-semibold text-brand-navy">{t(`step${step}Title`)}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-brand-navy/70">{t(`step${step}Body`)}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="realisations" className="scroll-mt-28 border-t border-[#e6eef6] bg-[#f7f9fc] py-16 lg:py-20">
+          <div className="mx-auto max-w-6xl px-5 lg:px-8">
+            <h2 className="text-center text-3xl font-semibold tracking-tight text-brand-navy">{t("projectsTitle")}</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-brand-navy/70">
+              {t("illustration")}
+            </p>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {works.map((work) => {
+                const page = serviceHref(locale, work.href);
+                return (
+                  <article key={work.key} className="overflow-hidden rounded-2xl border border-[#e6eef6] bg-white">
+                    <Image
+                      src={work.src}
+                      alt={`${t("illustration")} ${t(work.key)}`}
+                      width={1600}
+                      height={900}
+                      className="h-auto w-full"
+                      sizes="(max-width: 768px) 100vw, 360px"
+                    />
+                    <div className="p-5">
+                      <h3 className="text-lg font-semibold text-brand-navy">{t(work.key)}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-brand-navy/70">{t("illustration")}</p>
+                      {page ? (
+                        <Link href={page} className="mt-4 inline-flex text-sm font-semibold text-brand-blue hover:underline">
+                          {t("viewService")}
+                        </Link>
+                      ) : null}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <PartnerLogos title={t("partnersTitle")} />
+
+        <section className="bg-brand-navy text-white">
+          <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-12 md:flex-row md:items-center lg:px-8">
+            <h2 className="max-w-xl text-2xl font-semibold leading-snug md:text-3xl">
+              {t("bandTitle")} {t("bandAccent")}
+            </h2>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#1fad5a] px-5 text-sm font-semibold text-white"
+              >
+                <MessageCircle className="h-4 w-4" aria-hidden />
+                {t("whatsapp")}
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex min-h-12 items-center justify-center rounded-lg bg-white px-5 text-sm font-semibold text-brand-navy"
+              >
+                {tn("study")}
+              </Link>
+              <a
+                href={`tel:${PHONE_E164}`}
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/40 px-5 text-sm font-semibold text-white"
+              >
+                <Phone className="h-4 w-4" aria-hidden />
+                {t("call")}
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <footer className="bg-brand-ink text-white">
+          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+            <div id="a-propos" className="scroll-mt-28">
+              <Image
+                src={BRAND_LOGO_SRC}
+                alt=""
+                width={1536}
+                height={1536}
+                className="h-16 w-auto rounded-md bg-white"
+              />
+              <p className="mt-4 text-sm leading-relaxed text-white/75">{t("footerBlurb")}</p>
+            </div>
+            <div>
+              <h2 className="text-sm font-semibold">{t("footerNav")}</h2>
+              <ul className="mt-4 space-y-2">
+                {footerNav.map((item) => (
+                  <li key={item.label}>
+                    <Link href={item.href} className="text-sm text-white/75 transition hover:text-white">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-sm font-semibold">{t("footerServices")}</h2>
+              <ul className="mt-4 space-y-2">
+                {footerServices.map((item) => {
+                  const page = serviceHref(locale, item.href);
+                  return (
+                    <li key={item.label} className="text-sm text-white/75">
+                      {page ? (
+                        <Link href={page} className="transition hover:text-white">
+                          {item.label}
+                        </Link>
+                      ) : (
+                        item.label
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div id="zone" className="scroll-mt-28">
+              <h2 className="text-sm font-semibold">{t("footerContact")}</h2>
+              <ul className="mt-4 space-y-2 text-sm text-white/75">
+                <li>
+                  <a href={`tel:${PHONE_E164}`} className="hover:text-white" dir="ltr">
+                    +212 6 60 98 96 98
+                  </a>
+                </li>
+                <li>
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                    {t("whatsapp")}
+                  </a>
+                </li>
+                <li>{t("footerCity")}</li>
+                <li>{t("footerAlso")}</li>
+                <li>{t("footerHours")}</li>
+              </ul>
+              <Image
+                src={contactQrDataUrl}
+                alt={t("planWhatsapp")}
+                width={96}
+                height={96}
+                unoptimized
+                className="mt-5 rounded-md bg-white p-1.5"
+              />
+            </div>
+          </div>
+          <div className="border-t border-white/10">
+            <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-2 px-5 py-5 text-xs text-white/60 lg:px-8">
+              <li>
+                <Link href="/mentions-legales" className="hover:text-white">
+                  {tn("legal")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/politique-confidentialite" className="hover:text-white">
+                  {tn("privacy")}
+                </Link>
+              </li>
+              {locale === "fr" ? (
+                <li>
+                  <Link href="/plan-du-site" className="hover:text-white">
+                    {t("sitemap")}
+                  </Link>
+                </li>
+              ) : null}
+            </ul>
+          </div>
+        </footer>
       </main>
     </div>
   );

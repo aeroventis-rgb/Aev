@@ -7,33 +7,26 @@ type Props = {
 
 export function PartnerLogos({ title }: Props) {
   return (
-    <section className="mt-16 border-t border-brand-silver/20 pt-14 md:mt-20 md:pt-16" aria-labelledby="partners-heading">
-      <p
-        id="partners-heading"
-        className="mb-10 text-center text-xs font-black uppercase tracking-[0.4em] text-brand-silver-mid md:mb-12"
-      >
-        {title}
-      </p>
-
-      <ul className="flex flex-wrap items-stretch justify-center gap-3 sm:gap-4">
-        {PARTNERS.map((partner) => (
-          <li
-            key={partner.id}
-            className="w-[calc(50%-0.4rem)] sm:w-[calc(33.333%-0.7rem)]"
-          >
-            <div className="flex h-[4.75rem] items-center justify-center rounded-md border border-brand-silver bg-white px-3 py-2.5 shadow-brand transition hover:border-brand-blue/40 hover:shadow-brand-lg sm:h-24 sm:px-5">
+    <section className="border-t border-[#e6eef6] bg-white py-16 md:py-20" aria-labelledby="partners-heading">
+      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+        <h2 id="partners-heading" className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">
+          {title}
+        </h2>
+        <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+          {PARTNERS.map((partner) => (
+            <li key={partner.id} className="flex h-12 items-center justify-center">
               <Image
                 src={partner.logo}
                 alt={partner.name}
                 width={partner.width}
                 height={partner.height}
                 unoptimized
-                className="h-auto max-h-10 w-auto min-w-0 max-w-full object-contain object-center sm:max-h-14"
+                className="h-8 w-auto max-w-[7.5rem] object-contain sm:h-10 sm:max-w-[9rem]"
               />
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
