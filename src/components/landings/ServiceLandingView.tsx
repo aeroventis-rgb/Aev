@@ -18,7 +18,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
         <article className="mx-auto max-w-4xl pb-20">
           <Breadcrumbs items={page.breadcrumbs} />
           <header className="border-b border-brand-silver pb-10">
-            <h1 className="text-3xl font-semibold leading-tight tracking-tight text-brand-ink md:text-4xl">
+            <h1 className="text-2xl font-semibold leading-tight tracking-tight text-brand-ink sm:text-3xl md:text-4xl">
               {page.h1}
             </h1>
             <div className="mt-6 flex flex-col gap-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">
@@ -64,7 +64,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
                 ))}
               </div>
             ) : (
-            <div className="mt-6 overflow-x-auto rounded-md border border-brand-silver bg-white">
+            <div className="mt-6 max-w-full overflow-x-auto rounded-md border border-brand-silver bg-white">
               <table className="w-full min-w-[640px] border-collapse text-left text-sm">
                 <thead className="bg-brand-off text-brand-ink">
                   <tr>

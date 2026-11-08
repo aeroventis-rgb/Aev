@@ -122,16 +122,16 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       <SiteNav />
 
       <main id="main-content">
-        <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:py-16">
+        <section className="mx-auto grid max-w-6xl items-center gap-6 px-4 py-8 sm:px-5 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:py-16">
           <div>
-            <h1 className="max-w-xl text-4xl font-semibold leading-[1.15] tracking-tight text-brand-navy md:text-5xl">
+            <h1 className="max-w-xl text-[1.7rem] font-semibold leading-[1.2] tracking-tight text-brand-navy sm:text-4xl md:text-5xl">
               {t("heroTitleLead")}
               <span className="mt-1 block text-brand-blue">{t("heroTitleAccent")}</span>
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-brand-navy/75 md:text-lg">
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-brand-navy/75 md:mt-5 md:text-lg">
               {t("heroSubtitle")}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap">
               <a
                 href={planUrl}
                 target="_blank"
@@ -160,7 +160,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 </span>
               </a>
             </div>
-            <p className="mt-6 flex items-center gap-2 text-sm text-brand-navy/70">
+            <p className="mt-5 flex items-center gap-2 text-sm text-brand-navy/70 lg:mt-6">
               <MapPin className="h-4 w-4 text-brand-blue" aria-hidden />
               {t("heroCities")}
             </p>
@@ -173,7 +173,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               width={1600}
               height={1066}
               priority
-              className="h-auto w-full rounded-2xl object-cover"
+              className="aspect-[4/3] w-full rounded-2xl object-cover object-[center_78%] sm:aspect-[5/4] lg:aspect-auto lg:h-auto lg:object-center"
               sizes="(max-width: 1024px) 100vw, 560px"
             />
             <figcaption className="mt-3 text-sm leading-relaxed text-brand-navy/60">{t("heroCaption")}</figcaption>
@@ -181,25 +181,25 @@ export function LandingPage({ contactQrDataUrl }: Props) {
         </section>
 
         <section className="border-y border-[#e6eef6] bg-[#f7f9fc]" aria-label={t("trustExperience")}>
-          <ul className="mx-auto grid max-w-6xl gap-6 px-5 py-8 sm:grid-cols-2 lg:grid-cols-5 lg:px-8">
+          <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-x-3 gap-y-4 px-4 py-6 sm:gap-6 sm:px-5 sm:py-8 lg:grid-cols-5 lg:px-8">
             {trust.map(({ key, label, Icon }) => (
-              <li key={key} className="flex items-center gap-3">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand-blue shadow-sm">
+              <li key={key} className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-brand-blue shadow-sm lg:h-11 lg:w-11">
                   <Icon className="h-5 w-5" aria-hidden />
                 </span>
-                <span className="text-sm font-medium text-brand-navy">{label}</span>
+                <span className="text-[13px] font-medium leading-snug text-brand-navy sm:text-sm">{label}</span>
               </li>
             ))}
           </ul>
         </section>
 
-        <section id="solutions" className="scroll-mt-28 mx-auto max-w-6xl px-5 py-16 lg:px-8 lg:py-20">
-          <h2 className="text-center text-3xl font-semibold tracking-tight text-brand-navy">{t("solutionsTitle")}</h2>
+        <section id="solutions" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-12 sm:px-5 lg:px-8 lg:py-20">
+          <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("solutionsTitle")}</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {solutions.map(({ key, href, Icon }) => {
               const page = serviceHref(locale, href);
               return (
-                <article key={key} className="rounded-2xl border border-[#e6eef6] bg-white p-6 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.45)]">
+                <article key={key} className="min-w-0 rounded-2xl border border-[#e6eef6] bg-white p-5 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.45)] md:p-6">
                   <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#eef5fc] text-brand-blue">
                     <Icon className="h-6 w-6" aria-hidden />
                   </span>
@@ -216,11 +216,11 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-5 pb-16 lg:px-8 lg:pb-20">
-          <div className="grid items-center gap-8 rounded-3xl border border-[#e6eef6] bg-white p-6 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.35)] md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="mx-auto max-w-6xl px-4 pb-12 sm:px-5 lg:px-8 lg:pb-20">
+          <div className="grid items-center gap-6 rounded-3xl border border-[#e6eef6] bg-white p-4 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.35)] sm:p-6 md:gap-8 md:p-10 lg:grid-cols-[0.9fr_1.1fr]">
             <BlueprintSketch label={t("planSketch")} />
-            <div>
-              <h2 className="text-2xl font-semibold leading-snug tracking-tight text-brand-navy md:text-3xl">
+            <div className="min-w-0">
+              <h2 className="text-xl font-semibold leading-snug tracking-tight text-brand-navy sm:text-2xl md:text-3xl">
                 {t("planTitle")} <span className="text-brand-blue">{t("planAccent")}</span>
               </h2>
               <ul className="mt-6 space-y-3">
@@ -236,14 +236,14 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                   href={planUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#1fad5a] px-5 text-sm font-semibold text-white transition hover:bg-[#188a48]"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#1fad5a] px-5 text-sm font-semibold text-white transition hover:bg-[#188a48] sm:w-auto"
                 >
                   <MessageCircle className="h-4 w-4" aria-hidden />
                   {t("planWhatsapp")}
                 </a>
                 <a
                   href={`tel:${PHONE_E164}`}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white transition hover:bg-brand-navy"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white transition hover:bg-brand-navy sm:w-auto"
                 >
                   <Phone className="h-4 w-4" aria-hidden />
                   <span dir="ltr">{PHONE_DISPLAY}</span>
@@ -254,9 +254,9 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-5 py-4 pb-16 lg:px-8 lg:pb-20">
-          <h2 className="text-center text-3xl font-semibold tracking-tight text-brand-navy">{t("methodTitle")}</h2>
-          <ol className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
+        <section className="mx-auto max-w-6xl px-4 py-4 pb-12 sm:px-5 lg:px-8 lg:pb-20">
+          <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("methodTitle")}</h2>
+          <ol className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 lg:mt-10 lg:grid-cols-6 lg:gap-8">
             {steps.map((step) => (
               <li key={step}>
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-sm font-semibold text-white">
@@ -269,9 +269,9 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </ol>
         </section>
 
-        <section id="realisations" className="scroll-mt-28 border-t border-[#e6eef6] bg-[#f7f9fc] py-16 lg:py-20">
-          <div className="mx-auto max-w-6xl px-5 lg:px-8">
-            <h2 className="text-center text-3xl font-semibold tracking-tight text-brand-navy">{t("projectsTitle")}</h2>
+        <section id="realisations" className="scroll-mt-24 border-t border-[#e6eef6] bg-[#f7f9fc] py-12 lg:py-20">
+          <div className="mx-auto max-w-6xl px-4 sm:px-5 lg:px-8">
+            <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("projectsTitle")}</h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-brand-navy/70">
               {t("illustration")}
             </p>
@@ -307,11 +307,11 @@ export function LandingPage({ contactQrDataUrl }: Props) {
         <PartnerLogos title={t("partnersTitle")} />
 
         <section className="bg-brand-navy text-white">
-          <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-5 py-12 md:flex-row md:items-center lg:px-8">
-            <h2 className="max-w-xl text-2xl font-semibold leading-snug md:text-3xl">
+          <div className="mx-auto flex max-w-6xl flex-col items-stretch justify-between gap-6 px-4 py-10 sm:px-5 md:flex-row md:items-center lg:px-8 lg:py-12">
+            <h2 className="max-w-xl text-xl font-semibold leading-snug sm:text-2xl md:text-3xl">
               {t("bandTitle")} {t("bandAccent")}
             </h2>
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
@@ -339,8 +339,8 @@ export function LandingPage({ contactQrDataUrl }: Props) {
         </section>
 
         <footer className="bg-brand-ink text-white">
-          <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
-            <div id="a-propos" className="scroll-mt-28">
+          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 sm:px-5 lg:grid-cols-4 lg:px-8 lg:py-14">
+            <div id="a-propos" className="col-span-2 scroll-mt-24 lg:col-span-1">
               <Image
                 src={BRAND_LOGO_SRC}
                 alt=""
@@ -355,7 +355,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               <ul className="mt-4 space-y-2">
                 {footerNav.map((item) => (
                   <li key={item.label}>
-                    <Link href={item.href} className="text-sm text-white/75 transition hover:text-white">
+                    <Link href={item.href} className="inline-flex min-h-11 items-center text-sm text-white/75 transition hover:text-white">
                       {item.label}
                     </Link>
                   </li>
@@ -370,7 +370,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                   return (
                     <li key={item.label} className="text-sm text-white/75">
                       {page ? (
-                        <Link href={page} className="transition hover:text-white">
+                        <Link href={page} className="inline-flex min-h-11 items-center transition hover:text-white">
                           {item.label}
                         </Link>
                       ) : (
@@ -381,16 +381,16 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 })}
               </ul>
             </div>
-            <div id="zone" className="scroll-mt-28">
+            <div id="zone" className="col-span-2 scroll-mt-24 lg:col-span-1">
               <h2 className="text-sm font-semibold">{t("footerContact")}</h2>
               <ul className="mt-4 space-y-2 text-sm text-white/75">
                 <li>
-                  <a href={`tel:${PHONE_E164}`} className="hover:text-white" dir="ltr">
+                  <a href={`tel:${PHONE_E164}`} className="inline-flex min-h-11 items-center hover:text-white" dir="ltr">
                     +212 6 60 98 96 98
                   </a>
                 </li>
                 <li>
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center hover:text-white">
                     {t("whatsapp")}
                   </a>
                 </li>
@@ -411,12 +411,12 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           <div className="border-t border-white/10">
             <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-2 px-5 py-5 text-xs text-white/60 lg:px-8">
               <li>
-                <Link href="/mentions-legales" className="hover:text-white">
+                <Link href="/mentions-legales" className="inline-flex min-h-11 items-center hover:text-white">
                   {tn("legal")}
                 </Link>
               </li>
               <li>
-                <Link href="/politique-confidentialite" className="hover:text-white">
+                <Link href="/politique-confidentialite" className="inline-flex min-h-11 items-center hover:text-white">
                   {tn("privacy")}
                 </Link>
               </li>

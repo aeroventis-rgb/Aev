@@ -38,7 +38,7 @@ export async function LegalPageShell({ namespace, blocks, pathname }: Props) {
 
         <article className="mt-8">
           <header className="border-b border-brand-silver pb-8">
-            <h1 className="text-3xl font-semibold tracking-tight text-brand-ink">
+            <h1 className="text-2xl font-semibold tracking-tight text-brand-ink sm:text-3xl">
               {t("heading")}
             </h1>
             <p className="mt-4 text-base leading-relaxed text-brand-navy/80">{t("intro")}</p>
