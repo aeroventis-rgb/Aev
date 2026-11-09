@@ -31,3 +31,15 @@ export const IMAGES = {
   /** Stock floor-plan photo. An illustration, not a client's plan or an AEROVENTIS job site. */
   planIllustration: "/plan-illustration.webp",
 } as const;
+
+/**
+ * Homepage service-card photos, cropped from files already in the repo
+ * (brand slides 05, 06 and 18, and the plumbing panel of `flyer-reference.jpg`).
+ * Illustrations only — not identified AEROVENTIS job sites or staff.
+ */
+export const HOME_ILLUSTRATIONS = {
+  climate: "/home/illustration-climatisation.webp",
+  ventilation: "/home/illustration-ventilation.webp",
+  plumbing: "/home/illustration-plomberie.webp",
+  maintenance: "/home/illustration-maintenance.webp",
+} as const;

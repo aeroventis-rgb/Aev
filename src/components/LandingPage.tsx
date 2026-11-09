@@ -5,29 +5,30 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import {
   AirVent,
-  Award,
+  ArrowRight,
   Building2,
   Check,
   Droplets,
   Fan,
+  FileText,
+  Gem,
   Headphones,
+  LayoutGrid,
   MapPin,
   MessageCircle,
   Phone,
-  Send,
   Shield,
+  ShieldCheck,
   Snowflake,
   Thermometer,
   Users,
   Wind,
   Wrench,
-  LayoutGrid,
-  Package,
 } from "lucide-react";
 import { SiteNav } from "@/components/SiteNav";
 import { PartnerLogos } from "@/components/PartnerLogos";
 import { BRAND_SLIDES } from "@/lib/brand-slides";
-import { BRAND_LOGO_SRC, IMAGES, PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
+import { BRAND_LOGO_SRC, HOME_ILLUSTRATIONS, IMAGES, PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
 import type { Locale } from "@/i18n/routing";
 import { localesForPath } from "@/lib/routes";
 
@@ -62,6 +63,24 @@ function serviceHref(locale: Locale, path: string | null) {
   return path;
 }
 
+function CitySkyline() {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 1440 160"
+      preserveAspectRatio="xMidYMax slice"
+      className="pointer-events-none absolute inset-x-0 bottom-0 h-28 w-full text-white/25 sm:h-32"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        d="M0 150 H40 V110 H70 V150 H90 V70 H110 V40 H130 V70 H160 V150 H190 V100 H230 V60 H250 V100 H290 V150 H320 V120 H360 V80 H390 V150 H430 V90 H470 V50 H500 V90 H540 V150 H580 V110 H620 V70 H650 V40 H680 V70 H720 V150 H760 V100 H810 V55 H840 V100 H890 V150 H930 V85 H980 V45 H1010 V85 H1060 V150 H1100 V115 H1150 V75 H1190 V150 H1230 V95 H1280 V60 H1320 V150 H1360 V120 H1440"
+      />
+    </svg>
+  );
+}
+
 function PlanIllustration({ label, alt }: { label: string; alt: string }) {
   return (
     <figure className="min-w-0">
@@ -85,7 +104,6 @@ export function LandingPage({ contactQrDataUrl }: Props) {
   const tn = useTranslations("nav");
   const tf = useTranslations("footer");
   const ti = useTranslations("images");
-  const tb = useTranslations("brand");
   const locale = useLocale() as Locale;
   const planUrl = `${WHATSAPP_URL}?text=${encodeURIComponent(t("planMessage"))}`;
 
@@ -102,11 +120,51 @@ export function LandingPage({ contactQrDataUrl }: Props) {
   });
 
   const trust = [
-    { key: "experience", label: t("trustExperience"), Icon: Award },
-    { key: "projects", label: t("trustProjects"), Icon: Building2 },
-    { key: "teams", label: t("trustTeams"), Icon: Users },
-    { key: "equipment", label: t("trustEquipment"), Icon: Package },
+    { key: "expertise", label: t("trustExpertise"), Icon: Gem },
+    { key: "quality", label: t("trustQuality"), Icon: ShieldCheck },
+    { key: "support", label: t("trustSupport"), Icon: Users },
     { key: "service", label: t("trustService"), Icon: Headphones },
+  ];
+
+  const featured = [
+    {
+      key: "climate",
+      href: "/climatisation",
+      src: HOME_ILLUSTRATIONS.climate,
+      Icon: Snowflake,
+      title: t("cardClimateTitle"),
+      line: t("cardClimateLine"),
+    },
+    {
+      key: "vent",
+      href: "/ventilation",
+      src: HOME_ILLUSTRATIONS.ventilation,
+      Icon: Fan,
+      title: t("cardVentTitle"),
+      line: t("cardVentLine"),
+    },
+    {
+      key: "plumb",
+      href: "/plomberie",
+      src: HOME_ILLUSTRATIONS.plumbing,
+      Icon: Droplets,
+      title: t("cardPlumbTitle"),
+      line: t("cardPlumbLine"),
+    },
+    {
+      key: "maint",
+      href: "/entretien-climatisation-casablanca",
+      src: HOME_ILLUSTRATIONS.maintenance,
+      Icon: Wrench,
+      title: t("cardMaintTitle"),
+      line: t("cardMaintLine"),
+    },
+  ] as const;
+
+  const claims = [
+    { key: "projects", label: t("statProjects"), Icon: Building2 },
+    { key: "team", label: t("statTeam"), Icon: Users },
+    { key: "areas", label: t("statAreas"), Icon: MapPin },
   ];
 
   const footerNav = [
@@ -134,83 +192,152 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       <SiteNav />
 
       <main id="main-content">
-        <section className="mx-auto grid max-w-6xl items-center gap-6 px-4 py-8 sm:px-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-8 lg:px-8 lg:py-12">
-          <div className="min-w-0">
-            <h1 className="max-w-xl text-[1.7rem] font-semibold leading-[1.2] tracking-tight text-brand-navy sm:text-4xl md:text-5xl">
-              {t("heroTitleLead")}
-              <span className="mt-1 block text-brand-blue">{t("heroTitleAccent")}</span>
-            </h1>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-brand-navy/75 md:mt-5 md:text-lg">
-              {t("heroSubtitle")}
-            </p>
-            <div className="mt-6 flex flex-col gap-3 lg:mt-8 lg:flex-row lg:flex-nowrap lg:items-center">
-              <a
-                href={planUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-brand-blue px-5 text-sm font-semibold text-white transition hover:bg-brand-navy lg:w-auto lg:px-4"
+        <section className="relative overflow-hidden">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 pb-2 pt-8 sm:px-5 lg:pb-28 lg:pt-12 lg:pe-[46%] xl:pe-[42%]">
+            <div className="max-w-xl lg:max-w-[38rem]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-blue sm:text-xs">
+                {t("heroEyebrow")}
+              </p>
+              <h1 className="mt-3 text-brand-navy">
+                <span className="block text-[1.7rem] font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.05rem]">
+                  <span className="block">{t("heroLine1")}</span>
+                  <span className="block">
+                    {t("heroLine2Lead")}
+                    <span className="text-[#2f86d6]">{t("heroAccent")}</span>{t("heroLine2End")}
+                  </span>
+                </span>
+                <span className="mt-3 block max-w-xl text-base font-semibold leading-snug sm:text-lg">
+                  {t("heroTitleLead")} {t("heroTitleAccent")}
+                </span>
+              </h1>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-brand-navy/75 sm:text-base">{t("heroSubtitle")}</p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="/contact"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-navy px-5 text-sm font-semibold text-white transition hover:bg-brand-blue"
+                >
+                  <FileText className="h-4 w-4" aria-hidden />
+                  {tn("quote")}
+                </Link>
+                <a
+                  href="#expertises"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand-navy/25 bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-navy"
+                >
+                  {t("discover")}
+                  <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
+                </a>
+              </div>
+              <ul className="mt-7 grid grid-cols-2 gap-x-3 gap-y-3 sm:grid-cols-4 lg:max-w-2xl">
+                {trust.map(({ key, label, Icon }) => (
+                  <li key={key} className="flex min-w-0 items-center gap-2">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e7f1fb] text-brand-blue">
+                      <Icon className="h-4 w-4" aria-hidden />
+                    </span>
+                    <span className="text-[12px] font-medium leading-tight text-brand-navy">{label}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 hidden max-w-xl text-xs leading-relaxed text-brand-navy/55 lg:block">{t("heroCaption")}</p>
+            </div>
+          </div>
+
+          <figure className="relative z-0 mx-4 mt-6 sm:mx-5 lg:absolute lg:inset-y-0 lg:end-0 lg:mx-0 lg:mt-0 lg:w-[50%] xl:w-[46%]">
+            <div className="relative h-56 overflow-hidden rounded-2xl sm:h-72 lg:absolute lg:inset-0 lg:h-auto lg:rounded-none">
+              <Image
+                src={IMAGES.heroVilla}
+                alt=""
+                fill
+                priority
+                className="object-cover object-[center_32%]"
+                sizes="(max-width: 1024px) 100vw, 46vw"
+              />
+              <div className="absolute inset-0 hidden lg:block ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-white from-0% via-white/80 via-[22%] to-transparent to-[62%]" />
+            </div>
+            <figcaption className="mt-2 text-xs leading-relaxed text-brand-navy/60 lg:hidden">{t("heroCaption")}</figcaption>
+          </figure>
+        </section>
+
+        <section id="expertises" className="scroll-mt-36 relative z-20 mx-auto max-w-7xl px-4 pt-4 sm:px-5 lg:-mt-16 lg:px-8 lg:pt-0">
+          <h2 className="sr-only">{tn("expertises")}</h2>
+          <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {featured.map((item) => {
+              const page = serviceHref(locale, item.href);
+              const href = page ?? ({ pathname: "/", hash: "solutions" } as const);
+              const Icon = item.Icon;
+              return (
+                <li key={item.key} className="min-w-0">
+                  <Link
+                    href={href}
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_-24px_rgba(2,47,112,0.55)] ring-1 ring-[#e4eef7] transition hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-22px_rgba(2,47,112,0.6)]"
+                  >
+                    <div className="relative h-36 sm:h-40">
+                      <Image
+                        src={item.src}
+                        alt={t("illustration")}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 320px"
+                      />
+                      <span className="absolute bottom-2 end-2 rounded-md bg-white/92 px-1.5 py-0.5 text-[10px] font-medium text-brand-navy/70" aria-hidden>
+                        {t("cardCaption")}
+                      </span>
+                    </div>
+                    <div className="relative flex flex-1 items-end gap-2 px-4 pb-4 pt-7">
+                      <span className="absolute -top-5 start-4 flex h-11 w-11 items-center justify-center rounded-full bg-brand-blue text-white shadow-md ring-4 ring-white">
+                        <Icon className="h-5 w-5" aria-hidden />
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <h3 className="text-base font-semibold text-brand-navy">{item.title}</h3>
+                        <span className="mt-0.5 block text-sm leading-snug text-brand-navy/65">{item.line}</span>
+                      </span>
+                      <ArrowRight className="mb-1 h-4 w-4 shrink-0 text-brand-navy/40 transition group-hover:text-brand-blue rtl:rotate-180" aria-hidden />
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <section className="relative mt-8 overflow-hidden bg-brand-navy text-white lg:mt-10" aria-labelledby="home-promise">
+          <CitySkyline />
+          <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-5 lg:px-8 lg:py-10">
+            <ul className="grid gap-6 md:grid-cols-3">
+              {claims.map(({ key, label, Icon }) => (
+                <li key={key} className="flex items-start gap-3">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/25">
+                    <Icon className="h-5 w-5" aria-hidden />
+                  </span>
+                  <span className="pt-1 text-sm font-medium leading-snug sm:text-base">{label}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-col items-start justify-between gap-6 border-t border-white/15 pt-6 sm:flex-row sm:items-center">
+              <h2
+                id="home-promise"
+                className={`max-w-xl text-xl font-medium leading-snug sm:text-2xl ${locale === "ar" ? "" : "italic"}`}
               >
-                <Send className="h-4 w-4" aria-hidden />
-                {t("sendPlan")}
-              </a>
+                {t("bandTagline")}
+              </h2>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-[#d7e3f0] bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-blue/40 lg:w-auto lg:px-4"
+                className="inline-flex items-center gap-3 rounded-full bg-[#25D366] py-1.5 pe-5 ps-1.5 text-white shadow-[0_12px_28px_-12px_rgba(0,0,0,0.55)] transition hover:bg-[#1ebe5d]"
               >
-                <MessageCircle className="h-4 w-4 text-[#1fad5a]" aria-hidden />
-                {t("whatsapp")}
-              </a>
-              <a
-                href={`tel:${PHONE_E164}`}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-[#d7e3f0] bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-blue/40 lg:w-auto lg:px-4"
-              >
-                <Phone className="h-4 w-4" aria-hidden />
-                <span>
-                  {t("call")} <span dir="ltr">{PHONE_DISPLAY}</span>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+                  <MessageCircle className="h-6 w-6" aria-hidden />
+                </span>
+                <span className="text-start leading-tight">
+                  <span className="block text-sm font-bold">{t("whatsapp")}</span>
+                  <span className="block text-xs font-medium text-white/90">{t("whatsappContact")}</span>
                 </span>
               </a>
             </div>
-            <p className="mt-5 flex items-center gap-2 text-sm text-brand-navy/70 lg:mt-6">
-              <MapPin className="h-4 w-4 text-brand-blue" aria-hidden />
-              {t("heroCities")}
-            </p>
           </div>
-
-          <figure>
-            <Image
-              src={IMAGES.heroVilla}
-              alt={ti("hero")}
-              width={1600}
-              height={1066}
-              priority
-              className="aspect-[4/3] w-full rounded-2xl object-cover object-[center_72%] lg:aspect-[5/4] lg:max-h-[440px] lg:object-[center_68%]"
-              sizes="(max-width: 1024px) 100vw, 560px"
-            />
-            <figcaption className="mt-3 text-sm leading-relaxed text-brand-navy/60">{t("heroCaption")}</figcaption>
-          </figure>
         </section>
 
-        <section className="border-y border-[#e6eef6] bg-[#f7f9fc]" aria-label={t("trustExperience")}>
-          <ul className="mx-auto grid max-w-6xl grid-cols-6 items-start gap-x-2 gap-y-4 px-4 py-5 sm:px-5 lg:grid-cols-5 lg:gap-4 lg:py-6 lg:px-8">
-            {trust.map(({ key, label, Icon }, index) => (
-              <li
-                key={key}
-                className={`flex min-w-0 flex-col items-center gap-1.5 text-center lg:flex-row lg:items-center lg:gap-3 lg:text-start ${
-                  index < 3 ? "col-span-2 lg:col-span-1" : "col-span-3 lg:col-span-1"
-                }`}
-              >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-brand-blue shadow-sm lg:h-10 lg:w-10">
-                  <Icon className="h-4 w-4 lg:h-5 lg:w-5" aria-hidden />
-                </span>
-                <span className="text-[12px] font-medium leading-tight text-brand-navy lg:text-sm">{label}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="solutions" className="scroll-mt-24 mx-auto max-w-6xl px-4 py-8 sm:px-5 lg:px-8 lg:py-14">
+        <section id="solutions" className="scroll-mt-36 mx-auto max-w-7xl px-4 py-8 sm:px-5 lg:px-8 lg:py-14">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("solutionsTitle")}</h2>
           <div className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3 lg:gap-3">
             {solutions.map(({ key, href, Icon }) => {
@@ -248,7 +375,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           ) : null}
         </section>
 
-        <section className="mx-auto max-w-6xl px-4 pb-8 sm:px-5 lg:px-8 lg:pb-14">
+        <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-5 lg:px-8 lg:pb-14">
           <div className="grid items-center gap-6 rounded-3xl border border-[#e6eef6] bg-white p-4 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.35)] sm:p-6 lg:grid-cols-2 lg:gap-10 lg:p-8">
             <PlanIllustration label={t("planSketch")} alt={ti("plan")} />
             <div className="min-w-0">
@@ -286,7 +413,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </div>
         </section>
 
-        <section className="mx-auto max-w-6xl px-4 py-2 pb-10 sm:px-5 lg:px-8 lg:pb-14">
+        <section className="mx-auto max-w-7xl px-4 py-2 pb-10 sm:px-5 lg:px-8 lg:pb-14">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("methodTitle")}</h2>
           <ol className="mt-6 grid grid-cols-2 gap-x-3 gap-y-6 lg:mt-8 lg:grid-cols-6 lg:gap-4">
             {steps.map((step) => (
@@ -301,8 +428,8 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </ol>
         </section>
 
-        <section id="realisations" className="scroll-mt-24 border-t border-[#e6eef6] bg-[#f7f9fc] py-12 lg:py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-5 lg:px-8">
+        <section id="realisations" className="scroll-mt-36 border-t border-[#e6eef6] bg-[#f7f9fc] py-12 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8">
             <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("projectsTitle")}</h2>
             <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-brand-navy/70">
               {t("illustration")}
@@ -339,7 +466,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
         <PartnerLogos title={t("partnersTitle")} />
 
         <section className="bg-brand-navy text-white">
-          <div className="mx-auto flex max-w-6xl flex-col items-stretch justify-between gap-6 px-4 py-10 sm:px-5 md:flex-row md:items-center lg:px-8 lg:py-12">
+          <div className="mx-auto flex max-w-7xl flex-col items-stretch justify-between gap-6 px-4 py-10 sm:px-5 md:flex-row md:items-center lg:px-8 lg:py-12">
             <h2 className="max-w-xl text-xl font-semibold leading-snug sm:text-2xl md:text-3xl">
               {t("bandTitle")} {t("bandAccent")}
             </h2>
@@ -371,8 +498,8 @@ export function LandingPage({ contactQrDataUrl }: Props) {
         </section>
 
         <footer className="bg-brand-ink text-white">
-          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 sm:px-5 lg:grid-cols-4 lg:px-8 lg:py-14">
-            <div id="a-propos" className="col-span-2 scroll-mt-24 lg:col-span-1">
+          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 sm:px-5 lg:grid-cols-4 lg:px-8 lg:py-14">
+            <div id="a-propos" className="col-span-2 scroll-mt-36 lg:col-span-1">
               <Image
                 src={BRAND_LOGO_SRC}
                 alt=""
@@ -413,7 +540,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 })}
               </ul>
             </div>
-            <div id="zone" className="col-span-2 scroll-mt-24 lg:col-span-1">
+            <div id="zone" className="col-span-2 scroll-mt-36 lg:col-span-1">
               <h2 className="text-sm font-semibold">{t("footerContact")}</h2>
               <ul className="mt-4 space-y-2 text-sm text-white/75">
                 <li>
@@ -441,7 +568,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             </div>
           </div>
           <div className="border-t border-white/10">
-            <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-2 px-5 py-5 text-xs text-white/60 lg:px-8">
+            <ul className="mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-2 px-5 py-5 text-xs text-white/60 lg:px-8">
               <li>
                 <Link href="/mentions-legales" className="inline-flex min-h-11 items-center hover:text-white">
                   {tn("legal")}
