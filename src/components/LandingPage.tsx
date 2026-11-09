@@ -197,41 +197,41 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
       <main id="main-content">
         <section className="relative overflow-hidden bg-white">
-          <div className="relative z-10 mx-auto max-w-7xl px-4 pb-2 pt-5 sm:px-5 lg:px-8 lg:pb-16 lg:pt-6">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 pb-1 pt-4 sm:px-5 sm:pb-2 sm:pt-5 lg:px-8 lg:pb-16 lg:pt-6">
             <div className="max-w-xl lg:max-w-[34rem] xl:max-w-[40rem]">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue sm:text-xs">
+              <p className="text-[10px] font-semibold uppercase leading-snug tracking-[0.14em] text-brand-blue sm:text-[11px] sm:tracking-[0.18em] lg:text-xs">
                 {t("heroEyebrow")}
               </p>
-              <h1 className="mt-1.5 text-brand-navy">
-                <span className="block text-[1.65rem] font-extrabold leading-[1.05] tracking-tight sm:text-[2.05rem] lg:text-[2.35rem] xl:text-[2.65rem]">
+              <h1 className="mt-2 text-brand-navy">
+                <span className="block text-[1.7rem] font-extrabold leading-[1.12] tracking-tight sm:text-[2.05rem] sm:leading-[1.05] lg:text-[2.35rem] xl:text-[2.65rem]">
                   <span className="block xl:whitespace-nowrap">{t("heroLine1")}</span>
                   <span className="block xl:whitespace-nowrap">
                     {t("heroLine2Lead")}
                     <span className="text-[#3b93dc]">{t("heroAccent")}</span>{t("heroLine2End")}
                   </span>
                 </span>
-                <span className="mt-2 block max-w-xl text-base font-semibold leading-snug sm:text-lg">
+                <span className="mt-3 block max-w-xl text-[15px] font-semibold leading-snug sm:mt-2 sm:text-lg">
                   {t("heroTitleLead")} {t("heroTitleAccent")}
                 </span>
               </h1>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-brand-navy/70 sm:text-[15px]">{t("heroSubtitle")}</p>
-              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-brand-navy/70 sm:mt-2 sm:text-[15px]">{t("heroSubtitle")}</p>
+              <div className="mt-5 flex flex-col gap-2.5 sm:mt-4 sm:flex-row sm:flex-wrap sm:gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-navy px-5 text-sm font-semibold text-white transition hover:bg-brand-blue"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-brand-navy px-5 text-sm font-semibold text-white transition hover:bg-brand-blue sm:w-auto"
                 >
                   <FileText className="h-4 w-4" aria-hidden />
                   {tn("quote")}
                 </Link>
                 <a
                   href="#expertises"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand-navy/30 bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-navy"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-brand-navy/30 bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-navy sm:w-auto"
                 >
                   {t("discover")}
                   <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
                 </a>
               </div>
-              <ul className="mt-4 grid grid-cols-2 gap-x-2 gap-y-2.5 xl:flex xl:flex-nowrap xl:items-center">
+              <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-2.5 sm:mt-4 sm:gap-x-2 xl:flex xl:flex-nowrap xl:items-center">
                 {trust.map(({ key, label, Icon }, index) => (
                   <li
                     key={key}
@@ -247,13 +247,13 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             </div>
           </div>
 
-          <figure className="relative z-0 mx-4 mt-4 aspect-[1.98/1] overflow-hidden rounded-2xl sm:mx-5 lg:absolute lg:inset-y-0 lg:end-0 lg:mx-0 lg:mt-0 lg:aspect-auto lg:w-[58%] lg:rounded-none xl:w-[60%]">
+          <figure className="relative z-0 mt-5 aspect-[4/3] overflow-hidden sm:mx-5 sm:mt-4 sm:aspect-[1.98/1] sm:rounded-2xl lg:absolute lg:inset-y-0 lg:end-0 lg:mx-0 lg:mt-0 lg:aspect-auto lg:w-[58%] lg:rounded-none xl:w-[60%]">
             <Image
               src={HOME_ILLUSTRATIONS.hero}
               alt={t("illustration")}
               fill
               priority
-              className="object-cover object-[center_18%] lg:object-[center_top]"
+              className="object-cover object-[62%_center] sm:object-[center_18%] lg:object-[center_top]"
               sizes="(max-width: 1024px) 100vw, 60vw"
             />
             <div className="pointer-events-none absolute inset-0 hidden lg:block ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-white from-0% via-white via-[26%] to-transparent to-[58%]" />
@@ -263,9 +263,9 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </figure>
         </section>
 
-        <section id="expertises" className="scroll-mt-36 relative z-20 mx-auto -mt-4 max-w-7xl px-4 sm:px-5 lg:-mt-12 lg:px-8">
+        <section id="expertises" className="scroll-mt-36 relative z-20 mx-auto mt-4 max-w-7xl px-4 sm:-mt-4 sm:px-5 lg:-mt-12 lg:px-8">
           <h2 className="sr-only">{tn("expertises")}</h2>
-          <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-2.5 sm:gap-4 xl:grid-cols-4">
             {featured.map((item) => {
               const page = serviceHref(locale, item.href);
               const href = page ?? ({ pathname: "/", hash: "solutions" } as const);
@@ -274,28 +274,28 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 <li key={item.key} className="min-w-0">
                   <Link
                     href={href}
-                    className="group relative block h-36 overflow-hidden rounded-2xl shadow-[0_18px_40px_-22px_rgba(2,47,112,0.55)] ring-1 ring-black/5 transition hover:-translate-y-0.5 sm:h-[9.25rem]"
+                    className="group relative block h-44 overflow-hidden rounded-2xl shadow-[0_18px_40px_-22px_rgba(2,47,112,0.55)] ring-1 ring-black/5 transition hover:-translate-y-0.5 sm:h-[9.25rem]"
                   >
                     <Image
                       src={item.src}
                       alt={t("illustration")}
                       fill
                       className={`object-cover ${item.focus}`}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 320px"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1280px) 50vw, 320px"
                     />
-                    <div className="absolute inset-x-0 bottom-0 h-[48%] bg-gradient-to-t from-[#01224f] from-45% via-[#01224f]/80 to-transparent" />
-                    <span className="absolute start-3 top-2 rounded bg-white/80 px-1.5 py-0.5 text-[10px] font-medium text-brand-navy/70" aria-hidden>
+                    <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#01224f] from-50% via-[#01224f]/85 to-transparent sm:h-[48%] sm:from-40% sm:via-[#01224f]/80" />
+                    <span className="absolute start-1.5 top-1.5 rounded bg-white/80 px-1 py-0.5 text-[9px] font-medium text-brand-navy/70 sm:start-3 sm:top-2 sm:px-1.5 sm:text-[10px]" aria-hidden>
                       {t("cardCaption")}
                     </span>
-                    <span className="absolute bottom-4 start-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-white shadow-md">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </span>
-                    <span className="absolute bottom-3 start-[3.35rem] end-11 text-white">
-                      <h3 className="text-sm font-semibold leading-tight">{item.title}</h3>
-                      <span className="mt-0.5 block text-[11px] leading-snug text-white/85">{item.line}</span>
-                    </span>
-                    <span className="absolute bottom-4 end-3 flex h-8 w-8 items-center justify-center rounded-full border border-white/55 text-white">
-                      <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
+                    <span className="absolute bottom-2 start-2 end-2 grid grid-cols-[1.75rem_minmax(0,1fr)_1.5rem] items-center gap-x-1.5 gap-y-1 text-white sm:bottom-3 sm:start-[3.35rem] sm:end-11 sm:block">
+                      <span className="col-start-1 row-start-1 flex h-7 w-7 items-center justify-center rounded-full bg-brand-blue shadow-md sm:absolute sm:bottom-1 sm:start-[-2.6rem] sm:h-10 sm:w-10">
+                        <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5" aria-hidden />
+                      </span>
+                      <h3 className="col-start-2 row-start-1 text-[12px] font-semibold leading-tight sm:text-sm">{item.title}</h3>
+                      <span className="col-start-3 row-start-1 flex h-6 w-6 items-center justify-center rounded-full border border-white/55 sm:absolute sm:bottom-1 sm:end-[-2rem] sm:h-8 sm:w-8">
+                        <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 sm:h-4 sm:w-4" aria-hidden />
+                      </span>
+                      <span className="col-span-3 text-[10px] leading-tight text-white/90 sm:mt-0.5 sm:block sm:text-[11px] sm:leading-snug">{item.line}</span>
                     </span>
                   </Link>
                 </li>
@@ -304,17 +304,17 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </ul>
         </section>
 
-        <section className="relative mt-8 bg-brand-navy text-white lg:mt-10" aria-labelledby="home-promise">
-          <div className="relative mx-auto max-w-7xl px-4 py-7 sm:px-5 lg:px-8 lg:pb-8 lg:pt-8">
-            <ul className="grid gap-5 sm:grid-cols-3">
+        <section className="relative mt-6 bg-brand-navy text-white sm:mt-8 lg:mt-10" aria-labelledby="home-promise">
+          <div className="relative mx-auto max-w-7xl px-4 py-6 sm:px-5 sm:py-7 lg:px-8 lg:pb-8 lg:pt-8">
+            <ul className="grid gap-4 sm:grid-cols-3 sm:gap-5">
               {claims.map(({ key, label, Icon }) => (
-                <li key={key} className="flex items-start gap-3">
+                <li key={key} className="flex min-w-0 items-start gap-3">
                   <Icon className="mt-0.5 h-6 w-6 shrink-0 text-white/90" aria-hidden />
-                  <span className="text-sm font-medium leading-snug sm:text-base">{label}</span>
+                  <span className="min-w-0 text-sm font-medium leading-relaxed sm:text-base sm:leading-snug">{label}</span>
                 </li>
               ))}
             </ul>
-            <div className="relative mt-6 min-h-24 border-t border-white/15 pt-5">
+            <div className="relative mt-5 border-t border-white/15 pt-4 sm:mt-6 sm:min-h-24 sm:pt-5">
               <div className="pointer-events-none absolute bottom-0 end-[7.5rem] hidden h-24 w-[min(42%,26rem)] text-white/30 md:block">
                 <CitySkyline />
               </div>
@@ -328,12 +328,13 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative z-10 mt-5 inline-flex items-center gap-3 rounded-full bg-[#25D366] py-1.5 pe-5 ps-1.5 text-white shadow-[0_14px_30px_-12px_rgba(0,0,0,0.55)] transition hover:bg-[#1ebe5d] sm:absolute sm:bottom-0 sm:end-0 sm:mt-0 sm:translate-y-1/2"
+                aria-label={`${t("whatsapp")} — ${t("whatsappContact")}`}
+                className="relative z-10 mt-4 inline-flex size-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_14px_30px_-12px_rgba(0,0,0,0.55)] transition hover:bg-[#1ebe5d] sm:absolute sm:bottom-0 sm:end-0 sm:mt-0 sm:size-auto sm:translate-y-1/2 sm:gap-3 sm:py-1.5 sm:pe-5 sm:ps-1.5"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1da851]">
+                <span className="flex size-12 items-center justify-center sm:rounded-full sm:bg-[#1da851]">
                   <MessageCircle className="h-6 w-6" aria-hidden />
                 </span>
-                <span className="text-start leading-tight">
+                <span className="hidden text-start leading-tight sm:block">
                   <span className="block text-sm font-bold">{t("whatsapp")}</span>
                   <span className="block text-xs font-medium text-white/90">{t("whatsappContact")}</span>
                 </span>
@@ -342,7 +343,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </div>
         </section>
 
-        <section id="solutions" className="scroll-mt-36 mx-auto max-w-7xl px-4 pb-8 pt-12 sm:px-5 lg:px-8 lg:pb-14 lg:pt-16">
+        <section id="solutions" className="scroll-mt-36 mx-auto max-w-7xl px-4 pb-8 pt-8 sm:px-5 sm:pt-12 lg:px-8 lg:pb-14 lg:pt-16">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("solutionsTitle")}</h2>
           <div className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3 lg:gap-3">
             {solutions.map(({ key, href, Icon }) => {
