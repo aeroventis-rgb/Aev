@@ -25,6 +25,7 @@ import {
   Wind,
   Wrench,
 } from "lucide-react";
+import { FrenchHomeTop } from "@/components/FrenchHomeTop";
 import { SiteNav } from "@/components/SiteNav";
 import { PartnerLogos } from "@/components/PartnerLogos";
 import { BRAND_SLIDES } from "@/lib/brand-slides";
@@ -191,18 +192,24 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { label: t("maintenanceTitle"), href: "/entretien-climatisation-casablanca" },
   ];
 
+  const Heading = locale === "fr" ? "p" : "h1";
+
   return (
     <div className="min-h-screen bg-white text-brand-ink">
-      <SiteNav />
+      <div className={locale === "fr" ? "md:hidden" : undefined}>
+        <SiteNav />
+      </div>
 
       <main id="main-content">
+        {locale === "fr" ? <FrenchHomeTop /> : null}
+        <div className={locale === "fr" ? "md:hidden" : undefined}>
         <section className="relative overflow-hidden bg-white">
           <div className="relative z-10 mx-auto max-w-7xl px-4 pb-1 pt-4 sm:px-5 sm:pb-2 sm:pt-5 lg:px-8 lg:pb-16 lg:pt-6">
             <div className="max-w-xl lg:max-w-[34rem] xl:max-w-[40rem]">
               <p className="text-[10px] font-semibold uppercase leading-snug tracking-[0.14em] text-brand-blue sm:text-[11px] sm:tracking-[0.18em] lg:text-xs">
                 {t("heroEyebrow")}
               </p>
-              <h1 className="mt-2 text-brand-navy">
+              <Heading className="mt-2 text-brand-navy" {...(locale === "fr" ? { "aria-hidden": true as const } : {})}>
                 <span className="block text-[1.7rem] font-extrabold leading-[1.12] tracking-tight sm:text-[2.05rem] sm:leading-[1.05] lg:text-[2.35rem] xl:text-[2.65rem]">
                   <span className="block xl:whitespace-nowrap">{t("heroLine1")}</span>
                   <span className="block xl:whitespace-nowrap">
@@ -213,7 +220,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 <span className="mt-3 block max-w-xl text-[15px] font-semibold leading-snug sm:mt-2 sm:text-lg">
                   {t("heroTitleLead")} {t("heroTitleAccent")}
                 </span>
-              </h1>
+              </Heading>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-brand-navy/70 sm:mt-2 sm:text-[15px]">{t("heroSubtitle")}</p>
               <div className="mt-5 flex flex-col gap-2.5 sm:mt-4 sm:flex-row sm:flex-wrap sm:gap-3">
                 <Link
@@ -342,6 +349,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             </div>
           </div>
         </section>
+        </div>
 
         <section id="solutions" className="scroll-mt-36 mx-auto max-w-7xl px-4 pb-8 pt-8 sm:px-5 sm:pt-12 lg:px-8 lg:pb-14 lg:pt-16">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("solutionsTitle")}</h2>
