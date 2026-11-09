@@ -41,7 +41,7 @@ export default async function PlanDuSitePage({ params }: Props) {
         <nav aria-label={nav("backHome")}>
           <Link
             href="/"
-            className="inline-flex text-sm font-bold text-brand-blue underline-offset-4 transition hover:text-brand-navy hover:underline"
+            className="inline-flex min-h-11 items-center text-sm font-bold text-brand-blue underline-offset-4 transition hover:text-brand-navy hover:underline"
           >
             ← {nav("backHome")}
           </Link>
@@ -49,7 +49,7 @@ export default async function PlanDuSitePage({ params }: Props) {
 
         <article className="mt-8">
           <header className="border-b border-brand-silver pb-8">
-            <h1 className="text-3xl font-semibold tracking-tight text-brand-ink">
+            <h1 className="text-2xl font-semibold leading-tight tracking-tight text-brand-ink sm:text-3xl">
               {t("heading")}
             </h1>
             <p className="mt-4 text-sm leading-relaxed text-brand-navy/80 md:text-base">{t("intro")}</p>

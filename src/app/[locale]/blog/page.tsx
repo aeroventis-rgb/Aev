@@ -106,17 +106,17 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
               {locale === "fr" ? (
                 <ul className="mt-6 flex flex-col gap-2">
                   <li>
-                    <Link href="/climatisation-casablanca" className="font-bold text-brand-blue hover:underline">
+                    <Link href="/climatisation-casablanca" className="inline-flex min-h-11 items-center font-bold text-brand-blue hover:underline">
                       Climatisation à Casablanca
                     </Link>
                   </li>
                   <li>
-                    <Link href="/climatisation-rabat" className="font-bold text-brand-blue hover:underline">
+                    <Link href="/climatisation-rabat" className="inline-flex min-h-11 items-center font-bold text-brand-blue hover:underline">
                       Climatisation à Rabat
                     </Link>
                   </li>
                   <li>
-                    <Link href="/climatisation-marrakech" className="font-bold text-brand-blue hover:underline">
+                    <Link href="/climatisation-marrakech" className="inline-flex min-h-11 items-center font-bold text-brand-blue hover:underline">
                       Climatisation à Marrakech
                     </Link>
                   </li>
@@ -139,15 +139,15 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
                   <p className="text-sm text-brand-navy/60">
                     <time dateTime={post.date}>{post.date}</time>
                   </p>
-                  <h2 className="mt-2 text-xl font-semibold text-brand-ink">
-                    <Link href={`/blog/${post.slug}`} className="hover:text-brand-blue">
+                  <h2 className="mt-2 text-xl font-semibold leading-snug text-brand-ink">
+                    <Link href={`/blog/${post.slug}`} className="inline-flex min-h-11 items-center hover:text-brand-blue">
                       {post.title}
                     </Link>
                   </h2>
                   <p className="mt-3 text-sm leading-relaxed text-brand-navy/75">{post.description}</p>
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-4 inline-flex font-bold text-brand-blue underline-offset-4 hover:underline"
+                    className="mt-2 inline-flex min-h-11 items-center font-bold text-brand-blue underline-offset-4 hover:underline"
                   >
                     {t("read")}
                   </Link>
@@ -165,7 +165,7 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
                       ? "/blog"
                       : { pathname: "/blog", query: { page: String(current - 1) } }
                   }
-                  className="font-bold text-brand-blue hover:underline"
+                  className="inline-flex min-h-11 items-center font-bold text-brand-blue hover:underline"
                   rel="prev"
                 >
                   {t("previous")}
@@ -179,7 +179,7 @@ export default async function BlogIndexPage({ params, searchParams }: Props) {
               {current < total ? (
                 <Link
                   href={{ pathname: "/blog", query: { page: String(current + 1) } }}
-                  className="font-bold text-brand-blue hover:underline"
+                  className="inline-flex min-h-11 items-center font-bold text-brand-blue hover:underline"
                   rel="next"
                 >
                   {t("next")}

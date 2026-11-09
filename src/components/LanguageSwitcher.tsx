@@ -29,7 +29,7 @@ export function LanguageSwitcher({
         {routing.locales.map((loc, index) => (
           <span key={loc} className="flex items-center">
             {index > 0 ? (
-              <span className="px-1 text-white/40" aria-hidden>
+              <span className="px-0.5 text-white/40 sm:px-1" aria-hidden>
                 |
               </span>
             ) : null}
@@ -38,7 +38,7 @@ export function LanguageSwitcher({
               locale={loc}
               prefetch={false}
               hrefLang={loc}
-              className={`inline-flex min-h-8 items-center px-1 ${
+              className={`inline-flex min-h-11 min-w-10 items-center justify-center px-0.5 sm:min-h-8 sm:min-w-0 sm:px-1 ${
                 locale === loc ? "text-white" : "text-white/70 hover:text-white"
               }`}
               aria-current={locale === loc ? "page" : undefined}
