@@ -131,6 +131,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       key: "climate",
       href: "/climatisation",
       src: HOME_ILLUSTRATIONS.climate,
+      focus: "object-center",
       Icon: Snowflake,
       title: t("cardClimateTitle"),
       line: t("cardClimateLine"),
@@ -139,6 +140,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       key: "vent",
       href: "/ventilation",
       src: HOME_ILLUSTRATIONS.ventilation,
+      focus: "object-center",
       Icon: Fan,
       title: t("cardVentTitle"),
       line: t("cardVentLine"),
@@ -147,6 +149,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       key: "plumb",
       href: "/plomberie",
       src: HOME_ILLUSTRATIONS.plumbing,
+      focus: "object-center",
       Icon: Droplets,
       title: t("cardPlumbTitle"),
       line: t("cardPlumbLine"),
@@ -155,6 +158,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       key: "maint",
       href: "/entretien-climatisation-casablanca",
       src: HOME_ILLUSTRATIONS.maintenance,
+      focus: "object-[72%_center]",
       Icon: Wrench,
       title: t("cardMaintTitle"),
       line: t("cardMaintLine"),
@@ -193,25 +197,25 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
       <main id="main-content">
         <section className="relative overflow-hidden bg-white">
-          <div className="relative z-10 mx-auto max-w-7xl px-4 pb-2 pt-6 sm:px-5 lg:min-h-[520px] lg:px-8 lg:pb-36 lg:pt-8 lg:pe-[50%]">
-            <div className="max-w-xl lg:max-w-[36rem]">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 pb-2 pt-5 sm:px-5 lg:px-8 lg:pb-16 lg:pt-6">
+            <div className="max-w-xl lg:max-w-[34rem] xl:max-w-[40rem]">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue sm:text-xs">
                 {t("heroEyebrow")}
               </p>
-              <h1 className="mt-2 text-brand-navy">
-                <span className="block text-[1.85rem] font-extrabold leading-[1.04] tracking-tight sm:text-5xl lg:text-[3.35rem]">
-                  <span className="block">{t("heroLine1")}</span>
-                  <span className="block">
+              <h1 className="mt-1.5 text-brand-navy">
+                <span className="block text-[1.65rem] font-extrabold leading-[1.05] tracking-tight sm:text-[2.05rem] lg:text-[2.35rem] xl:text-[2.65rem]">
+                  <span className="block xl:whitespace-nowrap">{t("heroLine1")}</span>
+                  <span className="block xl:whitespace-nowrap">
                     {t("heroLine2Lead")}
                     <span className="text-[#3b93dc]">{t("heroAccent")}</span>{t("heroLine2End")}
                   </span>
                 </span>
-                <span className="mt-3 block max-w-xl text-base font-semibold leading-snug sm:text-lg">
+                <span className="mt-2 block max-w-xl text-base font-semibold leading-snug sm:text-lg">
                   {t("heroTitleLead")} {t("heroTitleAccent")}
                 </span>
               </h1>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-brand-navy/70 sm:text-[15px]">{t("heroSubtitle")}</p>
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <p className="mt-2 max-w-xl text-sm leading-relaxed text-brand-navy/70 sm:text-[15px]">{t("heroSubtitle")}</p>
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/contact"
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-navy px-5 text-sm font-semibold text-white transition hover:bg-brand-blue"
@@ -227,39 +231,39 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                   <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
                 </a>
               </div>
-              <ul className="mt-6 grid grid-cols-2 gap-x-2 gap-y-2.5 lg:flex lg:flex-nowrap lg:items-center">
+              <ul className="mt-4 grid grid-cols-2 gap-x-2 gap-y-2.5 xl:flex xl:flex-nowrap xl:items-center">
                 {trust.map(({ key, label, Icon }, index) => (
                   <li
                     key={key}
                     className={`flex min-w-0 items-center gap-1.5 ${
-                      index > 0 ? "lg:border-s lg:border-brand-navy/15 lg:ps-2.5 lg:pe-2.5" : "lg:pe-2.5"
+                      index > 0 ? "xl:border-s xl:border-brand-navy/15 xl:ps-2.5 xl:pe-2.5" : "xl:pe-2.5"
                     }`}
                   >
                     <Icon className="h-4 w-4 shrink-0 text-brand-blue" aria-hidden />
-                    <span className="text-[11px] font-medium leading-tight text-brand-navy lg:whitespace-nowrap">{label}</span>
+                    <span className="text-[11px] font-medium leading-tight text-brand-navy xl:whitespace-nowrap">{label}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <figure className="relative z-0 mx-4 mt-4 aspect-[2.33/1] overflow-hidden rounded-2xl sm:mx-5 lg:absolute lg:bottom-20 lg:end-0 lg:mx-0 lg:mt-0 lg:aspect-[2.33/1] lg:h-auto lg:w-[57%] lg:rounded-none">
+          <figure className="relative z-0 mx-4 mt-4 aspect-[1.98/1] overflow-hidden rounded-2xl sm:mx-5 lg:absolute lg:inset-y-0 lg:end-0 lg:mx-0 lg:mt-0 lg:aspect-auto lg:w-[58%] lg:rounded-none xl:w-[60%]">
             <Image
               src={HOME_ILLUSTRATIONS.hero}
               alt={t("illustration")}
               fill
               priority
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 54vw"
+              className="object-cover object-[center_18%] lg:object-[center_top]"
+              sizes="(max-width: 1024px) 100vw, 60vw"
             />
-            <div className="absolute inset-0 hidden lg:block ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-white from-0% via-white/70 via-[12%] to-transparent to-[42%]" />
+            <div className="pointer-events-none absolute inset-0 hidden lg:block ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-white from-0% via-white via-[26%] to-transparent to-[58%]" />
             <figcaption className="absolute end-3 top-3 rounded bg-black/40 px-1.5 py-0.5 text-[10px] font-medium text-white/90">
               {t("heroCaption")}
             </figcaption>
           </figure>
         </section>
 
-        <section id="expertises" className="scroll-mt-36 relative z-20 mx-auto -mt-8 max-w-7xl px-4 sm:px-5 lg:-mt-28 lg:px-8">
+        <section id="expertises" className="scroll-mt-36 relative z-20 mx-auto -mt-4 max-w-7xl px-4 sm:px-5 lg:-mt-12 lg:px-8">
           <h2 className="sr-only">{tn("expertises")}</h2>
           <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {featured.map((item) => {
@@ -270,16 +274,16 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 <li key={item.key} className="min-w-0">
                   <Link
                     href={href}
-                    className="group relative block h-40 overflow-hidden rounded-2xl shadow-[0_18px_40px_-22px_rgba(2,47,112,0.55)] ring-1 ring-black/5 transition hover:-translate-y-0.5 sm:h-[10.5rem]"
+                    className="group relative block h-36 overflow-hidden rounded-2xl shadow-[0_18px_40px_-22px_rgba(2,47,112,0.55)] ring-1 ring-black/5 transition hover:-translate-y-0.5 sm:h-[9.25rem]"
                   >
                     <Image
                       src={item.src}
                       alt={t("illustration")}
                       fill
-                      className="object-cover object-center"
+                      className={`object-cover ${item.focus}`}
                       sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 320px"
                     />
-                    <div className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-[#01224f] from-40% via-[#01224f]/75 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-[48%] bg-gradient-to-t from-[#01224f] from-45% via-[#01224f]/80 to-transparent" />
                     <span className="absolute start-3 top-2 rounded bg-white/80 px-1.5 py-0.5 text-[10px] font-medium text-brand-navy/70" aria-hidden>
                       {t("cardCaption")}
                     </span>
