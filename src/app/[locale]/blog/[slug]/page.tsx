@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildPageMetadata({
     locale: post.locale,
     pathname: `/blog/${post.slug}`,
-    title: post.title,
+    title: post.seoTitle ?? post.title,
     description: post.description,
     locales: publishedLocalesForSlug(post.slug),
     type: "article",
@@ -99,12 +99,17 @@ export default async function BlogArticlePage({ params }: Props) {
                 <Image
                   src={post.image}
                   alt={post.imageAlt}
-                  width={1024}
-                  height={1024}
+                  width={post.imageWidth ?? 1024}
+                  height={post.imageHeight ?? 1024}
                   priority
                   className="h-auto w-full"
                   sizes="(max-width: 768px) 100vw, 768px"
                 />
+                {post.imageCaption ? (
+                  <figcaption className="border-t border-brand-silver px-4 py-3 text-xs leading-relaxed text-brand-navy/70">
+                    {post.imageCaption}
+                  </figcaption>
+                ) : null}
               </figure>
             ) : null}
           </header>

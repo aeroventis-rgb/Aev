@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { routing, type Locale } from "@/i18n/routing";
+import { publishedBlogLocales } from "@/lib/blog-published-locales";
 import { LANDING_ROUTES } from "@/lib/landings/slugs";
 
 export type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
@@ -93,6 +94,9 @@ export function localesForPath(pathname: string): readonly Locale[] | null {
   if (landing) return landing.locales;
 
   if (normalized.startsWith("/blog/")) {
+    const slug = normalized.slice("/blog/".length);
+    const published = publishedBlogLocales[slug];
+    if (published) return published;
     return STATIC_ROUTES.find((route) => route.pathname === "/blog")?.locales ?? null;
   }
 

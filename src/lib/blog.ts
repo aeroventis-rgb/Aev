@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { routing, type Locale } from "@/i18n/routing";
+import { publishedBlogLocales } from "@/lib/blog-published-locales";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 const PLACEHOLDER_RE = /\[PLACEHOLDER[^\]]*\]/;
@@ -13,12 +14,17 @@ export type BlogPost = {
   slug: string;
   locale: Locale;
   title: string;
+  /** Document title when it differs from the visible heading. */
+  seoTitle?: string;
   description: string;
   keywords: string[];
   date: string;
   draft: boolean;
   image?: string;
   imageAlt?: string;
+  imageCaption?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   body: string;
   faqs: BlogFaq[];
 };
@@ -72,6 +78,37 @@ function asKeywords(value: unknown): string[] {
   return [];
 }
 
+function imageSize(filePath: string): { width: number; height: number } {
+  const buf = fs.readFileSync(filePath);
+  if (buf.length > 24 && buf[0] === 0x89 && buf.toString("ascii", 1, 4) === "PNG") {
+    return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+  }
+  if (buf.length > 4 && buf[0] === 0xff && buf[1] === 0xd8) {
+    let offset = 2;
+    while (offset + 8 < buf.length) {
+      if (buf[offset] !== 0xff) break;
+      const marker = buf[offset + 1];
+      if (marker === 0xd8 || marker === 0xd9) {
+        offset += 2;
+        continue;
+      }
+      if (marker === 0x01 || (marker >= 0xd0 && marker <= 0xd9)) {
+        offset += 2;
+        continue;
+      }
+      const length = buf.readUInt16BE(offset + 2);
+      if (length < 2 || offset + 2 + length > buf.length) break;
+      const isStartOfFrame =
+        marker >= 0xc0 && marker <= 0xcf && marker !== 0xc4 && marker !== 0xc8 && marker !== 0xcc;
+      if (isStartOfFrame) {
+        return { width: buf.readUInt16BE(offset + 7), height: buf.readUInt16BE(offset + 5) };
+      }
+      offset += 2 + length;
+    }
+  }
+  throw new Error(`Could not read image dimensions for ${filePath}`);
+}
+
 function asDate(value: unknown): string {
   if (value instanceof Date && !Number.isNaN(value.getTime())) {
     return value.toISOString().slice(0, 10);
@@ -120,6 +157,9 @@ function readLocaleDir(locale: Locale): BlogPost[] {
       const imageRaw = String(data.image ?? "").trim();
       let image: string | undefined;
       let imageAlt: string | undefined;
+      let imageCaption: string | undefined;
+      let imageWidth: number | undefined;
+      let imageHeight: number | undefined;
       if (imageRaw) {
         if (!imageRaw.startsWith("/")) {
           throw new Error(`Blog ${fullPath} image must be a public path starting with /`);
@@ -132,20 +172,30 @@ function readLocaleDir(locale: Locale): BlogPost[] {
         if (!fs.existsSync(disk)) {
           throw new Error(`Blog ${fullPath} image not found at ${imageRaw}`);
         }
+        const size = imageSize(disk);
         image = imageRaw;
+        imageWidth = size.width;
+        imageHeight = size.height;
+        const caption = String(data.imageCaption ?? data.image_caption ?? "").trim();
+        imageCaption = caption || undefined;
       }
 
+      const seoTitleRaw = String(data.seo_title ?? data.seoTitle ?? "").trim();
       const { body, faqs } = splitArticle(parsed.content);
       return {
         slug,
         locale,
         title,
+        seoTitle: seoTitleRaw || undefined,
         description,
         keywords: asKeywords(data.keywords),
         date: asDate(data.date),
         draft,
         image,
         imageAlt,
+        imageCaption,
+        imageWidth,
+        imageHeight,
         body,
         faqs,
       };
@@ -154,12 +204,42 @@ function readLocaleDir(locale: Locale): BlogPost[] {
 
 let cache: BlogPost[] | null = null;
 
+function assertPublishedLocaleIndex(posts: readonly BlogPost[]) {
+  const actual = new Map<string, Locale[]>();
+  for (const post of posts) {
+    if (post.draft) continue;
+    const locales = actual.get(post.slug) ?? [];
+    locales.push(post.locale);
+    actual.set(post.slug, locales);
+  }
+
+  const expectedSlugs = Object.keys(publishedBlogLocales).sort();
+  const actualSlugs = [...actual.keys()].sort();
+  if (expectedSlugs.join("\n") !== actualSlugs.join("\n")) {
+    throw new Error(
+      `publishedBlogLocales is out of date. Published slugs: ${actualSlugs.join(", ") || "(none)"}.`
+    );
+  }
+
+  for (const slug of actualSlugs) {
+    const want = routing.locales.filter((locale) => actual.get(slug)?.includes(locale));
+    const got = publishedBlogLocales[slug] ?? [];
+    if (want.join(",") !== [...got].join(",")) {
+      throw new Error(
+        `publishedBlogLocales["${slug}"] must be [${want.join(", ")}] so missing translations are not linked.`
+      );
+    }
+  }
+}
+
 function loadAll(): BlogPost[] {
   if (cache) return cache;
   if (!fs.existsSync(path.join(CONTENT_DIR, "fr"))) {
     throw new Error("content/blog/fr is missing");
   }
-  cache = routing.locales.flatMap((locale) => readLocaleDir(locale));
+  const posts = routing.locales.flatMap((locale) => readLocaleDir(locale));
+  assertPublishedLocaleIndex(posts);
+  cache = posts;
   return cache;
 }
 
