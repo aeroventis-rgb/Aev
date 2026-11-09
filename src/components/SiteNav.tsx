@@ -100,16 +100,16 @@ export function SiteNav() {
   return (
     <header className="sticky top-0 z-[70]">
       <div className="bg-brand-navy text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-0 sm:px-5 lg:px-8">
-          <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-0.5 text-[11px] sm:text-xs">
-            <span className="inline-flex items-center gap-1.5">
+        <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-4 sm:h-auto sm:px-5 sm:py-0 lg:px-8">
+          <div className="flex min-w-0 flex-nowrap items-center gap-x-3 text-[11px] sm:flex-wrap sm:text-xs">
+            <span className="hidden items-center gap-1.5 sm:inline-flex">
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
               {tn("location")}
             </span>
-            <span className="text-white/35" aria-hidden>
+            <span className="hidden text-white/35 sm:inline" aria-hidden>
               |
             </span>
-            <a href={`tel:${PHONE_E164}`} className="inline-flex min-h-8 items-center gap-1.5 hover:text-white/80" dir="ltr">
+            <a href={`tel:${PHONE_E164}`} className="inline-flex min-h-8 items-center gap-1.5 whitespace-nowrap hover:text-white/80" dir="ltr">
               <Phone className="h-3.5 w-3.5 shrink-0" aria-hidden />
               {PHONE_DISPLAY}
             </a>
