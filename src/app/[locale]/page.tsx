@@ -5,6 +5,7 @@ import { generateContactQrDataUrl } from "@/lib/qr";
 import { getTranslations } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { FR_HOME_TOP } from "@/lib/constants";
 import { hvacBusinessJsonLd } from "@/lib/seo/schema";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -39,6 +40,16 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <>
+      {loc === "fr" ? (
+        <link
+          rel="preload"
+          as="image"
+          href={FR_HOME_TOP.src}
+          type="image/webp"
+          media="(min-width: 768px)"
+          fetchPriority="high"
+        />
+      ) : null}
       <JsonLd data={hvacBusinessJsonLd(tSchema("description"))} />
       <LandingPage contactQrDataUrl={contactQrDataUrl} />
     </>

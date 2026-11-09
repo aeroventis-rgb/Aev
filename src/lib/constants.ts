@@ -43,3 +43,13 @@ export const HOME_ILLUSTRATIONS = {
   plumbing: "/home/illustration-plomberie.webp",
   maintenance: "/home/illustration-maintenance.webp",
 } as const;
+
+/**
+ * French homepage, from 768px up: the owner's mockup with the copy drawn in the image.
+ * Phones keep the HTML hero. English and Arabic keep the HTML top.
+ */
+export const FR_HOME_TOP = {
+  src: "/home/fr-home-top.webp",
+  width: 1672,
+  height: 941,
+} as const;
