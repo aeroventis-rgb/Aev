@@ -69,7 +69,7 @@ function CitySkyline() {
       aria-hidden
       viewBox="0 0 1440 160"
       preserveAspectRatio="xMidYMax slice"
-      className="pointer-events-none absolute inset-x-0 bottom-0 h-28 w-full text-white/25 sm:h-32"
+      className="h-full w-full"
     >
       <path
         fill="none"
@@ -192,26 +192,26 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       <SiteNav />
 
       <main id="main-content">
-        <section className="relative overflow-hidden">
-          <div className="relative z-10 mx-auto max-w-7xl px-4 pb-2 pt-8 sm:px-5 lg:pb-28 lg:pt-12 lg:pe-[46%] xl:pe-[42%]">
-            <div className="max-w-xl lg:max-w-[38rem]">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-blue sm:text-xs">
+        <section className="relative overflow-hidden bg-white">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 pb-2 pt-6 sm:px-5 lg:min-h-[520px] lg:px-8 lg:pb-36 lg:pt-8 lg:pe-[50%]">
+            <div className="max-w-xl lg:max-w-[36rem]">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-blue sm:text-xs">
                 {t("heroEyebrow")}
               </p>
-              <h1 className="mt-3 text-brand-navy">
-                <span className="block text-[1.7rem] font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3.05rem]">
+              <h1 className="mt-2 text-brand-navy">
+                <span className="block text-[1.85rem] font-extrabold leading-[1.04] tracking-tight sm:text-5xl lg:text-[3.35rem]">
                   <span className="block">{t("heroLine1")}</span>
                   <span className="block">
                     {t("heroLine2Lead")}
-                    <span className="text-[#2f86d6]">{t("heroAccent")}</span>{t("heroLine2End")}
+                    <span className="text-[#3b93dc]">{t("heroAccent")}</span>{t("heroLine2End")}
                   </span>
                 </span>
                 <span className="mt-3 block max-w-xl text-base font-semibold leading-snug sm:text-lg">
                   {t("heroTitleLead")} {t("heroTitleAccent")}
                 </span>
               </h1>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-brand-navy/75 sm:text-base">{t("heroSubtitle")}</p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-brand-navy/70 sm:text-[15px]">{t("heroSubtitle")}</p>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/contact"
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-brand-navy px-5 text-sm font-semibold text-white transition hover:bg-brand-blue"
@@ -221,43 +221,45 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 </Link>
                 <a
                   href="#expertises"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand-navy/25 bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-navy"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-brand-navy/30 bg-white px-5 text-sm font-semibold text-brand-navy transition hover:border-brand-navy"
                 >
                   {t("discover")}
                   <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
                 </a>
               </div>
-              <ul className="mt-7 grid grid-cols-2 gap-x-3 gap-y-3 sm:grid-cols-4 lg:max-w-2xl">
-                {trust.map(({ key, label, Icon }) => (
-                  <li key={key} className="flex min-w-0 items-center gap-2">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#e7f1fb] text-brand-blue">
-                      <Icon className="h-4 w-4" aria-hidden />
-                    </span>
-                    <span className="text-[12px] font-medium leading-tight text-brand-navy">{label}</span>
+              <ul className="mt-6 grid grid-cols-2 gap-x-2 gap-y-2.5 lg:flex lg:flex-nowrap lg:items-center">
+                {trust.map(({ key, label, Icon }, index) => (
+                  <li
+                    key={key}
+                    className={`flex min-w-0 items-center gap-1.5 ${
+                      index > 0 ? "lg:border-s lg:border-brand-navy/15 lg:ps-2.5 lg:pe-2.5" : "lg:pe-2.5"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4 shrink-0 text-brand-blue" aria-hidden />
+                    <span className="text-[11px] font-medium leading-tight text-brand-navy lg:whitespace-nowrap">{label}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 hidden max-w-xl text-xs leading-relaxed text-brand-navy/55 lg:block">{t("heroCaption")}</p>
             </div>
           </div>
 
-          <figure className="relative z-0 mx-4 mt-6 sm:mx-5 lg:absolute lg:inset-y-0 lg:end-0 lg:mx-0 lg:mt-0 lg:w-[50%] xl:w-[46%]">
-            <div className="relative h-56 overflow-hidden rounded-2xl sm:h-72 lg:absolute lg:inset-0 lg:h-auto lg:rounded-none">
-              <Image
-                src={IMAGES.heroVilla}
-                alt=""
-                fill
-                priority
-                className="object-cover object-[center_32%]"
-                sizes="(max-width: 1024px) 100vw, 46vw"
-              />
-              <div className="absolute inset-0 hidden lg:block ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-white from-0% via-white/80 via-[22%] to-transparent to-[62%]" />
-            </div>
-            <figcaption className="mt-2 text-xs leading-relaxed text-brand-navy/60 lg:hidden">{t("heroCaption")}</figcaption>
+          <figure className="relative z-0 mx-4 mt-4 aspect-[2.33/1] overflow-hidden rounded-2xl sm:mx-5 lg:absolute lg:bottom-20 lg:end-0 lg:mx-0 lg:mt-0 lg:aspect-[2.33/1] lg:h-auto lg:w-[57%] lg:rounded-none">
+            <Image
+              src={HOME_ILLUSTRATIONS.hero}
+              alt={t("illustration")}
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 54vw"
+            />
+            <div className="absolute inset-0 hidden lg:block ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-white from-0% via-white/70 via-[12%] to-transparent to-[42%]" />
+            <figcaption className="absolute end-3 top-3 rounded bg-black/40 px-1.5 py-0.5 text-[10px] font-medium text-white/90">
+              {t("heroCaption")}
+            </figcaption>
           </figure>
         </section>
 
-        <section id="expertises" className="scroll-mt-36 relative z-20 mx-auto max-w-7xl px-4 pt-4 sm:px-5 lg:-mt-16 lg:px-8 lg:pt-0">
+        <section id="expertises" className="scroll-mt-36 relative z-20 mx-auto -mt-8 max-w-7xl px-4 sm:px-5 lg:-mt-28 lg:px-8">
           <h2 className="sr-only">{tn("expertises")}</h2>
           <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {featured.map((item) => {
@@ -268,30 +270,29 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 <li key={item.key} className="min-w-0">
                   <Link
                     href={href}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_-24px_rgba(2,47,112,0.55)] ring-1 ring-[#e4eef7] transition hover:-translate-y-0.5 hover:shadow-[0_22px_44px_-22px_rgba(2,47,112,0.6)]"
+                    className="group relative block h-40 overflow-hidden rounded-2xl shadow-[0_18px_40px_-22px_rgba(2,47,112,0.55)] ring-1 ring-black/5 transition hover:-translate-y-0.5 sm:h-[10.5rem]"
                   >
-                    <div className="relative h-36 sm:h-40">
-                      <Image
-                        src={item.src}
-                        alt={t("illustration")}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 320px"
-                      />
-                      <span className="absolute bottom-2 end-2 rounded-md bg-white/92 px-1.5 py-0.5 text-[10px] font-medium text-brand-navy/70" aria-hidden>
-                        {t("cardCaption")}
-                      </span>
-                    </div>
-                    <div className="relative flex flex-1 items-end gap-2 px-4 pb-4 pt-7">
-                      <span className="absolute -top-5 start-4 flex h-11 w-11 items-center justify-center rounded-full bg-brand-blue text-white shadow-md ring-4 ring-white">
-                        <Icon className="h-5 w-5" aria-hidden />
-                      </span>
-                      <span className="min-w-0 flex-1">
-                        <h3 className="text-base font-semibold text-brand-navy">{item.title}</h3>
-                        <span className="mt-0.5 block text-sm leading-snug text-brand-navy/65">{item.line}</span>
-                      </span>
-                      <ArrowRight className="mb-1 h-4 w-4 shrink-0 text-brand-navy/40 transition group-hover:text-brand-blue rtl:rotate-180" aria-hidden />
-                    </div>
+                    <Image
+                      src={item.src}
+                      alt={t("illustration")}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 320px"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-[#01224f] from-40% via-[#01224f]/75 to-transparent" />
+                    <span className="absolute start-3 top-2 rounded bg-white/80 px-1.5 py-0.5 text-[10px] font-medium text-brand-navy/70" aria-hidden>
+                      {t("cardCaption")}
+                    </span>
+                    <span className="absolute bottom-4 start-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand-blue text-white shadow-md">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </span>
+                    <span className="absolute bottom-3 start-[3.35rem] end-11 text-white">
+                      <h3 className="text-sm font-semibold leading-tight">{item.title}</h3>
+                      <span className="mt-0.5 block text-[11px] leading-snug text-white/85">{item.line}</span>
+                    </span>
+                    <span className="absolute bottom-4 end-3 flex h-8 w-8 items-center justify-center rounded-full border border-white/55 text-white">
+                      <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
+                    </span>
                   </Link>
                 </li>
               );
@@ -299,23 +300,23 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </ul>
         </section>
 
-        <section className="relative mt-8 overflow-hidden bg-brand-navy text-white lg:mt-10" aria-labelledby="home-promise">
-          <CitySkyline />
-          <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-5 lg:px-8 lg:py-10">
-            <ul className="grid gap-6 md:grid-cols-3">
+        <section className="relative mt-8 bg-brand-navy text-white lg:mt-10" aria-labelledby="home-promise">
+          <div className="relative mx-auto max-w-7xl px-4 py-7 sm:px-5 lg:px-8 lg:pb-8 lg:pt-8">
+            <ul className="grid gap-5 sm:grid-cols-3">
               {claims.map(({ key, label, Icon }) => (
                 <li key={key} className="flex items-start gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/25">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                  <span className="pt-1 text-sm font-medium leading-snug sm:text-base">{label}</span>
+                  <Icon className="mt-0.5 h-6 w-6 shrink-0 text-white/90" aria-hidden />
+                  <span className="text-sm font-medium leading-snug sm:text-base">{label}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-8 flex flex-col items-start justify-between gap-6 border-t border-white/15 pt-6 sm:flex-row sm:items-center">
+            <div className="relative mt-6 min-h-24 border-t border-white/15 pt-5">
+              <div className="pointer-events-none absolute bottom-0 end-[7.5rem] hidden h-24 w-[min(42%,26rem)] text-white/30 md:block">
+                <CitySkyline />
+              </div>
               <h2
                 id="home-promise"
-                className={`max-w-xl text-xl font-medium leading-snug sm:text-2xl ${locale === "ar" ? "" : "italic"}`}
+                className={`relative z-10 max-w-md text-xl font-medium leading-snug sm:text-[1.7rem] ${locale === "ar" ? "" : "italic"}`}
               >
                 {t("bandTagline")}
               </h2>
@@ -323,9 +324,9 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 rounded-full bg-[#25D366] py-1.5 pe-5 ps-1.5 text-white shadow-[0_12px_28px_-12px_rgba(0,0,0,0.55)] transition hover:bg-[#1ebe5d]"
+                className="relative z-10 mt-5 inline-flex items-center gap-3 rounded-full bg-[#25D366] py-1.5 pe-5 ps-1.5 text-white shadow-[0_14px_30px_-12px_rgba(0,0,0,0.55)] transition hover:bg-[#1ebe5d] sm:absolute sm:bottom-0 sm:end-0 sm:mt-0 sm:translate-y-1/2"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/15">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1da851]">
                   <MessageCircle className="h-6 w-6" aria-hidden />
                 </span>
                 <span className="text-start leading-tight">
@@ -337,7 +338,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           </div>
         </section>
 
-        <section id="solutions" className="scroll-mt-36 mx-auto max-w-7xl px-4 py-8 sm:px-5 lg:px-8 lg:py-14">
+        <section id="solutions" className="scroll-mt-36 mx-auto max-w-7xl px-4 pb-8 pt-12 sm:px-5 lg:px-8 lg:pb-14 lg:pt-16">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("solutionsTitle")}</h2>
           <div className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3 lg:gap-3">
             {solutions.map(({ key, href, Icon }) => {

@@ -33,11 +33,11 @@ export const IMAGES = {
 } as const;
 
 /**
- * Homepage service-card photos, cropped from files already in the repo
- * (brand slides 05, 06 and 18, and the plumbing panel of `flyer-reference.jpg`).
- * Illustrations only — not identified AEROVENTIS job sites or staff.
+ * Homepage hero and service-card photos, cropped from the owner's homepage mockup.
+ * Shown only with an "Illustration" label — not identified AEROVENTIS job sites or staff.
  */
 export const HOME_ILLUSTRATIONS = {
+  hero: "/home/illustration-hero.webp",
   climate: "/home/illustration-climatisation.webp",
   ventilation: "/home/illustration-ventilation.webp",
   plumbing: "/home/illustration-plomberie.webp",

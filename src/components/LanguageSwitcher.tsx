@@ -38,7 +38,7 @@ export function LanguageSwitcher({
               locale={loc}
               prefetch={false}
               hrefLang={loc}
-              className={`inline-flex min-h-11 items-center px-1 sm:min-h-8 ${
+              className={`inline-flex min-h-8 items-center px-1 ${
                 locale === loc ? "text-white" : "text-white/70 hover:text-white"
               }`}
               aria-current={locale === loc ? "page" : undefined}

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { ChevronDown, FileText, MapPin, Menu, Phone, X } from "lucide-react";
+import { ArrowRight, ChevronDown, FileText, MapPin, Menu, Phone, X } from "lucide-react";
 import Image from "next/image";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { BRAND_LOGO_SRC, PHONE_DISPLAY, PHONE_E164 } from "@/lib/constants";
@@ -109,7 +109,7 @@ export function SiteNav() {
             <span className="text-white/35" aria-hidden>
               |
             </span>
-            <a href={`tel:${PHONE_E164}`} className="inline-flex min-h-11 items-center gap-1.5 hover:text-white/80 sm:min-h-8" dir="ltr">
+            <a href={`tel:${PHONE_E164}`} className="inline-flex min-h-8 items-center gap-1.5 hover:text-white/80" dir="ltr">
               <Phone className="h-3.5 w-3.5 shrink-0" aria-hidden />
               {PHONE_DISPLAY}
             </a>
@@ -119,7 +119,7 @@ export function SiteNav() {
       </div>
 
       <div className="border-b border-[#e6eef6] bg-white">
-        <div className="mx-auto flex max-w-7xl flex-nowrap items-center gap-2 px-4 py-2 sm:gap-3 sm:px-5 sm:py-2.5 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-nowrap items-center gap-2 px-4 py-1.5 sm:gap-3 sm:px-5 lg:px-8 lg:py-2">
           <Link
             href="/"
             className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40"
@@ -132,7 +132,7 @@ export function SiteNav() {
               width={1536}
               height={1536}
               priority
-              className="h-16 w-auto bg-white lg:h-20"
+              className="h-[4.25rem] w-auto bg-white lg:h-24"
             />
           </Link>
 
@@ -194,6 +194,7 @@ export function SiteNav() {
             >
               <FileText className="h-4 w-4" aria-hidden />
               {tn("quote")}
+              <ArrowRight className="h-4 w-4 rtl:rotate-180" aria-hidden />
             </Link>
             <button
               type="button"
