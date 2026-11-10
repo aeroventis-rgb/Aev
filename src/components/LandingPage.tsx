@@ -467,9 +467,6 @@ export function LandingPage({ contactQrDataUrl }: Props) {
         <section id="realisations" className="scroll-mt-36 border-t border-[#e6eef6] bg-[#f7f9fc] py-12 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-8">
             <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("projectsTitle")}</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-brand-navy/70">
-              {t("illustration")}
-            </p>
             <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
               {realisationShots.map((shot) => (
                 <li key={shot.key} className={shot.key === "workRoof" ? "max-sm:col-span-2" : undefined}>
