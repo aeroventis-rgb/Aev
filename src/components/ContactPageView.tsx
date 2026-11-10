@@ -36,7 +36,9 @@ export async function ContactPageView({ contactQrDataUrl }: Props) {
           >
             <Phone className="h-6 w-6 text-brand-blue" aria-hidden />
             <p className="mt-4 text-sm text-brand-navy/70">{t("phoneLabel")}</p>
-            <p className="mt-1 text-2xl font-semibold tracking-tight text-brand-ink">{tc("phone")}</p>
+            <p className="mt-1 break-words text-2xl font-semibold tracking-tight text-brand-ink" dir="ltr">
+              {tc("phone")}
+            </p>
             <p className="mt-2 text-sm text-brand-blue">{tc("callNow")}</p>
           </a>
 

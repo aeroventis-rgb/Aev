@@ -8,6 +8,71 @@ import { PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
 import { COMPARISON_ROWS, PROCESS_TITLES } from "@/lib/landings/shared";
 import type { LandingPage } from "@/lib/landings/types";
 
+type CompareRow = {
+  label: string;
+  split?: string;
+  gainable?: string;
+  vrv?: string;
+};
+
+const COMPARE_SYSTEMS = [
+  { key: "split", label: "Split mural" },
+  { key: "gainable", label: "Gainable" },
+  { key: "vrv", label: "VRV / DRV" },
+] as const;
+
+function Comparison({ rows }: { rows: readonly CompareRow[] }) {
+  return (
+    <>
+      <div className="mt-6 flex flex-col gap-3 md:hidden">
+        {rows.map((row) => (
+          <section key={row.label} className="rounded-md border border-brand-silver bg-white p-4">
+            <h3 className="text-base font-semibold text-brand-ink">{row.label}</h3>
+            <dl className="mt-3 flex flex-col gap-3">
+              {COMPARE_SYSTEMS.map((system) => (
+                <div key={system.key}>
+                  <dt className="text-sm font-bold text-brand-ink">{system.label}</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-brand-navy/80">{row[system.key]}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ))}
+      </div>
+      <div className="mt-6 hidden overflow-x-auto rounded-md border border-brand-silver bg-white md:block">
+        <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+          <thead className="bg-brand-off text-brand-ink">
+            <tr>
+              <th scope="col" className="px-4 py-3 font-bold">
+                Critère
+              </th>
+              {COMPARE_SYSTEMS.map((system) => (
+                <th key={system.key} scope="col" className="px-4 py-3 font-bold">
+                  {system.label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.label} className="border-t border-brand-silver align-top">
+                <th scope="row" className="px-4 py-3 font-bold text-brand-ink">
+                  {row.label}
+                </th>
+                {COMPARE_SYSTEMS.map((system) => (
+                  <td key={system.key} className="px-4 py-3 text-brand-navy/80">
+                    {row[system.key]}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
+
 export async function ServiceLandingView({ page }: { page: LandingPage }) {
   const tc = await getTranslations("cta");
   const servicesHeading = page.headings?.services ?? "Services";
@@ -70,46 +135,17 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
                 ))}
               </div>
             ) : (
-            <div className="mt-6 max-w-full overflow-x-auto rounded-md border border-brand-silver bg-white">
-              <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-                <thead className="bg-brand-off text-brand-ink">
-                  <tr>
-                    <th scope="col" className="px-4 py-3 font-bold">
-                      Critère
-                    </th>
-                    <th scope="col" className="px-4 py-3 font-bold">
-                      Split mural
-                    </th>
-                    <th scope="col" className="px-4 py-3 font-bold">
-                      Gainable
-                    </th>
-                    <th scope="col" className="px-4 py-3 font-bold">
-                      VRV / DRV
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {COMPARISON_ROWS.map((row) => (
-                    <tr key={row.label} className="border-t border-brand-silver align-top">
-                      <th scope="row" className="px-4 py-3 font-bold text-brand-ink">
-                        {row.label}
-                      </th>
-                      <td className="px-4 py-3 text-brand-navy/80">{row.split}</td>
-                      <td className="px-4 py-3 text-brand-navy/80">{row.gainable}</td>
-                      <td className="px-4 py-3 text-brand-navy/80">{row.vrv}</td>
-                    </tr>
-                  ))}
-                  <tr className="border-t border-brand-silver align-top">
-                    <th scope="row" className="px-4 py-3 font-bold text-brand-ink">
-                      Sur ce secteur
-                    </th>
-                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit?.split}</td>
-                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit?.gainable}</td>
-                    <td className="px-4 py-3 text-brand-navy/80">{page.localFit?.vrv}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <Comparison
+              rows={[
+                ...COMPARISON_ROWS,
+                {
+                  label: "Sur ce secteur",
+                  split: page.localFit?.split,
+                  gainable: page.localFit?.gainable,
+                  vrv: page.localFit?.vrv,
+                },
+              ]}
+            />
             )}
           </section>
 
@@ -151,7 +187,7 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-bold text-brand-blue underline-offset-4 hover:underline"
+                    className="inline-flex min-h-11 items-center font-bold text-brand-blue underline-offset-4 hover:underline"
                   >
                     {link.label}
                   </Link>
@@ -170,18 +206,20 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
                 href={`tel:${PHONE_E164}`}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-brand-blue px-5 text-sm font-semibold text-white"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-brand-blue px-5 text-center text-sm font-semibold text-white sm:w-auto"
               >
-                <Phone className="h-4 w-4" aria-hidden />
-                {tc("callNow")} · {PHONE_DISPLAY}
+                <Phone className="h-4 w-4 shrink-0" aria-hidden />
+                <span>
+                  {tc("callNow")} · <span dir="ltr">{PHONE_DISPLAY}</span>
+                </span>
               </a>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-brand-silver bg-white px-5 text-sm font-semibold text-brand-navy"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-brand-silver bg-white px-5 text-center text-sm font-semibold text-brand-navy sm:w-auto"
               >
-                <MessageCircle className="h-4 w-4" aria-hidden />
+                <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
                 {tc("whatsapp")}
               </a>
             </div>

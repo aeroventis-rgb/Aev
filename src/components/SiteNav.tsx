@@ -49,6 +49,15 @@ export function SiteNav() {
   }, [pathname]);
 
   useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [open]);
+
+  useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") setExpOpen(false);
     };
@@ -99,8 +108,8 @@ export function SiteNav() {
 
   return (
     <header className="sticky top-0 z-[70]">
-      <div className="bg-brand-navy text-white">
-        <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-4 sm:h-auto sm:px-5 sm:py-0 lg:px-8">
+      <div className="bg-brand-navy pt-[env(safe-area-inset-top)] text-white">
+        <div className="mx-auto flex h-11 max-w-7xl items-center justify-between gap-2 px-3 sm:h-auto sm:gap-3 sm:px-5 sm:py-0 lg:px-8">
           <div className="flex min-w-0 flex-nowrap items-center gap-x-3 text-[11px] sm:flex-wrap sm:text-xs">
             <span className="hidden items-center gap-1.5 sm:inline-flex">
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
@@ -109,7 +118,7 @@ export function SiteNav() {
             <span className="hidden text-white/35 sm:inline" aria-hidden>
               |
             </span>
-            <a href={`tel:${PHONE_E164}`} className="inline-flex min-h-8 items-center gap-1.5 whitespace-nowrap hover:text-white/80" dir="ltr">
+            <a href={`tel:${PHONE_E164}`} className="inline-flex min-h-11 items-center gap-1.5 whitespace-nowrap hover:text-white/80 sm:min-h-8" dir="ltr">
               <Phone className="h-3.5 w-3.5 shrink-0" aria-hidden />
               {PHONE_DISPLAY}
             </a>
@@ -119,7 +128,7 @@ export function SiteNav() {
       </div>
 
       <div className="border-b border-[#e6eef6] bg-white">
-        <div className="mx-auto flex max-w-7xl flex-nowrap items-center gap-2 px-4 py-1.5 sm:gap-3 sm:px-5 lg:px-8 lg:py-2">
+        <div className="mx-auto flex max-w-7xl flex-nowrap items-center gap-2 px-3 py-1.5 sm:gap-3 sm:px-5 lg:px-8 lg:py-2">
           <Link
             href="/"
             className="shrink-0 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/40"
@@ -210,7 +219,11 @@ export function SiteNav() {
         </div>
 
         {open ? (
-          <nav id="site-menu" className="border-t border-[#e6eef6] bg-white px-5 py-3 xl:hidden" aria-label={tn("toolbar")}>
+          <nav
+            id="site-menu"
+            className="max-h-[calc(100dvh-8.5rem-env(safe-area-inset-top))] overflow-y-auto overscroll-contain border-t border-[#e6eef6] bg-white px-5 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] xl:hidden"
+            aria-label={tn("toolbar")}
+          >
             <ul className="flex flex-col">
               <li>
                 <Link href="/" className="flex min-h-11 items-center text-base font-medium text-brand-navy" onClick={() => setOpen(false)}>

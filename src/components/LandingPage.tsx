@@ -291,18 +291,18 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                       sizes="(max-width: 640px) 50vw, (max-width: 1280px) 50vw, 320px"
                     />
                     <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#01224f] from-50% via-[#01224f]/85 to-transparent sm:h-[48%] sm:from-40% sm:via-[#01224f]/80" />
-                    <span className="absolute start-1.5 top-1.5 rounded bg-white/80 px-1 py-0.5 text-[9px] font-medium text-brand-navy/70 sm:start-3 sm:top-2 sm:px-1.5 sm:text-[10px]" aria-hidden>
+                    <span className="absolute start-2 top-2 rounded bg-white/90 px-1.5 py-0.5 text-[10px] font-medium text-brand-navy/80 sm:start-3 sm:top-2 sm:px-1.5 sm:text-[10px]" aria-hidden>
                       {t("cardCaption")}
                     </span>
-                    <span className="absolute bottom-2 start-2 end-2 grid grid-cols-[1.75rem_minmax(0,1fr)_1.5rem] items-center gap-x-1.5 gap-y-1 text-white sm:bottom-3 sm:start-[3.35rem] sm:end-11 sm:block">
-                      <span className="col-start-1 row-start-1 flex h-7 w-7 items-center justify-center rounded-full bg-brand-blue shadow-md sm:absolute sm:bottom-1 sm:start-[-2.6rem] sm:h-10 sm:w-10">
+                    <span className="absolute bottom-2 start-2 end-2 grid grid-cols-[1.5rem_minmax(0,1fr)_1.25rem] items-center gap-x-1 gap-y-1 text-white sm:bottom-3 sm:start-[3.35rem] sm:end-11 sm:block">
+                      <span className="col-start-1 row-start-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand-blue shadow-md sm:absolute sm:bottom-1 sm:start-[-2.6rem] sm:h-10 sm:w-10">
                         <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5" aria-hidden />
                       </span>
-                      <h3 className="col-start-2 row-start-1 text-[12px] font-semibold leading-tight sm:text-sm">{item.title}</h3>
-                      <span className="col-start-3 row-start-1 flex h-6 w-6 items-center justify-center rounded-full border border-white/55 sm:absolute sm:bottom-1 sm:end-[-2rem] sm:h-8 sm:w-8">
-                        <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180 sm:h-4 sm:w-4" aria-hidden />
+                      <h3 className="col-start-2 row-start-1 min-w-0 break-words text-[13px] font-semibold leading-tight sm:text-sm">{item.title}</h3>
+                      <span className="col-start-3 row-start-1 flex h-5 w-5 items-center justify-center rounded-full border border-white/55 sm:absolute sm:bottom-1 sm:end-[-2rem] sm:h-8 sm:w-8">
+                        <ArrowRight className="h-3 w-3 rtl:rotate-180 sm:h-4 sm:w-4" aria-hidden />
                       </span>
-                      <span className="col-span-3 text-[10px] leading-tight text-white/90 sm:mt-0.5 sm:block sm:text-[11px] sm:leading-snug">{item.line}</span>
+                      <span className="col-span-3 text-[11px] leading-snug text-white/90 sm:mt-0.5 sm:block sm:leading-snug">{item.line}</span>
                     </span>
                   </Link>
                 </li>
@@ -379,7 +379,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               <ul className="flex flex-wrap justify-center gap-x-4 gap-y-2">
                 {related.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="text-sm font-semibold text-brand-blue hover:underline">
+                    <Link href={item.href} className="inline-flex min-h-11 items-center text-sm font-semibold text-brand-blue hover:underline">
                       {item.label}
                     </Link>
                   </li>
@@ -429,14 +429,14 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
         <section className="mx-auto max-w-7xl px-4 py-2 pb-10 sm:px-5 lg:px-8 lg:pb-14">
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("methodTitle")}</h2>
-          <ol className="mt-6 grid grid-cols-2 gap-x-3 gap-y-6 lg:mt-8 lg:grid-cols-6 lg:gap-4">
+          <ol className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-x-3 sm:gap-y-6 lg:mt-8 lg:grid-cols-6 lg:gap-4">
             {steps.map((step) => (
               <li key={step} className="min-w-0">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-blue text-sm font-semibold text-white">
                   {step}
                 </span>
-                <h3 className="mt-2 text-[13px] font-semibold leading-snug text-brand-navy">{t(`step${step}Title`)}</h3>
-                <p className="mt-1 text-xs leading-snug text-brand-navy/70">{t(`step${step}Body`)}</p>
+                <h3 className="mt-2 text-sm font-semibold leading-snug text-brand-navy sm:text-[13px]">{t(`step${step}Title`)}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-brand-navy/70 sm:text-xs sm:leading-snug">{t(`step${step}Body`)}</p>
               </li>
             ))}
           </ol>
@@ -465,7 +465,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                       <h3 className="text-lg font-semibold text-brand-navy">{t(work.key)}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-brand-navy/70">{t("illustration")}</p>
                       {page ? (
-                        <Link href={page} className="mt-4 inline-flex text-sm font-semibold text-brand-blue hover:underline">
+                        <Link href={page} className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-brand-blue hover:underline">
                           {t("viewService")}
                         </Link>
                       ) : null}
@@ -595,7 +595,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               </li>
               {locale === "fr" ? (
                 <li>
-                  <Link href="/plan-du-site" className="hover:text-white">
+                  <Link href="/plan-du-site" className="inline-flex min-h-11 items-center hover:text-white">
                     {t("sitemap")}
                   </Link>
                 </li>

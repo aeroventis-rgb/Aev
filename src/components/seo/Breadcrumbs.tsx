@@ -18,7 +18,7 @@ export function Breadcrumbs({
         {items.map((item, index) => {
           const last = index === items.length - 1;
           return (
-            <li key={`${item.name}-${index}`} className="flex items-center gap-2">
+            <li key={`${item.name}-${index}`} className="flex min-w-0 items-center gap-2">
               {index > 0 ? (
                 <span aria-hidden className="text-brand-silver-mid">
                   /
@@ -27,12 +27,12 @@ export function Breadcrumbs({
               {item.pathname && !last ? (
                 <Link
                   href={item.pathname}
-                  className="font-semibold text-brand-blue underline-offset-4 hover:underline"
+                  className="inline-flex min-h-11 items-center font-semibold text-brand-blue underline-offset-4 hover:underline"
                 >
                   {item.name}
                 </Link>
               ) : (
-                <span aria-current={last ? "page" : undefined} className="font-semibold text-brand-ink">
+                <span aria-current={last ? "page" : undefined} className="min-w-0 break-words font-semibold text-brand-ink">
                   {item.name}
                 </span>
               )}

@@ -130,7 +130,7 @@ export default async function BlogArticlePage({ params }: Props) {
             </section>
           ) : null}
           <p className="mt-12">
-            <Link href="/blog" className="font-bold text-brand-blue underline-offset-4 hover:underline">
+            <Link href="/blog" className="inline-flex min-h-11 items-center font-bold text-brand-blue underline-offset-4 hover:underline">
               ← {t("heading")}
             </Link>
           </p>

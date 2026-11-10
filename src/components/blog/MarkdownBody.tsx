@@ -23,12 +23,16 @@ const components: Components = {
     </a>
   ),
   table: ({ children }) => (
-    <div className="mt-4 overflow-x-auto rounded-md border border-brand-silver">
-      <table className="w-full min-w-[520px] border-collapse text-left text-sm">{children}</table>
+    <div className="mt-4 max-w-full rounded-md border border-brand-silver">
+      <table className="w-full table-fixed border-collapse text-left text-sm">{children}</table>
     </div>
   ),
-  th: ({ children }) => <th className="border-b border-brand-silver bg-brand-off px-3 py-2 font-bold text-brand-ink">{children}</th>,
-  td: ({ children }) => <td className="border-b border-brand-silver px-3 py-2 align-top text-brand-navy/80">{children}</td>,
+  th: ({ children }) => (
+    <th className="border-b border-brand-silver bg-brand-off px-3 py-2 align-top font-bold break-words text-brand-ink">{children}</th>
+  ),
+  td: ({ children }) => (
+    <td className="border-b border-brand-silver px-3 py-2 align-top break-words text-brand-navy/80">{children}</td>
+  ),
 };
 
 export function MarkdownBody({ markdown }: { markdown: string }) {

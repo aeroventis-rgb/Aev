@@ -30,7 +30,7 @@ export async function LegalPageShell({ namespace, blocks, pathname }: Props) {
         <nav aria-label={nav("backHome")} className="pt-6">
           <Link
             href="/"
-            className="inline-flex text-sm text-brand-blue underline-offset-4 transition hover:text-brand-navy hover:underline"
+            className="inline-flex min-h-11 items-center text-sm text-brand-blue underline-offset-4 transition hover:text-brand-navy hover:underline"
           >
             ← {nav("backHome")}
           </Link>
@@ -53,7 +53,7 @@ export async function LegalPageShell({ namespace, blocks, pathname }: Props) {
                 <p className="mt-3 text-sm leading-relaxed text-brand-navy/75 md:text-base">{t(bodyKey)}</p>
                 {href ? (
                   <p className="mt-3">
-                    <Link href={href} className="font-bold text-brand-blue underline-offset-4 hover:underline">
+                    <Link href={href} className="inline-flex min-h-11 items-center font-bold text-brand-blue underline-offset-4 hover:underline">
                       Voir la page
                     </Link>
                   </p>
