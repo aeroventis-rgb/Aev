@@ -8,7 +8,6 @@ lang: fr
 date: "2026-11-10"
 image: /blog/ventilation-vmc-villa-rabat.jpg
 imageAlt: "Illustration de marque AEROVENTIS d'une ventilation VMC dans une villa, avec des bouches de soufflage au plafond. Ce n'est pas la photo d'un chantier client."
-imageCaption: "Illustration – ce n'est pas un chantier client"
 ---
 
 À Rabat, on vit au bord de l'océan Atlantique. Le climat est doux, mais l'air est souvent chargé d'humidité, surtout en automne et en hiver. Dans une villa bien fermée, cette humidité reste à l'intérieur : buée sur les vitres, odeurs de renfermé, taches noires dans les angles, peinture qui cloque dans la salle de bain. La solution n'est pas d'ouvrir les fenêtres toute la journée, mais d'installer une **ventilation adaptée**, le plus souvent une **VMC** (ventilation mécanique contrôlée). Dans ce guide, AEROVENTIS vous explique simplement comment ventiler une villa à Rabat, quels systèmes existent et comment bien préparer votre projet.

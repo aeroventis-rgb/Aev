@@ -90,21 +90,18 @@ function CitySkyline() {
   );
 }
 
-function PlanIllustration({ label, alt }: { label: string; alt: string }) {
+function PlanIllustration({ alt }: { alt: string }) {
   return (
-    <figure className="min-w-0">
-      <div className="overflow-hidden rounded-2xl border border-[#e6eef6] bg-[#f4f8fc]">
-        <Image
-          src={IMAGES.planIllustration}
-          alt={alt}
-          width={1026}
-          height={492}
-          className="h-auto w-full object-contain"
-          sizes="(max-width: 1024px) 100vw, 540px"
-        />
-      </div>
-      <figcaption className="mt-3 text-xs leading-relaxed text-brand-navy/60">{label}</figcaption>
-    </figure>
+    <div className="min-w-0 overflow-hidden rounded-2xl border border-[#e6eef6] bg-[#f4f8fc]">
+      <Image
+        src={IMAGES.planIllustration}
+        alt={alt}
+        width={1026}
+        height={492}
+        className="h-auto w-full object-contain"
+        sizes="(max-width: 1024px) 100vw, 540px"
+      />
+    </div>
   );
 }
 
@@ -293,9 +290,6 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                 </li>
               ))}
             </ul>
-            <figcaption className="absolute start-3 top-3 rounded bg-black/40 px-1.5 py-0.5 text-[10px] font-medium text-white/90 lg:start-auto lg:end-[7.4rem]">
-              {t("heroCaption")}
-            </figcaption>
           </figure>
         </section>
 
@@ -322,9 +316,6 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                       />
                     </div>
                     <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#01224f] from-50% via-[#01224f]/85 to-transparent sm:h-[48%] sm:from-40% sm:via-[#01224f]/80" />
-                    <span className="absolute start-2 top-2 rounded bg-white/90 px-1.5 py-0.5 text-[10px] font-medium text-brand-navy/80 sm:start-3 sm:top-2 sm:px-1.5 sm:text-[10px]" aria-hidden>
-                      {t("cardCaption")}
-                    </span>
                     <span className="absolute bottom-2 start-2 end-2 grid grid-cols-[1.5rem_minmax(0,1fr)_1.25rem] items-center gap-x-1 gap-y-1 text-white sm:bottom-3 sm:start-[3.35rem] sm:end-11 sm:block">
                       <span className="col-start-1 row-start-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand-blue shadow-md sm:absolute sm:bottom-1 sm:start-[-2.6rem] sm:h-10 sm:w-10">
                         <Icon className="h-3.5 w-3.5 sm:h-5 sm:w-5" aria-hidden />
@@ -422,7 +413,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
         <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-5 lg:px-8 lg:pb-14">
           <div className="grid items-center gap-6 rounded-3xl border border-[#e6eef6] bg-white p-4 shadow-[0_10px_30px_-22px_rgba(2,47,112,0.35)] sm:p-6 lg:grid-cols-2 lg:gap-10 lg:p-8">
-            <PlanIllustration label={t("planSketch")} alt={ti("plan")} />
+            <PlanIllustration alt={ti("plan")} />
             <div className="min-w-0">
               <h2 className="text-xl font-semibold leading-snug tracking-tight text-brand-navy sm:text-2xl md:text-3xl">
                 {t("planTitle")} <span className="text-brand-blue">{t("planAccent")}</span>
@@ -491,9 +482,6 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                         className="object-cover"
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 220px"
                       />
-                      <span className="absolute start-2 top-2 rounded bg-black/45 px-1.5 py-0.5 text-[10px] font-medium text-white" aria-hidden>
-                        {t("cardCaption")}
-                      </span>
                     </div>
                   </figure>
                 </li>

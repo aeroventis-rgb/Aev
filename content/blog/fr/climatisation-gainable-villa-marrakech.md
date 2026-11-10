@@ -8,7 +8,6 @@ lang: fr
 date: "2026-11-09"
 image: /blog/climatisation-gainable-villa-marrakech.jpg
 imageAlt: "Illustration de marque AEROVENTIS d'un salon de villa à Marrakech, avec des grilles linéaires de climatisation gainable au plafond. Ce n'est pas la photo d'un chantier client."
-imageCaption: "Illustration – ce n'est pas un chantier client"
 ---
 
 À Marrakech, l'été est long et chaud. Dans une villa, il faut rafraîchir plusieurs pièces, souvent grandes, parfois avec de hauts plafonds et de larges ouvertures sur le jardin ou la piscine. Beaucoup de propriétaires veulent un confort réel sans voir des appareils accrochés sur chaque mur. C'est exactement le rôle de la **climatisation gainable**. Dans ce guide, AEROVENTIS vous explique simplement comment elle fonctionne, pour qui elle est adaptée, et comment bien préparer votre projet à Marrakech.
