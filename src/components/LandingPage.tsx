@@ -2,40 +2,330 @@
 import Image from "next/image";
 import {useLocale} from "next-intl";
 import {useState, type FormEvent} from "react";
-import {ArrowUpRight, ArrowRight, Menu, X, Plus, MessageCircle} from "lucide-react";
+import {ArrowUpRight, ArrowRight, Menu, X, MessageCircle, Plus} from "lucide-react";
 import {Link} from "@/i18n/navigation";
 import {PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL} from "@/lib/constants";
 import s from "./LuxuryHome.module.css";
 
 const copy = {
-fr:{nav:["Expertises","Notre approche","Contact"],quote:"Présenter mon projet",eyebrow:"L’INGÉNIERIE DU CONFORT",title:"L’excellence technique.",accent:"Le confort, naturellement.",intro:"Climatisation, ventilation et plomberie. Des solutions intégrées à votre architecture, pensées pour votre quotidien.",discover:"Découvrir nos expertises",scroll:"LE SOIN DU DÉTAIL, À CHAQUE ÉTAPE",services:"Quatre expertises. Une même exigence.",serviceIntro:"De l’étude à la maintenance, un interlocuteur pour accompagner votre projet.",names:["Climatisation","Ventilation & VMC","Plomberie","Maintenance & SAV"],desc:["Gainable, split, cassette et VRV/DRV : un confort thermique adapté à chaque espace.","Renouvellement d’air et extraction, pour des intérieurs qui respirent.","Réseaux sanitaires, alimentation et évacuation, intégrés avec soin.","Entretien, diagnostic et accompagnement pour préserver vos installations."],approach:"LA SIGNATURE AEROVENTIS",approachTitle:"L’expertise se voit dans les détails.",approachText:"Une installation réussie commence par l’écoute. Nous étudions vos usages, les contraintes du bâtiment et les attentes de votre architecte pour proposer une solution cohérente.",steps:["Comprendre votre projet","Concevoir la solution","Installer avec précision","Accompagner dans la durée"],audience:"VILLAS · RÉSIDENCES · ESPACES PROFESSIONNELS",contactTitle:"Donnons vie à votre projet.",contactIntro:"Décrivez votre besoin. Préparez votre demande et échangez directement avec AEROVENTIS sur WhatsApp.",name:"Votre nom",city:"Ville du projet",need:"Votre besoin",message:"Parlez-nous de votre projet",send:"Préparer ma demande WhatsApp",notice:"Le bouton ouvre WhatsApp avec votre message. Vous choisissez ensuite de l’envoyer.",illustration:"Visuels d’illustration générés par IA — ils ne représentent pas des chantiers clients.",footer:"L’excellence technique au service du confort.",privacy:"Confidentialité",choose:"Sélectionner une expertise"},
-en:{nav:["Expertise","Our approach","Contact"],quote:"Discuss your project",eyebrow:"COMFORT, ENGINEERED",title:"Technical excellence.",accent:"Effortless comfort.",intro:"Air conditioning, ventilation and plumbing. Solutions integrated into your architecture, designed around everyday life.",discover:"Explore our expertise",scroll:"ATTENTION TO DETAIL, AT EVERY STAGE",services:"Four disciplines. One standard.",serviceIntro:"From design to maintenance, one point of contact for your project.",names:["Air conditioning","Ventilation & air quality","Plumbing","Maintenance & support"],desc:["Ducted, split, cassette and VRF systems tailored to each space.","Fresh air and extraction for interiors that breathe.","Water supply, drainage and sanitary networks, carefully integrated.","Servicing, diagnostics and support to care for your systems."],approach:"THE AEROVENTIS SIGNATURE",approachTitle:"Expertise is in the details.",approachText:"A successful installation begins with listening. We consider your needs, the building’s constraints and your architect’s expectations to propose a coherent solution.",steps:["Understand your project","Design the solution","Install with precision","Support over time"],audience:"VILLAS · RESIDENCES · PROFESSIONAL SPACES",contactTitle:"Let’s bring your project to life.",contactIntro:"Tell us what you need. Prepare your request and speak directly with AEROVENTIS on WhatsApp.",name:"Your name",city:"Project city",need:"Your requirements",message:"Tell us about your project",send:"Prepare my WhatsApp request",notice:"This opens WhatsApp with your message. You then choose whether to send it.",illustration:"AI-generated illustrative imagery — not photographs of client projects.",footer:"Technical excellence in the service of comfort.",privacy:"Privacy",choose:"Select a discipline"},
-ar:{nav:["خبراتنا","منهجنا","تواصل معنا"],quote:"حدّثنا عن مشروعك",eyebrow:"هندسة الراحة",title:"تميّز تقني.",accent:"وراحة بكل بساطة.",intro:"التكييف والتهوية والسباكة. حلول تنسجم مع هندسة مبناك، ومصممة لتناسب حياتك اليومية.",discover:"اكتشف خبراتنا",scroll:"عناية بالتفاصيل في كل مرحلة",services:"أربع خبرات. مستوى واحد من الإتقان.",serviceIntro:"من الدراسة إلى الصيانة، جهة واحدة لمواكبة مشروعك.",names:["التكييف","التهوية وجودة الهواء","السباكة","الصيانة والدعم"],desc:["أنظمة مخفية وسبليت وكاسيت وVRV/DRV تناسب كل مساحة.","تجديد الهواء واستخراجه من أجل فضاءات تتنفس.","شبكات المياه والصرف والتجهيزات الصحية بتنفيذ متقن.","صيانة وتشخيص ومواكبة للحفاظ على تجهيزاتك."],approach:"بصمة AEROVENTIS",approachTitle:"الخبرة تظهر في التفاصيل.",approachText:"التركيب الناجح يبدأ بالاستماع. ندرس احتياجاتك وقيود المبنى وتوقعات مهندسك المعماري لاقتراح حل متكامل.",steps:["فهم مشروعك","تصميم الحل","التركيب بدقة","المواكبة المستمرة"],audience:"فيلات · إقامات · فضاءات مهنية",contactTitle:"لنمنح مشروعك الحياة.",contactIntro:"صف احتياجاتك، وجهّز طلبك للتواصل مباشرة مع AEROVENTIS عبر واتساب.",name:"اسمك",city:"مدينة المشروع",need:"احتياجاتك",message:"حدّثنا عن مشروعك",send:"تجهيز طلبي عبر واتساب",notice:"يفتح الزر واتساب مع رسالتك، ثم تختار إرسالها بنفسك.",illustration:"صور توضيحية مولّدة بالذكاء الاصطناعي، وليست صوراً لمشاريع العملاء.",footer:"التميّز التقني في خدمة الراحة.",privacy:"الخصوصية",choose:"اختر التخصص"}
+  fr: {
+    nav:["Expertises","Méthode","Projets","Contact"],
+    cta:"Présenter mon projet",
+    label:"INGÉNIERIE TECHNIQUE DU BÂTIMENT",
+    title:"Le confort se conçoit.",
+    accent:"La précision l’installe.",
+    intro:"AEROVENTIS conçoit, installe et maintient des solutions de climatisation, ventilation et plomberie pensées pour l’architecture, les usages et la performance du bâtiment.",
+    discover:"Découvrir notre méthode",
+    image:"Techniciens AEROVENTIS en intervention",
+    imageNote:"Visuel d’illustration — ne représente pas un chantier client.",
+    proof:["Étude & dimensionnement","Installation & mise en service","Maintenance & SAV"],
+    expertiseTitle:"Une expertise complète, sans compromis.",
+    expertiseIntro:"Chaque projet est traité comme un ensemble cohérent : étude des besoins, choix des systèmes, intégration technique, exécution et suivi.",
+    services:[
+      {n:"01",title:"Climatisation",text:"Gainable, split, cassette, multi-split et VRV/DRV. Dimensionnement, implantation et installation adaptés aux volumes et aux usages.",tags:["GAINABLE","SPLIT","CASSETTE","VRV / DRV"]},
+      {n:"02",title:"Ventilation & VMC",text:"Renouvellement d’air, extraction, soufflage et reprise. Réseaux pensés pour le débit, le confort acoustique et l’intégration architecturale.",tags:["VMC","EXTRACTION","SOUFFLAGE","REPRISE"]},
+      {n:"03",title:"Plomberie",text:"Distribution EF/ECS, évacuation, équipements sanitaires et réseaux techniques avec une exécution claire, accessible et durable.",tags:["EF / ECS","ÉVACUATION","SANITAIRE","RÉSEAUX"]},
+      {n:"04",title:"Maintenance & SAV",text:"Entretien préventif, diagnostic, dépannage et remise en service afin de préserver la fiabilité et la durée de vie des installations.",tags:["DIAGNOSTIC","ENTRETIEN","SAV","MISE EN SERVICE"]}
+    ],
+    systems:"SYSTÈMES & SOLUTIONS",
+    systemList:["Gainable inverter","Split mural","Cassette","VRV / DRV","VMC simple & double flux","Extraction","Plomberie sanitaire"],
+    methodLabel:"NOTRE MÉTHODE",
+    methodTitle:"Un projet maîtrisé du premier relevé à la mise en service.",
+    methodIntro:"La qualité d’une installation ne se résume pas à l’équipement. Elle dépend du dimensionnement, de l’implantation, des réseaux, de l’exécution et des contrôles.",
+    steps:[
+      ["01","Relevé & compréhension","Surfaces, volumes, usages, contraintes techniques et attentes architecturales."],
+      ["02","Étude & dimensionnement","Puissances, débits, tracés, implantation des unités et cohérence des réseaux."],
+      ["03","Coordination","Échanges avec le client, l’architecte et les autres corps d’état lorsque le projet l’exige."],
+      ["04","Installation","Pose méthodique, finitions soignées, accessibilité pour la maintenance et respect du chantier."],
+      ["05","Mise en service & suivi","Contrôles, réglages, conseils d’utilisation et accompagnement après installation."]
+    ],
+    projectsLabel:"TYPOLOGIES DE PROJETS",
+    projectsTitle:"Des solutions pensées pour chaque bâtiment.",
+    projectCards:[
+      ["Villas & résidences","Confort discret, intégration au faux plafond, zoning et maîtrise acoustique."],
+      ["Bureaux & commerces","Confort des occupants, continuité de service et maintenance accessible."],
+      ["Projets professionnels","Solutions techniques adaptées aux contraintes d’exploitation et aux exigences du site."]
+    ],
+    detailLabel:"NOTRE EXIGENCE",
+    detailTitle:"Le détail technique fait la différence.",
+    detailText:"Nous cherchons une installation lisible, précise et maintenable : réseaux organisés, reprises correctement dimensionnées, soufflages cohérents, évacuations maîtrisées et équipements accessibles.",
+    detailItems:["Implantation étudiée","Réseaux propres et accessibles","Soufflage & reprise cohérents","Finitions soignées","Maintenance anticipée","Communication claire"],
+    contactLabel:"CONTACT",
+    contactTitle:"Parlons de votre projet.",
+    contactIntro:"Décrivez votre besoin. Nous préparons votre message et ouvrons WhatsApp afin que vous puissiez l’envoyer directement à AEROVENTIS.",
+    name:"Votre nom",
+    city:"Ville du projet",
+    need:"Votre besoin",
+    choose:"Sélectionner une expertise",
+    message:"Décrivez brièvement votre projet",
+    send:"Préparer ma demande WhatsApp",
+    notice:"Le bouton prépare votre message dans WhatsApp. Vous choisissez ensuite de l’envoyer.",
+    footer:"Climatisation · Ventilation · Plomberie · Maintenance",
+    legal:"Mentions légales",
+    privacy:"Confidentialité"
+  },
+  en: {
+    nav:["Expertise","Method","Projects","Contact"],
+    cta:"Discuss my project",
+    label:"BUILDING SERVICES ENGINEERING",
+    title:"Comfort is designed.",
+    accent:"Precision installs it.",
+    intro:"AEROVENTIS designs, installs and maintains air conditioning, ventilation and plumbing solutions shaped around architecture, usage and building performance.",
+    discover:"Explore our method",
+    image:"AEROVENTIS technicians at work",
+    imageNote:"Illustrative image — not a client project.",
+    proof:["Design & sizing","Installation & commissioning","Maintenance & support"],
+    expertiseTitle:"Complete expertise, without compromise.",
+    expertiseIntro:"Each project is treated as one coherent system: needs assessment, system selection, technical integration, execution and follow-up.",
+    services:[
+      {n:"01",title:"Air conditioning",text:"Ducted, split, cassette, multi-split and VRF systems. Sizing, positioning and installation adapted to volumes and usage.",tags:["DUCTED","SPLIT","CASSETTE","VRF"]},
+      {n:"02",title:"Ventilation & VMC",text:"Fresh air, extraction, supply and return. Networks designed around airflow, acoustics and architectural integration.",tags:["VMC","EXTRACTION","SUPPLY","RETURN"]},
+      {n:"03",title:"Plumbing",text:"Cold/hot water distribution, drainage, sanitary equipment and technical networks with clear, durable execution.",tags:["CW / HW","DRAINAGE","SANITARY","NETWORKS"]},
+      {n:"04",title:"Maintenance & support",text:"Preventive servicing, diagnostics, repairs and recommissioning to protect reliability and system life.",tags:["DIAGNOSTICS","SERVICING","SUPPORT","COMMISSIONING"]}
+    ],
+    systems:"SYSTEMS & SOLUTIONS",
+    systemList:["Inverter ducted","Wall split","Cassette","VRF","VMC systems","Extraction","Sanitary plumbing"],
+    methodLabel:"OUR METHOD",
+    methodTitle:"A controlled project from first survey to commissioning.",
+    methodIntro:"Installation quality is not only about equipment. It depends on sizing, positioning, networks, execution and control.",
+    steps:[
+      ["01","Survey & understanding","Areas, volumes, usage, technical constraints and architectural expectations."],
+      ["02","Design & sizing","Capacities, airflow, routing, unit positions and network consistency."],
+      ["03","Coordination","Coordination with client, architect and other trades where required."],
+      ["04","Installation","Methodical installation, neat finishes, service access and respect for the site."],
+      ["05","Commissioning & follow-up","Checks, settings, operating guidance and after-installation support."]
+    ],
+    projectsLabel:"PROJECT TYPOLOGIES",
+    projectsTitle:"Solutions designed for each building.",
+    projectCards:[
+      ["Villas & residences","Discreet comfort, ceiling integration, zoning and acoustic control."],
+      ["Offices & retail","Occupant comfort, service continuity and accessible maintenance."],
+      ["Professional projects","Technical solutions adapted to operational constraints and site requirements."]
+    ],
+    detailLabel:"OUR STANDARD",
+    detailTitle:"Technical detail makes the difference.",
+    detailText:"We aim for installations that are clear, precise and maintainable: organised networks, correctly sized returns, coherent supply air, controlled drainage and accessible equipment.",
+    detailItems:["Studied positioning","Clean accessible networks","Balanced supply & return","Neat finishes","Maintenance anticipated","Clear communication"],
+    contactLabel:"CONTACT",
+    contactTitle:"Let’s discuss your project.",
+    contactIntro:"Describe your requirements. We prepare your message and open WhatsApp so you can send it directly to AEROVENTIS.",
+    name:"Your name",
+    city:"Project city",
+    need:"Your requirements",
+    choose:"Select an expertise",
+    message:"Briefly describe your project",
+    send:"Prepare my WhatsApp request",
+    notice:"The button prepares your message in WhatsApp. You then choose whether to send it.",
+    footer:"Air conditioning · Ventilation · Plumbing · Maintenance",
+    legal:"Legal notice",
+    privacy:"Privacy"
+  },
+  ar: {
+    nav:["خبراتنا","منهجنا","المشاريع","تواصل معنا"],
+    cta:"عرض مشروعي",
+    label:"الهندسة التقنية للمباني",
+    title:"الراحة تبدأ بالتصميم.",
+    accent:"والدقة تُنجزها.",
+    intro:"تقوم AEROVENTIS بدراسة وتركيب وصيانة حلول التكييف والتهوية والسباكة بما ينسجم مع الهندسة المعمارية واستعمال المبنى ومتطلباته التقنية.",
+    discover:"اكتشف منهجنا",
+    image:"فنيو AEROVENTIS أثناء العمل",
+    imageNote:"صورة توضيحية — لا تمثل مشروع عميل.",
+    proof:["الدراسة والحساب","التركيب والتشغيل","الصيانة والدعم"],
+    expertiseTitle:"خبرة متكاملة دون تنازل عن الجودة.",
+    expertiseIntro:"نتعامل مع كل مشروع كنظام متكامل: فهم الاحتياجات، اختيار الحلول، الدمج التقني، التنفيذ والمتابعة.",
+    services:[
+      {n:"01",title:"التكييف",text:"أنظمة مخفية وسبليت وكاسيت ومتعددة الوحدات وVRV/DRV مع حساب القدرة والتموضع والتركيب حسب المساحات والاستعمال.",tags:["GAINABLE","SPLIT","CASSETTE","VRV / DRV"]},
+      {n:"02",title:"التهوية وVMC",text:"تجديد الهواء والاستخراج والدفع والرجوع، مع تصميم الشبكات حسب التدفق والراحة الصوتية والاندماج المعماري.",tags:["VMC","EXTRACTION","SOUFFLAGE","REPRISE"]},
+      {n:"03",title:"السباكة",text:"شبكات المياه الباردة والساخنة والصرف والتجهيزات الصحية، بتنفيذ واضح ومتين وسهل الصيانة.",tags:["EF / ECS","ÉVACUATION","SANITAIRE","RÉSEAUX"]},
+      {n:"04",title:"الصيانة والدعم",text:"صيانة وقائية وتشخيص وإصلاح وإعادة التشغيل للحفاظ على موثوقية المعدات وعمرها.",tags:["DIAGNOSTIC","ENTRETIEN","SAV","MISE EN SERVICE"]}
+    ],
+    systems:"الأنظمة والحلول",
+    systemList:["Gainable inverter","Split mural","Cassette","VRV / DRV","VMC","Extraction","Plomberie sanitaire"],
+    methodLabel:"منهجنا",
+    methodTitle:"مشروع مضبوط من أول معاينة إلى التشغيل.",
+    methodIntro:"جودة التركيب لا تعتمد على الجهاز فقط، بل على الحساب والتموضع والشبكات والتنفيذ والمراقبة.",
+    steps:[
+      ["01","المعاينة والفهم","المساحات والحجوم والاستعمال والقيود التقنية ومتطلبات التصميم."],
+      ["02","الدراسة والحساب","القدرات والتدفقات والمسارات وتموضع الوحدات وتناسق الشبكات."],
+      ["03","التنسيق","تنسيق مع العميل والمهندس المعماري وباقي المتدخلين عند الحاجة."],
+      ["04","التركيب","تنفيذ منظم وتشطيبات دقيقة مع ضمان سهولة الوصول للصيانة."],
+      ["05","التشغيل والمتابعة","مراقبة وضبط وتوجيه للاستعمال ومواكبة بعد التركيب."]
+    ],
+    projectsLabel:"أنواع المشاريع",
+    projectsTitle:"حلول مدروسة لكل مبنى.",
+    projectCards:[
+      ["الفيلات والإقامات","راحة هادئة واندماج في السقف المستعار وتقسيم المناطق والتحكم الصوتي."],
+      ["المكاتب والمحلات","راحة المستخدمين واستمرارية الخدمة وسهولة الصيانة."],
+      ["المشاريع المهنية","حلول تقنية حسب متطلبات الاستغلال وخصوصيات الموقع."]
+    ],
+    detailLabel:"معيارنا",
+    detailTitle:"التفاصيل التقنية تصنع الفارق.",
+    detailText:"نهدف إلى تركيب واضح ودقيق وسهل الصيانة: شبكات مرتبة، رجوع هواء محسوب، دفع متناسق، صرف مضبوط ومعدات يسهل الوصول إليها.",
+    detailItems:["تموضع مدروس","شبكات منظمة وسهلة الوصول","دفع ورجوع متناسقان","تشطيبات دقيقة","صيانة محسوبة مسبقاً","تواصل واضح"],
+    contactLabel:"تواصل معنا",
+    contactTitle:"لنتحدث عن مشروعك.",
+    contactIntro:"صف احتياجك. نجهز رسالتك ونفتح واتساب لتتمكن من إرسالها مباشرة إلى AEROVENTIS.",
+    name:"اسمك",
+    city:"مدينة المشروع",
+    need:"احتياجك",
+    choose:"اختر التخصص",
+    message:"صف مشروعك باختصار",
+    send:"تجهيز طلبي عبر واتساب",
+    notice:"الزر يجهز رسالتك في واتساب، ثم تختار إرسالها.",
+    footer:"التكييف · التهوية · السباكة · الصيانة",
+    legal:"إشعارات قانونية",
+    privacy:"الخصوصية"
+  }
 };
-const editorial = {
-fr: {title: "L’art du confort.", second: "La précision en signature.", label:"INGÉNIERIE & ART DE VIVRE", paragraph:"Ce qui ne se voit pas change tout.", body:"Une température juste. Un air renouvelé. Des réseaux parfaitement intégrés. Nous pensons la technique pour laisser toute sa place à l’architecture.", chapter:"LE CONFORT, EN QUATRE DIMENSIONS", team:"Le geste juste.", teamBody:"Derrière chaque détail discret, il y a une étude, une méthode et le savoir-faire de techniciens. AEROVENTIS accompagne la réalisation et l’entretien de vos installations.", spaces:"Pensé pour vos lieux de vie.", spaceNames:["L’intimité d’une villa","L’exigence du collectif","La vie professionnelle"], spaceBody:["Des solutions discrètes, au rythme de votre quotidien.","Une approche technique cohérente à l’échelle du bâtiment.","Des espaces accueillants pour travailler et recevoir."], method:"DE L’INTENTION À LA RÉALISATION", contact:"Parlons de votre prochain lieu.", project:"Votre projet commence ici", journal:"Journal", legal:"Mentions légales", picture:"Architecture d’illustration", teamPicture:"Mise en scène illustrative de techniciens en uniforme"},
-en: {title:"The art of comfort.",second:"Precision, by design.",label:"ENGINEERING & THE ART OF LIVING",paragraph:"What you don’t see changes everything.",body:"The right temperature. Fresh air. Seamlessly integrated systems. We design the engineering to give architecture room to breathe.",chapter:"FOUR DIMENSIONS OF COMFORT",team:"The considered touch.",teamBody:"Behind every discreet detail lie careful design, method and technical craftsmanship. AEROVENTIS supports the installation and maintenance of your systems.",spaces:"Designed for the way you live.",spaceNames:["A private retreat","Residential ambitions","Professional life"],spaceBody:["Discreet solutions shaped around everyday life.","A coherent technical approach at building scale.","Welcoming spaces for working and meeting."],method:"FROM INTENTION TO REALISATION",contact:"Let’s discuss your next space.",project:"Your project starts here",journal:"Journal",legal:"Legal notice",picture:"Illustrative architecture",teamPicture:"Illustrative scene of uniformed technicians"},
-ar: {title:"فنّ الراحة.",second:"والدقّة بصمتنا.",label:"الهندسة وفنّ العيش",paragraph:"ما لا تراه يصنع الفارق.",body:"حرارة مناسبة، وهواء متجدد، وشبكات مندمجة بانسجام. نصمم الحلول التقنية لتبقى للهندسة المعمارية كامل مساحتها.",chapter:"أربعة أبعاد للراحة",team:"إتقان كلّ تفصيل.",teamBody:"وراء كل تفصيل متقن دراسة ومنهج وخبرة فنيين. تواكب AEROVENTIS تنفيذ وصيانة تجهيزاتك.",spaces:"مصمّم لفضاءات حياتك.",spaceNames:["خصوصية الفيلا","متطلبات الإقامات","الحياة المهنية"],spaceBody:["حلول هادئة تناسب إيقاع حياتك اليومية.","منهج تقني متكامل على مستوى المبنى.","فضاءات مريحة للعمل والاستقبال."],method:"من الفكرة إلى التنفيذ",contact:"لنتحدث عن فضائك القادم.",project:"مشروعك يبدأ هنا",journal:"المجلة",legal:"إشعارات قانونية",picture:"عمارة توضيحية",teamPicture:"مشهد توضيحي لفنيين بالزي المهني"}
-};
-export function LandingPage({contactQrDataUrl}: {contactQrDataUrl:string}) {
- const locale=useLocale() as keyof typeof copy;
- const t=copy[locale]||copy.fr; const e=editorial[locale]||editorial.fr;
- const [open,setOpen]=useState(false);
- const p=locale==="ar" ? {title:"راحتك.",accent:"معيارنا.",label:"الهندسة التقنية للمباني",intro:"دراسة وتركيب وصيانة أنظمة التكييف والتهوية والسباكة للفيلات والإقامات والفضاءات المهنية.",expertise:"الخبرة في كل مرحلة.",expertiseBody:"نربط جودة الدراسة بدقة التنفيذ لضمان انسجام الحلول مع متطلبات مشروعك.",next:"لنصمم الراحة معاً.",all:"اكتشف حلولنا",method:"مشروع مدروس. تنفيذ متقن.",contact:"لنتحدث عن مشروعك.",image:"مشهد توضيحي لفنيي AEROVENTIS",mission:"من الدراسة إلى الصيانة",architecture:"راحة تندمج في معمارك.",visit:"تواصل مع فريقنا",design:"دراسة",install:"تركيب",support:"صيانة",illustration:"صور توضيحية بالذكاء الاصطناعي"} : locale==="en" ? {title:"Your comfort.",accent:"Our standard.",label:"BUILDING SERVICES ENGINEERING",intro:"Design, installation and maintenance of air conditioning, ventilation and plumbing for villas, residences and professional spaces.",expertise:"Expertise at every stage.",expertiseBody:"We connect considered design with precise execution, aligning every solution with your project’s requirements.",next:"Let’s engineer comfort together.",all:"Explore our solutions",method:"Considered design. Precise execution.",contact:"Let’s talk about your project.",image:"Illustrative scene of AEROVENTIS technicians",mission:"FROM DESIGN TO MAINTENANCE",architecture:"Comfort that belongs in your architecture.",visit:"Speak with our team",design:"DESIGN",install:"INSTALLATION",support:"MAINTENANCE",illustration:"AI-generated illustrative imagery"} : {title:"Votre confort.",accent:"Notre exigence.",label:"INGÉNIERIE TECHNIQUE DU BÂTIMENT",intro:"Étude, installation et maintenance en climatisation, ventilation et plomberie. Pour les villas, les résidences et les espaces professionnels.",expertise:"L’expertise, à chaque étape.",expertiseBody:"Nous relions la qualité de l’étude à la précision de l’exécution, pour des solutions cohérentes avec les exigences de votre projet.",next:"Construisons le confort, ensemble.",all:"Explorer nos solutions",method:"Un projet réfléchi. Une exécution précise.",contact:"Parlons de votre projet.",image:"Mise en scène illustrative de techniciens AEROVENTIS",mission:"DE L’ÉTUDE À LA MAINTENANCE",architecture:"Un confort qui respecte votre architecture.",visit:"Échanger avec notre équipe",design:"ÉTUDE",install:"INSTALLATION",support:"MAINTENANCE",illustration:"Visuels d’illustration générés par IA"};
- function submit(event:FormEvent<HTMLFormElement>){
-  event.preventDefault(); const f=new FormData(event.currentTarget);
-  const text=`AEROVENTIS — ${t.quote}\n${t.name}: ${f.get("name")}\n${t.city}: ${f.get("city")}\n${t.need}: ${f.get("service")}\n${f.get("message")}`;
-  window.location.assign(`${WHATSAPP_URL}?text=${encodeURIComponent(text)}`);
- }
- return <div className={s.site}>
- <header className={s.header}><Link href="/" aria-label="AEROVENTIS" className={s.brand}><span className={s.brandMark}><Image src="/aeroventis-logo.png" width={100} height={100} alt="" priority/></span><span className={s.brandType}><span><Image src="/aeroventis-logo.png" width={160} height={160} alt="" priority/></span><small>ENGINEERING & COMFORT</small></span></Link><nav id="site-navigation" aria-label={t.nav[0]} className={`${s.nav} ${open?s.open:""}`}>{t.nav.map((n,i)=><a key={n} href={["#expertises","#approach","#contact"][i]} onClick={()=>setOpen(false)}>{n}</a>)}<Link href="/blog">{e.journal}</Link></nav><div className={s.headerRight}><div className={s.lang}>{(["fr","ar","en"] as const).map(l=><Link key={l} href="/" locale={l} aria-current={locale===l?"page":undefined}>{l.toUpperCase()}</Link>)}</div><a href="#contact" className={s.headerCta}>{t.quote}<ArrowUpRight size={17}/></a><button type="button" className={s.menu} aria-label={open?(locale==="fr"?"Fermer le menu":locale==="ar"?"إغلاق القائمة":"Close menu"):"Menu"} aria-expanded={open} aria-controls="site-navigation" onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button></div></header>
- <main id="main-content"><section className={s.hero}><div className={s.heroCopy}><p className={s.eyebrow}><span/>{p.label}</p><h1>{p.title}<span>{p.accent}</span></h1><p className={s.lead}>{p.intro}</p><a href="#contact" className={s.primary}>{t.quote}<ArrowUpRight size={20}/></a><div className={s.heroMeta}><span>CASABLANCA, MAROC</span><a href="#expertises">{p.all}<ArrowRight size={15}/></a></div></div><div className={s.heroImage}><Image src="/redesign/engineering-team-v4.webp" fill priority sizes="(max-width: 760px) 100vw, 55vw" alt={p.image}/><div className={s.imageIndex}>AEROVENTIS / ENGINEERING & COMFORT</div><span className={s.imageCaption}>{p.illustration}</span></div></section>
- <div className={s.disciplines}>{t.names.map((name,i)=><a key={name} href={`#service-${i}`}><span>0{i+1}</span>{name}<ArrowUpRight size={17}/></a>)}</div>
- <section className={s.introduction}><p className={s.eyebrow}>01 — AEROVENTIS</p><div><h2>{p.expertise}</h2><p>{p.expertiseBody}</p></div><a className={s.circleLink} href="#approach" aria-label={t.nav[1]}><ArrowUpRight size={30}/></a></section>
- <section className={s.services} id="expertises"><div className={s.sectionLabel}><span>{p.all}</span><span>01 — 04</span></div><div>{t.names.map((name,i)=><details key={name} id={`service-${i}`} className={s.service} open={i===0?true:undefined}><summary><span>0{i+1}</span><h3>{name}</h3><Plus size={23}/></summary><div className={s.serviceBody}><p>{t.desc[i]}</p><a href={locale==="fr"?["/fr/climatisation","/fr/ventilation","/fr/plomberie","/fr/entretien-climatisation-casablanca"][i]:"#contact"}>{locale==="fr"?"Découvrir cette expertise":t.quote}<ArrowRight size={16}/></a></div></details>)}</div></section>
- <section className={s.architecture}><div className={s.archPhoto}><Image src="/redesign/architecture-editorial.webp" fill sizes="(max-width:760px) 100vw, 60vw" alt={e.picture}/></div><div className={s.archCopy}><p className={s.eyebrow}>{t.audience}</p><h2>{p.architecture}</h2><p>{e.body}</p><a className={s.textLink} href="#contact">{p.visit}<ArrowUpRight size={19}/></a></div></section>
- <section className={s.method} id="approach"><div><p className={s.eyebrow}>02 — {p.mission}</p><h2>{p.method}</h2></div><ol>{t.steps.map((step,i)=><li key={step}><span>0{i+1}</span><h3>{step}</h3><ArrowUpRight size={18}/></li>)}</ol></section>
- <section className={s.banner}><p>{p.next}</p><a href="#contact" aria-label={t.quote}><ArrowUpRight size={38}/></a></section>
- <section className={s.contact} id="contact"><div><p className={s.eyebrow}>03 — CONTACT</p><h2>{p.contact}</h2><p>{t.contactIntro}</p><a href={`tel:${PHONE_E164}`} className={s.phone}>{PHONE_DISPLAY}<ArrowUpRight size={22}/></a><div className={s.contactMethods}><a href={WHATSAPP_URL}><MessageCircle size={20}/>WhatsApp<ArrowUpRight size={15}/></a><Image src={contactQrDataUrl} width={65} height={65} alt="WhatsApp QR"/></div></div><form onSubmit={submit} className={s.form}><div className={s.formRow}><label>{t.name}<input name="name" required maxLength={100} autoComplete="name"/></label><label>{t.city}<input name="city" required maxLength={100} autoComplete="address-level2"/></label></div><label>{t.need}<select name="service" required defaultValue=""><option value="" disabled>{t.choose}</option>{t.names.map(n=><option key={n}>{n}</option>)}</select></label><label>{t.message}<textarea name="message" rows={3} required maxLength={2000}/></label><button type="submit">{t.send}<ArrowUpRight size={20}/></button><p className={s.notice}>{t.notice}</p></form></section>
- </main><footer className={s.footer}><div><strong>AEROVENTIS</strong><p>{t.footer}</p></div><div><Link href="/mentions-legales">{e.legal}</Link><Link href="/politique-confidentialite">{t.privacy}</Link><Link href="/blog">{e.journal}</Link></div><p className={s.copyright}>© {new Date().getFullYear()} AEROVENTIS — CASABLANCA, MAROC</p><p className={s.caption}>{t.illustration}</p></footer></div>;
+
+export function LandingPage({contactQrDataUrl}:{contactQrDataUrl:string}) {
+  const locale = useLocale() as keyof typeof copy;
+  const t = copy[locale] || copy.fr;
+  const [open,setOpen] = useState(false);
+
+  function submit(event:FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const f = new FormData(event.currentTarget);
+    const text =
+      "AEROVENTIS — " + t.cta + "\n" +
+      t.name + ": " + f.get("name") + "\n" +
+      t.city + ": " + f.get("city") + "\n" +
+      t.need + ": " + f.get("service") + "\n" +
+      String(f.get("message") || "");
+    window.location.assign(WHATSAPP_URL + "?text=" + encodeURIComponent(text));
+  }
+
+  return <div className={s.site}>
+    <header className={s.header}>
+      <Link href="/" aria-label="AEROVENTIS" className={s.brand}>
+        <span className={s.logoCrop}><Image src="/aeroventis-logo.png" width={220} height={220} alt="" priority/></span>
+        <span className={s.brandText}><strong>AEROVENTIS</strong><small>ENGINEERING & COMFORT</small></span>
+      </Link>
+
+      <nav id="site-navigation" className={[s.nav, open ? s.open : ""].join(" ")} aria-label="Navigation principale">
+        {t.nav.map((item,i)=><a key={item} href={["#expertises","#method","#projects","#contact"][i]} onClick={()=>setOpen(false)}>{item}</a>)}
+      </nav>
+
+      <div className={s.headerActions}>
+        <div className={s.lang}>{(["fr","ar","en"] as const).map(l=><Link key={l} href="/" locale={l} aria-current={locale===l?"page":undefined}>{l.toUpperCase()}</Link>)}</div>
+        <a className={s.headCta} href="#contact">{t.cta}<ArrowUpRight size={16}/></a>
+        <button className={s.menu} type="button" onClick={()=>setOpen(!open)} aria-expanded={open} aria-controls="site-navigation" aria-label="Menu">{open?<X/>:<Menu/>}</button>
+      </div>
+    </header>
+
+    <main>
+      <section className={s.hero}>
+        <div className={s.heroCopy}>
+          <p className={s.kicker}><span/> {t.label}</p>
+          <h1>{t.title}<em>{t.accent}</em></h1>
+          <p className={s.heroIntro}>{t.intro}</p>
+          <div className={s.heroActions}>
+            <a className={s.primary} href="#contact">{t.cta}<ArrowUpRight size={19}/></a>
+            <a className={s.secondary} href="#method">{t.discover}<ArrowRight size={17}/></a>
+          </div>
+          <div className={s.heroFoot}><span>CASABLANCA · MAROC</span><span>AEROVENTIS / 2026</span></div>
+        </div>
+
+        <div className={s.heroVisual}>
+          <Image src="/redesign/engineering-team-v4.webp" fill priority sizes="(max-width: 800px) 100vw, 52vw" alt={t.image}/>
+          <div className={s.heroOverlay}>
+            <span>AEROVENTIS</span>
+            <strong>ENGINEERING<br/>WITH PRECISION.</strong>
+          </div>
+          <p className={s.imageNote}>{t.imageNote}</p>
+        </div>
+      </section>
+
+      <section className={s.proofStrip}>
+        {t.proof.map((item,i)=><div key={item}><span>0{i+1}</span><strong>{item}</strong></div>)}
+      </section>
+
+      <section className={s.expertise} id="expertises">
+        <div className={s.sectionIntro}>
+          <p className={s.kicker}>01 — {t.nav[0]}</p>
+          <h2>{t.expertiseTitle}</h2>
+          <p>{t.expertiseIntro}</p>
+        </div>
+
+        <div className={s.serviceGrid}>
+          {t.services.map((service)=><article className={s.serviceCard} key={service.n}>
+            <div className={s.serviceTop}><span>{service.n}</span><ArrowUpRight size={20}/></div>
+            <h3>{service.title}</h3>
+            <p>{service.text}</p>
+            <div className={s.tags}>{service.tags.map(tag=><span key={tag}>{tag}</span>)}</div>
+          </article>)}
+        </div>
+      </section>
+
+      <section className={s.systemBand}>
+        <div className={s.systemTitle}>{t.systems}</div>
+        <div className={s.systemList}>{t.systemList.map((item)=><span key={item}>{item}</span>)}</div>
+      </section>
+
+      <section className={s.method} id="method">
+        <div className={s.methodLead}>
+          <p className={s.kicker}>02 — {t.methodLabel}</p>
+          <h2>{t.methodTitle}</h2>
+          <p>{t.methodIntro}</p>
+        </div>
+        <div className={s.steps}>
+          {t.steps.map(step=><div className={s.step} key={step[0]}>
+            <span>{step[0]}</span>
+            <div><h3>{step[1]}</h3><p>{step[2]}</p></div>
+          </div>)}
+        </div>
+      </section>
+
+      <section className={s.projects} id="projects">
+        <div className={s.projectImage}>
+          <Image src="/redesign/architecture-editorial.webp" fill sizes="(max-width: 800px) 100vw, 46vw" alt="Architecture contemporaine"/>
+        </div>
+        <div className={s.projectCopy}>
+          <p className={s.kicker}>03 — {t.projectsLabel}</p>
+          <h2>{t.projectsTitle}</h2>
+          <div className={s.projectCards}>
+            {t.projectCards.map((card,i)=><div key={card[0]}><span>0{i+1}</span><h3>{card[0]}</h3><p>{card[1]}</p></div>)}
+          </div>
+        </div>
+      </section>
+
+      <section className={s.detail}>
+        <div>
+          <p className={s.kicker}>04 — {t.detailLabel}</p>
+          <h2>{t.detailTitle}</h2>
+          <p>{t.detailText}</p>
+        </div>
+        <div className={s.detailList}>
+          {t.detailItems.map((item,i)=><div key={item}><span>0{i+1}</span><strong>{item}</strong><ArrowUpRight size={17}/></div>)}
+        </div>
+      </section>
+
+      <section className={s.contact} id="contact">
+        <div className={s.contactLead}>
+          <p className={s.kicker}>05 — {t.contactLabel}</p>
+          <h2>{t.contactTitle}</h2>
+          <p>{t.contactIntro}</p>
+          <a className={s.phone} href={"tel:"+PHONE_E164}>{PHONE_DISPLAY}<ArrowUpRight size={20}/></a>
+          <div className={s.whatsapp}><a href={WHATSAPP_URL}><MessageCircle size={19}/>WhatsApp<ArrowUpRight size={15}/></a><Image src={contactQrDataUrl} width={72} height={72} alt="WhatsApp QR"/></div>
+        </div>
+
+        <form className={s.form} onSubmit={submit}>
+          <div className={s.formRow}>
+            <label>{t.name}<input name="name" required maxLength={100} autoComplete="name"/></label>
+            <label>{t.city}<input name="city" required maxLength={100} autoComplete="address-level2"/></label>
+          </div>
+          <label>{t.need}<select name="service" required defaultValue=""><option value="" disabled>{t.choose}</option>{t.services.map(x=><option key={x.title}>{x.title}</option>)}</select></label>
+          <label>{t.message}<textarea name="message" rows={5} required maxLength={2000}/></label>
+          <button type="submit">{t.send}<ArrowUpRight size={19}/></button>
+          <p className={s.notice}>{t.notice}</p>
+        </form>
+      </section>
+    </main>
+
+    <footer className={s.footer}>
+      <div><strong>AEROVENTIS</strong><p>{t.footer}</p></div>
+      <div className={s.footerLinks}><Link href="/mentions-legales">{t.legal}</Link><Link href="/politique-confidentialite">{t.privacy}</Link></div>
+      <div className={s.footerBottom}><span>© {new Date().getFullYear()} AEROVENTIS</span><span>CASABLANCA · MAROC</span></div>
+    </footer>
+  </div>;
 }
