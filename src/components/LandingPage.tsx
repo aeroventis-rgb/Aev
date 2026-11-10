@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import {
   AirVent,
   ArrowRight,
+  Box,
   Building2,
   Check,
   Droplets,
@@ -28,7 +29,6 @@ import {
 import { FrenchHomeTop } from "@/components/FrenchHomeTop";
 import { SiteNav } from "@/components/SiteNav";
 import { PartnerLogos } from "@/components/PartnerLogos";
-import { BRAND_SLIDES } from "@/lib/brand-slides";
 import { BRAND_LOGO_SRC, HOME_ILLUSTRATIONS, IMAGES, PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
 import type { Locale } from "@/i18n/routing";
 import { localesForPath } from "@/lib/routes";
@@ -51,10 +51,18 @@ const solutions = [
 
 const steps = ["1", "2", "3", "4", "5", "6"] as const;
 
-const works = [
-  { key: "workGainable", href: "/climatisation-gainable", src: BRAND_SLIDES.gainable },
-  { key: "workVentilation", href: "/ventilation", src: BRAND_SLIDES.ventilation },
-  { key: "workInstall", href: "/climatisation", src: BRAND_SLIDES.installation },
+const realisationShots = [
+  { key: "workVilla", src: HOME_ILLUSTRATIONS.workVilla },
+  { key: "workReception", src: HOME_ILLUSTRATIONS.workReception },
+  { key: "workDining", src: HOME_ILLUSTRATIONS.workDining },
+  { key: "workCare", src: HOME_ILLUSTRATIONS.workCare },
+  { key: "workRoof", src: HOME_ILLUSTRATIONS.workRoof },
+] as const;
+
+const diffuserShots = [
+  { key: "diffuserLinear", src: HOME_ILLUSTRATIONS.diffuserLinear },
+  { key: "diffuserCassette", src: HOME_ILLUSTRATIONS.diffuserCassette },
+  { key: "diffuserRound", src: HOME_ILLUSTRATIONS.diffuserRound },
 ] as const;
 
 function serviceHref(locale: Locale, path: string | null) {
@@ -136,6 +144,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       Icon: Snowflake,
       title: t("cardClimateTitle"),
       line: t("cardClimateLine"),
+      alt: ti("cardClimate"),
     },
     {
       key: "vent",
@@ -145,6 +154,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       Icon: Fan,
       title: t("cardVentTitle"),
       line: t("cardVentLine"),
+      alt: ti("cardVent"),
     },
     {
       key: "plumb",
@@ -154,15 +164,27 @@ export function LandingPage({ contactQrDataUrl }: Props) {
       Icon: Droplets,
       title: t("cardPlumbTitle"),
       line: t("cardPlumbLine"),
+      alt: ti("cardPlumb"),
+    },
+    {
+      key: "fit",
+      href: null,
+      src: HOME_ILLUSTRATIONS.fitout,
+      focus: "object-center",
+      Icon: Box,
+      title: t("cardFitTitle"),
+      line: t("cardFitLine"),
+      alt: ti("cardFit"),
     },
     {
       key: "maint",
       href: "/entretien-climatisation-casablanca",
       src: HOME_ILLUSTRATIONS.maintenance,
-      focus: "object-[72%_center]",
+      focus: "object-[32%_center]",
       Icon: Wrench,
       title: t("cardMaintTitle"),
       line: t("cardMaintLine"),
+      alt: ti("cardMaint"),
     },
   ] as const;
 
@@ -257,14 +279,21 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           <figure className="relative z-0 mt-5 aspect-[4/3] overflow-hidden sm:mx-5 sm:mt-4 sm:aspect-[1.98/1] sm:rounded-2xl lg:absolute lg:inset-y-0 lg:end-0 lg:mx-0 lg:mt-0 lg:aspect-auto lg:w-[58%] lg:rounded-none xl:w-[60%]">
             <Image
               src={HOME_ILLUSTRATIONS.hero}
-              alt={t("illustration")}
+              alt={ti("heroVilla")}
               fill
               priority
-              className="object-cover object-[62%_center] sm:object-[center_18%] lg:object-[center_top]"
+              className="object-cover object-[46%_center] sm:object-center"
               sizes="(max-width: 1024px) 100vw, 60vw"
             />
             <div className="pointer-events-none absolute inset-0 hidden lg:block ltr:bg-gradient-to-r rtl:bg-gradient-to-l from-white from-0% via-white via-[26%] to-transparent to-[58%]" />
-            <figcaption className="absolute end-3 top-3 rounded bg-black/40 px-1.5 py-0.5 text-[10px] font-medium text-white/90">
+            <ul className="absolute end-2 top-2 bottom-3 z-[1] flex w-14 flex-col gap-1.5 sm:end-3 sm:bottom-6 sm:w-[4.75rem] sm:gap-2 lg:bottom-24 lg:end-4 lg:w-[5.25rem]">
+              {diffuserShots.map((shot) => (
+                <li key={shot.key} className="relative min-h-0 flex-1 overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-white/80">
+                  <Image src={shot.src} alt={ti(shot.key)} fill className="object-cover" sizes="88px" />
+                </li>
+              ))}
+            </ul>
+            <figcaption className="absolute start-3 top-3 rounded bg-black/40 px-1.5 py-0.5 text-[10px] font-medium text-white/90 lg:start-auto lg:end-[7.4rem]">
               {t("heroCaption")}
             </figcaption>
           </figure>
@@ -272,24 +301,26 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
         <section id="expertises" className="scroll-mt-36 relative z-20 mx-auto mt-4 max-w-7xl px-4 sm:-mt-4 sm:px-5 lg:-mt-12 lg:px-8">
           <h2 className="sr-only">{tn("expertises")}</h2>
-          <ul className="grid grid-cols-2 gap-2.5 sm:gap-4 xl:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-2.5 sm:gap-4 xl:grid-cols-5">
             {featured.map((item) => {
               const page = serviceHref(locale, item.href);
               const href = page ?? ({ pathname: "/", hash: "solutions" } as const);
               const Icon = item.Icon;
               return (
-                <li key={item.key} className="min-w-0">
+                <li key={item.key} className={`min-w-0 ${item.key === "maint" ? "max-xl:col-span-2" : ""}`}>
                   <Link
                     href={href}
-                    className="group relative block h-44 overflow-hidden rounded-2xl shadow-[0_18px_40px_-22px_rgba(2,47,112,0.55)] ring-1 ring-black/5 transition hover:-translate-y-0.5 sm:h-[9.25rem]"
+                    className="group relative block h-44 overflow-hidden rounded-2xl bg-[#01224f] shadow-[0_18px_40px_-22px_rgba(2,47,112,0.55)] ring-1 ring-black/5 transition hover:-translate-y-0.5 sm:h-[9.25rem]"
                   >
-                    <Image
-                      src={item.src}
-                      alt={t("illustration")}
-                      fill
-                      className={`object-cover ${item.focus}`}
-                      sizes="(max-width: 640px) 50vw, (max-width: 1280px) 50vw, 320px"
-                    />
+                    <div className="absolute inset-x-0 top-0 h-[58%] sm:h-[68%] overflow-hidden">
+                      <Image
+                        src={item.src}
+                        alt={item.alt}
+                        fill
+                        className={`object-cover ${item.focus}`}
+                        sizes="(max-width: 640px) 50vw, (max-width: 1280px) 50vw, 280px"
+                      />
+                    </div>
                     <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-[#01224f] from-50% via-[#01224f]/85 to-transparent sm:h-[48%] sm:from-40% sm:via-[#01224f]/80" />
                     <span className="absolute start-2 top-2 rounded bg-white/90 px-1.5 py-0.5 text-[10px] font-medium text-brand-navy/80 sm:start-3 sm:top-2 sm:px-1.5 sm:text-[10px]" aria-hidden>
                       {t("cardCaption")}
@@ -448,32 +479,26 @@ export function LandingPage({ contactQrDataUrl }: Props) {
             <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-brand-navy/70">
               {t("illustration")}
             </p>
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              {works.map((work) => {
-                const page = serviceHref(locale, work.href);
-                return (
-                  <article key={work.key} className="overflow-hidden rounded-2xl border border-[#e6eef6] bg-white">
-                    <Image
-                      src={work.src}
-                      alt={`${t("illustration")} ${t(work.key)}`}
-                      width={1600}
-                      height={900}
-                      className="h-auto w-full"
-                      sizes="(max-width: 768px) 100vw, 360px"
-                    />
-                    <div className="p-5">
-                      <h3 className="text-lg font-semibold text-brand-navy">{t(work.key)}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-brand-navy/70">{t("illustration")}</p>
-                      {page ? (
-                        <Link href={page} className="mt-3 inline-flex min-h-11 items-center text-sm font-semibold text-brand-blue hover:underline">
-                          {t("viewService")}
-                        </Link>
-                      ) : null}
+            <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              {realisationShots.map((shot) => (
+                <li key={shot.key} className={shot.key === "workRoof" ? "max-sm:col-span-2" : undefined}>
+                  <figure className="overflow-hidden rounded-2xl bg-white shadow-[0_10px_30px_-22px_rgba(2,47,112,0.45)] ring-1 ring-[#e6eef6]">
+                    <div className="relative aspect-[16/10]">
+                      <Image
+                        src={shot.src}
+                        alt={ti(shot.key)}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 220px"
+                      />
+                      <span className="absolute start-2 top-2 rounded bg-black/45 px-1.5 py-0.5 text-[10px] font-medium text-white" aria-hidden>
+                        {t("cardCaption")}
+                      </span>
                     </div>
-                  </article>
-                );
-              })}
-            </div>
+                  </figure>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

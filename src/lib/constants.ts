@@ -33,15 +33,25 @@ export const IMAGES = {
 } as const;
 
 /**
- * Homepage hero and service-card photos, cropped from the owner's homepage mockup.
- * Shown only with an "Illustration" label — not identified AEROVENTIS job sites or staff.
+ * Owner-supplied homepage illustrations (villa hero, service-card bands, diffuser
+ * column, réalisations strip). Shown with an "Illustration" label — not identified
+ * AEROVENTIS job sites. The French desktop banner stays `FR_HOME_TOP`.
  */
 export const HOME_ILLUSTRATIONS = {
   hero: "/home/illustration-hero.webp",
   climate: "/home/illustration-climatisation.webp",
   ventilation: "/home/illustration-ventilation.webp",
   plumbing: "/home/illustration-plomberie.webp",
+  fitout: "/home/illustration-amenagement.webp",
   maintenance: "/home/illustration-maintenance.webp",
+  diffuserLinear: "/home/illustration-diffuseur-lineaire.webp",
+  diffuserCassette: "/home/illustration-diffuseur-cassette.webp",
+  diffuserRound: "/home/illustration-diffuseur-circulaire.webp",
+  workVilla: "/home/illustration-realisation-villa.webp",
+  workReception: "/home/illustration-realisation-accueil.webp",
+  workDining: "/home/illustration-realisation-salle.webp",
+  workCare: "/home/illustration-realisation-soin.webp",
+  workRoof: "/home/illustration-realisation-toiture.webp",
 } as const;
 
 /**
