@@ -34,8 +34,8 @@ export const IMAGES = {
 
 /**
  * Owner-supplied homepage illustrations (villa hero, service-card bands, diffuser
- * column, réalisations strip). Shown with an "Illustration" label — not identified
- * AEROVENTIS job sites. The French desktop banner stays `FR_HOME_TOP`.
+ * column, réalisations strip). Not identified AEROVENTIS job sites. The French
+ * desktop banner stays `FR_HOME_TOP`.
  */
 export const HOME_ILLUSTRATIONS = {
   hero: "/home/illustration-hero.webp",
