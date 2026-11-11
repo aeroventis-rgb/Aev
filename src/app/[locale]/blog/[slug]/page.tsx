@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const post = isLocale(locale) ? getPublishedPost(locale, slug) : undefined;
   if (!post) notFound();
-  return buildPageMetadata({
+  const metadata = buildPageMetadata({
     locale: post.locale,
     pathname: `/blog/${post.slug}`,
     title: post.seoTitle ?? post.title,
@@ -34,6 +34,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     type: "article",
     keywords: post.keywords,
   });
+  if (post.image && post.imageAlt && post.imageWidth && post.imageHeight) {
+    const image = {
+      url: absoluteAsset(post.image),
+      width: post.imageWidth,
+      height: post.imageHeight,
+      alt: post.imageAlt,
+    };
+    metadata.openGraph = { ...metadata.openGraph, images: [image] };
+    metadata.twitter = { ...metadata.twitter, images: [image.url] };
+  }
+  return metadata;
 }
 
 export default async function BlogArticlePage({ params }: Props) {
