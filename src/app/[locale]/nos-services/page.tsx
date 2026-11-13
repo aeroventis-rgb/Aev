@@ -26,6 +26,10 @@ export default async function NosServicesPage({ params }: Props) {
         { titleKey: "extractTitle", bodyKey: "extractBody", href: "/extraction" },
         { titleKey: "smokeTitle", bodyKey: "smokeBody", href: "/desenfumage" },
         { titleKey: "plombTitle", bodyKey: "plombBody", href: "/plomberie" },
+        { titleKey: "heatTitle", bodyKey: "heatBody", href: "/pompe-a-chaleur-air-eau" },
+        { titleKey: "floorTitle", bodyKey: "floorBody", href: "/chauffage-au-sol" },
+        { titleKey: "hammamTitle", bodyKey: "hammamBody", href: "/hammam-beldi" },
+        { titleKey: "airTitle", bodyKey: "airBody", href: "/traitement-air" },
         { titleKey: "maintTitle", bodyKey: "maintBody" },
       ]}
     />
