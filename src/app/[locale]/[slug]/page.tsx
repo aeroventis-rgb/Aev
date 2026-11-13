@@ -20,8 +20,9 @@ export const dynamicParams = false;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const page = getLandingPage(slug);
-  if (!page || !isLocale(locale) || !page.locales.includes(locale)) notFound();
+  if (!isLocale(locale)) notFound();
+  const page = getLandingPage(slug, locale);
+  if (!page || !page.locales.includes(locale)) notFound();
   return buildPageMetadata({
     locale,
     pathname: `/${page.slug}`,
@@ -33,8 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function LandingRoute({ params }: Props) {
   const { locale, slug } = await params;
-  const page = getLandingPage(slug);
-  if (!page || !isLocale(locale) || !page.locales.includes(locale)) notFound();
+  if (!isLocale(locale)) notFound();
+  const page = getLandingPage(slug, locale);
+  if (!page || !page.locales.includes(locale)) notFound();
 
   const url = absoluteUrl(locale, `/${page.slug}`);
   const crumbs = page.breadcrumbs.map((crumb) => ({

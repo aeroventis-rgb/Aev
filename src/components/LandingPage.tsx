@@ -14,6 +14,8 @@ import {
   FileText,
   Gem,
   Headphones,
+  Heater,
+  Layers,
   LayoutGrid,
   MapPin,
   MessageCircle,
@@ -23,6 +25,7 @@ import {
   Snowflake,
   Thermometer,
   Users,
+  Waves,
   Wind,
   Wrench,
 } from "lucide-react";
@@ -47,6 +50,10 @@ const solutions = [
   { key: "extraction", href: "/extraction", Icon: Wind },
   { key: "smoke", href: "/desenfumage", Icon: Shield },
   { key: "cooling", href: null, Icon: Snowflake },
+  { key: "heatPump", href: "/pompe-a-chaleur-air-eau", Icon: Heater },
+  { key: "underfloor", href: "/chauffage-au-sol", Icon: Layers },
+  { key: "hammam", href: "/hammam-beldi", Icon: Waves },
+  { key: "airTreatment", href: "/traitement-air", Icon: Fan },
 ] as const;
 
 const steps = ["1", "2", "3", "4", "5", "6"] as const;
@@ -207,6 +214,10 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { label: tf("extraction"), href: "/extraction" },
     { label: tf("smoke"), href: "/desenfumage" },
     { label: tf("plumbing"), href: "/plomberie" },
+    { label: tf("heatPump"), href: "/pompe-a-chaleur-air-eau" },
+    { label: tf("underfloor"), href: "/chauffage-au-sol" },
+    { label: tf("hammam"), href: "/hammam-beldi" },
+    { label: tf("airTreatment"), href: "/traitement-air" },
     { label: t("coolingTitle"), href: null },
     { label: t("maintenanceTitle"), href: "/entretien-climatisation-casablanca" },
   ];

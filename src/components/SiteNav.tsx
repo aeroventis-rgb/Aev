@@ -22,6 +22,10 @@ type NavHref =
   | "/extraction"
   | "/desenfumage"
   | "/plomberie"
+  | "/pompe-a-chaleur-air-eau"
+  | "/chauffage-au-sol"
+  | "/hammam-beldi"
+  | "/traitement-air"
   | "/entretien-climatisation-casablanca"
   | { pathname: "/"; hash: string };
 
@@ -72,6 +76,10 @@ export function SiteNav() {
     { key: "expExtraction", label: tn("expExtraction"), href: pageOrHash(locale, "/extraction", "solutions") },
     { key: "expSmoke", label: tn("expSmoke"), href: pageOrHash(locale, "/desenfumage", "solutions") },
     { key: "expPlumbing", label: tn("expPlumbing"), href: pageOrHash(locale, "/plomberie", "solutions") },
+    { key: "expHeatPump", label: tn("expHeatPump"), href: pageOrHash(locale, "/pompe-a-chaleur-air-eau", "solutions") },
+    { key: "expUnderfloor", label: tn("expUnderfloor"), href: pageOrHash(locale, "/chauffage-au-sol", "solutions") },
+    { key: "expHammam", label: tn("expHammam"), href: pageOrHash(locale, "/hammam-beldi", "solutions") },
+    { key: "expAirTreatment", label: tn("expAirTreatment"), href: pageOrHash(locale, "/traitement-air", "solutions") },
     {
       key: "expMaintenance",
       label: tn("expMaintenance"),
@@ -87,6 +95,10 @@ export function SiteNav() {
     pathname.startsWith("/plomberie") ||
     pathname.startsWith("/extraction") ||
     pathname.startsWith("/desenfumage") ||
+    pathname.startsWith("/pompe-a-chaleur") ||
+    pathname.startsWith("/chauffage-au-sol") ||
+    pathname.startsWith("/hammam-beldi") ||
+    pathname.startsWith("/traitement-air") ||
     pathname.startsWith("/entretien-");
 
   const items: { key: string; label: string; href: NavHref; active: boolean }[] = [

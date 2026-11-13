@@ -1,8 +1,10 @@
 import { SERVICE_AREA_NAMES } from "@/lib/areas";
+import { addedServicePages } from "@/lib/landings/added-services";
 import { extraLandingPages } from "@/lib/landings/extra-pages";
 import { COMPARISON_ROWS, PROCESS_TITLES } from "@/lib/landings/shared";
 import { LANDING_ROUTES } from "@/lib/landings/slugs";
-import type { Crumb, LandingPage } from "@/lib/landings/types";
+import type { Crumb, LandingPage, LandingTranslation } from "@/lib/landings/types";
+import type { Locale } from "@/i18n/routing";
 import { composeTitle } from "@/lib/seo/metadata";
 
 export type { Crumb, LandingLink, LandingPage } from "@/lib/landings/types";
@@ -24,52 +26,137 @@ function assertClean(text: string, id: string) {
   }
 }
 
-function assertLanding(page: LandingPage) {
-  const fullTitle = composeTitle(page.title);
+function assertShape(
+  id: string,
+  copy: {
+    title: string;
+    description: string;
+    h1: string;
+    servicesIntro: string;
+    comparisonIntro: string;
+    processIntro: string;
+    localFit?: LandingPage["localFit"];
+    points?: LandingPage["points"];
+    imageAlt?: string;
+    imageCaption?: string;
+    headings?: LandingPage["headings"];
+    lead: readonly string[];
+    services: LandingPage["services"];
+    process: readonly string[];
+    faqs: LandingPage["faqs"];
+    showHvacComparison?: boolean;
+    extra?: readonly string[];
+  }
+) {
+  const fullTitle = composeTitle(copy.title);
   if (fullTitle.length > 60) {
-    throw new Error(`Landing ${page.slug} title is ${fullTitle.length} chars (max 60): ${fullTitle}`);
+    throw new Error(`Landing ${id} title is ${fullTitle.length} chars (max 60): ${fullTitle}`);
   }
-  const length = page.description.length;
+  const length = copy.description.length;
   if (length < 140 || length > 160) {
-    throw new Error(
-      `Landing ${page.slug} description is ${length} chars (need 140-160): ${page.description}`
-    );
+    throw new Error(`Landing ${id} description is ${length} chars (need 140-160): ${copy.description}`);
   }
-  if (page.faqs.length < 5 || page.faqs.length > 6) {
-    throw new Error(`Landing ${page.slug} must have 5 or 6 FAQs, has ${page.faqs.length}`);
+  if (copy.faqs.length < 5 || copy.faqs.length > 6) {
+    throw new Error(`Landing ${id} must have 5 or 6 FAQs, has ${copy.faqs.length}`);
   }
-  if (page.process.length !== PROCESS_TITLES.length) {
-    throw new Error(`Landing ${page.slug} process steps do not match the shared titles`);
+  if (copy.process.length !== PROCESS_TITLES.length) {
+    throw new Error(`Landing ${id} process steps do not match the shared titles`);
   }
-  if (page.showHvacComparison === false) {
-    if (!page.points || page.points.length < 3) {
-      throw new Error(`Landing ${page.slug} needs at least 3 decision points`);
+  if (copy.showHvacComparison === false) {
+    if (!copy.points || copy.points.length < 3) {
+      throw new Error(`Landing ${id} needs at least 3 decision points`);
     }
-  } else if (!page.localFit) {
-    throw new Error(`Landing ${page.slug} is missing the HVAC comparison`);
+  } else if (!copy.localFit) {
+    throw new Error(`Landing ${id} is missing the HVAC comparison`);
   }
   const blobs = [
-    page.title,
-    page.description,
-    page.h1,
-    page.servicesIntro,
-    page.comparisonIntro,
-    page.processIntro,
-    ...(page.localFit ? [page.localFit.split, page.localFit.gainable, page.localFit.vrv] : []),
-    ...(page.points ? page.points.flatMap((item) => [item.title, item.body]) : []),
-    ...(page.image ? [page.image.alt, page.image.caption] : []),
-    ...(page.headings
-      ? [page.headings.services, page.headings.comparison, page.headings.process, page.headings.faq].filter(
+    copy.title,
+    copy.description,
+    copy.h1,
+    copy.servicesIntro,
+    copy.comparisonIntro,
+    copy.processIntro,
+    ...(copy.localFit ? [copy.localFit.split, copy.localFit.gainable, copy.localFit.vrv] : []),
+    ...(copy.points ? copy.points.flatMap((item) => [item.title, item.body]) : []),
+    ...(copy.imageAlt ? [copy.imageAlt] : []),
+    ...(copy.imageCaption ? [copy.imageCaption] : []),
+    ...(copy.headings
+      ? [copy.headings.services, copy.headings.comparison, copy.headings.process, copy.headings.faq].filter(
           (item): item is string => Boolean(item)
         )
       : []),
-    ...page.lead,
-    ...page.services.flatMap((item) => [item.title, item.body]),
-    ...page.process,
-    ...page.faqs.flatMap((faq) => [faq.question, faq.answer]),
-    ...COMPARISON_ROWS.flatMap((row) => [row.label, row.split, row.gainable, row.vrv]),
+    ...copy.lead,
+    ...copy.services.flatMap((item) => [item.title, item.body]),
+    ...copy.process,
+    ...copy.faqs.flatMap((faq) => [faq.question, faq.answer]),
+    ...(copy.extra ?? []),
   ];
-  for (const blob of blobs) assertClean(blob, page.slug);
+  for (const blob of blobs) assertClean(blob, id);
+}
+
+function assertLanding(page: LandingPage) {
+  assertShape(page.slug, {
+    ...page,
+    imageAlt: page.image?.alt,
+    imageCaption: page.image?.caption,
+    extra: [
+      ...COMPARISON_ROWS.flatMap((row) => [row.label, row.split, row.gainable, row.vrv]),
+      ...(page.gallery?.map((shot) => shot.alt) ?? []),
+    ],
+  });
+  for (const locale of page.locales) {
+    if (locale === "fr") continue;
+    const copy = page.translations?.[locale];
+    if (!copy) throw new Error(`Landing ${page.slug} is missing ${locale} copy`);
+    if (page.gallery && copy.galleryAlts?.length !== page.gallery.length) {
+      throw new Error(`Landing ${page.slug} ${locale} gallery alts do not match the photos`);
+    }
+    assertShape(`${page.slug}:${locale}`, {
+      ...copy,
+      imageAlt: copy.image?.alt,
+      imageCaption: copy.image?.caption,
+      showHvacComparison: page.showHvacComparison,
+      localFit: copy.localFit ?? page.localFit,
+      points: copy.points ?? page.points,
+      extra: copy.galleryAlts ? [...copy.galleryAlts] : [],
+    });
+  }
+}
+
+function presentLanding(page: LandingPage, locale: Locale): LandingPage {
+  if (locale === "fr") return page;
+  const copy: LandingTranslation | undefined = page.translations?.[locale];
+  if (!copy || !page.locales.includes(locale)) return page;
+  return {
+    ...page,
+    title: copy.title,
+    description: copy.description,
+    serviceType: copy.serviceType,
+    h1: copy.h1,
+    headings: copy.headings,
+    lead: copy.lead,
+    servicesIntro: copy.servicesIntro,
+    services: copy.services,
+    comparisonIntro: copy.comparisonIntro,
+    points: copy.points ?? page.points,
+    localFit: copy.localFit ?? page.localFit,
+    image: page.image
+      ? {
+          ...page.image,
+          alt: copy.image?.alt ?? page.image.alt,
+          caption: copy.image?.caption ?? page.image.caption,
+        }
+      : undefined,
+    gallery: page.gallery?.map((shot, index) => ({
+      ...shot,
+      alt: copy.galleryAlts?.[index] ?? shot.alt,
+    })),
+    processIntro: copy.processIntro,
+    process: copy.process,
+    faqs: copy.faqs,
+    links: copy.links,
+    breadcrumbs: copy.breadcrumbs,
+  };
 }
 
 const home: Crumb = { name: "Accueil", pathname: "/" };
@@ -171,6 +258,7 @@ const handwritten: LandingPage[] = [
       { href: "/extraction", label: "Extraction d'air" },
       { href: "/desenfumage", label: "Désenfumage" },
       { href: "/climatisation-gainable", label: "Climatisation gainable" },
+      { href: "/pompe-a-chaleur-air-eau", label: "Pompe à chaleur air-eau" },
       { href: "/entretien-climatisation-casablanca", label: "Entretien à Casablanca" },
       { href: "/zone-intervention", label: "Zone d'intervention" },
       { href: "/blog/maitrisez-votre-climat", label: "Maîtrisez votre climat" },
@@ -746,7 +834,7 @@ const handwritten: LandingPage[] = [
   },
 ];
 
-const pages: LandingPage[] = [...handwritten, ...extraLandingPages];
+const pages: LandingPage[] = [...handwritten, ...extraLandingPages, ...addedServicePages];
 
 for (const page of pages) {
   assertLanding(page);
@@ -763,7 +851,14 @@ for (const route of LANDING_ROUTES) {
   }
 }
 
-const titles = pages.map((page) => composeTitle(page.title));
+const titles = pages.flatMap((page) => {
+  const localized = page.locales
+    .filter((locale) => locale !== "fr")
+    .map((locale) => page.translations?.[locale]?.title)
+    .filter((title): title is string => Boolean(title))
+    .map((title) => composeTitle(title));
+  return [composeTitle(page.title), ...localized];
+});
 if (new Set(titles).size !== titles.length) {
   throw new Error("Landing titles must be unique");
 }
@@ -772,6 +867,8 @@ export function getLandingPages(): readonly LandingPage[] {
   return pages;
 }
 
-export function getLandingPage(slug: string): LandingPage | undefined {
-  return pages.find((page) => page.slug === slug);
+export function getLandingPage(slug: string, locale: Locale = "fr"): LandingPage | undefined {
+  const page = pages.find((item) => item.slug === slug);
+  if (!page) return undefined;
+  return presentLanding(page, locale);
 }

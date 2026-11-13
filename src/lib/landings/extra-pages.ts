@@ -586,6 +586,7 @@ const ventilationHub: LandingPage = hubShell({
     ...cityLinks("ventilation", "Ventilation"),
     link("/extraction", "Extraction d'air"),
     link("/desenfumage", "Désenfumage"),
+    link("/traitement-air", "Traitement d'air"),
     link("/plomberie", "Plomberie"),
     link("/climatisation", "Climatisation"),
     link("/contact", "Contact"),
@@ -672,6 +673,9 @@ const plomberieHub: LandingPage = hubShell({
   ],
   links: [
     ...cityLinks("plomberie", "Plomberie"),
+    link("/pompe-a-chaleur-air-eau", "Pompe à chaleur air-eau"),
+    link("/chauffage-au-sol", "Chauffage au sol"),
+    link("/hammam-beldi", "Hammam beldi"),
     link("/ventilation", "Ventilation"),
     link("/climatisation", "Climatisation"),
     link("/zone-intervention", "Zone d'intervention"),
@@ -759,6 +763,8 @@ const extractionHub: LandingPage = hubShell({
   ],
   links: [
     link("/ventilation", "Ventilation et qualité d'air"),
+    link("/traitement-air", "Traitement d'air"),
+    link("/hammam-beldi", "Hammam beldi"),
     link("/desenfumage", "Désenfumage"),
     ...cityLinks("ventilation", "Ventilation"),
     link("/contact", "Contact"),
@@ -846,6 +852,7 @@ const desenfumageHub: LandingPage = hubShell({
   links: [
     link("/extraction", "Extraction d'air"),
     link("/ventilation", "Ventilation"),
+    link("/traitement-air", "Traitement d'air"),
     link("/climatisation", "Climatisation"),
     link("/zone-intervention", "Zone d'intervention"),
     link("/contact", "Contact"),

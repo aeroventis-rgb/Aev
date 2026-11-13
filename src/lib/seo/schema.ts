@@ -20,6 +20,10 @@ const OFFERED_SERVICES = [
   { name: "Extraction d'air", serviceType: "Extraction d'air", path: "/extraction" },
   { name: "Désenfumage", serviceType: "Désenfumage", path: "/desenfumage" },
   { name: "Plomberie", serviceType: "Plomberie", path: "/plomberie" },
+  { name: "Pompe à chaleur air-eau", serviceType: "Pompe à chaleur air-eau", path: "/pompe-a-chaleur-air-eau" },
+  { name: "Chauffage au sol", serviceType: "Chauffage au sol", path: "/chauffage-au-sol" },
+  { name: "Hammam beldi", serviceType: "Hammam beldi", path: "/hammam-beldi" },
+  { name: "Traitement d'air", serviceType: "Traitement d'air", path: "/traitement-air" },
   { name: "Maintenance et SAV", serviceType: "Maintenance", path: "/nos-services" },
 ] as const;
 

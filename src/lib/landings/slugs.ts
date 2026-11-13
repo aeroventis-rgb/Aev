@@ -14,6 +14,10 @@ export const SERVICE_IDS = [
   "desenfumage",
   "froid-commercial",
   "plomberie",
+  "pompe-a-chaleur",
+  "chauffage-au-sol",
+  "hammam-beldi",
+  "traitement-air",
 ] as const;
 
 export const CITY_IDS = [
@@ -92,6 +96,30 @@ export const LANDING_ROUTES: readonly LandingRoute[] = [
   { slug: "plomberie", locales: ["fr"], label: "Plomberie", priority: 0.85 },
   { slug: "extraction", locales: ["fr"], label: "Extraction d'air", priority: 0.82 },
   { slug: "desenfumage", locales: ["fr"], label: "Désenfumage", priority: 0.82 },
+  {
+    slug: "pompe-a-chaleur-air-eau",
+    locales: ["fr", "en", "ar"],
+    label: "Pompe à chaleur air-eau",
+    priority: 0.84,
+  },
+  {
+    slug: "chauffage-au-sol",
+    locales: ["fr", "en", "ar"],
+    label: "Chauffage au sol",
+    priority: 0.84,
+  },
+  {
+    slug: "hammam-beldi",
+    locales: ["fr", "en", "ar"],
+    label: "Hammam beldi",
+    priority: 0.84,
+  },
+  {
+    slug: "traitement-air",
+    locales: ["fr", "en", "ar"],
+    label: "Traitement d'air",
+    priority: 0.84,
+  },
   ...(["mohammedia", "bouskoura", "tamaris", "zenata"] as const).map(
     (city): LandingRoute => ({
       slug: `climatisation-${city}`,
