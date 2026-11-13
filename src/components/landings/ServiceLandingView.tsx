@@ -1,4 +1,5 @@
 import { Phone, MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { BrandSlide } from "@/components/BrandSlide";
 import { SiteNav } from "@/components/SiteNav";
@@ -112,7 +113,30 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
 
           {page.image ? (
             <div className="mt-8">
-              <BrandSlide src={page.image.src} alt={page.image.alt} caption={page.image.caption} />
+              <BrandSlide
+                src={page.image.src}
+                alt={page.image.alt}
+                caption={page.image.caption}
+                width={page.image.width}
+                height={page.image.height}
+                priority={Boolean(page.gallery?.length)}
+              />
+              {page.gallery && page.gallery.length > 0 ? (
+                <ul className="mt-3 grid grid-cols-2 items-start gap-3">
+                  {page.gallery.map((shot) => (
+                    <li key={shot.src} className="overflow-hidden rounded-md border border-brand-silver bg-white">
+                      <Image
+                        src={shot.src}
+                        alt={shot.alt}
+                        width={shot.width}
+                        height={shot.height}
+                        className="h-auto w-full"
+                        sizes="(max-width: 768px) 45vw, 360px"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           ) : null}
 

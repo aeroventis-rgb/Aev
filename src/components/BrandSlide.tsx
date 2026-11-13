@@ -6,17 +6,27 @@ type Props = {
   caption?: string;
   priority?: boolean;
   sizes?: string;
+  width?: number;
+  height?: number;
 };
 
 /** Full brand slide, contained so the artwork and its text stay readable. */
-export function BrandSlide({ src, alt, caption, priority = false, sizes = "(max-width: 1024px) 100vw, 720px" }: Props) {
+export function BrandSlide({
+  src,
+  alt,
+  caption,
+  priority = false,
+  sizes = "(max-width: 1024px) 100vw, 720px",
+  width = 1600,
+  height = 900,
+}: Props) {
   return (
     <figure className="overflow-hidden rounded-md border border-brand-silver bg-white">
       <Image
         src={src}
         alt={alt}
-        width={1600}
-        height={900}
+        width={width}
+        height={height}
         priority={priority}
         className="h-auto w-full"
         sizes={sizes}

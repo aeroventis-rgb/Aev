@@ -99,12 +99,18 @@ function assertLanding(page: LandingPage) {
     ...page,
     imageAlt: page.image?.alt,
     imageCaption: page.image?.caption,
-    extra: COMPARISON_ROWS.flatMap((row) => [row.label, row.split, row.gainable, row.vrv]),
+    extra: [
+      ...COMPARISON_ROWS.flatMap((row) => [row.label, row.split, row.gainable, row.vrv]),
+      ...(page.gallery?.map((shot) => shot.alt) ?? []),
+    ],
   });
   for (const locale of page.locales) {
     if (locale === "fr") continue;
     const copy = page.translations?.[locale];
     if (!copy) throw new Error(`Landing ${page.slug} is missing ${locale} copy`);
+    if (page.gallery && copy.galleryAlts?.length !== page.gallery.length) {
+      throw new Error(`Landing ${page.slug} ${locale} gallery alts do not match the photos`);
+    }
     assertShape(`${page.slug}:${locale}`, {
       ...copy,
       imageAlt: copy.image?.alt,
@@ -112,6 +118,7 @@ function assertLanding(page: LandingPage) {
       showHvacComparison: page.showHvacComparison,
       localFit: copy.localFit ?? page.localFit,
       points: copy.points ?? page.points,
+      extra: copy.galleryAlts ? [...copy.galleryAlts] : [],
     });
   }
 }
@@ -135,11 +142,15 @@ function presentLanding(page: LandingPage, locale: Locale): LandingPage {
     localFit: copy.localFit ?? page.localFit,
     image: page.image
       ? {
-          src: page.image.src,
+          ...page.image,
           alt: copy.image?.alt ?? page.image.alt,
           caption: copy.image?.caption ?? page.image.caption,
         }
       : undefined,
+    gallery: page.gallery?.map((shot, index) => ({
+      ...shot,
+      alt: copy.galleryAlts?.[index] ?? shot.alt,
+    })),
     processIntro: copy.processIntro,
     process: copy.process,
     faqs: copy.faqs,

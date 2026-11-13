@@ -1,7 +1,5 @@
 import { SERVICE_AREA_NAMES } from "@/lib/areas";
-import { BRAND_SLIDES } from "@/lib/brand-slides";
-import { HOME_ILLUSTRATIONS } from "@/lib/constants";
-import type { LandingLink, LandingPage, LandingTranslation } from "@/lib/landings/types";
+import type { LandingLink, LandingPage } from "@/lib/landings/types";
 
 const homeFr = { name: "Accueil", pathname: "/" } as const;
 const servicesFr = { name: "Nos services", pathname: "/nos-services" } as const;
@@ -10,28 +8,6 @@ const homeAr = { name: "الرئيسية", pathname: "/" } as const;
 
 function link(path: `/${string}`, label: string): LandingLink {
   return { href: path, label };
-}
-
-function visual(src: string, subject: string): NonNullable<LandingPage["image"]> {
-  return {
-    src,
-    alt: `Visuel de présentation AEROVENTIS — ${subject}. Visuel de marque, et non la photo d'un chantier identifié.`,
-    caption: `Présentation AEROVENTIS : ${subject}. Visuel de marque, pas une photo de chantier identifié.`,
-  };
-}
-
-function visualEn(subject: string): NonNullable<LandingTranslation["image"]> {
-  return {
-    alt: `AEROVENTIS presentation visual — ${subject}. A brand visual, not a photo of an identified job site.`,
-    caption: `AEROVENTIS presentation: ${subject}. A brand visual, not a photo of an identified job site.`,
-  };
-}
-
-function visualAr(subject: string): NonNullable<LandingTranslation["image"]> {
-  return {
-    alt: `عرض AEROVENTIS — ${subject}. صورة للعلامة، وليست صورة ورش محدد.`,
-    caption: `عرض AEROVENTIS: ${subject}. صورة للعلامة، وليست صورة ورش محدد.`,
-  };
 }
 
 const frSiblings = {
@@ -112,7 +88,33 @@ const pac: LandingPage = {
       body: "Le littoral reste doux et humide. Marrakech a des nuits plus fraîches et de la poussière. Le relevé en tient compte.",
     },
   ],
-  image: visual(BRAND_SLIDES.exterieur, "unités extérieures, pour situer une pompe à chaleur air-eau"),
+  image: {
+    src: "/services/pac-air-eau-1.webp",
+    alt: "Groupe de pompe à chaleur air-eau posé sur une toiture, avec les liaisons isolées au premier plan.",
+    caption: "",
+    width: 1200,
+    height: 1600,
+  },
+  gallery: [
+    {
+      src: "/services/pac-air-eau-6.webp",
+      alt: "Deux groupes de pompe à chaleur air-eau sanglés sur un camion, prêts à être livrés.",
+      width: 1600,
+      height: 1200,
+    },
+    {
+      src: "/services/pac-air-eau-7.webp",
+      alt: "Groupe de pompe à chaleur air-eau sous film, sur palette, avant la pose.",
+      width: 1200,
+      height: 1600,
+    },
+    {
+      src: "/services/pac-air-eau-5.webp",
+      alt: "Levage d'un groupe de pompe à chaleur vers une toiture.",
+      width: 1200,
+      height: 1600,
+    },
+  ],
   processIntro: "L'ordre est le même d'une ville à l'autre. Le contenu de la visite change.",
   process: [
     "Voir le logement, les émetteurs possibles et la place du groupe extérieur.",
@@ -203,7 +205,15 @@ const pac: LandingPage = {
           body: "The coast stays mild and humid. Marrakech has cooler nights and dust. The survey takes that into account.",
         },
       ],
-      image: visualEn("outdoor units, to place an air-to-water heat pump"),
+      image: {
+        alt: "Air-to-water heat pump set on a roof, with insulated pipes in the foreground.",
+        caption: "",
+      },
+      galleryAlts: [
+        "Two air-to-water heat pumps strapped on a truck, ready for delivery.",
+        "Air-to-water heat pump under wrapping, on a pallet, before installation.",
+        "A heat pump being lifted onto a roof.",
+      ],
       processIntro: "The order is the same from one city to the next. What the visit looks at changes.",
       process: [
         "See the home, the possible emitters and the space for the outdoor unit.",
@@ -286,7 +296,15 @@ const pac: LandingPage = {
           body: "يبقى الساحل لطيفاً ورطباً. في مراكش ليالٍ أبرد وغبار. المعاينة تأخذ ذلك في الحسبان.",
         },
       ],
-      image: visualAr("وحدات خارجية لتصور مضخة حرارية هواء-ماء"),
+      image: {
+        alt: "مضخة حرارية هواء-ماء مثبتة على سطح، مع أنابيب معزولة في المقدمة.",
+        caption: "",
+      },
+      galleryAlts: [
+        "مجموعتان لمضخة حرارية هواء-ماء مثبتتان على شاحنة، جاهزتان للتسليم.",
+        "مجموعة مضخة حرارية هواء-ماء تحت غلاف، على منصة، قبل التركيب.",
+        "رفع مجموعة مضخة حرارية نحو سطح.",
+      ],
       processIntro: "الترتيب واحد من مدينة إلى أخرى. ما تراه الزيارة هو الذي يتغير.",
       process: [
         "رؤية المسكن ووسائل التدفئة الممكنة ومكان الوحدة الخارجية.",
@@ -376,7 +394,33 @@ const floor: LandingPage = {
       body: "Une salle d'eau et un séjour n'ont pas le même besoin. Les boucles se séparent plutôt que de tout régler d'un seul geste.",
     },
   ],
-  image: visual(HOME_ILLUSTRATIONS.plumbing, "canalisations d'eau, pour situer un chauffage au sol"),
+  image: {
+    src: "/services/chauffage-sol-8.webp",
+    alt: "Pose de plancher chauffant : boucles de tube sur une dalle, avant la chape.",
+    caption: "",
+    width: 1080,
+    height: 608,
+  },
+  gallery: [
+    {
+      src: "/services/chauffage-sol-10.webp",
+      alt: "Boucles de plancher chauffant dans une pièce carrelée, avant la chape.",
+      width: 720,
+      height: 960,
+    },
+    {
+      src: "/services/chauffage-sol-9.webp",
+      alt: "Plancher chauffant raccordé à un collecteur encastré dans le mur.",
+      width: 720,
+      height: 960,
+    },
+    {
+      src: "/services/chauffage-sol-3.webp",
+      alt: "Collecteur de plancher chauffant, avec les départs isolés qui descendent vers la dalle.",
+      width: 720,
+      height: 960,
+    },
+  ],
   processIntro: "Le sol se ferme vite. L'ordre des corps d'état compte autant que le tracé.",
   process: [
     "Voir la structure du sol, les pièces à chauffer et l'endroit des collecteurs.",
@@ -466,7 +510,15 @@ const floor: LandingPage = {
           body: "A bathroom and a living room do not need the same heat. Loops are separated rather than set with one control.",
         },
       ],
-      image: visualEn("water pipes, to place underfloor heating"),
+      image: {
+        alt: "Underfloor heating install: pipe loops on a slab, before the screed.",
+        caption: "",
+      },
+      galleryAlts: [
+        "Underfloor heating loops in a tiled room, before the screed.",
+        "Underfloor heating connected to a manifold set into the wall.",
+        "Underfloor heating manifold, with insulated outlets running down to the slab.",
+      ],
       processIntro: "The floor closes quickly. The order of the trades matters as much as the layout.",
       process: [
         "See the floor build-up, the rooms to heat and the place for the manifolds.",
@@ -549,7 +601,15 @@ const floor: LandingPage = {
           body: "الحمام وقاعة الجلوس لا يحتاجان الحرارة نفسها. تُفصل الحلقات بدل ضبط الكل بحركة واحدة.",
         },
       ],
-      image: visualAr("أنابيب ماء لتصور تدفئة أرضية"),
+      image: {
+        alt: "تركيب تدفئة أرضية: حلقات أنابيب على بلاطة، قبل طبقة التسوية.",
+        caption: "",
+      },
+      galleryAlts: [
+        "حلقات تدفئة أرضية في غرفة مبلطة، قبل طبقة التسوية.",
+        "تدفئة أرضية موصولة بمجمع مدمج في الجدار.",
+        "مجمع تدفئة أرضية، مع مخارج معزولة تنزل نحو البلاطة.",
+      ],
       processIntro: "الأرضية تُغلق بسرعة. ترتيب الأشغال يهم بقدر المسار.",
       process: [
         "رؤية بنية الأرضية والغرف المراد تدفئتها ومكان المجمعات.",
@@ -638,7 +698,33 @@ const hammam: LandingPage = {
       body: "La vapeur est un sujet de chauffage. L'extraction de l'air très humide est un autre réseau : on la coordonne, on ne la confond pas.",
     },
   ],
-  image: visual(BRAND_SLIDES.installation, "local technique, pour situer l'installation d'un hammam"),
+  image: {
+    src: "/services/hammam-beldi-9.webp",
+    alt: "Circuit de chauffage d'un hammam : cuivre au sol, sur la banquette et sur le mur.",
+    caption: "",
+    width: 543,
+    height: 960,
+  },
+  gallery: [
+    {
+      src: "/services/hammam-beldi-3.webp",
+      alt: "Réseau de cuivre d'un hammam, posé sur les banquettes, le sol et les murs.",
+      width: 960,
+      height: 720,
+    },
+    {
+      src: "/services/hammam-beldi-6.webp",
+      alt: "Tubes de cuivre sur une banquette de hammam, avant le revêtement.",
+      width: 543,
+      height: 960,
+    },
+    {
+      src: "/services/hammam-beldi-1.webp",
+      alt: "Serpentin de cuivre fixé sur une banquette et un mur de hammam.",
+      width: 960,
+      height: 720,
+    },
+  ],
   processIntro: "Le hammam se décide dans la pièce, pas sur un schéma repris d'un autre chantier.",
   process: [
     "Voir le local, l'eau disponible et l'endroit du rejet.",
@@ -728,7 +814,15 @@ const hammam: LandingPage = {
           body: "Steam is a heating subject. Extracting very humid air is another network: they are coordinated, not confused.",
         },
       ],
-      image: visualEn("a plant room, to place a hammam installation"),
+      image: {
+        alt: "Hammam heating circuit: copper on the floor, the bench and the wall.",
+        caption: "",
+      },
+      galleryAlts: [
+        "Copper network of a hammam, fixed on the benches, the floor and the walls.",
+        "Copper pipes on a hammam bench, before the finish.",
+        "Copper coil fixed on a hammam bench and wall.",
+      ],
       processIntro: "A hammam is decided in the room, not from a drawing copied from another job.",
       process: [
         "See the room, the water available and the place of the outlet.",
@@ -811,7 +905,15 @@ const hammam: LandingPage = {
           body: "البخار موضوع تدفئة. شفط الهواء الشديد الرطوبة شبكة أخرى: يُنسقان ولا يُخلطان.",
         },
       ],
-      image: visualAr("محل تقني لتصور تركيب حمام"),
+      image: {
+        alt: "دائرة تدفئة حمام: نحاس على الأرض والمقعد والجدار.",
+        caption: "",
+      },
+      galleryAlts: [
+        "شبكة نحاس لحمام، مثبتة على المقاعد والأرض والجدران.",
+        "أنابيب نحاس على مقعد حمام، قبل التشطيب.",
+        "ملف نحاس مثبت على مقعد وجدار حمام.",
+      ],
       processIntro: "يُحسم الحمام في الغرفة، لا من مخطط منسوخ من ورش آخر.",
       process: [
         "رؤية المحل والماء المتاح ومكان المصرف.",
@@ -899,7 +1001,33 @@ const air: LandingPage = {
       body: "Sans trappe ni place pour sortir les filtres, le traitement d'air s'encrasse et ne se suit plus.",
     },
   ],
-  image: visual(BRAND_SLIDES.ventilation, "centrale de traitement d'air et gaines"),
+  image: {
+    src: "/services/traitement-d-air-3.webp",
+    alt: "Centrales de traitement d'air alignées dans un local technique, avec les gaines en partie haute.",
+    caption: "",
+    width: 1600,
+    height: 1200,
+  },
+  gallery: [
+    {
+      src: "/services/traitement-d-air-2.webp",
+      alt: "Porte d'accès et commande d'une centrale de traitement d'air.",
+      width: 1600,
+      height: 1200,
+    },
+    {
+      src: "/services/traitement-d-air-6.webp",
+      alt: "Diffuseur carré au plafond, avec des tubes apparents en dessous.",
+      width: 1200,
+      height: 1600,
+    },
+    {
+      src: "/services/traitement-d-air-5.webp",
+      alt: "Bouche de soufflage au plafond d'une salle de soin.",
+      width: 1600,
+      height: 1200,
+    },
+  ],
   processIntro: "La centrale se pose quand la prise d'air et le chemin des gaines sont connus.",
   process: [
     "Voir les volumes, la prise d'air possible et les rejets déjà en place.",
@@ -989,7 +1117,15 @@ const air: LandingPage = {
           body: "Without a hatch and room to pull the filters out, the system clogs and can no longer be maintained.",
         },
       ],
-      image: visualEn("an air-handling unit and ducts"),
+      image: {
+        alt: "Air-handling units lined up in a plant room, with ducts above them.",
+        caption: "",
+      },
+      galleryAlts: [
+        "Access door and control of an air-handling unit.",
+        "Square ceiling diffuser, with exposed pipes below.",
+        "Supply grille in the ceiling of a care room.",
+      ],
       processIntro: "The unit is installed once the intake and the duct route are known.",
       process: [
         "See the volumes, the possible air intake and the exhausts already in place.",
@@ -1071,7 +1207,15 @@ const air: LandingPage = {
           body: "من دون فتحة ومكان لإخراج الفلاتر، تتسخ المعالجة ولا تعود قابلة للمتابعة.",
         },
       ],
-      image: visualAr("مركز معالجة هواء وقنوات"),
+      image: {
+        alt: "مراكز معالجة هواء مصفوفة في محل تقني، مع القنوات في الأعلى.",
+        caption: "",
+      },
+      galleryAlts: [
+        "باب وصول ولوحة تحكم لمركز معالجة هواء.",
+        "ناشر مربع في السقف، مع أنابيب ظاهرة تحته.",
+        "فتحة دفع في سقف غرفة عناية.",
+      ],
       processIntro: "يُركب المركز حين تُعرف مأخذ الهواء ومسار القنوات.",
       process: [
         "رؤية الأحجام ومأخذ الهواء الممكن والمصارف الموجودة.",

@@ -25,6 +25,8 @@ export type LandingTranslation = {
   points?: readonly { title: string; body: string }[];
   localFit?: { split: string; gainable: string; vrv: string };
   image?: { alt: string; caption: string };
+  /** Alts aligned with the French gallery, same order. */
+  galleryAlts?: readonly string[];
   processIntro: string;
   process: readonly string[];
   faqs: readonly { question: string; answer: string }[];
@@ -53,7 +55,9 @@ export type LandingPage = {
   localFit?: { split: string; gainable: string; vrv: string };
   /** Site decisions shown instead of the HVAC comparison. */
   points?: readonly { title: string; body: string }[];
-  image?: { src: string; alt: string; caption: string };
+  image?: { src: string; alt: string; caption: string; width?: number; height?: number };
+  /** Extra chantier photos shown under the hero. Omitted on pages that keep a single visual. */
+  gallery?: readonly { src: string; alt: string; width: number; height: number }[];
   processIntro: string;
   process: readonly string[];
   faqs: readonly { question: string; answer: string }[];
