@@ -47,6 +47,7 @@ const solutions = [
   { key: "ventilation", href: "/ventilation", Icon: Fan },
   { key: "plumbing", href: "/plomberie", Icon: Droplets },
   { key: "maintenance", href: "/entretien-climatisation-casablanca", Icon: Wrench },
+  { key: "contract", href: "/contrat-entretien", Icon: FileText },
   { key: "extraction", href: "/extraction", Icon: Wind },
   { key: "smoke", href: "/desenfumage", Icon: Shield },
   { key: "cooling", href: null, Icon: Snowflake },
@@ -127,6 +128,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { href: "/zone-intervention", label: t("linkZone") },
     { href: "/blog/maitrisez-votre-climat", label: t("linkArticle") },
     { href: "/contact", label: t("linkContact") },
+    ...(locale === "fr" ? [{ href: "/contrat-entretien", label: tf("contract") }] : []),
   ].flatMap((item) => {
     const href = serviceHref(locale, item.href);
     return href ? [{ href, label: item.label }] : [];
@@ -233,6 +235,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { label: tf("airTreatment"), href: "/traitement-air" },
     { label: t("coolingTitle"), href: null },
     { label: t("maintenanceTitle"), href: "/entretien-climatisation-casablanca" },
+    ...(locale === "fr" ? [{ label: tf("contract"), href: "/contrat-entretien" }] : []),
   ];
 
   const Heading = locale === "fr" ? "p" : "h1";
@@ -401,6 +404,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
           <h2 className="text-center text-2xl font-semibold tracking-tight text-brand-navy md:text-3xl">{t("solutionsTitle")}</h2>
           <div className="mt-5 grid gap-2.5 sm:grid-cols-2 lg:mt-8 lg:grid-cols-3 lg:gap-3">
             {solutions.map(({ key, href, Icon }) => {
+              if (key === "contract" && locale !== "fr") return null;
               const page = serviceHref(locale, href);
               return (
                 <article key={key} className="flex min-w-0 items-start gap-3 rounded-xl border border-[#e6eef6] bg-white px-3 py-3">

@@ -24,7 +24,7 @@ const OFFERED_SERVICES = [
   { name: "Chauffage au sol", serviceType: "Chauffage au sol", path: "/chauffage-au-sol" },
   { name: "Hammam beldi", serviceType: "Hammam beldi", path: "/hammam-beldi" },
   { name: "Traitement d'air", serviceType: "Traitement d'air", path: "/traitement-air" },
-  { name: "Maintenance et SAV", serviceType: "Maintenance", path: "/nos-services" },
+  { name: "Contrat d'entretien", serviceType: "Contrat d'entretien", path: "/contrat-entretien" },
 ] as const;
 
 function placeArea(name: string) {

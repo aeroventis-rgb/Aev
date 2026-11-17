@@ -87,7 +87,11 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
     (page.showHvacComparison === false ? t("onSite") : t("hvacCompare"));
   const processHeading = page.headings?.process ?? t("process");
   const faqHeading = page.headings?.faq ?? t("faq");
-  const processTitles = [t("step1"), t("step2"), t("step3"), t("step4")] as const;
+  const processTitles = page.processTitles ?? [t("step1"), t("step2"), t("step3"), t("step4")];
+  const ctaTitle = page.cta?.title ?? t("ctaTitle");
+  const ctaBody = page.cta?.body ?? t("ctaBody");
+  const whatsappLabel = page.cta?.whatsapp ?? tc("whatsapp");
+  const quoteOnWhatsapp = Boolean(page.cta);
   const systems = [
     { key: "split" as const, label: t("split") },
     { key: "gainable" as const, label: t("gainable") },
@@ -235,28 +239,45 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
 
           <section className="mt-16 border-t border-brand-silver pt-10" aria-labelledby="cta-heading">
             <h2 id="cta-heading" className="text-xl font-semibold tracking-tight text-brand-ink">
-              {t("ctaTitle")}
+              {ctaTitle}
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-brand-navy/75">{t("ctaBody")}</p>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-brand-navy/75">{ctaBody}</p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              {quoteOnWhatsapp ? (
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-brand-blue px-5 text-center text-sm font-semibold text-white sm:w-auto"
+                >
+                  <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
+                  {whatsappLabel}
+                </a>
+              ) : null}
               <a
                 href={`tel:${PHONE_E164}`}
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-brand-blue px-5 text-center text-sm font-semibold text-white sm:w-auto"
+                className={
+                  quoteOnWhatsapp
+                    ? "inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-brand-silver bg-white px-5 text-center text-sm font-semibold text-brand-navy sm:w-auto"
+                    : "inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-brand-blue px-5 text-center text-sm font-semibold text-white sm:w-auto"
+                }
               >
                 <Phone className="h-4 w-4 shrink-0" aria-hidden />
                 <span>
                   {tc("callNow")} · <span dir="ltr">{PHONE_DISPLAY}</span>
                 </span>
               </a>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-brand-silver bg-white px-5 text-center text-sm font-semibold text-brand-navy sm:w-auto"
-              >
-                <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
-                {tc("whatsapp")}
-              </a>
+              {quoteOnWhatsapp ? null : (
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md border border-brand-silver bg-white px-5 text-center text-sm font-semibold text-brand-navy sm:w-auto"
+                >
+                  <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
+                  {whatsappLabel}
+                </a>
+              )}
             </div>
           </section>
         </article>

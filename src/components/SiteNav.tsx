@@ -27,6 +27,7 @@ type NavHref =
   | "/hammam-beldi"
   | "/traitement-air"
   | "/entretien-climatisation-casablanca"
+  | "/contrat-entretien"
   | { pathname: "/"; hash: string };
 
 function pageOrHash(locale: Locale, path: Exclude<NavHref, { pathname: "/" }>, hash: string): NavHref {
@@ -85,6 +86,15 @@ export function SiteNav() {
       label: tn("expMaintenance"),
       href: pageOrHash(locale, "/entretien-climatisation-casablanca", "solutions"),
     },
+    ...(locale === "fr"
+      ? [
+          {
+            key: "expContract",
+            label: tn("expContract"),
+            href: "/contrat-entretien" as const,
+          },
+        ]
+      : []),
     { key: "expAll", label: tn("expAll"), href: pageOrHash(locale, "/nos-services", "solutions") },
   ];
 
@@ -99,7 +109,8 @@ export function SiteNav() {
     pathname.startsWith("/chauffage-au-sol") ||
     pathname.startsWith("/hammam-beldi") ||
     pathname.startsWith("/traitement-air") ||
-    pathname.startsWith("/entretien-");
+    pathname.startsWith("/entretien-") ||
+    pathname.startsWith("/contrat-entretien");
 
   const items: { key: string; label: string; href: NavHref; active: boolean }[] = [
     { key: "projects", label: tn("projects"), href: { pathname: "/", hash: "realisations" }, active: false },

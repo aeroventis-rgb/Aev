@@ -60,7 +60,11 @@ export type LandingPage = {
   gallery?: readonly { src: string; alt: string; width: number; height: number }[];
   processIntro: string;
   process: readonly string[];
+  /** Replaces the shared step labels when the trade does not follow a pose. */
+  processTitles?: readonly string[];
   faqs: readonly { question: string; answer: string }[];
+  /** Replaces the shared closing block when the next step is a quote, not a pose. */
+  cta?: { title: string; body: string; whatsapp: string };
   links: readonly LandingLink[];
   breadcrumbs: readonly Crumb[];
   /** Required for every locale other than French. */
