@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { isLocale } from "@/lib/routes";
 import { getLandingPage, getLandingPages } from "@/lib/landings/pages";
 import { buildPageMetadata } from "@/lib/seo/metadata";
-import { breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo/schema";
+import { areaBusinessJsonLd, breadcrumbJsonLd, faqJsonLd, serviceJsonLd } from "@/lib/seo/schema";
 import { absoluteUrl } from "@/lib/site";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -55,6 +55,15 @@ export default async function LandingRoute({ params }: Props) {
             serviceType: page.serviceType,
             areaServed: page.areaServed,
           }),
+          ...(page.cityId
+            ? [
+                areaBusinessJsonLd({
+                  description: page.description,
+                  url,
+                  areaServed: page.areaServed,
+                }),
+              ]
+            : []),
           faqJsonLd(page.faqs),
           breadcrumbJsonLd(crumbs),
         ]}

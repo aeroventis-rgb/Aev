@@ -99,7 +99,7 @@ const AREAS: Record<CityId, Area> = {
   },
 };
 
-const NEW_CLIM_CITIES: readonly CityId[] = ["mohammedia", "bouskoura", "tamaris", "zenata"];
+const NEW_CLIM_CITIES: readonly CityId[] = ["bouskoura", "tamaris", "zenata"];
 const TRADE_CITIES: readonly CityId[] = [
   "casablanca",
   "rabat",
@@ -874,7 +874,9 @@ export const extraLandingPages: readonly LandingPage[] = (() => {
     desenfumageHub,
     ...NEW_CLIM_CITIES.map((id) => climCity(AREAS[id])),
     ...TRADE_CITIES.map((id) => ventilationCity(AREAS[id])),
-    ...TRADE_CITIES.map((id) => plomberieCity(AREAS[id])),
+    ...TRADE_CITIES.filter((id) => id !== "casablanca" && id !== "rabat" && id !== "marrakech").map((id) =>
+      plomberieCity(AREAS[id])
+    ),
   ];
   assertUnique(pages);
   return pages;

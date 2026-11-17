@@ -208,6 +208,19 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { label: tf("blog"), href: "/blog" as const },
   ];
 
+  const footerZones =
+    locale === "fr"
+      ? [
+          { href: "/climatisation-casablanca" as const, label: "Climatisation à Casablanca" },
+          { href: "/plomberie-casablanca" as const, label: "Plombier à Casablanca" },
+          { href: "/climatisation-rabat" as const, label: "Climatisation à Rabat" },
+          { href: "/plomberie-rabat" as const, label: "Plombier à Rabat" },
+          { href: "/climatisation-marrakech" as const, label: "Climatisation à Marrakech" },
+          { href: "/plomberie-marrakech" as const, label: "Plombier à Marrakech" },
+          { href: "/climatisation-mohammedia" as const, label: "Climatisation à Mohammedia" },
+        ]
+      : [];
+
   const footerServices = [
     { label: tf("climatisation"), href: "/climatisation" },
     { label: tf("ventilation"), href: "/ventilation" },
@@ -602,6 +615,22 @@ export function LandingPage({ contactQrDataUrl }: Props) {
               />
             </div>
           </div>
+          {footerZones.length > 0 ? (
+            <div className="border-t border-white/10">
+              <div className="mx-auto max-w-7xl px-4 py-8 sm:px-5 lg:px-8">
+                <h2 className="text-sm font-semibold">Zones d&apos;intervention</h2>
+                <ul className="mt-4 grid gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {footerZones.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} className="inline-flex min-h-11 items-center text-sm text-white/75 transition hover:text-white">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : null}
           <div className="border-t border-white/10">
             <ul className="mx-auto flex max-w-7xl flex-wrap gap-x-6 gap-y-2 px-5 py-5 text-xs text-white/60 lg:px-8">
               <li>

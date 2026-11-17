@@ -89,6 +89,26 @@ export function hvacBusinessJsonLd(description: string): Record<string, unknown>
   return data;
 }
 
+/** City landing: LocalBusiness / HVACBusiness with areaServed and no street address. */
+export function areaBusinessJsonLd(input: {
+  description: string;
+  url: string;
+  areaServed: readonly string[];
+}): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "HVACBusiness"],
+    "@id": `${input.url}#local`,
+    name: "AEROVENTIS",
+    url: input.url,
+    telephone: PHONE_E164,
+    image: absoluteAsset("/aeroventis-logo.png"),
+    description: input.description,
+    areaServed: input.areaServed.map((name) => placeArea(name)),
+    parentOrganization: { "@id": BUSINESS_ID },
+  };
+}
+
 export function serviceJsonLd(input: {
   name: string;
   description: string;
