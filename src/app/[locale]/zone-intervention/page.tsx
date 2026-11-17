@@ -21,13 +21,38 @@ export default async function ZoneInterventionPage({ params }: Props) {
       pathname="/zone-intervention"
       namespace="Coverage"
       blocks={[
-        { titleKey: "casaTitle", bodyKey: "casaBody", href: "/climatisation-casablanca" },
-        { titleKey: "mohammediaTitle", bodyKey: "mohammediaBody", href: "/climatisation-mohammedia" },
+        {
+          titleKey: "casaTitle",
+          bodyKey: "casaBody",
+          links: [
+            { href: "/climatisation-casablanca", label: "Climatisation à Casablanca" },
+            { href: "/plomberie-casablanca", label: "Plombier à Casablanca" },
+          ],
+        },
+        {
+          titleKey: "mohammediaTitle",
+          bodyKey: "mohammediaBody",
+          links: [{ href: "/climatisation-mohammedia", label: "Climatisation à Mohammedia" }],
+        },
         { titleKey: "bouskouraTitle", bodyKey: "bouskouraBody", href: "/climatisation-bouskoura" },
         { titleKey: "tamarisTitle", bodyKey: "tamarisBody", href: "/climatisation-tamaris" },
         { titleKey: "zenataTitle", bodyKey: "zenataBody", href: "/climatisation-zenata" },
-        { titleKey: "rabatTitle", bodyKey: "rabatBody", href: "/climatisation-rabat" },
-        { titleKey: "marrakechTitle", bodyKey: "marrakechBody", href: "/climatisation-marrakech" },
+        {
+          titleKey: "rabatTitle",
+          bodyKey: "rabatBody",
+          links: [
+            { href: "/climatisation-rabat", label: "Climatisation à Rabat" },
+            { href: "/plomberie-rabat", label: "Plombier à Rabat" },
+          ],
+        },
+        {
+          titleKey: "marrakechTitle",
+          bodyKey: "marrakechBody",
+          links: [
+            { href: "/climatisation-marrakech", label: "Climatisation à Marrakech" },
+            { href: "/plomberie-marrakech", label: "Plombier à Marrakech" },
+          ],
+        },
         { titleKey: "projectsTitle", bodyKey: "projectsBody" },
       ]}
     />

@@ -50,7 +50,7 @@ export type LandingPage = {
   servicesIntro: string;
   services: readonly { title: string; body: string }[];
   comparisonIntro: string;
-  /** Split / gainable / VRV table. Omitted on trades where that comparison does not apply. */
+  /** Split / gainable / VRF table. Omitted on trades where that comparison does not apply. */
   showHvacComparison?: boolean;
   localFit?: { split: string; gainable: string; vrv: string };
   /** Site decisions shown instead of the HVAC comparison. */

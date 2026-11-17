@@ -139,7 +139,7 @@ export const LANDING_ROUTES: readonly LandingRoute[] = [
       slug: `plomberie-${city}`,
       locales: ["fr"],
       label: `Plomberie ${AREA_LABEL[city]}`,
-      priority: 0.74,
+      priority: city === "casablanca" || city === "rabat" || city === "marrakech" ? 0.8 : 0.74,
     },
   ]),
 ];
