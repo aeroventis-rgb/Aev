@@ -383,7 +383,7 @@ function climCity(area: Area): LandingPage {
     title: pageTitle(slug, `Climatisation à ${area.name}`),
     description: metaDescription(
       slug,
-      `Climatisation ${area.inCity} : split, gainable ou VRV pour ${area.meta}`,
+      `Climatisation ${area.inCity} : split, gainable ou VRF pour ${area.meta}`,
       pads
     ),
     h1: `Climatisation à ${area.name}`,
@@ -402,7 +402,7 @@ function climCity(area: Area): LandingPage {
         body: "Plusieurs pièces depuis un plénum, quand la hauteur existe et que les gaines ont un parcours.",
       },
       {
-        title: "VRV / DRV",
+        title: "VRF / DRV",
         body: "Plusieurs locaux sur peu de groupes, plutôt pour un petit ensemble que pour une seule pièce.",
       },
     ],
@@ -417,7 +417,7 @@ function climCity(area: Area): LandingPage {
     processIntro: `Même étapes qu'ailleurs. ${area.inCity}, le contenu change.`,
     process: [
       `Relever ${area.buildings}, l'orientation et l'emplacement possible des groupes. ${area.works}`,
-      "Choisir split, gainable ou VRV à partir de ce relevé, pièce par pièce.",
+      "Choisir split, gainable ou VRF à partir de ce relevé, pièce par pièce.",
       `Poser les liaisons, évacuer les condensats et contrôler les températures de soufflage ${area.inCity}.`,
       `Prévoir le lavage : ${area.soil} encrasse filtres et groupes.`,
     ],

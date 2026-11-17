@@ -171,16 +171,16 @@ const handwritten: LandingPage[] = [
     areaServed: SERVICE_AREA_NAMES,
     title: "Installation climatisation Casablanca",
     description:
-      "Installation de climatisation à Casablanca : split, gainable et VRV après étude du logement. Fourniture et pose de marques présentées sur l'accueil.",
+      "Installation de climatisation à Casablanca : split, gainable et VRF après étude du logement. Fourniture et pose de marques présentées sur l'accueil.",
     h1: "Installation de climatisation à Casablanca",
     headings: {
-      services: "Split, gainable et VRV",
+      services: "Split, gainable et VRF",
       comparison: "Comparer les systèmes",
       process: "De la visite à l'entretien",
       faq: "Questions sur l'installation à Casablanca",
     },
     lead: [
-      "L'installation de climatisation à Casablanca part du logement, pas d'une puissance au mètre carré. Casablanca, Mohammedia, Tamaris et Rabat imposent l'humidité du littoral. Marrakech impose une chaleur sèche et des toitures très exposées. Bouskoura et Zenata ajoutent la poussière des lotissements et des chantiers. AEROVENTIS est une société de climatisation à Casablanca : elle étudie le site avant de proposer un split, un gainable ou un VRV.",
+      "L'installation de climatisation à Casablanca part du logement, pas d'une puissance au mètre carré. Casablanca, Mohammedia, Tamaris et Rabat imposent l'humidité du littoral. Marrakech impose une chaleur sèche et des toitures très exposées. Bouskoura et Zenata ajoutent la poussière des lotissements et des chantiers. AEROVENTIS est une société de climatisation à Casablanca : elle étudie le site avant de proposer un split, un gainable ou un VRF.",
       "La fourniture des appareils fait partie du chantier. Pour qui cherche un fournisseur de climatisation à Casablanca, AEROVENTIS installe les marques déjà affichées sur l'accueil. Ce n'est pas une activité de négoce. Le détail des quartiers est sur la page de chaque ville.",
     ],
     servicesIntro:
@@ -195,7 +195,7 @@ const handwritten: LandingPage[] = [
         body: "Un réseau de gaines dans le plénum, pour une villa ou un plateau où l'on peut cacher l'unité et répartir l'air.",
       },
       {
-        title: "VRV / DRV",
+        title: "VRF / DRV",
         body: "Plusieurs unités intérieures sur un même circuit, lorsque peu de groupes extérieurs doivent desservir beaucoup de pièces.",
       },
     ],
@@ -228,7 +228,7 @@ const handwritten: LandingPage[] = [
       {
         question: "Par où commence une installation de climatisation à Casablanca ?",
         answer:
-          "Par le nombre de pièces et la hauteur disponible au plafond. Le split équipe peu de pièces. Le gainable suppose un plénum. Le VRV vise un ensemble de locaux. Les quartiers de Casablanca sont détaillés sur la page de la ville.",
+          "Par le nombre de pièces et la hauteur disponible au plafond. Le split équipe peu de pièces. Le gainable suppose un plénum. Le VRF vise un ensemble de locaux. Les quartiers de Casablanca sont détaillés sur la page de la ville.",
       },
       {
         question: "Intervenez-vous en dehors de ces villes ?",
@@ -279,7 +279,7 @@ const handwritten: LandingPage[] = [
     h1: "Climatisation gainable à Casablanca, Rabat et Marrakech",
     headings: {
       services: "Gaines, bouches et zoning",
-      comparison: "Gainable, split ou VRV",
+      comparison: "Gainable, split ou VRF",
       process: "Du plafond à la mise en service",
       faq: "Questions sur le gainable à Casablanca",
     },
@@ -304,7 +304,7 @@ const handwritten: LandingPage[] = [
       },
     ],
     comparisonIntro:
-      "Même pour une climatisation gainable à Casablanca, le split et le VRV restent des options. Le gainable convient seulement si le plafond et le nombre de pièces le permettent.",
+      "Même pour une climatisation gainable à Casablanca, le split et le VRF restent des options. Le gainable convient seulement si le plafond et le nombre de pièces le permettent.",
     localFit: {
       split: "Reste le bon choix pour une ou deux pièces, ou quand le plafond ne peut pas descendre.",
       gainable: "Vise la villa et le grand appartement rénové avec un couloir technique. La page Casablanca entre dans le détail des quartiers.",
@@ -395,7 +395,7 @@ const handwritten: LandingPage[] = [
       },
     ],
     comparisonIntro:
-      "Même à Casablanca, le gainable n'écarte pas le split ni le VRV. Il les remplace seulement quand le plafond et le nombre de pièces le permettent.",
+      "Même à Casablanca, le gainable n'écarte pas le split ni le VRF. Il les remplace seulement quand le plafond et le nombre de pièces le permettent.",
     localFit: {
       split: "Meilleur choix à Californie et dans les appartements d'Anfa sans possibilité d'abaisser un couloir.",
       gainable: "Meilleur choix à Bouskoura en neuf et dans les maisons d'Anfa qui ont déjà un faux plafond continu.",

@@ -181,7 +181,7 @@
   "serviceLanding": {
     "services": "Services",
     "onSite": "Ce qui se décide sur place",
-    "hvacCompare": "Split, gainable et VRV",
+    "hvacCompare": "Split, gainable et VRF",
     "process": "Déroulé",
     "faq": "Questions fréquentes",
     "step1": "Visite technique",
@@ -195,12 +195,12 @@
     "criterion": "Critère",
     "split": "Split mural",
     "gainable": "Gainable",
-    "vrv": "VRV / DRV",
+    "vrv": "VRF",
     "localFit": "Sur ce secteur"
   },
   "locations": {
     "cities": "Casablanca, Mohammedia, Bouskoura, Tamaris, Zenata, Rabat et Marrakech",
-    "projects": "Plus de 100 projets réalisés à Casablanca"
+    "projects": "Villas, immeubles et projets neufs à Casablanca"
   },
   "partners": {
     "title": "Partenaires & marques de confiance"
@@ -286,7 +286,7 @@
     "heading": "Zone d'intervention",
     "intro": "Les pages locales décrivent chaque secteur. Le climat et le type de bâtiment n'y sont pas les mêmes.",
     "casaTitle": "Casablanca",
-    "casaBody": "Zone historique : villas, immeubles et locaux. Plus de 100 projets réalisés à Casablanca et aux alentours.",
+    "casaBody": "Zone historique : villas, immeubles et locaux, du littoral aux quartiers résidentiels.",
     "rabatTitle": "Rabat",
     "rabatBody": "Logements et locaux, de Souissi à Agdal et Hay Riad, sous un air océanique humide.",
     "marrakechTitle": "Marrakech",
@@ -328,7 +328,7 @@
     "coverageBadge": "Littoral, Rabat et Marrakech",
     "citiesTitle": "Zones d'intervention",
     "casa": "Casablanca",
-    "casaDesc": "Villas, immeubles et locaux pro — plus de 100 projets réalisés",
+    "casaDesc": "Villas, immeubles et locaux professionnels.",
     "rabat": "Rabat",
     "rabatDesc": "Résidentiel et tertiaire — climatisation et plomberie",
     "marrakech": "Marrakech",
@@ -381,7 +381,7 @@
     "trustService": "SAV réactif",
     "discover": "Découvrir notre savoir-faire",
     "cardClimateTitle": "Climatisation",
-    "cardClimateLine": "Split, Gainable, Cassette, VRV/DRV",
+    "cardClimateLine": "Split, Gainable, Cassette, VRF",
     "cardVentTitle": "Ventilation & VMC",
     "cardVentLine": "Air sain, performance durable",
     "cardPlumbTitle": "Plomberie",
