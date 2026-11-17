@@ -39,6 +39,7 @@
     "expHammam": "Hammam beldi",
     "expAirTreatment": "Traitement d'air",
     "expMaintenance": "Maintenance & SAV",
+    "expContract": "Contrat d'entretien",
     "expAll": "Toutes les expertises",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
@@ -63,6 +64,7 @@
     "underfloor": "Chauffage au sol",
     "hammam": "Hammam beldi",
     "airTreatment": "Traitement d'air",
+    "contract": "Contrat d'entretien",
     "navLabel": "Pages du site"
   },
   "images": {
@@ -278,7 +280,7 @@
     "airTitle": "Traitement d'air",
     "airBody": "Centrales, filtration et air neuf. Ce réseau ne remplace ni la ventilation simple, ni le split, ni le désenfumage.",
     "maintTitle": "Maintenance et SAV",
-    "maintBody": "Contrôle des filtres, des condensats et des unités après la mise en service. Le détail d'une visite se fixe sur place."
+    "maintBody": "Contrôle des filtres, des condensats et des unités après la mise en service. Le contrat d'entretien regroupe les visites sur devis. L'entretien d'une climatisation à Casablanca est décrit à part."
   },
   "Coverage": {
     "metaTitle": "Zone d'intervention au Maroc",
@@ -430,6 +432,8 @@
     "plumbingBody": "Alimentation, évacuations et pièces d'eau, en neuf comme en rénovation.",
     "maintenanceTitle": "Maintenance & SAV",
     "maintenanceBody": "Contrôle des filtres, des condensats et des unités après la mise en service.",
+    "contractTitle": "Contrat d'entretien",
+    "contractBody": "Climatisation, pompe à chaleur, ventilation, chauffage au sol et plomberie. Visites selon vos besoins, sur devis.",
     "extractionTitle": "Extraction d'air",
     "extractionBody": "Évacuation de l'air vicié des cuisines, sanitaires et locaux techniques.",
     "smokeTitle": "Désenfumage",

@@ -30,7 +30,14 @@ export default async function NosServicesPage({ params }: Props) {
         { titleKey: "floorTitle", bodyKey: "floorBody", href: "/chauffage-au-sol" },
         { titleKey: "hammamTitle", bodyKey: "hammamBody", href: "/hammam-beldi" },
         { titleKey: "airTitle", bodyKey: "airBody", href: "/traitement-air" },
-        { titleKey: "maintTitle", bodyKey: "maintBody" },
+        {
+          titleKey: "maintTitle",
+          bodyKey: "maintBody",
+          links: [
+            { href: "/contrat-entretien", label: "Contrat d'entretien" },
+            { href: "/entretien-climatisation-casablanca", label: "Entretien climatisation à Casablanca" },
+          ],
+        },
       ]}
     />
   );

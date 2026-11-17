@@ -1,6 +1,7 @@
 import { SERVICE_AREA_NAMES } from "@/lib/areas";
 import { addedServicePages } from "@/lib/landings/added-services";
 import { citySeoPages } from "@/lib/landings/city-seo";
+import { contratEntretienPage } from "@/lib/landings/contrat-entretien";
 import { extraLandingPages } from "@/lib/landings/extra-pages";
 import { COMPARISON_ROWS, PROCESS_TITLES } from "@/lib/landings/shared";
 import { LANDING_ROUTES } from "@/lib/landings/slugs";
@@ -96,6 +97,9 @@ function assertShape(
 }
 
 function assertLanding(page: LandingPage) {
+  if (page.processTitles && page.processTitles.length !== page.process.length) {
+    throw new Error(`Landing ${page.slug} process titles do not match the steps`);
+  }
   assertShape(page.slug, {
     ...page,
     imageAlt: page.image?.alt,
@@ -103,6 +107,8 @@ function assertLanding(page: LandingPage) {
     extra: [
       ...COMPARISON_ROWS.flatMap((row) => [row.label, row.split, row.gainable, row.vrv]),
       ...(page.gallery?.map((shot) => shot.alt) ?? []),
+      ...(page.processTitles ?? []),
+      ...(page.cta ? [page.cta.title, page.cta.body, page.cta.whatsapp] : []),
     ],
   });
   for (const locale of page.locales) {
@@ -469,7 +475,7 @@ const handwritten: LandingPage[] = [
     h1: "Entretien climatisation à Casablanca",
     lead: [
       "À Casablanca, l'entretien ne se résume pas à un filtre rincé en août. Sur le littoral, d'Ain Diab à la corniche, l'humidité remplit les bacs de condensats et le sel se dépose sur l'échangeur extérieur. À Bouskoura, c'est plutôt la poussière des chantiers et des jardins qui colmate les filtres. Anfa et Californie ajoutent des accès compliqués : groupe en courette, échelle, accord du gardien.",
-      "Cette page décrit le suivi. L'installation split ou gainable est sur les pages climatisation et gainable de la ville.",
+      "Cette page décrit le suivi d'une climatisation à Casablanca. L'installation split ou gainable est sur les pages climatisation et gainable de la ville. Un contrat qui peut regrouper plusieurs équipements, et d'autres villes, est décrit à part : le nombre de visites se définit sur devis.",
     ],
     servicesIntro:
       "La visite technique et les gestes entre deux visites ne portent pas sur les mêmes pièces selon le quartier.",
@@ -531,10 +537,11 @@ const handwritten: LandingPage[] = [
       {
         question: "Où demander une visite ?",
         answer:
-          "La page contact sert à indiquer l'adresse et le type d'appareil. Pour une installation neuve, partir plutôt de la page climatisation à Casablanca ou du hub national.",
+          "La page contact sert à indiquer l'adresse et le type d'appareil. Pour une installation neuve, partir plutôt de la page climatisation à Casablanca ou du hub national. Pour un contrat qui peut aussi couvrir la plomberie, la pompe à chaleur ou d'autres villes, la page contrat d'entretien décrit le cadre.",
       },
     ],
     links: [
+      { href: "/contrat-entretien", label: "Contrat d'entretien" },
       { href: "/climatisation-casablanca", label: "Climatisation à Casablanca" },
       { href: "/climatisation-gainable-casablanca", label: "Gainable à Casablanca" },
       { href: "/climatisation", label: "Climatisation au Maroc" },
@@ -550,7 +557,13 @@ const handwritten: LandingPage[] = [
   },
 ];
 
-const pages: LandingPage[] = [...handwritten, ...citySeoPages, ...extraLandingPages, ...addedServicePages];
+const pages: LandingPage[] = [
+  ...handwritten,
+  contratEntretienPage,
+  ...citySeoPages,
+  ...extraLandingPages,
+  ...addedServicePages,
+];
 
 for (const page of pages) {
   assertLanding(page);
