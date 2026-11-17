@@ -10,6 +10,7 @@ export const publishedBlogLocales: Record<string, readonly Locale[]> = {
   "climatiseur-ne-refroidit-plus": ["fr"],
   "desenfumage-immeuble-parking-mohammedia": ["fr"],
   "etude-cvc-villa-neuve-tamaris": ["fr"],
+  "extraction-cuisine-restaurant-zenata": ["fr"],
   "guide-plomberie-villa": ["fr"],
   "maitrisez-votre-climat": ["fr", "ar", "en"],
   "ventilation-vmc-villa-rabat": ["fr"],
