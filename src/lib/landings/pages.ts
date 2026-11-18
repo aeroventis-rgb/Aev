@@ -1,6 +1,7 @@
 import { SERVICE_AREA_NAMES } from "@/lib/areas";
 import { addedServicePages } from "@/lib/landings/added-services";
 import { citySeoPages } from "@/lib/landings/city-seo";
+import { climatisationVrfPage } from "@/lib/landings/climatisation-vrf";
 import { contratEntretienPage } from "@/lib/landings/contrat-entretien";
 import { extraLandingPages } from "@/lib/landings/extra-pages";
 import { COMPARISON_ROWS, PROCESS_TITLES } from "@/lib/landings/shared";
@@ -224,7 +225,7 @@ const handwritten: LandingPage[] = [
       {
         question: "Quelle page lire selon la ville ?",
         answer:
-          "Casablanca, Rabat, Marrakech, Mohammedia, Bouskoura, Tamaris et Zenata ont chacune une page. Le gainable casablancais et l'entretien à Casablanca ont aussi les leurs.",
+          "Casablanca, Rabat, Marrakech, Mohammedia, Bouskoura, Tamaris et Zenata ont chacune une page. Le VRF, le gainable casablancais et l'entretien à Casablanca ont aussi les leurs.",
       },
       {
         question: "Le même appareil convient-il aux trois villes ?",
@@ -264,6 +265,7 @@ const handwritten: LandingPage[] = [
       { href: "/plomberie", label: "Plomberie" },
       { href: "/extraction", label: "Extraction d'air" },
       { href: "/desenfumage", label: "Désenfumage" },
+      { href: "/climatisation-vrf", label: "Climatisation VRF / DRV" },
       { href: "/climatisation-gainable", label: "Climatisation gainable" },
       { href: "/pompe-a-chaleur-air-eau", label: "Pompe à chaleur air-eau" },
       { href: "/entretien-climatisation-casablanca", label: "Entretien à Casablanca" },
@@ -559,6 +561,7 @@ const handwritten: LandingPage[] = [
 
 const pages: LandingPage[] = [
   ...handwritten,
+  climatisationVrfPage,
   contratEntretienPage,
   ...citySeoPages,
   ...extraLandingPages,

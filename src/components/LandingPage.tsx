@@ -225,6 +225,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
 
   const footerServices = [
     { label: tf("climatisation"), href: "/climatisation" },
+    ...(locale === "fr" ? [{ label: tf("vrf"), href: "/climatisation-vrf" }] : []),
     { label: tf("ventilation"), href: "/ventilation" },
     { label: tf("extraction"), href: "/extraction" },
     { label: tf("smoke"), href: "/desenfumage" },

@@ -18,6 +18,7 @@ type NavHref =
   | "/qui-sommes-nous"
   | "/climatisation"
   | "/climatisation-gainable"
+  | "/climatisation-vrf"
   | "/ventilation"
   | "/extraction"
   | "/desenfumage"
@@ -73,6 +74,9 @@ export function SiteNav() {
   const expertises: { key: string; label: string; href: NavHref }[] = [
     { key: "expClimate", label: tn("expClimate"), href: pageOrHash(locale, "/climatisation", "solutions") },
     { key: "expGainable", label: tn("expGainable"), href: pageOrHash(locale, "/climatisation-gainable", "solutions") },
+    ...(locale === "fr"
+      ? [{ key: "expVrf", label: tn("expVrf"), href: "/climatisation-vrf" as const }]
+      : []),
     { key: "expVentilation", label: tn("expVentilation"), href: pageOrHash(locale, "/ventilation", "solutions") },
     { key: "expExtraction", label: tn("expExtraction"), href: pageOrHash(locale, "/extraction", "solutions") },
     { key: "expSmoke", label: tn("expSmoke"), href: pageOrHash(locale, "/desenfumage", "solutions") },

@@ -16,6 +16,7 @@ export const BUSINESS_ID = `${getSiteUrl()}/#hvac`;
 
 const OFFERED_SERVICES = [
   { name: "Climatisation", serviceType: "Climatisation", path: "/climatisation" },
+  { name: "Climatisation VRF / DRV", serviceType: "Climatisation VRF / DRV", path: "/climatisation-vrf" },
   { name: "Ventilation", serviceType: "Ventilation", path: "/ventilation" },
   { name: "Extraction d'air", serviceType: "Extraction d'air", path: "/extraction" },
   { name: "Désenfumage", serviceType: "Désenfumage", path: "/desenfumage" },

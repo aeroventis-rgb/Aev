@@ -8,6 +8,7 @@ import type { Locale } from "@/i18n/routing";
 export const SERVICE_IDS = [
   "climatisation",
   "climatisation-gainable",
+  "climatisation-vrf",
   "entretien-climatisation",
   "contrat-entretien",
   "ventilation",
@@ -62,6 +63,12 @@ export const LANDING_ROUTES: readonly LandingRoute[] = [
     locales: ["fr"],
     label: "Climatisation gainable",
     priority: 0.85,
+  },
+  {
+    slug: "climatisation-vrf",
+    locales: ["fr"],
+    label: "Climatisation VRF / DRV",
+    priority: 0.84,
   },
   {
     slug: "climatisation-casablanca",
