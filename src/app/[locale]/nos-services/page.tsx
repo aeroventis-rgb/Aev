@@ -22,6 +22,7 @@ export default async function NosServicesPage({ params }: Props) {
       namespace="OurServices"
       blocks={[
         { titleKey: "climTitle", bodyKey: "climBody", href: "/climatisation" },
+        { titleKey: "vrfTitle", bodyKey: "vrfBody", href: "/climatisation-vrf" },
         { titleKey: "ventTitle", bodyKey: "ventBody", href: "/ventilation" },
         { titleKey: "extractTitle", bodyKey: "extractBody", href: "/extraction" },
         { titleKey: "smokeTitle", bodyKey: "smokeBody", href: "/desenfumage" },

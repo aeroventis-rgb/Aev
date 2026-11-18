@@ -30,6 +30,7 @@
     "language": "Language",
     "expClimate": "Air conditioning",
     "expGainable": "Ducted air conditioning",
+    "expVrf": "VRF air conditioning",
     "expVentilation": "Ventilation",
     "expExtraction": "Air extraction",
     "expSmoke": "Smoke control",
