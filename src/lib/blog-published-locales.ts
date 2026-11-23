@@ -16,5 +16,6 @@ export const publishedBlogLocales: Record<string, readonly Locale[]> = {
   "fuite-eau-maison-casablanca": ["fr"],
   "guide-plomberie-villa": ["fr"],
   "maitrisez-votre-climat": ["fr", "ar", "en"],
+  "ventilation-riad-marrakech": ["fr"],
   "ventilation-vmc-villa-rabat": ["fr"],
 };
