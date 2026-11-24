@@ -128,7 +128,12 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { href: "/zone-intervention", label: t("linkZone") },
     { href: "/blog/maitrisez-votre-climat", label: t("linkArticle") },
     { href: "/contact", label: t("linkContact") },
-    ...(locale === "fr" ? [{ href: "/contrat-entretien", label: tf("contract") }] : []),
+    ...(locale === "fr"
+      ? [
+          { href: "/entretien-climatisation-casablanca", label: t("maintenanceLink") },
+          { href: "/contrat-entretien", label: tf("contract") },
+        ]
+      : []),
   ].flatMap((item) => {
     const href = serviceHref(locale, item.href);
     return href ? [{ href, label: item.label }] : [];
@@ -235,7 +240,10 @@ export function LandingPage({ contactQrDataUrl }: Props) {
     { label: tf("hammam"), href: "/hammam-beldi" },
     { label: tf("airTreatment"), href: "/traitement-air" },
     { label: t("coolingTitle"), href: null },
-    { label: t("maintenanceTitle"), href: "/entretien-climatisation-casablanca" },
+    {
+      label: locale === "fr" ? t("maintenanceLink") : t("maintenanceTitle"),
+      href: "/entretien-climatisation-casablanca",
+    },
     ...(locale === "fr" ? [{ label: tf("contract"), href: "/contrat-entretien" }] : []),
   ];
 
@@ -417,7 +425,7 @@ export function LandingPage({ contactQrDataUrl }: Props) {
                     <p className="mt-1 text-[13px] leading-snug text-brand-navy/70">{t(`${key}Body`)}</p>
                     {page ? (
                       <Link href={page} className="mt-1 inline-flex min-h-11 items-center text-[13px] font-semibold text-brand-blue hover:underline">
-                        {t("viewService")}
+                        {key === "maintenance" && locale === "fr" ? t("maintenanceLink") : t("viewService")}
                       </Link>
                     ) : null}
                   </div>

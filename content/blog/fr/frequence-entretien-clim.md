@@ -21,7 +21,7 @@ Les filtres et l'échangeur de l'unité intérieure retiennent poussières, poll
 Un filtre encrassé oblige l'appareil à forcer. Un appareil propre refroidit plus vite et consomme moins.
 
 ### Éviter les pannes
-Fuites d'eau, perte de froid, bruits anormaux : la plupart des pannes courantes se préviennent par un entretien régulier. Voir [entretien climatisation à Casablanca](/fr/entretien-climatisation-casablanca).
+Fuites d'eau, perte de froid, bruits anormaux : la plupart des pannes courantes se préviennent par un entretien régulier. Voir [entretien climatisation Casablanca](/fr/entretien-climatisation-casablanca).
 
 ### Prolonger la durée de vie
 Un appareil suivi dure plus longtemps et conserve ses performances.
@@ -105,7 +105,7 @@ Il convient aux villas équipées de plusieurs appareils, aux syndics d'immeuble
 
 Formules et tarifs : [PLACEHOLDER: formules et prix des contrats de maintenance].
 
-**Vous êtes à Casablanca ?** Découvrez notre service d'[entretien climatisation à Casablanca](/fr/entretien-climatisation-casablanca) ou [contactez AEROVENTIS](/fr/contact) pour convenir d'une visite. **Maîtrisez votre climat.** [PLACEHOLDER: téléphone / WhatsApp]
+**Vous êtes à Casablanca ?** Découvrez notre service d'[entretien climatisation Casablanca](/fr/entretien-climatisation-casablanca) ou [contactez AEROVENTIS](/fr/contact) pour convenir d'une visite. **Maîtrisez votre climat.** [PLACEHOLDER: téléphone / WhatsApp]
 
 ## FAQ
 

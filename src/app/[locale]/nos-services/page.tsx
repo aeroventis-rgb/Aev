@@ -36,7 +36,7 @@ export default async function NosServicesPage({ params }: Props) {
           bodyKey: "maintBody",
           links: [
             { href: "/contrat-entretien", label: "Contrat d'entretien" },
-            { href: "/entretien-climatisation-casablanca", label: "Entretien climatisation à Casablanca" },
+            { href: "/entretien-climatisation-casablanca", label: "Entretien climatisation Casablanca" },
           ],
         },
       ]}

@@ -84,7 +84,7 @@ Contrôle de l'étanchéité, mise en route, équilibrage des débits d'air entr
 
 ### 6. Entretien et SAV
 
-Une climatisation gainable dure mieux quand elle est suivie. AEROVENTIS propose un contrat d'entretien adapté à votre équipement, avec des visites planifiées et une intervention en cas de panne.
+Une climatisation gainable dure mieux quand elle est suivie. AEROVENTIS propose un [contrat d'entretien](/fr/contrat-entretien) adapté à votre équipement, avec des visites planifiées et une intervention en cas de panne. À Casablanca et à Bouskoura, le contenu d'une visite est sur la page [entretien climatisation Casablanca](/fr/entretien-climatisation-casablanca).
 
 ## Conseils pour un projet réussi
 

@@ -46,7 +46,7 @@ export const contratEntretienPage: LandingPage = {
   lead: [
     "Un contrat d'entretien sert à planifier des contrôles sur des équipements déjà en place. Un filtre chargé de poussière laisse passer moins d'air. Un bac de condensats bouché peut faire déborder l'eau. Une vanne hors d'atteinte ne se contrôle pas. La visite porte sur ce qui est prévu et accessible. Elle ne remplace pas une étude d'installation.",
     "Le nombre de visites par an est adapté à chaque client. Il est défini sur le devis : selon vos besoins, sur devis. Aucun tarif n'est affiché. Le devis est personnalisé via WhatsApp, au 06 60 98 96 98.",
-    "Le contrat s'adresse aux villas, aux immeubles et aux constructions neuves, à Casablanca, Rabat, Marrakech, Mohammedia, Bouskoura, Tamaris et Zenata. La page entretien climatisation à Casablanca décrit le suivi d'une climatisation dans cette ville. Ici, il s'agit du cadre du contrat, une fois le devis établi.",
+    "Le contrat s'adresse aux villas, aux immeubles et aux constructions neuves, à Casablanca, Rabat, Marrakech, Mohammedia, Bouskoura, Tamaris et Zenata. La page entretien climatisation Casablanca décrit le suivi d'une climatisation dans cette ville et aux alentours. Ici, il s'agit du cadre du contrat, une fois le devis établi.",
   ],
   servicesIntro:
     "Les contrôles ci-dessous peuvent être inclus après le devis. Ils ne sont pas tous retenus sur chaque contrat, et la liste n'est pas figée avant d'avoir vu les lieux.",
@@ -152,11 +152,11 @@ export const contratEntretienPage: LandingPage = {
     {
       question: "Quelle différence avec l'entretien à Casablanca ?",
       answer:
-        "Cette page décrit le contrat, pour plusieurs équipements et plusieurs villes. La page entretien climatisation à Casablanca décrit le suivi d'une climatisation dans cette ville. Le contrat ne reprend pas le détail des quartiers casaouis.",
+        "Cette page décrit le contrat, pour plusieurs équipements et plusieurs villes. La page entretien climatisation Casablanca décrit le suivi d'une climatisation dans cette ville. Le contrat ne reprend pas le détail de la visite.",
     },
   ],
   links: [
-    link("/entretien-climatisation-casablanca", "Entretien climatisation à Casablanca"),
+    link("/entretien-climatisation-casablanca", "Entretien climatisation Casablanca"),
     link("/climatisation", "Climatisation"),
     link("/plomberie", "Plomberie"),
     link("/pompe-a-chaleur-air-eau", "Pompe à chaleur air-eau"),

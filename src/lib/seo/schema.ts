@@ -26,6 +26,11 @@ const OFFERED_SERVICES = [
   { name: "Hammam beldi", serviceType: "Hammam beldi", path: "/hammam-beldi" },
   { name: "Traitement d'air", serviceType: "Traitement d'air", path: "/traitement-air" },
   { name: "Contrat d'entretien", serviceType: "Contrat d'entretien", path: "/contrat-entretien" },
+  {
+    name: "Entretien climatisation Casablanca",
+    serviceType: "Entretien de climatisation",
+    path: "/entretien-climatisation-casablanca",
+  },
 ] as const;
 
 function placeArea(name: string) {
