@@ -89,7 +89,7 @@ La meilleure façon d'éviter un dépannage en urgence, c'est l'entretien. À Ra
 - de **faire nettoyer l'unité extérieure** et vérifier son état contre la corrosion ;
 - de **contrôler l'évacuation des condensats** pour éviter les fuites d'eau.
 
-Pour les villas, les immeubles et les locaux professionnels, un [contrat de maintenance](/fr/contrat-entretien) permet de planifier ces visites et de suivre l'état des appareils dans le temps.
+Pour les villas, les immeubles et les locaux professionnels, un [contrat de maintenance](/fr/contrat-entretien) permet de planifier ces visites et de suivre l'état des appareils dans le temps. À Casablanca, le détail d'une visite est sur la page [entretien climatisation Casablanca](/fr/entretien-climatisation-casablanca).
 
 ## AEROVENTIS à Rabat : installation, maintenance et SAV
 

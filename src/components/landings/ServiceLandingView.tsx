@@ -7,7 +7,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Link } from "@/i18n/navigation";
 import { PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL } from "@/lib/constants";
 import { COMPARISON_ROWS } from "@/lib/landings/shared";
-import type { LandingPage } from "@/lib/landings/types";
+import type { LandingPage, LandingSection } from "@/lib/landings/types";
 
 type CompareRow = {
   label: string;
@@ -74,6 +74,56 @@ function Comparison({
           </tbody>
         </table>
       </div>
+    </>
+  );
+}
+
+function ExtraSections({ sections }: { sections: readonly LandingSection[] }) {
+  return (
+    <>
+      {sections.map((section, index) => {
+        const count = section.items?.length ?? 0;
+        const columns = count === 2 || count === 4 ? "md:grid-cols-2" : "md:grid-cols-3";
+        return (
+          <section key={section.heading} className="mt-12" aria-labelledby={`extra-${index}`}>
+            <h2 id={`extra-${index}`} className="text-xl font-semibold tracking-tight text-brand-ink">
+              {section.heading}
+            </h2>
+            {section.intro ? (
+              <p className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">{section.intro}</p>
+            ) : null}
+            {section.paragraphs?.map((paragraph) => (
+              <p key={paragraph} className="mt-3 text-sm leading-relaxed text-brand-navy/80 md:text-base">
+                {paragraph}
+              </p>
+            ))}
+            {section.items && section.items.length > 0 ? (
+              <div className={`mt-6 grid gap-4 ${columns}`}>
+                {section.items.map((item) => (
+                  <section key={item.title} className="rounded-md border border-brand-silver bg-white p-6">
+                    <h3 className="text-base font-semibold text-brand-ink">{item.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-brand-navy/75">{item.body}</p>
+                  </section>
+                ))}
+              </div>
+            ) : null}
+            {section.links && section.links.length > 0 ? (
+              <ul className="mt-4 flex flex-col gap-2">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="inline-flex min-h-11 items-center font-bold text-brand-blue underline-offset-4 hover:underline"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </section>
+        );
+      })}
     </>
   );
 }
@@ -206,6 +256,8 @@ export async function ServiceLandingView({ page }: { page: LandingPage }) {
               ))}
             </ol>
           </section>
+
+          {page.sections && page.sections.length > 0 ? <ExtraSections sections={page.sections} /> : null}
 
           <section className="mt-12" aria-labelledby="faq-heading">
             <h2 id="faq-heading" className="text-xl font-semibold tracking-tight text-brand-ink">

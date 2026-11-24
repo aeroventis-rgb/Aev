@@ -21,3 +21,5 @@ WhatsApp : [+212 6 60 98 96 98](https://wa.me/212660989698)
 Site : [www.aeroventis.ma](https://www.aeroventis.ma)
 
 Pour une étude sur rendez-vous : [contact](/fr/contact).
+
+Pour l'entretien d'une climatisation déjà installée à Casablanca : [entretien climatisation Casablanca](/fr/entretien-climatisation-casablanca).

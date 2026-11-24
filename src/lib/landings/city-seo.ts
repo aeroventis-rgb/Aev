@@ -145,7 +145,7 @@ const climCasablanca = cityPage({
     },
     {
       title: "Entretien et dépannage",
-      body: "Sur le littoral, les condensats se bouchent et le sel se dépose sur l'échangeur. À Bouskoura, c'est la poussière. Un dépannage part du symptôme du jour : plus de froid, un écoulement, un groupe à l'arrêt, et de l'accès réel. L'entretien des filtres reste sur sa page.",
+      body: "Un dépannage part du symptôme du jour : plus de froid, un écoulement, un groupe à l'arrêt, et de l'accès réel. L'entretien des filtres, des unités et des condensats est décrit sur la page entretien climatisation Casablanca.",
     },
   ],
   comparisonIntro:
@@ -212,7 +212,7 @@ const climCasablanca = cityPage({
   ],
   links: [
     link("/climatisation-gainable-casablanca", "Gainable à Casablanca"),
-    link("/entretien-climatisation-casablanca", "Entretien à Casablanca"),
+    link("/entretien-climatisation-casablanca", "Entretien climatisation Casablanca"),
     link("/climatisation-rabat", "Climatisation à Rabat"),
     link("/climatisation-marrakech", "Climatisation à Marrakech"),
     link("/plomberie-casablanca", "Plombier à Casablanca"),

@@ -39,7 +39,7 @@
     "expUnderfloor": "Chauffage au sol",
     "expHammam": "Hammam beldi",
     "expAirTreatment": "Traitement d'air",
-    "expMaintenance": "Maintenance & SAV",
+    "expMaintenance": "Entretien climatisation Casablanca",
     "expContract": "Contrat d'entretien",
     "expAll": "Toutes les expertises",
     "openMenu": "Ouvrir le menu",
@@ -284,7 +284,7 @@
     "airTitle": "Traitement d'air",
     "airBody": "Centrales, filtration et air neuf. Ce réseau ne remplace ni la ventilation simple, ni le split, ni le désenfumage.",
     "maintTitle": "Maintenance et SAV",
-    "maintBody": "Contrôle des filtres, des condensats et des unités après la mise en service. Le contrat d'entretien regroupe les visites sur devis. L'entretien d'une climatisation à Casablanca est décrit à part."
+    "maintBody": "Contrôle des filtres, des condensats et des unités après la mise en service. Le contrat d'entretien regroupe les visites sur devis. L'entretien climatisation Casablanca est décrit sur sa page."
   },
   "Coverage": {
     "metaTitle": "Zone d'intervention au Maroc",
@@ -393,7 +393,7 @@
     "cardPlumbTitle": "Plomberie",
     "cardPlumbLine": "Réseaux et équipements sanitaires",
     "cardMaintTitle": "Maintenance & SAV",
-    "cardMaintLine": "Un service toujours à vos côtés",
+    "cardMaintLine": "Entretien climatisation Casablanca",
     "cardFitTitle": "Aménage­ment",
     "cardFitLine": "Bureaux, hôtels et espaces professionnels",
     "statProjects": "Villas, immeubles et projets neufs",
@@ -435,6 +435,7 @@
     "plumbingTitle": "Plomberie",
     "plumbingBody": "Alimentation, évacuations et pièces d'eau, en neuf comme en rénovation.",
     "maintenanceTitle": "Maintenance & SAV",
+    "maintenanceLink": "Entretien climatisation Casablanca",
     "maintenanceBody": "Contrôle des filtres, des condensats et des unités après la mise en service.",
     "contractTitle": "Contrat d'entretien",
     "contractBody": "Climatisation, pompe à chaleur, ventilation, chauffage au sol et plomberie. Visites selon vos besoins, sur devis.",

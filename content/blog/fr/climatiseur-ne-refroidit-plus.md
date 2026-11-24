@@ -92,7 +92,7 @@ L'entretien régulier reste la meilleure protection :
 
 - **nettoyez les filtres** régulièrement pendant la saison chaude ;
 - **dégagez l'unité extérieure** et gardez de l'espace autour d'elle ;
-- faites faire un [entretien de climatisation à Casablanca](/fr/entretien-climatisation-casablanca) au moins une fois par an, idéalement avant l'été : nettoyage de l'échangeur, contrôle du circuit, des connexions électriques et de l'évacuation ;
+- à Casablanca, prévoyez un [entretien climatisation Casablanca](/fr/entretien-climatisation-casablanca) au moins une fois par an, idéalement avant l'été : nettoyage de l'échangeur, contrôle du circuit, des connexions électriques et de l'évacuation ;
 - évitez les consignes trop basses : une consigne raisonnable fatigue moins l'appareil et consomme moins.
 
 ## AEROVENTIS à Casablanca : diagnostic, maintenance et SAV

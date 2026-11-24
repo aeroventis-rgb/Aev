@@ -4,6 +4,15 @@ import type { CityId, ServiceId } from "@/lib/landings/slugs";
 export type LandingLink = { href: `/${string}`; label: string };
 export type Crumb = { name: string; pathname?: `/${string}` | "/" };
 
+/** Extra H2 block on a landing, after the process and before the FAQ. */
+export type LandingSection = {
+  heading: string;
+  intro?: string;
+  paragraphs?: readonly string[];
+  items?: readonly { title: string; body: string }[];
+  links?: readonly LandingLink[];
+};
+
 export type LandingHeadings = {
   services?: string;
   comparison?: string;
@@ -63,6 +72,8 @@ export type LandingPage = {
   /** Replaces the shared step labels when the trade does not follow a pose. */
   processTitles?: readonly string[];
   faqs: readonly { question: string; answer: string }[];
+  /** Extra H2 blocks after the process and before the FAQ. */
+  sections?: readonly LandingSection[];
   /** Replaces the shared closing block when the next step is a quote, not a pose. */
   cta?: { title: string; body: string; whatsapp: string };
   links: readonly LandingLink[];

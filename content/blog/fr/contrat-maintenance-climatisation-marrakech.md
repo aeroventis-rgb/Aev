@@ -89,7 +89,7 @@ Avant de signer, posez quelques questions simples :
 
 ## AEROVENTIS, votre partenaire climatisation à Marrakech
 
-AEROVENTIS accompagne les particuliers et les professionnels pour l'étude, l'installation, la maintenance et le SAV de leurs systèmes de climatisation, de ventilation et de plomberie, à Marrakech comme à Casablanca, Rabat, Mohammedia, Bouskoura, Tamaris et Zenata. Pour en savoir plus sur nos services dans la ville rouge, consultez notre page [climatisation à Marrakech](/fr/climatisation-marrakech).
+AEROVENTIS accompagne les particuliers et les professionnels pour l'étude, l'installation, la maintenance et le SAV de leurs systèmes de climatisation, de ventilation et de plomberie, à Marrakech comme à Casablanca, Rabat, Mohammedia, Bouskoura, Tamaris et Zenata. Pour en savoir plus sur nos services dans la ville rouge, consultez notre page [climatisation à Marrakech](/fr/climatisation-marrakech). Pour une climatisation déjà installée à Casablanca, la visite est décrite sur la page [entretien climatisation Casablanca](/fr/entretien-climatisation-casablanca).
 
 Vous souhaitez un contrat de maintenance adapté à votre villa, votre riad ou vos locaux ? Envoyez-nous un message sur WhatsApp avec le nombre et le type de vos appareils : nous vous proposons un devis adapté à votre installation.
 

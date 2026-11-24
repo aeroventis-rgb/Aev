@@ -86,7 +86,7 @@ Dans une villa existante, il faut créer ou abaisser un faux plafond, souvent da
 3. **Coordination** avec l'architecte, le plâtrier et l'électricien.
 4. **Installation** : unité intérieure, réseau de gaines, bouches, unité extérieure, liaisons frigorifiques.
 5. **Mise en service et équilibrage** des débits par pièce.
-6. **Mise en service** et proposition d'un suivi d'entretien : [entretien climatisation à Casablanca](/fr/entretien-climatisation-casablanca).
+6. **Mise en service** et proposition d'un suivi d'entretien : [entretien climatisation Casablanca](/fr/entretien-climatisation-casablanca).
 
 ## Prix climatisation gainable au Maroc : ce qui fait varier le budget
 Aucun prix ne peut être donné sans étude, car chaque villa est différente. Plusieurs facteurs font varier le budget :

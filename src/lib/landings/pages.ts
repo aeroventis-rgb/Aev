@@ -3,6 +3,7 @@ import { addedServicePages } from "@/lib/landings/added-services";
 import { citySeoPages } from "@/lib/landings/city-seo";
 import { climatisationVrfPage } from "@/lib/landings/climatisation-vrf";
 import { contratEntretienPage } from "@/lib/landings/contrat-entretien";
+import { entretienClimatisationCasablancaPage } from "@/lib/landings/entretien-climatisation-casablanca";
 import { extraLandingPages } from "@/lib/landings/extra-pages";
 import { COMPARISON_ROWS, PROCESS_TITLES } from "@/lib/landings/shared";
 import { LANDING_ROUTES } from "@/lib/landings/slugs";
@@ -110,6 +111,13 @@ function assertLanding(page: LandingPage) {
       ...(page.gallery?.map((shot) => shot.alt) ?? []),
       ...(page.processTitles ?? []),
       ...(page.cta ? [page.cta.title, page.cta.body, page.cta.whatsapp] : []),
+      ...(page.sections ?? []).flatMap((section) => [
+        section.heading,
+        ...(section.intro ? [section.intro] : []),
+        ...(section.paragraphs ?? []),
+        ...(section.items ?? []).flatMap((item) => [item.title, item.body]),
+        ...(section.links ?? []).map((item) => item.label),
+      ]),
     ],
   });
   for (const locale of page.locales) {
@@ -250,7 +258,7 @@ const handwritten: LandingPage[] = [
       {
         question: "Faut-il prévoir l'entretien dès la pose ?",
         answer:
-          "Oui, au moins le lavage des filtres et un contrôle avant la saison chaude. À Casablanca, la page entretien détaille ce que le littoral change.",
+          "Oui, au moins le lavage des filtres et un contrôle avant la saison chaude. À Casablanca, la page entretien climatisation Casablanca décrit la visite.",
       },
     ],
     links: [
@@ -268,7 +276,7 @@ const handwritten: LandingPage[] = [
       { href: "/climatisation-vrf", label: "Climatisation VRF / DRV" },
       { href: "/climatisation-gainable", label: "Climatisation gainable" },
       { href: "/pompe-a-chaleur-air-eau", label: "Pompe à chaleur air-eau" },
-      { href: "/entretien-climatisation-casablanca", label: "Entretien à Casablanca" },
+      { href: "/entretien-climatisation-casablanca", label: "Entretien climatisation Casablanca" },
       { href: "/zone-intervention", label: "Zone d'intervention" },
       { href: "/blog/maitrisez-votre-climat", label: "Maîtrisez votre climat" },
       { href: "/contact", label: "Contact" },
@@ -355,7 +363,7 @@ const handwritten: LandingPage[] = [
       {
         question: "Quel lien avec l'entretien ?",
         answer:
-          "Les filtres, les bouches et les condensats se contrôlent. La page entretien climatisation à Casablanca décrit le suivi sur le littoral.",
+          "Les filtres, les bouches et les condensats se contrôlent. La page entretien climatisation Casablanca décrit la visite sur le littoral.",
       },
     ],
     links: [
@@ -364,7 +372,7 @@ const handwritten: LandingPage[] = [
       { href: "/climatisation-casablanca", label: "Climatisation à Casablanca" },
       { href: "/climatisation-rabat", label: "Climatisation à Rabat" },
       { href: "/climatisation-marrakech", label: "Climatisation à Marrakech" },
-      { href: "/entretien-climatisation-casablanca", label: "Entretien à Casablanca" },
+      { href: "/entretien-climatisation-casablanca", label: "Entretien climatisation Casablanca" },
       { href: "/zone-intervention", label: "Zone d'intervention" },
       { href: "/blog/maitrisez-votre-climat", label: "Maîtrisez votre climat" },
       { href: "/contact", label: "Contact" },
@@ -446,14 +454,14 @@ const handwritten: LandingPage[] = [
       {
         question: "Où lire l'entretien et les autres villes ?",
         answer:
-          "L'entretien à Casablanca a sa page. Rabat et Marrakech sont sur leurs pages climatisation. Le hub gainable rappelle le principe, sans le détail des quartiers casaouis.",
+          "L'entretien climatisation Casablanca a sa page. Rabat et Marrakech sont sur leurs pages climatisation. Le hub gainable rappelle le principe, sans le détail des quartiers casaouis.",
       },
     ],
     links: [
       { href: "/climatisation-gainable", label: "Climatisation gainable" },
       { href: "/climatisation-casablanca", label: "Climatisation à Casablanca" },
       { href: "/climatisation", label: "Climatisation au Maroc" },
-      { href: "/entretien-climatisation-casablanca", label: "Entretien à Casablanca" },
+      { href: "/entretien-climatisation-casablanca", label: "Entretien climatisation Casablanca" },
       { href: "/climatisation-rabat", label: "Climatisation à Rabat" },
       { href: "/climatisation-marrakech", label: "Climatisation à Marrakech" },
       { href: "/contact", label: "Contact" },
@@ -464,103 +472,11 @@ const handwritten: LandingPage[] = [
       { name: "Climatisation gainable à Casablanca" },
     ],
   },
-  {
-    slug: "entretien-climatisation-casablanca",
-    locales: ["fr"],
-    serviceId: "entretien-climatisation",
-    serviceType: "Entretien de climatisation",
-    cityId: "casablanca",
-    areaServed: ["Casablanca"],
-    title: "Entretien clim Casablanca – maintenance",
-    description:
-      "Entretien de climatisation à Casablanca : filtres, condensats et unité extérieure, du littoral d'Ain Diab aux villas de Bouskoura, Anfa et Californie.",
-    h1: "Entretien climatisation à Casablanca",
-    lead: [
-      "À Casablanca, l'entretien ne se résume pas à un filtre rincé en août. Sur le littoral, d'Ain Diab à la corniche, l'humidité remplit les bacs de condensats et le sel se dépose sur l'échangeur extérieur. À Bouskoura, c'est plutôt la poussière des chantiers et des jardins qui colmate les filtres. Anfa et Californie ajoutent des accès compliqués : groupe en courette, échelle, accord du gardien.",
-      "Cette page décrit le suivi d'une climatisation à Casablanca. L'installation split ou gainable est sur les pages climatisation et gainable de la ville. Un contrat qui peut regrouper plusieurs équipements, et d'autres villes, est décrit à part : le nombre de visites se définit sur devis.",
-    ],
-    servicesIntro:
-      "La visite technique et les gestes entre deux visites ne portent pas sur les mêmes pièces selon le quartier.",
-    services: [
-      {
-        title: "Filtres et échangeur intérieur",
-        body: "Dépoussiérage régulier par l'occupant, puis nettoyage de l'échangeur et de la turbine lors de la visite, surtout après un épisode de chergui.",
-      },
-      {
-        title: "Condensats",
-        body: "À Ain Diab et dans les appartements humides d'Anfa, le bac et le tuyau se bouchent plus vite. C'est la cause habituelle des gouttes chez le voisin.",
-      },
-      {
-        title: "Groupe extérieur",
-        body: "Lavage de l'ailettage, contrôle des supports et de la ventilation. À Bouskoura le groupe est souvent au jardin ; en immeuble, il est parfois inaccessible sans nacelle : on le sait avant de promettre un lavage.",
-      },
-    ],
-    comparisonIntro:
-      "L'entretien dépend de la machine posée. Un gainable de villa ne se suit pas comme un split de chambre. Le tableau rappelle à quoi sert chaque système au moment du contrôle.",
-    localFit: {
-      split: "Filtres en façade d'unité, turbine accessible, groupe souvent en façade à Californie ou Anfa. Le syndic doit laisser passer pour le lavage.",
-      gainable: "Le filtre est derrière une trappe. Sans trappe prévue à la pose, l'entretien de Bouskoura ou d'Anfa devient un démontage de plafond.",
-      vrv: "Plusieurs unités et un circuit commun : le contrôle prend plus de temps et se cale avec le gestionnaire de l'immeuble.",
-    },
-    processIntro:
-      "Le rythme casablancais colle à la saison chaude, pas à un calendrier copié d'une autre ville.",
-    process: [
-      "Repérer le type d'appareil, l'accès au groupe et le quartier : sel à Ain Diab, poussière à Bouskoura.",
-      "Lister filtres, condensats, ailettes et températures de soufflage à contrôler.",
-      "Intervenir de préférence avant les fortes chaleurs, quand les pièces sont encore utilisables pendant l'arrêt.",
-      "Laisser un compte rendu simple : ce qui a été nettoyé, ce qui devra l'être plus souvent.",
-    ],
-    faqs: [
-      {
-        question: "À quelle fréquence laver les filtres à Casablanca ?",
-        answer:
-          "En période d'usage, toutes les quelques semaines. Plus souvent à Bouskoura s'il y a un chantier voisin, et après un vent de poussière. La visite annuelle ne remplace pas ce geste.",
-      },
-      {
-        question: "Pourquoi une clim fuit-elle à Ain Diab ou à Anfa ?",
-        answer:
-          "Le plus souvent parce que l'évacuation des condensats est bouchée par le biofilm lié à l'humidité. Il faut arrêter l'appareil et faire déboucher le circuit, pas éponger indéfiniment.",
-      },
-      {
-        question: "L'entretien d'un gainable est-il différent ?",
-        answer:
-          "Oui. Les bouches, la reprise et la trappe de filtre s'ajoutent à l'unité. La page gainable à Casablanca dit comment cette trappe doit être prévue dès la pose.",
-      },
-      {
-        question: "Peut-on recharger le fluide soi-même ?",
-        answer:
-          "Non. La manipulation du fluide frigorigène relève d'un technicien. Une baisse de performance est d'abord un filtre sale ou une fuite à chercher, pas un appoint systématique.",
-      },
-      {
-        question: "Californie et Bouskoura ont-ils le même suivi ?",
-        answer:
-          "Non. Californie : accès d'immeuble et groupes en façade. Bouskoura : poussière de jardin ou de chantier et groupes au sol, plus faciles à laver mais plus exposés au sable.",
-      },
-      {
-        question: "Où demander une visite ?",
-        answer:
-          "La page contact sert à indiquer l'adresse et le type d'appareil. Pour une installation neuve, partir plutôt de la page climatisation à Casablanca ou du hub national. Pour un contrat qui peut aussi couvrir la plomberie, la pompe à chaleur ou d'autres villes, la page contrat d'entretien décrit le cadre.",
-      },
-    ],
-    links: [
-      { href: "/contrat-entretien", label: "Contrat d'entretien" },
-      { href: "/climatisation-casablanca", label: "Climatisation à Casablanca" },
-      { href: "/climatisation-gainable-casablanca", label: "Gainable à Casablanca" },
-      { href: "/climatisation", label: "Climatisation au Maroc" },
-      { href: "/nos-services", label: "Nos services" },
-      { href: "/zone-intervention", label: "Zone d'intervention" },
-      { href: "/contact", label: "Contact" },
-    ],
-    breadcrumbs: [
-      home,
-      { name: "Nos services", pathname: "/nos-services" },
-      { name: "Entretien climatisation à Casablanca" },
-    ],
-  },
 ];
 
 const pages: LandingPage[] = [
   ...handwritten,
+  entretienClimatisationCasablancaPage,
   climatisationVrfPage,
   contratEntretienPage,
   ...citySeoPages,
