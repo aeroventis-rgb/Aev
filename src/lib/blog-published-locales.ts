@@ -8,6 +8,7 @@ import type { Locale } from "@/i18n/routing";
 export const publishedBlogLocales: Record<string, readonly Locale[]> = {
   "climatisation-gainable-villa-bouskoura": ["fr"],
   "climatisation-gainable-villa-marrakech": ["fr"],
+  "climatisation-mohammedia-appartement-villa": ["fr"],
   "climatiseur-ne-refroidit-plus": ["fr"],
   "contrat-maintenance-climatisation-marrakech": ["fr"],
   "depannage-climatisation-rabat": ["fr"],
