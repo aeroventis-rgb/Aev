@@ -13,6 +13,7 @@ export const publishedBlogLocales: Record<string, readonly Locale[]> = {
   "contrat-maintenance-climatisation-marrakech": ["fr"],
   "depannage-climatisation-rabat": ["fr"],
   "desenfumage-immeuble-parking-mohammedia": ["fr"],
+  "etude-cvc-bureaux-casablanca": ["fr"],
   "etude-cvc-villa-neuve-tamaris": ["fr"],
   "extraction-cuisine-restaurant-zenata": ["fr"],
   "fuite-eau-maison-casablanca": ["fr"],
