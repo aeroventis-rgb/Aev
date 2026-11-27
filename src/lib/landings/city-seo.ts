@@ -71,6 +71,7 @@ type CityCopy = {
   process: readonly string[];
   faqs: LandingPage["faqs"];
   links: readonly LandingLink[];
+  sections?: LandingPage["sections"];
   parent: Crumb;
 };
 
@@ -97,6 +98,7 @@ function cityPage(copy: CityCopy): LandingPage {
     process: copy.process,
     faqs: copy.faqs,
     links: copy.links,
+    sections: copy.sections,
     breadcrumbs: crumbs(copy.parent, copy.h1),
   };
 }
@@ -109,10 +111,10 @@ const climCasablanca = cityPage({
   serviceId: "climatisation",
   serviceType: "Climatisation",
   cityId: "casablanca",
-  areaServed: ["Casablanca"],
+  areaServed: ["Casablanca", "Anfa", "Californie", "Ain Diab", "Bouskoura", "Tamaris", "Mohammedia"],
   title: "Climatisation Casablanca : split et VRF",
   description:
-    "Climatisation à Casablanca : split, gainable, VRF et pompe à chaleur pour villas, immeubles et constructions neuves. Visite, entretien et dépannage.",
+    "Climatisation à Casablanca : split, gainable et VRF pour Anfa, Californie, Ain Diab, Bouskoura, Tamaris et Mohammedia. Visite, entretien et dépannage.",
   h1: "Climatisation à Casablanca",
   headings: {
     services: "Split, gainable, VRF, PAC, entretien",
@@ -121,23 +123,23 @@ const climCasablanca = cityPage({
     faq: "Questions sur la climatisation à Casablanca",
   },
   lead: [
-    "La climatisation à Casablanca doit refroidir et déshumidifier. Vers Ain Diab et la corniche, l'air atlantique dépose du sel sur le groupe extérieur. À Bouskoura, l'air est plus sec et la poussière des jardins ou des chantiers encrasse les filtres. Anfa et Californie ajoutent le syndic : ce qui est accepté dans une cour technique ne l'est pas toujours sur la rue.",
-    "L'installation ne part pas d'une puissance au mètre carré. Le split, le gainable et le VRF ne tiennent pas dans le même plafond, et une pompe à chaleur air-eau (PAC) chauffe un circuit d'eau : elle ne souffle pas à la place du séjour. Le projet passe par une visite, une étude, un devis, la pose, la mise en service, puis la maintenance.",
+    "La climatisation à Casablanca doit refroidir et déshumidifier. Vers Ain Diab et la corniche, le sel se dépose sur le groupe. Anfa et Californie ajoutent le syndic. Bouskoura encrasse les filtres de poussière. Tamaris prend le vent marin, Mohammedia mêle logements et locaux vers Rabat.",
+    "On ne part pas d'une puissance au mètre carré. Le split, le gainable et le VRF ne tiennent pas dans le même plafond. Une pompe à chaleur air-eau (PAC) chauffe un circuit d'eau : elle ne souffle pas à la place du séjour.",
   ],
   servicesIntro:
-    "Cinq demandes reviennent à Casablanca. Le relevé dit lesquelles concernent vraiment le logement, de la corniche aux villas de l'arrière-pays.",
+    "Cinq demandes reviennent. Le relevé dit lesquelles concernent le logement, de la corniche à Bouskoura, Tamaris et Mohammedia.",
   services: [
     {
       title: "Split et multi-split",
-      body: "Dans un appartement d'Anfa ou de Californie, le plafond est souvent trop bas pour des gaines. Une ou plusieurs unités murales traitent le séjour et les chambres, si un emplacement de groupe est accepté : coursive, toiture ou local technique. Les liaisons et l'évacuation des condensats se tracent avant le percement.",
+      body: "Dans un appartement d'Anfa ou de Californie, le plafond est souvent trop bas pour des gaines. Une ou plusieurs unités murales traitent le séjour et les chambres, si le groupe est accepté en coursive, en toiture ou en local technique. Les condensats se tracent avant le percement.",
     },
     {
       title: "Gainable",
-      body: "Les villas de Bouskoura, et certaines maisons d'Anfa, ont un plénum ou peuvent le réserver au neuf. Le gainable cache l'unité et répartit l'air par des gaines. À Californie, beaucoup de dalles ne laissent pas cette hauteur. La page gainable de Casablanca détaille bouches et trappes, sans les recopier ici.",
+      body: "Les villas de Bouskoura, et certaines maisons d'Anfa, ont un plénum ou peuvent le réserver au neuf. Le gainable cache l'unité et répartit l'air par des gaines. À Californie, beaucoup de dalles ne laissent pas cette hauteur. La page gainable de Casablanca détaille bouches et trappes.",
     },
     {
       title: "VRF",
-      body: "Plusieurs unités intérieures partagent un circuit à débit variable, pour limiter les groupes en façade. Cela concerne un petit immeuble ou un plateau de bureaux, pas une chambre seule. À Anfa, l'intérêt est de réduire ce qui se voit dehors, pas d'alourdir un deux-pièces.",
+      body: "Plusieurs unités intérieures partagent un circuit à débit variable, pour limiter les groupes en façade. Cela concerne un petit immeuble ou un plateau de bureaux, pas une chambre seule. À Anfa, l'intérêt est de réduire ce qui se voit dehors.",
     },
     {
       title: "Pompe à chaleur (PAC)",
@@ -145,23 +147,23 @@ const climCasablanca = cityPage({
     },
     {
       title: "Entretien et dépannage",
-      body: "Un dépannage part du symptôme du jour : plus de froid, un écoulement, un groupe à l'arrêt, et de l'accès réel. L'entretien des filtres, des unités et des condensats est décrit sur la page entretien climatisation Casablanca.",
+      body: "Un dépannage part du symptôme : plus de froid, un écoulement, un groupe à l'arrêt, et de l'accès réel. L'entretien des filtres et des condensats est sur la page entretien climatisation Casablanca.",
     },
   ],
   comparisonIntro:
-    "Un appartement en copropriété, une villa déjà habitée et un chantier neuf n'ouvrent pas le même accès, ni le même moment pour passer les réseaux.",
+    "Un appartement, une villa déjà habitée et un chantier neuf n'ouvrent pas le même accès, ni le même moment pour passer les réseaux.",
   points: [
     {
       title: "Villas",
-      body: "À Bouskoura, le jardin éloigne souvent le groupe des chambres. À Anfa, la parcelle est plus serrée : le bruit vers le voisinage compte autant que la puissance. Un hammam ou un plancher chauffant, s'il est prévu, se relève en même temps que la climatisation.",
+      body: "À Bouskoura, le jardin éloigne souvent le groupe des chambres. À Tamaris, le vent et le sel arrivent de face. À Anfa, la parcelle est plus serrée : le bruit vers le voisinage compte.",
     },
     {
       title: "Immeubles",
-      body: "Californie et Anfa ajoutent le règlement, la façade et parfois un gardien pour atteindre le groupe. On vérifie ces points avant de dessiner un percement. Un local technique commun ne se suppose pas depuis la rue.",
+      body: "Californie et Anfa ajoutent le règlement et la façade. À Mohammedia, logements et locaux se suivent sous un air marin humide. On confirme le groupe et les condensats avant le percement.",
     },
     {
       title: "Constructions neuves",
-      body: "Tant que les cloisons sont ouvertes, gaines, condensats et alimentations se réservent avec le chantier. Revenir après le staff pour un gainable ou un plancher chauffant ouvre des ouvrages déjà fermés.",
+      body: "Tant que les cloisons sont ouvertes, gaines, condensats et alimentations se réservent avec le chantier. Revenir après le staff pour un gainable ouvre des ouvrages déjà fermés.",
     },
   ],
   image: photo(
@@ -171,12 +173,50 @@ const climCasablanca = cityPage({
     1600
   ),
   processIntro:
-    "L'ordre est stable : visite, étude, devis, installation, mise en service, maintenance. À Casablanca, la façade et l'eau des condensats ouvrent la visite.",
+    "L'ordre est stable : visite, étude, devis, installation, mise en service, maintenance. La façade et les condensats ouvrent la visite.",
   process: [
-    "Voir l'étage, le syndic s'il y en a un, le chemin des condensats et l'exposition, d'Ain Diab jusqu'à Bouskoura.",
-    "Choisir split, gainable, VRF ou PAC, puis rédiger le devis à partir de ce relevé : pièces traitées, emplacements, et ce qui reste hors du lot.",
+    "Voir l'étage, le syndic s'il y en a un, les condensats et l'exposition : Ain Diab, Anfa, Californie, Bouskoura, Tamaris ou Mohammedia.",
+    "Choisir split, gainable, VRF ou PAC, puis rédiger le devis à partir du relevé : pièces traitées, emplacements, et ce qui reste hors du lot.",
     "Poser les liaisons, abriter le groupe si l'air est salin, raccorder les condensats et mettre en service en contrôlant le soufflage.",
     "Laisser filtres, trappes et groupe accessibles. Le lavage avant l'été est décrit sur la page entretien de Casablanca.",
+  ],
+  sections: [
+    {
+      heading: "Quartiers et alentours",
+      items: [
+        {
+          title: "Anfa et Californie",
+          body: "Immeubles et maisons serrées. Le syndic et la hauteur sous plafond tranchent entre split et gainable.",
+        },
+        {
+          title: "Ain Diab",
+          body: "Le sel de la corniche se dépose sur le groupe. L'abri et le lavage font partie de l'emplacement.",
+        },
+        {
+          title: "Bouskoura",
+          body: "Villas plus sèches, au sud-ouest. La poussière de jardin ou de chantier encrasse les filtres.",
+        },
+        {
+          title: "Tamaris",
+          body: "Villas côté Dar Bouazza, face au vent et à l'air marin. Le groupe doit rester accessible pour le lavage.",
+        },
+        {
+          title: "Mohammedia",
+          body: "Logements et locaux sur le littoral vers Rabat. L'air humide remplit les bacs de condensats.",
+        },
+      ],
+      links: [
+        link("/climatisation-bouskoura", "Climatisation à Bouskoura"),
+        link("/climatisation-tamaris", "Climatisation à Tamaris"),
+        link("/climatisation-mohammedia", "Climatisation à Mohammedia"),
+      ],
+    },
+    {
+      heading: "Pourquoi AEROVENTIS",
+      paragraphs: [
+        "AEROVENTIS travaille depuis 2017. La visite, l'étude et le devis précèdent la pose.",
+      ],
+    },
   ],
   faqs: [
     {
@@ -192,17 +232,17 @@ const climCasablanca = cityPage({
     {
       question: "Que change l'air d'Ain Diab ?",
       answer:
-        "Le sel et l'humidité attaquent l'échangeur extérieur et remplissent les bacs. L'emplacement, l'accès pour le lavage et l'évacuation d'eau comptent autant que la puissance. Bouskoura, plus à l'intérieur, encrasse plutôt les filtres.",
+        "Le sel et l'humidité attaquent l'échangeur et remplissent les bacs. Tamaris pose la même question d'abri. Bouskoura encrasse plutôt les filtres.",
     },
     {
       question: "Comment se passe un dépannage ?",
       answer:
-        "On part du symptôme et de l'accès : absence de froid, bac qui déborde, groupe à l'arrêt. Ce n'est pas le passage d'entretien des filtres. Le syndic ou le gardien doit pouvoir laisser atteindre l'unité.",
+        "On part du symptôme et de l'accès : absence de froid, bac qui déborde, groupe à l'arrêt. Ce n'est pas le lavage des filtres. Le syndic doit pouvoir laisser atteindre l'unité.",
     },
     {
       question: "Un prix d'installation est-il affiché ?",
       answer:
-        "Non. Le montant dépend de l'étage, de la longueur des liaisons et du système retenu. Un chiffre sans visite ne décrit pas le chantier. Le devis est rédigé après l'étude.",
+        "Non. Le montant dépend de l'étage, des liaisons et du système retenu. Un chiffre sans visite ne décrit pas le chantier. Le devis suit l'étude.",
     },
     {
       question: "Comment joindre AEROVENTIS sur WhatsApp ?",
@@ -213,13 +253,18 @@ const climCasablanca = cityPage({
   links: [
     link("/climatisation-gainable-casablanca", "Gainable à Casablanca"),
     link("/entretien-climatisation-casablanca", "Entretien climatisation Casablanca"),
+    link("/climatisation-bouskoura", "Climatisation à Bouskoura"),
+    link("/climatisation-tamaris", "Climatisation à Tamaris"),
+    link("/climatisation-mohammedia", "Climatisation à Mohammedia"),
     link("/climatisation-rabat", "Climatisation à Rabat"),
     link("/climatisation-marrakech", "Climatisation à Marrakech"),
     link("/plomberie-casablanca", "Plombier à Casablanca"),
-    link("/blog/prix-installation-climatisation-casablanca", "Prix d'installation à Casablanca"),
     link("/blog/climatiseur-ne-refroidit-plus", "Climatiseur qui ne refroidit plus"),
-    link("/blog/frequence-entretien-clim", "Fréquence d'entretien"),
-    link("/blog/clim-gainable-villa-maroc", "Clim gainable en villa"),
+    link("/blog/etude-cvc-bureaux-casablanca", "Étude CVC pour bureaux à Casablanca"),
+    link("/blog/fuite-eau-maison-casablanca", "Fuite d'eau dans une maison à Casablanca"),
+    link("/blog/climatisation-gainable-villa-bouskoura", "Gainable pour une villa à Bouskoura"),
+    link("/blog/climatisation-mohammedia-appartement-villa", "Climatisation à Mohammedia : appartement ou villa"),
+    link("/blog/climatisation-reversible-chauffage-hiver-tamaris", "Climatisation réversible à Tamaris"),
     ...sharedTradeLinks,
   ],
   parent: climParent,
@@ -948,6 +993,12 @@ function visibleCopy(page: LandingPage): string {
     ...(page.points ?? []).flatMap((item) => [item.title, item.body]),
     page.processIntro,
     ...page.process,
+    ...(page.sections ?? []).flatMap((section) => [
+      section.heading,
+      section.intro ?? "",
+      ...(section.paragraphs ?? []),
+      ...(section.items ?? []).flatMap((item) => [item.title, item.body]),
+    ]),
     ...page.faqs.flatMap((faq) => [faq.question, faq.answer]),
   ].join(" ");
 }

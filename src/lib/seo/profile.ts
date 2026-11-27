@@ -1,14 +1,17 @@
 /**
- * Business facts rendered in JSON-LD only after the owner fills them.
- * Empty values are omitted on purpose — do not publish a partial address or guessed hours.
+ * Business facts rendered in JSON-LD only when they are known.
+ * A missing postal code or region is omitted. Do not invent either.
+ * Coordinates, profile URLs and hours stay unpublished until the owner sets them.
  */
 
 export type PostalAddress = {
   streetAddress: string;
   addressLocality: string;
-  postalCode: string;
-  addressRegion: string;
   addressCountry: "MA";
+  /** Set only when the owner confirms a real code. */
+  postalCode?: string;
+  /** Set only when the owner confirms a region. */
+  addressRegion?: string;
 };
 
 export type GeoCoordinates = {
@@ -32,8 +35,15 @@ export type OpeningHours = {
   closes: string;
 };
 
-/** TODO(owner): street address. Not rendered until every field is a non-empty string. */
-export const BUSINESS_ADDRESS: PostalAddress | null = null;
+/**
+ * Street and city confirmed by the owner.
+ * Postal code and region stay omitted until they are known.
+ */
+export const BUSINESS_ADDRESS: PostalAddress | null = {
+  streetAddress: "10 rue Liberté, 3e étage, appt 5",
+  addressLocality: "Casablanca",
+  addressCountry: "MA",
+};
 
 /** TODO(owner): latitude and longitude. Not rendered until both are finite numbers. */
 export const BUSINESS_GEO: GeoCoordinates | null = null;
@@ -49,15 +59,21 @@ export const BUSINESS_HOURS: OpeningHours | null = null;
 
 export function filledAddress(address: PostalAddress | null): PostalAddress | null {
   if (!address) return null;
-  const values = [
-    address.streetAddress,
-    address.addressLocality,
-    address.postalCode,
-    address.addressRegion,
-    address.addressCountry,
-  ];
-  if (values.some((value) => typeof value !== "string" || value.trim() === "")) return null;
-  return address;
+  const streetAddress = address.streetAddress.trim();
+  const addressLocality = address.addressLocality.trim();
+  const addressCountry = address.addressCountry.trim();
+  if (!streetAddress || !addressLocality || addressCountry !== "MA") return null;
+
+  const filled: PostalAddress = {
+    streetAddress,
+    addressLocality,
+    addressCountry: "MA",
+  };
+  const postalCode = address.postalCode?.trim() ?? "";
+  const addressRegion = address.addressRegion?.trim() ?? "";
+  if (postalCode) filled.postalCode = postalCode;
+  if (addressRegion) filled.addressRegion = addressRegion;
+  return filled;
 }
 
 export function filledGeo(geo: GeoCoordinates | null): GeoCoordinates | null {

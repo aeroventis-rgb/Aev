@@ -95,13 +95,14 @@ export function hvacBusinessJsonLd(description: string): Record<string, unknown>
   return data;
 }
 
-/** City landing: LocalBusiness / HVACBusiness with areaServed and no street address. */
+/** City landing: LocalBusiness / HVACBusiness with areaServed and the known street address. */
 export function areaBusinessJsonLd(input: {
   description: string;
   url: string;
   areaServed: readonly string[];
 }): Record<string, unknown> {
-  return {
+  const address = filledAddress(BUSINESS_ADDRESS);
+  const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "HVACBusiness"],
     "@id": `${input.url}#local`,
@@ -113,6 +114,10 @@ export function areaBusinessJsonLd(input: {
     areaServed: input.areaServed.map((name) => placeArea(name)),
     parentOrganization: { "@id": BUSINESS_ID },
   };
+  if (address) {
+    data.address = { "@type": "PostalAddress", ...address };
+  }
+  return data;
 }
 
 export function serviceJsonLd(input: {
